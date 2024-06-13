@@ -11,6 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay/Testing.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/PlayerTesting.unity
+    guid: 479979f514fdcc84d8223c4dc504650e
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f1836327ca37e874290d8a5937ab3995,
       type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: a93c6edc4543fef49a23f797ea7aa902,
+      type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2b7a8064cef10b84283aa97ba22c7c78,
+      type: 3}
