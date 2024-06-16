@@ -20,6 +20,8 @@ public class Pickup : MonoBehaviour
     Vector3 objectPos;
     public float distance;
 
+    public ParticleSystem chargePS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +58,7 @@ public class Pickup : MonoBehaviour
         if (Input.GetKeyDown("f") && hasItem == true)
         {
             StartCoroutine(ThrowMulti());
-
+            chargePS.Play();
         }
 
         if (Input.GetKeyUp("f") && hasItem == true)
@@ -70,6 +72,7 @@ public class Pickup : MonoBehaviour
             //throwAudio.Play();
             hasItem = false;
           
+            chargePS.Stop();
             throwForce = 150;
             throwMulti = 1;
         }
