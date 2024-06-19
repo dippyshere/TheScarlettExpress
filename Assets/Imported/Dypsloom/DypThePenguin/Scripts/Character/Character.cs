@@ -130,7 +130,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
             m_CharacterMover.Tick();
             m_CharacterRotator.Tick();
-            m_CharacterAnimator.Tick();
+            //m_CharacterAnimator.Tick();
         }
 
         /// <summary>

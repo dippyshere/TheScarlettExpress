@@ -34,7 +34,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         {
             m_Interactables = new List<IInteractable>();
             m_CharacterInput = m_Character.CharacterInput;
-            m_InteractableIndicator.SetActive(false);
+            //m_InteractableIndicator.SetActive(false);
         }
 
         /// <summary>

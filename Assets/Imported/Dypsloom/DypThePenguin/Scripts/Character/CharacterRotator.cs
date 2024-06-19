@@ -14,6 +14,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
     public class CharacterRotator
     {
         protected readonly Character m_Character;
+        private float previousRotation;
 
         /// <summary>
         /// Constructor.
@@ -40,9 +41,11 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
             float targetRotation = 
                 Mathf.Atan2(charVelocity.x, charVelocity.y) 
                 * Mathf.Rad2Deg + m_Character.CharacterCamera.transform.eulerAngles.y;
+
+            float rotation = Mathf.SmoothDampAngle(m_Character.transform.eulerAngles.y, targetRotation, ref previousRotation, 0.025f);
             
             Quaternion lookAt = Quaternion.Slerp(m_Character.transform.rotation,
-                Quaternion.Euler(0,targetRotation,0),
+                Quaternion.Euler(0, rotation, 0),
                 0.5f);
 
             m_Character.transform.rotation = lookAt;

@@ -18,6 +18,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         protected readonly CharacterController m_CharacterController;
         protected readonly List<IMover> m_ExternalMovers;
         protected Vector3 m_CharacterInputMovement;
+        private Vector3 previousSpeed; 
 
         protected Vector3 m_Movement;
         protected JumpForceMover m_JumpForceMover;
@@ -88,7 +89,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
             var movementRelativeCamera = m_Character.CharacterCamera.transform.TransformDirection(movementInput);
             movementRelativeCamera = new Vector3(movementRelativeCamera.x, 0, movementRelativeCamera.z).normalized;
 
-            m_CharacterInputMovement = m_Character.Speed * movementRelativeCamera;
+            m_CharacterInputMovement = Vector3.SmoothDamp(m_CharacterInputMovement, m_Character.Speed * movementRelativeCamera, ref previousSpeed, 0.1f);
 
             Vector3 externalMovement = Vector3.zero;
             for (int i = m_ExternalMovers.Count - 1; i >= 0; i--) {
