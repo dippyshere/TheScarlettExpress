@@ -141,7 +141,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.8.15",
+      "version": "1.8.16",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -290,7 +290,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
-      "version": "14.0.9",
+      "version": "14.0.11",
       "depth": 0,
       "source": "builtin",
       "dependencies": {
@@ -301,7 +301,7 @@
       }
     },
     "com.unity.render-pipelines.universal": {
-      "version": "14.0.9",
+      "version": "14.0.11",
       "depth": 0,
       "source": "builtin",
       "dependencies": {
