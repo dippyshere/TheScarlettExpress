@@ -86,8 +86,20 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                 ? Vector3.zero
                 : new Vector3(m_Character.CharacterInput.Horizontal, 0, m_Character.CharacterInput.Vertical);
 
-            var movementRelativeCamera = m_Character.CharacterCamera.transform.TransformDirection(movementInput);
-            movementRelativeCamera = new Vector3(movementRelativeCamera.x, 0, movementRelativeCamera.z).normalized;
+            Vector3 movementRelativeCamera = Vector3.zero;
+
+            switch (m_Character.m_MovementMode) {
+                case MovementMode.Free:
+                    movementRelativeCamera = m_Character.CharacterCamera.transform.TransformDirection(movementInput);
+                    movementRelativeCamera = new Vector3(movementRelativeCamera.x, 0, movementRelativeCamera.z).normalized;
+                    break;
+                case MovementMode.RailZ:
+                    movementRelativeCamera = new Vector3(movementInput.x, 0, movementInput.z).normalized;
+                    break;
+                case MovementMode.RailX:
+                    movementRelativeCamera = new Vector3(movementInput.z, 0, movementInput.x).normalized;
+                    break;
+            }
 
             m_CharacterInputMovement = Vector3.SmoothDamp(m_CharacterInputMovement, m_Character.Speed * movementRelativeCamera, ref previousSpeed, 0.1f);
 
