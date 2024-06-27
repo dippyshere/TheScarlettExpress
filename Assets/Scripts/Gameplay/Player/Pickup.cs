@@ -17,10 +17,16 @@ public class Pickup : MonoBehaviour
     public float dropForce = 0;
     public float throwMulti;
 
+
+    public GameObject pickupPrompt;
+
     Vector3 objectPos;
     public float distance;
 
     public ParticleSystem chargePS;
+
+    ThrowUI throwing;
+    [SerializeField] GameObject throwUi;
 
     // Start is called before the first frame update
     void Start()
@@ -29,16 +35,23 @@ public class Pickup : MonoBehaviour
         hasItem = false;
         throwMulti = 1;
         throwForce = 150;
+
+        throwing = throwUi.GetComponent<ThrowUI>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
+
         if (Input.GetKeyDown("e") && hasItem == true)
         {
             ObjectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
             ObjectIWantToPickup.transform.parent = null;
             hasItem = false;
+            throwing.throwUI = false;
         }
 
         if (canPickup == true)
@@ -50,7 +63,7 @@ public class Pickup : MonoBehaviour
                 ObjectIWantToPickup.transform.parent = myHands.transform;
                 hasItem = true;
                 //pickupAudio.Play();
-                //play the animals fly animation
+                throwing.throwUI = true;
             }
 
         }
@@ -75,6 +88,7 @@ public class Pickup : MonoBehaviour
             chargePS.Stop();
             throwForce = 150;
             throwMulti = 1;
+            throwing.throwUI = false;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -85,12 +99,14 @@ public class Pickup : MonoBehaviour
             {
                 canPickup = true;
                 ObjectIWantToPickup = other.gameObject;
+                pickupPrompt.SetActive(true);
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
         canPickup = false;
+        pickupPrompt.SetActive(false);
     }
     IEnumerator ThrowMulti()
     {

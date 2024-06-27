@@ -44,6 +44,8 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         [Tooltip("Death Effect.")]
         [SerializeField] protected GameObject m_DeathEffects;
 
+        public MovementMode m_MovementMode = MovementMode.RailZ;
+
         protected Rigidbody m_Rigidbody;
         protected CharacterController m_CharacterController;
         protected Animator m_Animator;
@@ -199,6 +201,14 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
             gameObject.SetActive(true);
             m_IsDead = false;
         }
+    }
+
+    public enum MovementMode
+    {
+        RailZ,
+        RailX,
+        Free,
+        Decorating
     }
 }
 

@@ -38,9 +38,13 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                 Mathf.Abs(charVelocity.y) < 0.1f) {
                 return;
             }
-            float targetRotation = 
-                Mathf.Atan2(charVelocity.x, charVelocity.y) 
-                * Mathf.Rad2Deg + m_Character.CharacterCamera.transform.eulerAngles.y;
+            float targetRotation = 0;
+
+            if (m_Character.m_MovementMode == MovementMode.RailZ || m_Character.m_MovementMode == MovementMode.RailX) {
+                targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg;
+            } else {
+                targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg + m_Character.CharacterCamera.transform.eulerAngles.y;
+            }
 
             float rotation = Mathf.SmoothDampAngle(m_Character.transform.eulerAngles.y, targetRotation, ref previousRotation, 0.025f);
             
