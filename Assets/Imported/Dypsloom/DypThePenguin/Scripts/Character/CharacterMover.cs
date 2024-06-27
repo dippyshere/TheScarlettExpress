@@ -99,6 +99,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                 case MovementMode.RailX:
                     movementRelativeCamera = new Vector3(movementInput.z, 0, movementInput.x).normalized;
                     break;
+                case MovementMode.Decorating:
+                    movementRelativeCamera = new Vector3(0, 0, 0);
+                    break;
             }
 
             m_CharacterInputMovement = Vector3.SmoothDamp(m_CharacterInputMovement, m_Character.Speed * movementRelativeCamera, ref previousSpeed, 0.1f);

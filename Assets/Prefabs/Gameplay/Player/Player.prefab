@@ -851,13 +851,14 @@ MonoBehaviour:
   m_Gravity: 9.81
   m_AdditionalGroundedTime: 0.2
   m_GroundRaycastLength: 0.3
-  m_JumpForce: 4
+  m_JumpForce: 3.25
   m_JumpFallOff: 20.1
   m_SpawnTransform: {fileID: 0}
   m_RespawnDelay: 3
   m_PushPower: 1.5
   m_ProjectilesSpawnPoint: {fileID: 0}
   m_DeathEffects: {fileID: 0}
+  m_MovementMode: 0
 --- !u!114 &5877893511818720090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,8 +940,10 @@ MonoBehaviour:
   throwForce: 600
   dropForce: 0
   throwMulti: 0
+  pickupPrompt: {fileID: 0}
   distance: 0
   chargePS: {fileID: 2595579797919935893}
+  throwUi: {fileID: 0}
 --- !u!65 &7454367197510016742
 BoxCollider:
   m_ObjectHideFlags: 0

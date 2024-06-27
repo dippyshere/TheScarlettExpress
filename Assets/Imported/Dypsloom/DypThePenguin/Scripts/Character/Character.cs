@@ -207,7 +207,8 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
     {
         RailZ,
         RailX,
-        Free
+        Free,
+        Decorating
     }
 }
 
