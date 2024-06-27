@@ -10,6 +10,8 @@ public class UpgradeSystem : MonoBehaviour
     public GameObject upgradeUI;
     public GameObject hammer;
 
+    public GameObject exitButton;
+
     private void Update()
     {
         if (bed2.activeSelf)
@@ -22,6 +24,7 @@ public class UpgradeSystem : MonoBehaviour
     {
         upgradeUI.SetActive(true);
         hammer.SetActive(false);
+        exitButton.SetActive(false);
     }
 
     public void Upgrade()
@@ -34,5 +37,6 @@ public class UpgradeSystem : MonoBehaviour
     {
         upgradeUI.SetActive(false);
         hammer.SetActive(true);
+        exitButton.SetActive(true);
     }
 }
