@@ -10,17 +10,23 @@ public class Deliver : MonoBehaviour
 
     public GameObject Food;
     public GameObject Plate;
+    public GameObject Passenger;
 
-    private void OnTriggerEnter(Collider other)
+    void Start()
     {
-        if (other.gameObject.tag == "Passenger")
+        canPickup = false;
+        hasItem = false;
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Passenger")
         {
-            if (hasItem == true)
-            {
-                canPickup = false;
-                Food.transform.position = Plate.transform.position + Plate.transform.forward;
-                hasItem = false;
-            }
+            //if (hasItem == true)
+            Debug.Log("Collide");
+            canPickup = false;
+            Food.transform.position = Plate.transform.position + Plate.transform.forward;
+            hasItem = false;
+            
 
             //if (hasItem == false)
             //{
