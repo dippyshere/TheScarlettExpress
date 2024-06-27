@@ -17,9 +17,9 @@ public class Deliver : MonoBehaviour
         canPickup = false;
         hasItem = false;
     }
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Passenger")
+        if (other.CompareTag("Passenger"))
         {
             //if (hasItem == true)
             Debug.Log("Collide");
