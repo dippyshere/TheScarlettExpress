@@ -5,16 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickup
+  - Passenger
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - IgnoreCamera
   - Water
   - UI
   - 
-  - 
-  - 
+  - OutlineMask
+  - Outline
   - 
   - 
   - 

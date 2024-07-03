@@ -17,10 +17,19 @@ public class Pickup : MonoBehaviour
     public float dropForce = 0;
     public float throwMulti;
 
+
+    public GameObject pickupPrompt;
+
     Vector3 objectPos;
     public float distance;
 
     public ParticleSystem chargePS;
+
+    ThrowUI throwing;
+    [SerializeField] GameObject throwUi;
+
+    [Header("feeding temporary awawawawa")]
+    public GameObject pendingPassenger;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +38,9 @@ public class Pickup : MonoBehaviour
         hasItem = false;
         throwMulti = 1;
         throwForce = 150;
+
+        throwing = throwUi.GetComponent<ThrowUI>();
+
     }
 
     // Update is called once per frame
@@ -36,9 +48,24 @@ public class Pickup : MonoBehaviour
     {
         if (Input.GetKeyDown("e") && hasItem == true)
         {
-            ObjectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
             ObjectIWantToPickup.transform.parent = null;
             hasItem = false;
+            throwing.throwUI = false;
+            if (pendingPassenger != null)
+            {
+                pendingPassenger.GetComponent<PassengerManager>().FeedPassenger(ObjectIWantToPickup.GetComponent<FoodManager>().foodType);
+                ObjectIWantToPickup.transform.position = pendingPassenger.GetComponent<PassengerManager>().plateTransform.position;
+                ObjectIWantToPickup.transform.rotation = pendingPassenger.GetComponent<PassengerManager>().plateTransform.rotation;
+                ObjectIWantToPickup.GetComponent<Rigidbody>().isKinematic = true;
+                ObjectIWantToPickup.tag = "Untagged";
+                pendingPassenger = null;
+                canPickup = false;
+                pickupPrompt.SetActive(false);
+            }
+            else
+            {
+                ObjectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
 
         if (canPickup == true)
@@ -50,7 +77,7 @@ public class Pickup : MonoBehaviour
                 ObjectIWantToPickup.transform.parent = myHands.transform;
                 hasItem = true;
                 //pickupAudio.Play();
-                //play the animals fly animation
+                throwing.throwUI = true;
             }
 
         }
@@ -75,6 +102,7 @@ public class Pickup : MonoBehaviour
             chargePS.Stop();
             throwForce = 150;
             throwMulti = 1;
+            throwing.throwUI = false;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -85,12 +113,28 @@ public class Pickup : MonoBehaviour
             {
                 canPickup = true;
                 ObjectIWantToPickup = other.gameObject;
+                pickupPrompt.SetActive(true);
+            }
+        }
+        if (other.gameObject.tag == "Passenger")
+        {
+            if (hasItem && !other.gameObject.GetComponent<PassengerManager>().hasBeenFed)
+            {
+                pendingPassenger = other.gameObject;
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        canPickup = false;
+        if (other.gameObject.tag == "Pickup")
+        {
+            canPickup = false;
+            pickupPrompt.SetActive(false);
+        }
+        if (other.gameObject.tag == "Passenger" && pendingPassenger == other.gameObject)
+        {
+            pendingPassenger = null;
+        }
     }
     IEnumerator ThrowMulti()
     {

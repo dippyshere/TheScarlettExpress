@@ -110,6 +110,53 @@ MonoBehaviour:
   - {fileID: 2814759321833850294}
   - {fileID: 7607013073633460617}
   - {fileID: 5791410001129957645}
+  - {fileID: 1806744022742101135}
+--- !u!114 &1806744022742101135
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 1
+  gaussianStart:
+    m_OverrideState: 1
+    m_Value: 20
+  gaussianEnd:
+    m_OverrideState: 1
+    m_Value: 40
+  gaussianMaxRadius:
+    m_OverrideState: 1
+    m_Value: 1.5
+  highQualitySampling:
+    m_OverrideState: 1
+    m_Value: 1
+  focusDistance:
+    m_OverrideState: 1
+    m_Value: 5
+  aperture:
+    m_OverrideState: 1
+    m_Value: 32
+  focalLength:
+    m_OverrideState: 1
+    m_Value: 300
+  bladeCount:
+    m_OverrideState: 0
+    m_Value: 5
+  bladeCurvature:
+    m_OverrideState: 0
+    m_Value: 1
+  bladeRotation:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &2814759321833850294
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -756,20 +803,20 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   eyeAdaptation:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   eyeAdaptationMinExposure:
-    m_OverrideState: 0
-    m_Value: 0.2
+    m_OverrideState: 1
+    m_Value: 1
   eyeAdaptationMaxExposure:
-    m_OverrideState: 0
-    m_Value: 5
+    m_OverrideState: 1
+    m_Value: 2
   eyeAdaptationSpeedToLight:
-    m_OverrideState: 0
-    m_Value: 0.4
+    m_OverrideState: 1
+    m_Value: 0.8
   eyeAdaptationSpeedToDark:
-    m_OverrideState: 0
-    m_Value: 0.2
+    m_OverrideState: 1
+    m_Value: 0.4
   purkinje:
     m_OverrideState: 0
     m_Value: 0
@@ -821,7 +868,7 @@ MonoBehaviour:
     m_Value: {r: 0, g: 0, b: 0, a: 0.8}
   outlineThreshold:
     m_OverrideState: 0
-    m_Value: 0.2
+    m_Value: 0.08
   outlineCustomize:
     m_OverrideState: 0
     m_Value: 0
