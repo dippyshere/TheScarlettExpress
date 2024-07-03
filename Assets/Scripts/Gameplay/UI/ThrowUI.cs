@@ -29,6 +29,6 @@ public class ThrowUI : MonoBehaviour
         {
             WP = WPon;
         }
-        transform.position = Vector3.MoveTowards(transform.position, WP.transform.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, WP.transform.position, moveSpeed);
     }
 }
