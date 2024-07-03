@@ -28,6 +28,9 @@ public class Pickup : MonoBehaviour
     ThrowUI throwing;
     [SerializeField] GameObject throwUi;
 
+    [Header("feeding temporary awawawawa")]
+    public GameObject pendingPassenger;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,15 +46,26 @@ public class Pickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
-
         if (Input.GetKeyDown("e") && hasItem == true)
         {
-            ObjectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
             ObjectIWantToPickup.transform.parent = null;
             hasItem = false;
             throwing.throwUI = false;
+            if (pendingPassenger != null)
+            {
+                pendingPassenger.GetComponent<PassengerManager>().FeedPassenger(ObjectIWantToPickup.GetComponent<FoodManager>().foodType);
+                ObjectIWantToPickup.transform.position = pendingPassenger.GetComponent<PassengerManager>().plateTransform.position;
+                ObjectIWantToPickup.transform.rotation = pendingPassenger.GetComponent<PassengerManager>().plateTransform.rotation;
+                ObjectIWantToPickup.GetComponent<Rigidbody>().isKinematic = true;
+                ObjectIWantToPickup.tag = "Untagged";
+                pendingPassenger = null;
+                canPickup = false;
+                pickupPrompt.SetActive(false);
+            }
+            else
+            {
+                ObjectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
 
         if (canPickup == true)
@@ -102,11 +116,25 @@ public class Pickup : MonoBehaviour
                 pickupPrompt.SetActive(true);
             }
         }
+        if (other.gameObject.tag == "Passenger")
+        {
+            if (hasItem && !other.gameObject.GetComponent<PassengerManager>().hasBeenFed)
+            {
+                pendingPassenger = other.gameObject;
+            }
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        canPickup = false;
-        pickupPrompt.SetActive(false);
+        if (other.gameObject.tag == "Pickup")
+        {
+            canPickup = false;
+            pickupPrompt.SetActive(false);
+        }
+        if (other.gameObject.tag == "Passenger" && pendingPassenger == other.gameObject)
+        {
+            pendingPassenger = null;
+        }
     }
     IEnumerator ThrowMulti()
     {

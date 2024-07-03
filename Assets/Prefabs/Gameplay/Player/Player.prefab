@@ -735,6 +735,7 @@ GameObject:
   - component: {fileID: 6766187687040834949}
   - component: {fileID: 6775451894038188349}
   - component: {fileID: 7454367197510016742}
+  - component: {fileID: 7120460524217411146}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -851,13 +852,14 @@ MonoBehaviour:
   m_Gravity: 9.81
   m_AdditionalGroundedTime: 0.2
   m_GroundRaycastLength: 0.3
-  m_JumpForce: 4
+  m_JumpForce: 3.25
   m_JumpFallOff: 20.1
   m_SpawnTransform: {fileID: 0}
   m_RespawnDelay: 3
   m_PushPower: 1.5
   m_ProjectilesSpawnPoint: {fileID: 0}
   m_DeathEffects: {fileID: 0}
+  m_MovementMode: 0
 --- !u!114 &5877893511818720090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,8 +941,11 @@ MonoBehaviour:
   throwForce: 600
   dropForce: 0
   throwMulti: 0
+  pickupPrompt: {fileID: 0}
   distance: 0
   chargePS: {fileID: 2595579797919935893}
+  throwUi: {fileID: 0}
+  pendingPassenger: {fileID: 0}
 --- !u!65 &7454367197510016742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -962,6 +967,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.92357194, y: 0.4598785, z: 1.6189313}
   m_Center: {x: 0.038214043, y: 0.27006075, z: 0.30946577}
+--- !u!114 &7120460524217411146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3042057909666282272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5b5dcc8f65a7240b68eba7fbba5fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
 --- !u!1 &3543643451754845881
 GameObject:
   m_ObjectHideFlags: 0

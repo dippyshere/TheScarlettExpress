@@ -14,6 +14,4 @@ public class UiFollow : MonoBehaviour
         Vector3 targetPosition = playerPos.position + offset;
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing);
     }
-
-
 }
