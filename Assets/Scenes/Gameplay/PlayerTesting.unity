@@ -10973,7 +10973,7 @@ MonoBehaviour:
   decorationOption1: {fileID: 1056395006}
   decorationOption2: {fileID: 391070219}
   decorationOption3: {fileID: 939949506}
-  dottedLine: {fileID: 1768961482}
+  decoration: {fileID: 1527918601}
 --- !u!4 &300360030
 Transform:
   m_ObjectHideFlags: 0
@@ -47833,7 +47833,7 @@ MonoBehaviour:
   decorationOption1: {fileID: 348717088}
   decorationOption2: {fileID: 1151973912}
   decorationOption3: {fileID: 1330263646}
-  dottedLine: {fileID: 103883443}
+  decoration: {fileID: 698621723}
 --- !u!4 &1035760225
 Transform:
   m_ObjectHideFlags: 0
@@ -53311,7 +53311,7 @@ MonoBehaviour:
   decorationOption1: {fileID: 524400311}
   decorationOption2: {fileID: 282789849}
   decorationOption3: {fileID: 892106784}
-  dottedLine: {fileID: 0}
+  decoration: {fileID: 819952950}
 --- !u!4 &1213222976
 Transform:
   m_ObjectHideFlags: 0
@@ -60908,6 +60908,7 @@ MonoBehaviour:
   carriage3Camera: {fileID: 82516340}
   decorationUpgradeCanvas: {fileID: 115434184}
   decorateCamera: {fileID: 1455512212}
+  m_Player: {fileID: 1694192743}
 --- !u!4 &1337464564
 Transform:
   m_ObjectHideFlags: 0
@@ -82985,6 +82986,18 @@ MonoBehaviour:
       - m_Target: {fileID: 687482415}
         m_TargetAssemblyTypeName: DoorInteraction, TrainGame
         m_MethodName: ExitRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1337464563}
+        m_TargetAssemblyTypeName: SideviewManager, Assembly-CSharp
+        m_MethodName: HelpPlease
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

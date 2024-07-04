@@ -1,3 +1,4 @@
+using Dypsloom.DypThePenguin.Scripts.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,9 @@ public class SideviewManager : MonoBehaviour
     public GameObject decorationUpgradeCanvas;
     public GameObject decorateCamera;
 
+    [SerializeField, Tooltip("Reference to the player script.")]
+    private Character m_Player;
+
     private void Update()
     {
         if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
@@ -31,6 +35,7 @@ public class SideviewManager : MonoBehaviour
             //sideviewWall.SetActive(false);
 
             Invoke(nameof(OpenSideviewMenu), 0.01f);
+            m_Player.m_MovementMode = MovementMode.Decorating;
         }
 
         if (sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
@@ -47,6 +52,13 @@ public class SideviewManager : MonoBehaviour
             carriage1UI.SetActive(false);
             carriage2UI.SetActive(false);
             carriage3UI.SetActive(false);
+            m_Player.m_MovementMode = MovementMode.RailZ;
+
+        }
+
+        if (decorationUpgradeCanvas.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        {
+            decorationUpgradeCanvas.SetActive(false);
         }
     }
 
@@ -99,6 +111,7 @@ public class SideviewManager : MonoBehaviour
     private void OpenSideviewMenu()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         sideviewCamera.SetActive(true);
         sideviewWall.SetActive(false);
     }
@@ -121,5 +134,10 @@ public class SideviewManager : MonoBehaviour
     public void Go1()
     {
 
+    }
+
+    public void HelpPlease()
+    {
+        decorationUpgradeCanvas.SetActive(false);
     }
 }
