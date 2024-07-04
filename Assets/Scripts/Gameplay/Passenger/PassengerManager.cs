@@ -17,6 +17,7 @@ public class PassengerManager : MonoBehaviour
     public Transform plateTransform;
     public bool hasBeenFed = false;
 
+    [SerializeField] private GameObject moneyUi;
 
     public float CalculateHappinessValue()
     {
@@ -48,6 +49,8 @@ public class PassengerManager : MonoBehaviour
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(CalculateSimpleFoodValue());
         hasBeenFed = true;
+
+        moneyUi.GetComponent<AddedMoneyUI>().MoneyAnimation();
     }
 
     private void OnTriggerEnter(Collider other)
