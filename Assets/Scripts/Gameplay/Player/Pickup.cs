@@ -53,11 +53,11 @@ public class Pickup : MonoBehaviour
             throwing.throwUI = false;
             if (pendingPassenger != null)
             {
-                pendingPassenger.GetComponent<PassengerManager>().FeedPassenger(ObjectIWantToPickup.GetComponent<FoodManager>().foodType);
-                ObjectIWantToPickup.transform.position = pendingPassenger.GetComponent<PassengerManager>().plateTransform.position;
-                ObjectIWantToPickup.transform.rotation = pendingPassenger.GetComponent<PassengerManager>().plateTransform.rotation;
+                pendingPassenger.GetComponent<PassengerController>().FeedPassenger(ObjectIWantToPickup.GetComponent<FoodManager>().foodType);
+                ObjectIWantToPickup.transform.SetPositionAndRotation(pendingPassenger.GetComponent<PassengerController>().plateTransform.position, pendingPassenger.GetComponent<PassengerController>().plateTransform.rotation);
                 ObjectIWantToPickup.GetComponent<Rigidbody>().isKinematic = true;
                 ObjectIWantToPickup.tag = "Untagged";
+                ObjectIWantToPickup.transform.parent = pendingPassenger.GetComponent<PassengerController>().plateTransform;
                 pendingPassenger = null;
                 canPickup = false;
                 pickupPrompt.SetActive(false);
@@ -118,7 +118,7 @@ public class Pickup : MonoBehaviour
         }
         if (other.gameObject.tag == "Passenger")
         {
-            if (hasItem && !other.gameObject.GetComponent<PassengerManager>().hasBeenFed)
+            if (hasItem && !other.gameObject.GetComponent<PassengerController>().hasBeenFed)
             {
                 pendingPassenger = other.gameObject;
             }
