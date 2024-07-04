@@ -15,6 +15,8 @@ public class DoorInteraction : MonoBehaviour
     private Character m_Player;
     private bool m_IsPlayerNear;
 
+    public GameObject decorationUpgradeCanvas;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -60,5 +62,6 @@ public class DoorInteraction : MonoBehaviour
         m_Player.m_MovementMode = MovementMode.RailZ;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        decorationUpgradeCanvas.SetActive(false);
     }
 }

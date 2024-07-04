@@ -6,6 +6,7 @@ public class SideviewManager : MonoBehaviour
 {
     public GameObject sideviewCamera;
     public GameObject carriageSelectionUI;
+    public GameObject sideviewWall;
 
     public GameObject carriage1UI;
     public GameObject carriage2UI;
@@ -15,13 +16,39 @@ public class SideviewManager : MonoBehaviour
     public GameObject carriage2Camera;
     public GameObject carriage3Camera;
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Tab))
-    //    {
-    //        Cursor.lockState = CursorLockMode.None;
-    //    }
-    //}
+    public GameObject decorationUpgradeCanvas;
+    public GameObject decorateCamera;
+
+    private void Update()
+    {
+        if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        {
+            Debug.Log("heyy???");
+            //Cursor.lockState = CursorLockMode.None;
+            //sideviewCamera.SetActive(true);
+            //carriageSelectionUI.SetActive(true);
+            Invoke(nameof(ActivateCarriageSelection), 2f);
+            //sideviewWall.SetActive(false);
+
+            Invoke(nameof(OpenSideviewMenu), 0.01f);
+        }
+
+        if (sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            sideviewCamera.SetActive(false);
+            carriageSelectionUI.SetActive(false);
+            sideviewWall.SetActive(true);
+
+            carriage1Camera.SetActive(false);
+            carriage2Camera.SetActive(false);
+            carriage3Camera.SetActive(false);
+
+            carriage1UI.SetActive(false);
+            carriage2UI.SetActive(false);
+            carriage3UI.SetActive(false);
+        }
+    }
 
     public void Carriage1()
     {
@@ -49,7 +76,9 @@ public class SideviewManager : MonoBehaviour
 
     public void Back()
     {
-        carriageSelectionUI.SetActive(true);
+        Invoke(nameof(ActivateCarriageSelection), 2f);
+
+        //carriageSelectionUI.SetActive(true);
         sideviewCamera.SetActive(true);
 
         carriage1Camera.SetActive(false);
@@ -59,5 +88,38 @@ public class SideviewManager : MonoBehaviour
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+    }
+
+    private void ActivateCarriageSelection()
+    {
+        carriageSelectionUI.SetActive(true);
+
+    }
+
+    private void OpenSideviewMenu()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        sideviewCamera.SetActive(true);
+        sideviewWall.SetActive(false);
+    }
+
+    public void Decorate()
+    {
+        decorationUpgradeCanvas.SetActive(true);
+        decorateCamera.SetActive(true);
+        sideviewWall.SetActive(true);
+
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+    }
+
+    public void Go1()
+    {
+
     }
 }
