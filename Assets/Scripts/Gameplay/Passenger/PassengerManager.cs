@@ -7,10 +7,14 @@ public class PassengerManager : MonoBehaviour
     [SerializeField, Tooltip("A list of all currently boarded passengers")] private List<PassengerController> passengers = new List<PassengerController>();
     [SerializeField] private GameObject[] passengerPrefabs;
     [SerializeField, Tooltip("A list of passener spawn points")] private List<Transform> spawnPoints = new List<Transform>();
-    
+
+    [SerializeField] GameObject player;
+    StationSettings sSettings;
+
 
     public void Start()
     {
+        sSettings =player.GetComponent<StationSettings>();
         for (int i = 0; i < spawnPoints.Count; i++)
         {
             SpawnPassenger();
@@ -21,7 +25,9 @@ public class PassengerManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
+            sSettings.StationDistance--;
             AdvanceDay();
+            
         }
     }
 
@@ -61,6 +67,8 @@ public class PassengerManager : MonoBehaviour
 
     public void AdvanceDay()
     {
+        
+
         List<PassengerController> passengersToRemove = new List<PassengerController>();
         foreach (PassengerController passenger in passengers)
         {
