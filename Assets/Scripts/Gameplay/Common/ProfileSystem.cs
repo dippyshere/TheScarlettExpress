@@ -15,6 +15,8 @@ public static class ProfileSystem
         // add more variables here
         PlayerName,
         CurrentStation,
+        StationDestination,
+        StationDistance,
         PlayerScore,
         GameVolume
     }
@@ -24,6 +26,8 @@ public static class ProfileSystem
         // default values are set here
         { Variable.PlayerName, "Name" },
         { Variable.CurrentStation, "None" },
+        { Variable.StationDestination, 1 },
+        { Variable.StationDistance, 1 },
         { Variable.PlayerScore, 0 },
         { Variable.GameVolume, 1.0f },
     };

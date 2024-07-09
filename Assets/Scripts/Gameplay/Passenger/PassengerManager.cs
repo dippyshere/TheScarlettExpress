@@ -9,12 +9,14 @@ public class PassengerManager : MonoBehaviour
     [SerializeField, Tooltip("A list of passener spawn points")] private List<Transform> spawnPoints = new List<Transform>();
 
     [SerializeField] GameObject player;
-    StationSettings sSettings;
+    //StationSettings sSettings;
 
+    
 
     public void Start()
     {
-        sSettings =player.GetComponent<StationSettings>();
+        int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
+        //sSettings =player.GetComponent<StationSettings>();
         for (int i = 0; i < spawnPoints.Count; i++)
         {
             SpawnPassenger();
@@ -23,9 +25,15 @@ public class PassengerManager : MonoBehaviour
 
     public void Update()
     {
+        int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
+        
+
         if (Input.GetKeyDown(KeyCode.M))
         {
-            sSettings.StationDistance--;
+            
+            ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
+            Debug.Log(dist);
+            //sSettings.StationDistanceA--;
             AdvanceDay();
             
         }
