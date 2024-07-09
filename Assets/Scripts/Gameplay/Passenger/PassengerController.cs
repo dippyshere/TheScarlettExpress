@@ -19,6 +19,7 @@ public class PassengerController : MonoBehaviour
     public Transform plateTransform;
     public bool hasBeenFed = false;
 
+    [SerializeField] private ParticleSystem happyPS;
     private void Start()
     {
         SetRandomStats();
@@ -56,6 +57,8 @@ public class PassengerController : MonoBehaviour
 
     public void FeedPassenger(FoodManager.FoodType food)
     {
+        happyPS.Play();
+
         UIPrompt.SetActive(false);
         if (food == foodType)
         {
