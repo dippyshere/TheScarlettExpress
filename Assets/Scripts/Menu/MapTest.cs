@@ -16,7 +16,7 @@ public class MapTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,6 +26,7 @@ public class MapTest : MonoBehaviour
             Debug.Log("MAP! ACTIVATE!");
             canvas.SetActive(true);
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
