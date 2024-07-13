@@ -68,7 +68,7 @@ public class PassengerController : MonoBehaviour
         {
             hungerLevel += 1;
         }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(CalculateSimpleFoodValue());
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(CalculateSimpleFoodValue());
         hasBeenFed = true;
     }
 

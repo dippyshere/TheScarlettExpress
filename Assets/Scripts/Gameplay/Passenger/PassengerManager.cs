@@ -34,7 +34,7 @@ public class PassengerManager : MonoBehaviour
             ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
             Debug.Log(dist);
             //sSettings.StationDistanceA--;
-            AdvanceDay();
+            //AdvanceDay();
             
         }
     }
@@ -91,15 +91,15 @@ public class PassengerManager : MonoBehaviour
         {
             passengers.Remove(passenger);
         }
-        StartCoroutine(DelayedSpawnPassengers());
+        //StartCoroutine(DelayedSpawnPassengers());
     }
 
-    public IEnumerator DelayedSpawnPassengers()
-    {
-        yield return new WaitForSeconds(2);
-        for (int i = 0; i < spawnPoints.Count; i++)
-        {
-            SpawnPassenger();
-        }
-    }
+    //public IEnumerator DelayedSpawnPassengers()
+    //{
+    //    yield return new WaitForSeconds(2);
+    //    for (int i = 0; i < spawnPoints.Count; i++)
+    //    {
+    //        SpawnPassenger();
+    //    }
+    //}
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class StationSettings : MonoBehaviour
 {
+    [SerializeField] private PassengerManager passengerManager;
     [SerializeField] GameObject mapCanvas;
 
     public int StationDistanceA;
@@ -74,7 +75,7 @@ public class StationSettings : MonoBehaviour
 
     public void TravelToStation()
     {
-
+        passengerManager.AdvanceDay();
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
         // check if the StationDestination is 1,2 or 3 to go to the station
         if (destin == 1)
