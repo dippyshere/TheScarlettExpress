@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 7454367197510016742}
   - component: {fileID: 7120460524217411146}
   - component: {fileID: -8876784983485215285}
+  - component: {fileID: 7443095997819372329}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -964,7 +965,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.92357194, y: 0.4598785, z: 1.6189313}
   m_Center: {x: 0.038214043, y: 0.27006075, z: 0.30946577}
@@ -995,15 +996,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapCanvas: {fileID: 0}
-  StationDistance: 0
-  stationDestination:
-    m_Handle: 0
-  Station1:
-    m_Handle: 0
-  Station2:
-    m_Handle: 0
-  Station3:
-    m_Handle: 0
+  StationDistanceA: 0
+  stationDestinationA: 0
+--- !u!135 &7443095997819372329
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3042057909666282272}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.28
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &3543643451754845881
 GameObject:
   m_ObjectHideFlags: 0

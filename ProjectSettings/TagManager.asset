@@ -7,6 +7,7 @@ TagManager:
   - Pickup
   - Passenger
   - Map
+  - Stove
   layers:
   - Default
   - TransparentFX
