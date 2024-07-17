@@ -17,7 +17,7 @@ public static class ProfileSystem
         CurrentStation,
         StationDestination,
         StationDistance,
-        PlayerScore,
+        PlayerMoney,
         GameVolume
     }
 
@@ -28,7 +28,7 @@ public static class ProfileSystem
         { Variable.CurrentStation, "None" },
         { Variable.StationDestination, 1 },
         { Variable.StationDistance, 1 },
-        { Variable.PlayerScore, 0 },
+        { Variable.PlayerMoney, 0.0f },
         { Variable.GameVolume, 1.0f },
     };
 
@@ -148,5 +148,13 @@ public static class ProfileSystem
     private static string GetGlobalKey(string key)
     {
         return $"{GlobalPrefix}{key}";
+    }
+
+    public static void ClearProfile()
+    {
+        foreach (Variable variable in defaultValues.Keys)
+        {
+            Set(variable, defaultValues[variable]);
+        }
     }
 }

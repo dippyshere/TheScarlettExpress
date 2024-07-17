@@ -13,8 +13,8 @@ public class PassengerController : MonoBehaviour
     private float comfortLevel = 3f;
     [SerializeField, Tooltip("The current entertainment? level of the passenger (higher is better; unused)"), Range(0, 3)]
     private float entertainmentLevel = 0f;
-    [SerializeField, Tooltip("The number of days the passenger has left on the train"), Min(0)]
-    public int daysLeft = 3;
+    [SerializeField, Tooltip("The desired station id of the destination"), Min(0)]
+    public int destinationId = 2;
     [SerializeField] private GameObject UIPrompt;
     public Transform plateTransform;
     public bool hasBeenFed = false;
@@ -30,7 +30,7 @@ public class PassengerController : MonoBehaviour
         hungerLevel = Random.Range(0, 3);
         comfortLevel = Random.Range(0, 3);
         //entertainmentLevel = Random.Range(0, 4);
-        daysLeft = Random.Range(1, 5);
+        destinationId = Random.Range(1, 3);
     }
 
     public float CalculateHappinessValue()
@@ -68,7 +68,7 @@ public class PassengerController : MonoBehaviour
         {
             hungerLevel += 1;
         }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(CalculateSimpleFoodValue());
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(CalculateSimpleFoodValue());
         hasBeenFed = true;
     }
 

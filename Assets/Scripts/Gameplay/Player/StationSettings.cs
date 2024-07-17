@@ -74,10 +74,10 @@ public class StationSettings : MonoBehaviour
 
     public void TravelToStation()
     {
-
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
+        PassengerManager.instance.ArriveAtStation(destin);
         // check if the StationDestination is 1,2 or 3 to go to the station
-        if (destin == 1)
+        if (destin <= 1)
         {
             Debug.Log("Load Station1");
             SceneManager.LoadScene("Station1");

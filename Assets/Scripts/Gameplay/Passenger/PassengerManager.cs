@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class PassengerManager : MonoBehaviour
 {
+    [HideInInspector, Tooltip("Singleton instance of the passenger manager")] public static PassengerManager instance;
     [SerializeField, Tooltip("A list of all currently boarded passengers")] private List<PassengerController> passengers = new List<PassengerController>();
     [SerializeField] private GameObject[] passengerPrefabs;
     [SerializeField, Tooltip("A list of passener spawn points")] private List<Transform> spawnPoints = new List<Transform>();
 
-    [SerializeField] GameObject player;
     //StationSettings sSettings;
 
-    
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void Start()
     {
-        int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
-        //sSettings =player.GetComponent<StationSettings>();
-        for (int i = 0; i < spawnPoints.Count; i++)
+        int random = Random.Range(4, 7);
+        for (int i = 0; i < random; i++)
         {
             SpawnPassenger();
         }
@@ -25,17 +27,11 @@ public class PassengerManager : MonoBehaviour
 
     public void Update()
     {
-        int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
-        
-
         if (Input.GetKeyDown(KeyCode.M))
         {
-            
+            int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
             ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
             Debug.Log(dist);
-            //sSettings.StationDistanceA--;
-            AdvanceDay();
-            
         }
     }
 
@@ -73,15 +69,12 @@ public class PassengerManager : MonoBehaviour
         Destroy(passenger.gameObject);
     }
 
-    public void AdvanceDay()
+    public void ArriveAtStation(int stationId)
     {
-        
-
         List<PassengerController> passengersToRemove = new List<PassengerController>();
         foreach (PassengerController passenger in passengers)
         {
-            passenger.daysLeft--;
-            if (passenger.daysLeft <= 0)
+            if (passenger.destinationId == stationId)
             {
                 RemovePassenger(passenger);
                 passengersToRemove.Add(passenger);
@@ -91,15 +84,14 @@ public class PassengerManager : MonoBehaviour
         {
             passengers.Remove(passenger);
         }
-        StartCoroutine(DelayedSpawnPassengers());
     }
 
-    public IEnumerator DelayedSpawnPassengers()
-    {
-        yield return new WaitForSeconds(2);
-        for (int i = 0; i < spawnPoints.Count; i++)
-        {
-            SpawnPassenger();
-        }
-    }
+    //public IEnumerator DelayedSpawnPassengers()
+    //{
+    //    yield return new WaitForSeconds(2);
+    //    for (int i = 0; i < spawnPoints.Count; i++)
+    //    {
+    //        SpawnPassenger();
+    //    }
+    //}
 }

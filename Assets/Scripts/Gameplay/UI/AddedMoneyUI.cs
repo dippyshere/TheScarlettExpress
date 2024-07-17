@@ -9,7 +9,7 @@ public class AddedMoneyUI : MonoBehaviour
     public TextMeshProUGUI moneyTxt;
     public GameObject moneys;
 
-    public float moneyy = 0;
+    public float moneyy = 0.0f;
 
     void Start()
     {
