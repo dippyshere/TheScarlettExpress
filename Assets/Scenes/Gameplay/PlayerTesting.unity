@@ -40987,8 +40987,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753369447}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23084882, y: -0.00000025715983, z: 0.00000006101302, w: 0.9729896}
-  m_LocalPosition: {x: 0, y: 6, z: -5.007085}
+  m_LocalRotation: {x: -0.0000000044844457, y: 0.99792165, z: 0.064439565, w: 0.000000069446855}
+  m_LocalPosition: {x: 0, y: 6, z: -8.940001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -41064,7 +41064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SplineSettings:
     Spline: {fileID: 202200555}
-    Position: 0.04331949
+    Position: 0
     Units: 1
   SplineOffset: {x: 0, y: 0, z: -5}
   CameraRotation: 0
@@ -73132,7 +73132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ApplyAfter: 3
   Tilt: 25.3
-  Pan: 46
+  Pan: -55
   Dutch: 0
   ZoomScale: 1
   FollowAttachment: 1
