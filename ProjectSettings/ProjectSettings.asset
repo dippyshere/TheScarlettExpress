@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 0
-  companyName: TrainGameTeam
-  productName: TrainGame
+  companyName: TeamScarlett
+  productName: The Scarlett Express
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -139,10 +139,8 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.0.1
-  preloadedAssets:
-  - {fileID: -944628639613478452, guid: 2b7a8064cef10b84283aa97ba22c7c78, type: 3}
-  - {fileID: 11400000, guid: a93c6edc4543fef49a23f797ea7aa902, type: 2}
+  bundleVersion: 0.1.8
+  preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
