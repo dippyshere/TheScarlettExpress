@@ -115,6 +115,7 @@ QualitySettings:
     - Standalone
     - Server
     - Windows Store Apps
+    - WebGL
   - serializedVersion: 3
     name: High Fidelity
     pixelLightCount: 2
@@ -168,7 +169,6 @@ QualitySettings:
     - Server
     - Android
     - iPhone
-    - WebGL
     - tvOS
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
@@ -183,7 +183,7 @@ QualitySettings:
     Server: 0
     Stadia: 2
     Standalone: 2
-    WebGL: 1
+    WebGL: 2
     Windows Store Apps: 2
     XboxOne: 2
     iPhone: 1

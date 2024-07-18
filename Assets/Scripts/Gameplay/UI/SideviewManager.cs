@@ -52,7 +52,7 @@ public class SideviewManager : MonoBehaviour
             carriage1UI.SetActive(false);
             carriage2UI.SetActive(false);
             carriage3UI.SetActive(false);
-            m_Player.m_MovementMode = MovementMode.RailZ;
+            m_Player.m_MovementMode = MovementMode.Free;
 
         }
 

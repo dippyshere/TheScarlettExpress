@@ -59,7 +59,7 @@ public class DoorInteraction : MonoBehaviour
     {
         m_Camera.SetActive(false);
         m_ExitPrompt.SetActive(false);
-        m_Player.m_MovementMode = MovementMode.RailZ;
+        m_Player.m_MovementMode = MovementMode.Free;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         decorationUpgradeCanvas.SetActive(false);

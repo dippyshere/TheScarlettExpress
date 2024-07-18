@@ -44,7 +44,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         [Tooltip("Death Effect.")]
         [SerializeField] protected GameObject m_DeathEffects;
 
-        public MovementMode m_MovementMode = MovementMode.RailZ;
+        public MovementMode m_MovementMode = MovementMode.Free;
 
         protected Rigidbody m_Rigidbody;
         protected CharacterController m_CharacterController;
