@@ -9,6 +9,7 @@ TagManager:
   - Map
   - Stove
   - Eve
+  - Chihuahua
   layers:
   - Default
   - TransparentFX
