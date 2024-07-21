@@ -8,6 +8,7 @@ TagManager:
   - Passenger
   - Map
   - Stove
+  - Eve
   layers:
   - Default
   - TransparentFX

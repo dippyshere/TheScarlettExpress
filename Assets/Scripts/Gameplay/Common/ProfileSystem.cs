@@ -18,7 +18,14 @@ public static class ProfileSystem
         StationDestination,
         StationDistance,
         PlayerMoney,
-        GameVolume
+        GameVolume,
+
+        //Decorations
+        Deco1,
+        Deco2,
+        Deco3,
+        Deco4,
+        Deco5
     }
 
     private static readonly Dictionary<Variable, object> defaultValues = new Dictionary<Variable, object>
@@ -30,6 +37,14 @@ public static class ProfileSystem
         { Variable.StationDistance, 1 },
         { Variable.PlayerMoney, 0.0f },
         { Variable.GameVolume, 1.0f },
+
+        //Decorations
+        { Variable.Deco1, 0 },
+        { Variable.Deco2, 0 },
+        { Variable.Deco3, 0 },
+        { Variable.Deco4, 0 },
+        { Variable.Deco5, 0 },
+
     };
 
     static ProfileSystem()
