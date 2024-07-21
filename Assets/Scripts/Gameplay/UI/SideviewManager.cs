@@ -23,6 +23,11 @@ public class SideviewManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the player script.")]
     private Character m_Player;
 
+    public GameObject player;
+    public Transform carriage1Go;
+    public Transform carriage2Go;
+    public Transform carriage3Go;
+
     private void Update()
     {
         if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
@@ -86,7 +91,7 @@ public class SideviewManager : MonoBehaviour
         carriage3UI.SetActive(true);
     }
 
-    public void Back()
+    public void BackToSideview()
     {
         Invoke(nameof(ActivateCarriageSelection), 2f);
 
@@ -100,6 +105,29 @@ public class SideviewManager : MonoBehaviour
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+    }
+
+    public void BackToSterling()
+    {
+        sideviewCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI.SetActive(false);
+        sideviewWall.SetActive(true);
+
+        decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
+
+        m_Player.m_MovementMode = MovementMode.Free;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void ActivateCarriageSelection()
@@ -133,11 +161,76 @@ public class SideviewManager : MonoBehaviour
 
     public void Go1()
     {
+        m_Player.m_MovementMode = MovementMode.Free;
+        //player.transform.position = carriage1Go.transform.position;
+        //player.transform.rotation = carriage1Go.transform.rotation;
 
+        sideviewCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI.SetActive(false);
+        sideviewWall.SetActive(true);
+
+        decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    public void HelpPlease()
+    public void Go2()
     {
+        m_Player.m_MovementMode = MovementMode.Free;
+        //player.transform.position = carriage2Go.transform.position;
+        //player.transform.rotation = carriage2Go.transform.rotation;
+
+        sideviewCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI.SetActive(false);
+        sideviewWall.SetActive(true);
+
         decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void Go3()
+    {
+        m_Player.m_MovementMode = MovementMode.Free;
+        //player.transform.position = carriage3Go.transform.position;
+        //player.transform.rotation = carriage3Go.transform.rotation;
+
+        sideviewCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI.SetActive(false);
+        sideviewWall.SetActive(true);
+
+        decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
