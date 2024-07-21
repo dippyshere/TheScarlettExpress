@@ -1,4 +1,4 @@
-//using Dypsloom.DypThePenguin.Scripts.Character;
+using Dypsloom.DypThePenguin.Scripts.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +9,8 @@ public class MapTest : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] GameObject shopUI;
 
-    //[SerializeField, Tooltip("Reference to the player script.")]
-    //private Character m_Player; 
+    [SerializeField, Tooltip("Reference to the player script.")]
+    private Character m_Player; 
 
     public bool isEve;
 
@@ -30,7 +30,7 @@ public class MapTest : MonoBehaviour
             shopUI.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            //m_Player.m_MovementMode = MovementMode.Decorating;
+            m_Player.m_MovementMode = MovementMode.Decorating;
         }
     }
 
@@ -42,7 +42,7 @@ public class MapTest : MonoBehaviour
             canvas.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            //m_Player.m_MovementMode = MovementMode.Decorating;
+            m_Player.m_MovementMode = MovementMode.Decorating;
         }
 
         if (other.CompareTag("Eve"))

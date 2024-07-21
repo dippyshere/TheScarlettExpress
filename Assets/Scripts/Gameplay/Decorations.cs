@@ -1,4 +1,4 @@
-//using Dypsloom.DypThePenguin.Scripts.Character;
+using Dypsloom.DypThePenguin.Scripts.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +8,8 @@ public class Decorations : MonoBehaviour
     public GameObject shopUI;
     public float money;
 
-    //[SerializeField, Tooltip("Reference to the player script.")]
-    //private Character m_Player;
+    [SerializeField, Tooltip("Reference to the player script.")]
+    private Character m_Player;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class Decorations : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        //m_Player.m_MovementMode = MovementMode.Free;
+        m_Player.m_MovementMode = MovementMode.Free;
     }
 
     public void BuyDeco1()

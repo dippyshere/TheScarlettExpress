@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 167165616}
   shopUI: {fileID: 5020628691968643271}
+  m_Player: {fileID: 1004941543}
   isEve: 0
 --- !u!1 &59924675
 GameObject:
@@ -4985,6 +4986,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
+      propertyPath: m_Player
+      value: 
+      objectReference: {fileID: 1004941543}
+    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
       propertyPath: mapCanvas
       value: 
       objectReference: {fileID: 167165616}
@@ -5073,6 +5079,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1004941532}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1004941543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 50178051288122541, guid: 0430b99f935d1404997864381a6b8160,
+    type: 3}
+  m_PrefabInstance: {fileID: 1004941532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41080421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1ce8866c3a876428d51b96d263eed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1065430034
 GameObject:
   m_ObjectHideFlags: 0
@@ -10688,6 +10706,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BuyDeco2
       objectReference: {fileID: 0}
+    - target: {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_Player
+      value: 
+      objectReference: {fileID: 1004941543}
     - target: {fileID: 3178151099761287054, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_Name
