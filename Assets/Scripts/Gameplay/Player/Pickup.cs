@@ -121,8 +121,19 @@ public class Pickup : MonoBehaviour
             if (hasItem && !other.gameObject.GetComponent<PassengerController>().hasBeenFed)
             {
                 pendingPassenger = other.gameObject;
-            }
+            }        
         }
+
+        if (other.gameObject.tag == "Eve")
+        {
+            pickupPrompt.SetActive(true);
+        }
+
+        if (other.gameObject.tag == "Map")
+        {
+            pickupPrompt.SetActive(true);
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -134,6 +145,16 @@ public class Pickup : MonoBehaviour
         if (other.gameObject.tag == "Passenger" && pendingPassenger == other.gameObject)
         {
             pendingPassenger = null;
+        }
+
+        if (other.gameObject.tag == "Eve")
+        {
+            pickupPrompt.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "Map")
+        {
+            pickupPrompt.SetActive(false);
         }
     }
     IEnumerator ThrowMulti()

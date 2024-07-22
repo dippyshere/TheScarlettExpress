@@ -6,6 +6,7 @@ using UnityEngine;
 public class UiFollow : MonoBehaviour
 {
     public Transform playerPos;
+    public Transform lookAtCam;
     public float smoothing = 5f;
     public Vector3 offset = new Vector3(0f, 10f, 0f);
 
@@ -13,5 +14,7 @@ public class UiFollow : MonoBehaviour
     {
         Vector3 targetPosition = playerPos.position + offset;
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing);
+
+        transform.LookAt(lookAtCam);
     }
 }

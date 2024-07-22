@@ -16,11 +16,14 @@ public class StationSettings : MonoBehaviour
     [SerializeField, Tooltip("Reference to the player script.")]
     private Character m_Player;
 
+    [SerializeField] private GameObject confirm;
+
     // Start is called before the first frame update
     void Start()
     {
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
-        
+        confirm.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -51,30 +54,21 @@ public class StationSettings : MonoBehaviour
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 1);
-
-        //StationDistanceA = 3;
-        //stationDestinationA = 1;
-        SceneManager.LoadScene("PlayerTesting");
+        confirm.SetActive(true);
     }
 
     public void SetStation2()
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 2);
-
-        //StationDistanceA = 3;
-        //stationDestinationA = 2;
-        SceneManager.LoadScene("PlayerTesting");
+        confirm.SetActive(true);
     }
 
     public void SetStation3()
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 3);
-
-        //StationDistanceA = 3;
-        //stationDestinationA = 3;
-        SceneManager.LoadScene("PlayerTesting");
+        confirm.SetActive(true);
     }
 
     public void TravelToStation()
@@ -96,21 +90,16 @@ public class StationSettings : MonoBehaviour
             SceneManager.LoadScene("Station3");
         }
 
-        //if (StationDistanceA == 1)
-        //{
-        //    Debug.Log("Load Station1");
-        //    SceneManager.LoadScene("Station1");
-        //}
-        //if (StationDistanceA == 2)
-        //{
-        //    SceneManager.LoadScene("Station2");
-        //}
-        //if (StationDistanceA == 3)
-        //{
-        //    SceneManager.LoadScene("Station3");
-        //}
+    }
 
+    public void NotLoadTrain()
+    {
+        confirm.SetActive(false);
+    }
 
+    public void LoadTarin()
+    {
+        SceneManager.LoadScene("PlayerTesting");
     }
 
 }
