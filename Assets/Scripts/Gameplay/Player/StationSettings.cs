@@ -1,3 +1,4 @@
+using Dypsloom.DypThePenguin.Scripts.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -11,8 +12,9 @@ public class StationSettings : MonoBehaviour
     public int StationDistanceA;
 
     public int stationDestinationA;
-    
 
+    [SerializeField, Tooltip("Reference to the player script.")]
+    private Character m_Player;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,10 @@ public class StationSettings : MonoBehaviour
     public void back()
     {
         mapCanvas.SetActive(false);
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        m_Player.m_MovementMode = MovementMode.Free;
     }
 
     public void SetStation1()
