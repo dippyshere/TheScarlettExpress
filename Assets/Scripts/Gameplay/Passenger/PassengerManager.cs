@@ -5,7 +5,7 @@ using UnityEngine;
 public class PassengerManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton instance of the passenger manager")] public static PassengerManager instance;
-    [SerializeField, Tooltip("A list of all currently boarded passengers")] private List<PassengerController> passengers = new List<PassengerController>();
+    [Tooltip("A list of all currently boarded passengers")] public List<PassengerController> passengers = new List<PassengerController>();
     [SerializeField] private GameObject[] passengerPrefabs;
     [SerializeField, Tooltip("A list of passener spawn points")] private List<Transform> spawnPoints = new List<Transform>();
 
