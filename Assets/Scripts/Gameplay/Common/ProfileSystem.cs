@@ -14,6 +14,8 @@ public static class ProfileSystem
     {
         // add more variables here
         PlayerName,
+        PlayerPronoun1,
+        PlayerPronoun2,
         CurrentStation,
         StationDestination,
         StationDistance,
@@ -32,6 +34,8 @@ public static class ProfileSystem
     {
         // default values are set here
         { Variable.PlayerName, "Name" },
+        { Variable.PlayerPronoun1, "They" },
+        { Variable.PlayerPronoun2, "Them" },
         { Variable.CurrentStation, "None" },
         { Variable.StationDestination, 1 },
         { Variable.StationDistance, 1 },
