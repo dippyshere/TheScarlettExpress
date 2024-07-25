@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Dypsloom.DypThePenguin.Scripts.Character;
+using Unity.Cinemachine;
 
 public class ClipboardManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ClipboardManager : MonoBehaviour
     private Character m_Player;
     [SerializeField, Tooltip("Reference to the passenger manager script.")]
     private PassengerManager m_PassengerManager;
+    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
+    private CinemachineInputAxisController m_CinemachineInputAxisController;
     private bool isClipboardActive = false;
     [SerializeField] private GameObject clipboardUI;
     [SerializeField] private GameObject passengerUI;
@@ -33,6 +36,7 @@ public class ClipboardManager : MonoBehaviour
                 PopulatePassengersUI();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                m_CinemachineInputAxisController.enabled = false;
             }
             else
             {
@@ -41,6 +45,7 @@ public class ClipboardManager : MonoBehaviour
                 m_Player.m_MovementMode = MovementMode.Free;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                m_CinemachineInputAxisController.enabled = true;
             }
         }
     }

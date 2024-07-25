@@ -2,6 +2,7 @@ using Dypsloom.DypThePenguin.Scripts.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class SideviewManager : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class SideviewManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the player script.")]
     private Character m_Player;
 
+    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
+    private CinemachineInputAxisController m_CinemachineInputAxisController;
+
     public GameObject player;
     public CharacterController characterController;
     public Transform carriage1Go;
@@ -42,11 +46,16 @@ public class SideviewManager : MonoBehaviour
 
             Invoke(nameof(OpenSideviewMenu), 0.01f);
             m_Player.m_MovementMode = MovementMode.Decorating;
+            m_CinemachineInputAxisController.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         if (sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            m_CinemachineInputAxisController.enabled = true;
             sideviewCamera.SetActive(false);
             carriageSelectionUI.SetActive(false);
             sideviewWall.SetActive(true);
@@ -129,6 +138,7 @@ public class SideviewManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
     }
 
     private void ActivateCarriageSelection()
@@ -141,6 +151,7 @@ public class SideviewManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        m_CinemachineInputAxisController.enabled = false;
         sideviewCamera.SetActive(true);
         sideviewWall.SetActive(false);
     }
@@ -182,6 +193,7 @@ public class SideviewManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
     }
 
     public void Go2()
@@ -206,6 +218,7 @@ public class SideviewManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
     }
 
     public void Go3()
@@ -230,6 +243,7 @@ public class SideviewManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
     }
 
     private IEnumerator LateTeleport(Transform transform)

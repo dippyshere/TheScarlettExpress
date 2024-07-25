@@ -7655,6 +7655,7 @@ MonoBehaviour:
   m_Prompt: {fileID: 845995367}
   m_ExitPrompt: {fileID: 0}
   m_Player: {fileID: 1694192743}
+  m_CinemachineInputAxisController: {fileID: 1138075484}
   decorationUpgradeCanvas: {fileID: 0}
 --- !u!65 &183136046
 BoxCollider:
@@ -40062,6 +40063,7 @@ MonoBehaviour:
   m_Prompt: {fileID: 845995367}
   m_ExitPrompt: {fileID: 1847125971}
   m_Player: {fileID: 1694192743}
+  m_CinemachineInputAxisController: {fileID: 1138075484}
   decorationUpgradeCanvas: {fileID: 115434184}
 --- !u!1 &698621720
 GameObject:
@@ -64537,6 +64539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Player: {fileID: 1694192743}
   m_PassengerManager: {fileID: 467363191}
+  m_CinemachineInputAxisController: {fileID: 1138075484}
   clipboardUI: {fileID: 538662505}
   passengerUI: {fileID: 1983100765}
   passengerUIPrefab: {fileID: 8365866167113409244, guid: 916199cbe15204945b2c9399b885e46c,
@@ -69579,6 +69582,7 @@ MonoBehaviour:
   decorationUpgradeCanvas: {fileID: 115434184}
   decorateCamera: {fileID: 1455512212}
   m_Player: {fileID: 1694192743}
+  m_CinemachineInputAxisController: {fileID: 1138075484}
   player: {fileID: 1606420767}
   characterController: {fileID: 3090241438290652528}
   carriage1Go: {fileID: 507496471}
@@ -113579,6 +113583,11 @@ PrefabInstance:
       propertyPath: mapCanvas
       value: 
       objectReference: {fileID: 845995367}
+    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: m_CinemachineInputAxisController
+      value: 
+      objectReference: {fileID: 1138075484}
     - target: {fileID: 50178051288122541, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: m_MovementMode
