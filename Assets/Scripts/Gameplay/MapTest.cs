@@ -2,6 +2,7 @@ using Dypsloom.DypThePenguin.Scripts.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class MapTest : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class MapTest : MonoBehaviour
     [SerializeField] GameObject shopUI;
 
     [SerializeField, Tooltip("Reference to the player script.")]
-    private Character m_Player; 
+    private Character m_Player;
+    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
+    private CinemachineInputAxisController m_CinemachineInputAxisController;
 
     public bool isEve;
 
@@ -19,6 +22,7 @@ public class MapTest : MonoBehaviour
         canvas.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
     }
 
     // Update is called once per frame
@@ -31,6 +35,7 @@ public class MapTest : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             m_Player.m_MovementMode = MovementMode.Decorating;
+            m_CinemachineInputAxisController.enabled = false;
         }
     }
 
@@ -43,6 +48,7 @@ public class MapTest : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             m_Player.m_MovementMode = MovementMode.Decorating;
+            m_CinemachineInputAxisController.enabled = false;
         }
 
         if (other.CompareTag("Eve"))

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Dypsloom.DypThePenguin.Scripts.Character;
+using Unity.Cinemachine;
 
 public class DoorInteraction : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class DoorInteraction : MonoBehaviour
     [SerializeField, Tooltip("Reference to the player script.")]
     private Character m_Player;
     private bool m_IsPlayerNear;
+    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
+    private CinemachineInputAxisController m_CinemachineInputAxisController;
 
     public GameObject decorationUpgradeCanvas;
 
@@ -52,6 +55,7 @@ public class DoorInteraction : MonoBehaviour
             m_IsPlayerNear = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            m_CinemachineInputAxisController.enabled = false;
         }
     }
 
@@ -63,5 +67,6 @@ public class DoorInteraction : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         decorationUpgradeCanvas.SetActive(false);
+        m_CinemachineInputAxisController.enabled = true;
     }
 }
