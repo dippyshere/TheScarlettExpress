@@ -12,7 +12,8 @@ public class DecorationSystem : MonoBehaviour
     public GameObject painting2UI;
     public GameObject rugUI;
 
-    public GameObject exitButton;
+    public GameObject sideviewButton;
+    public GameObject sterlingButton;
 
     public GameObject paintingBlocks;
     public GameObject rugBlocks;
@@ -21,7 +22,8 @@ public class DecorationSystem : MonoBehaviour
     {
         painting1UI.SetActive(true);
         painting1Camera.SetActive(true);
-        exitButton.SetActive(false);
+        sideviewButton.SetActive(false);
+        sterlingButton.SetActive(false);
         paintingBlocks.SetActive(true);
     }
 
@@ -29,7 +31,8 @@ public class DecorationSystem : MonoBehaviour
     {
         painting1UI.SetActive(false);
         painting1Camera.SetActive(false);
-        exitButton.SetActive(true);
+        sideviewButton.SetActive(true);
+        sterlingButton.SetActive(true);
         paintingBlocks.SetActive(false);
     }
 
@@ -37,7 +40,8 @@ public class DecorationSystem : MonoBehaviour
     {
         painting2UI.SetActive(true);
         painting2Camera.SetActive(true);
-        exitButton.SetActive(false);
+        sideviewButton.SetActive(false);
+        sterlingButton.SetActive(false);
         paintingBlocks.SetActive(true);
     }
 
@@ -45,7 +49,8 @@ public class DecorationSystem : MonoBehaviour
     {
         painting2UI.SetActive(false);
         painting2Camera.SetActive(false);
-        exitButton.SetActive(true);
+        sideviewButton.SetActive(true);
+        sterlingButton.SetActive(true);
         paintingBlocks.SetActive(false);
     }
 
@@ -53,7 +58,8 @@ public class DecorationSystem : MonoBehaviour
     {
         rugUI.SetActive(true);
         rugCamera.SetActive(true);
-        exitButton.SetActive(false);
+        sideviewButton.SetActive(false);
+        sterlingButton.SetActive(false);
         rugBlocks.SetActive(true);
     }
 
@@ -61,7 +67,8 @@ public class DecorationSystem : MonoBehaviour
     {
         rugUI.SetActive(false);
         rugCamera.SetActive(false);
-        exitButton.SetActive(true);
+        sideviewButton.SetActive(true);
+        sterlingButton.SetActive(true);
         rugBlocks.SetActive(false);
     }
 }
