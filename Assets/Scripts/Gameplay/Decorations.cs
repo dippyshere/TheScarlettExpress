@@ -37,6 +37,7 @@ public class Decorations : MonoBehaviour
             money -= 10;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco1, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 
@@ -47,6 +48,7 @@ public class Decorations : MonoBehaviour
             money -= 15;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco2, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 
@@ -57,6 +59,7 @@ public class Decorations : MonoBehaviour
             money -= 20;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco3, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 
@@ -67,6 +70,7 @@ public class Decorations : MonoBehaviour
             money -= 25;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco4, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 
@@ -77,6 +81,7 @@ public class Decorations : MonoBehaviour
             money -= 30;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco5, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 
@@ -87,6 +92,7 @@ public class Decorations : MonoBehaviour
             money -= 10;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco6, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 
@@ -97,6 +103,7 @@ public class Decorations : MonoBehaviour
             money -= 10;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco7, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 
@@ -107,6 +114,7 @@ public class Decorations : MonoBehaviour
             money -= 10;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco8, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 
@@ -117,6 +125,7 @@ public class Decorations : MonoBehaviour
             money -= 10;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco9, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 
@@ -127,6 +136,7 @@ public class Decorations : MonoBehaviour
             money -= 10;
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco10, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
         }
     }
 }
