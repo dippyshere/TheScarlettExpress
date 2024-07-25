@@ -14,11 +14,15 @@ public class DecorationSystem : MonoBehaviour
 
     public GameObject exitButton;
 
+    public GameObject paintingBlocks;
+    public GameObject rugBlocks;
+
     public void Painting1()
     {
         painting1UI.SetActive(true);
         painting1Camera.SetActive(true);
         exitButton.SetActive(false);
+        paintingBlocks.SetActive(true);
     }
 
     public void ExitPainting1()
@@ -26,6 +30,7 @@ public class DecorationSystem : MonoBehaviour
         painting1UI.SetActive(false);
         painting1Camera.SetActive(false);
         exitButton.SetActive(true);
+        paintingBlocks.SetActive(false);
     }
 
     public void Painting2()
@@ -33,6 +38,7 @@ public class DecorationSystem : MonoBehaviour
         painting2UI.SetActive(true);
         painting2Camera.SetActive(true);
         exitButton.SetActive(false);
+        paintingBlocks.SetActive(true);
     }
 
     public void ExitPainting2()
@@ -40,6 +46,7 @@ public class DecorationSystem : MonoBehaviour
         painting2UI.SetActive(false);
         painting2Camera.SetActive(false);
         exitButton.SetActive(true);
+        paintingBlocks.SetActive(false);
     }
 
     public void Rug()
@@ -47,6 +54,7 @@ public class DecorationSystem : MonoBehaviour
         rugUI.SetActive(true);
         rugCamera.SetActive(true);
         exitButton.SetActive(false);
+        rugBlocks.SetActive(true);
     }
 
     public void ExitRug()
@@ -54,5 +62,6 @@ public class DecorationSystem : MonoBehaviour
         rugUI.SetActive(false);
         rugCamera.SetActive(false);
         exitButton.SetActive(true);
+        rugBlocks.SetActive(false);
     }
 }

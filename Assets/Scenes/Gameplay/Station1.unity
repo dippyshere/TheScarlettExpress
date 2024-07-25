@@ -503,8 +503,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59924675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15730184, y: -0.68950665, z: 0.15735887, w: 0.6892568}
-  m_LocalPosition: {x: 3.5265334, y: 3.5455341, z: -3.1187181}
+  m_LocalRotation: {x: 0.22257143, y: 0.004878312, z: -0.0011137233, w: 0.9749036}
+  m_LocalPosition: {x: -1.0253631, y: 3.5455341, z: -7.1653566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6448,7 +6448,7 @@ PrefabInstance:
     - target: {fileID: 2048247594534406451, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.009
+      value: -0.99
       objectReference: {fileID: 0}
     - target: {fileID: 2048247594534406451, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
@@ -6458,7 +6458,7 @@ PrefabInstance:
     - target: {fileID: 2048247594534406451, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.12
+      value: -3.63
       objectReference: {fileID: 0}
     - target: {fileID: 2048247594534406451, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
@@ -7229,8 +7229,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125763201}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15730184, y: -0.68950665, z: 0.15735887, w: 0.6892568}
-  m_LocalPosition: {x: 3.5265334, y: 3.5455341, z: -3.1187181}
+  m_LocalRotation: {x: 0.22264697, y: 0.00488083, z: -0.0011146961, w: 0.9748863}
+  m_LocalPosition: {x: -1.022316, y: 3.240165, z: -6.859003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10877,10 +10877,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -11475,8 +11475,8 @@ RectTransform:
   m_GameObject: {fileID: 2041282085}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.57708, y: 0.57708, z: 0.57708}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 390384537}
   - {fileID: 974666650}
@@ -11485,7 +11485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.644836, y: 24.6}
+  m_AnchoredPosition: {x: 127, y: 80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2041282087
@@ -12906,14 +12906,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1047367830907948263, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5020628691968643272}
+    - target: {fileID: 1047367830907948263, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BuyDeco2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047367830907948263, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Decorations, TrainGame
       objectReference: {fileID: 0}
     - target: {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_Player
       value: 
       objectReference: {fileID: 1004941543}
+    - target: {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_CinemachineInputAxisController
+      value: 
+      objectReference: {fileID: 59924676}
     - target: {fileID: 3178151099761287054, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_Name
@@ -12921,38 +12936,113 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3287765966731925076, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5020628691968643272}
+    - target: {fileID: 3287765966731925076, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BuyDeco4
       objectReference: {fileID: 0}
+    - target: {fileID: 3287765966731925076, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Decorations, TrainGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566025389962203376, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5020628691968643272}
+    - target: {fileID: 3566025389962203376, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyDeco10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802507423807806916, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5020628691968643272}
     - target: {fileID: 3802507423807806916, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BuyDeco5
       objectReference: {fileID: 0}
+    - target: {fileID: 3802507423807806916, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Decorations, TrainGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138372692528786294, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5020628691968643272}
     - target: {fileID: 4138372692528786294, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BuyDeco1
       objectReference: {fileID: 0}
-    - target: {fileID: 5802792177748663962, guid: 7be832bfe6de93842a2c21f53677d15a,
+    - target: {fileID: 4138372692528786294, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
-      propertyPath: happyPS
-      value: 
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Decorations, TrainGame
       objectReference: {fileID: 0}
-    - target: {fileID: 5802792177748663962, guid: 7be832bfe6de93842a2c21f53677d15a,
+    - target: {fileID: 5565826628601747522, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
-      propertyPath: UIPrompt
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5802792177748663962, guid: 7be832bfe6de93842a2c21f53677d15a,
+      objectReference: {fileID: 5020628691968643272}
+    - target: {fileID: 5565826628601747522, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
-      propertyPath: plateTransform
-      value: 
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyDeco7
       objectReference: {fileID: 0}
+    - target: {fileID: 5956350956660704940, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5020628691968643272}
+    - target: {fileID: 5956350956660704940, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyDeco8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264800645677113720, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5020628691968643272}
     - target: {fileID: 6264800645677113720, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BuyDeco3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264800645677113720, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Decorations, TrainGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376557071170803782, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5020628691968643272}
+    - target: {fileID: 7376557071170803782, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyDeco6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564892082976121669, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5020628691968643272}
+    - target: {fileID: 8564892082976121669, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyDeco9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12965,6 +13055,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5020628691968643270}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5020628691968643272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5020628691968643270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020628691968643271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29062cb40802f84fb9e924b1f762420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
