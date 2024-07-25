@@ -27,6 +27,9 @@ public class StationSettings : MonoBehaviour
     {
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
         confirm.SetActive(false);
+        
+
+        
 
     }
 
@@ -34,7 +37,7 @@ public class StationSettings : MonoBehaviour
     void Update()
     {
         int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
-        if (dist <= 0 && Input.GetKeyDown(KeyCode.M))
+        if (dist <= 0)
         {
             Debug.Log("Go To Station!");
             TravelToStation();
@@ -95,6 +98,7 @@ public class StationSettings : MonoBehaviour
             SceneManager.LoadScene("Station3");
         }
 
+        ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 1);
     }
 
     public void NotLoadTrain()
