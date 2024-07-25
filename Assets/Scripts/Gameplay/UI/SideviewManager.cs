@@ -24,6 +24,7 @@ public class SideviewManager : MonoBehaviour
     private Character m_Player;
 
     public GameObject player;
+    public CharacterController characterController;
     public Transform carriage1Go;
     public Transform carriage2Go;
     public Transform carriage3Go;
@@ -162,8 +163,7 @@ public class SideviewManager : MonoBehaviour
     public void Go1()
     {
         m_Player.m_MovementMode = MovementMode.Free;
-        //player.transform.position = carriage1Go.transform.position;
-        //player.transform.rotation = carriage1Go.transform.rotation;
+        StartCoroutine(LateTeleport(carriage1Go));
 
         sideviewCamera.SetActive(false);
         carriage1Camera.SetActive(false);
@@ -187,8 +187,7 @@ public class SideviewManager : MonoBehaviour
     public void Go2()
     {
         m_Player.m_MovementMode = MovementMode.Free;
-        //player.transform.position = carriage2Go.transform.position;
-        //player.transform.rotation = carriage2Go.transform.rotation;
+        StartCoroutine(LateTeleport(carriage2Go));
 
         sideviewCamera.SetActive(false);
         carriage1Camera.SetActive(false);
@@ -212,8 +211,7 @@ public class SideviewManager : MonoBehaviour
     public void Go3()
     {
         m_Player.m_MovementMode = MovementMode.Free;
-        //player.transform.position = carriage3Go.transform.position;
-        //player.transform.rotation = carriage3Go.transform.rotation;
+        StartCoroutine(LateTeleport(carriage3Go));
 
         sideviewCamera.SetActive(false);
         carriage1Camera.SetActive(false);
@@ -232,5 +230,14 @@ public class SideviewManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    private IEnumerator LateTeleport(Transform transform)
+    {
+        characterController.enabled = false;
+        characterController.transform.position = transform.position;
+        characterController.transform.rotation = transform.rotation;
+        yield return new WaitForEndOfFrame();
+        characterController.enabled = true;
     }
 }
