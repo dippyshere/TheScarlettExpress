@@ -27,12 +27,7 @@ public class PassengerManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
-            ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
-            Debug.Log(dist);
-        }
+
     }
 
     public void SpawnPassenger()

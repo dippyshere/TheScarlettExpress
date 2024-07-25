@@ -33,9 +33,55 @@ public class SideviewManager : MonoBehaviour
     public Transform carriage2Go;
     public Transform carriage3Go;
 
+    [SerializeField] private GameObject clipboardUI;
+
     private void Update()
     {
-        if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        //if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    Debug.Log("heyy???");
+        //    //Cursor.lockState = CursorLockMode.None;
+        //    //sideviewCamera.SetActive(true);
+        //    //carriageSelectionUI.SetActive(true);
+        //    Invoke(nameof(ActivateCarriageSelection), 2f);
+        //    //sideviewWall.SetActive(false);
+
+        //    Invoke(nameof(OpenSideviewMenu), 0.01f);
+        //    m_Player.m_MovementMode = MovementMode.Decorating;
+        //    m_CinemachineInputAxisController.enabled = false;
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //}
+
+        //if (sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
+        //    m_CinemachineInputAxisController.enabled = true;
+        //    sideviewCamera.SetActive(false);
+        //    carriageSelectionUI.SetActive(false);
+        //    sideviewWall.SetActive(true);
+
+        //    carriage1Camera.SetActive(false);
+        //    carriage2Camera.SetActive(false);
+        //    carriage3Camera.SetActive(false);
+
+        //    carriage1UI.SetActive(false);
+        //    carriage2UI.SetActive(false);
+        //    carriage3UI.SetActive(false);
+        //    m_Player.m_MovementMode = MovementMode.Free;
+
+        //}
+
+        //if (decorationUpgradeCanvas.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    decorationUpgradeCanvas.SetActive(false);
+        //}
+    }
+
+    public void SideViewButton()
+    {
+        if (!sideviewCamera.activeSelf)
         {
             Debug.Log("heyy???");
             //Cursor.lockState = CursorLockMode.None;
@@ -51,7 +97,7 @@ public class SideviewManager : MonoBehaviour
             Cursor.visible = true;
         }
 
-        if (sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        if (sideviewCamera.activeSelf)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -71,10 +117,12 @@ public class SideviewManager : MonoBehaviour
 
         }
 
-        if (decorationUpgradeCanvas.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        if (decorationUpgradeCanvas.activeSelf)
         {
             decorationUpgradeCanvas.SetActive(false);
         }
+
+        clipboardUI.SetActive(false);
     }
 
     public void Carriage1()

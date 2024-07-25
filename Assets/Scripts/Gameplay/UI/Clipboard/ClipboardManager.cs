@@ -17,6 +17,9 @@ public class ClipboardManager : MonoBehaviour
     [SerializeField] private GameObject passengerUI;
     [SerializeField] private GameObject passengerUIPrefab;
 
+    [SerializeField] private GameObject passUI;
+    [SerializeField] private GameObject mainMenuUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,14 +29,14 @@ public class ClipboardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.BackQuote))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (!isClipboardActive)
             {
                 isClipboardActive = true;
                 clipboardUI.SetActive(true);
                 m_Player.m_MovementMode = MovementMode.Decorating;
-                PopulatePassengersUI();
+                //PopulatePassengersUI();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 m_CinemachineInputAxisController.enabled = false;
@@ -65,4 +68,33 @@ public class ClipboardManager : MonoBehaviour
         RectTransform rectTransform = passengerUI.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, m_PassengerManager.passengers.Count * 82);
     }
+
+    public void PassengerRosterTime()
+    {
+        passUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+        PopulatePassengersUI();
+        
+    }
+
+    public void Back()
+    {
+        passUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+    }
+
+    public void NextDay()
+    {
+        int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
+        ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
+        Debug.Log(dist);
+
+        isClipboardActive = false;
+        clipboardUI.SetActive(false);
+        m_Player.m_MovementMode = MovementMode.Free;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
+    }
+
 }
