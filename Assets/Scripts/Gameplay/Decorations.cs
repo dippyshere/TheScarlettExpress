@@ -2,6 +2,7 @@ using Dypsloom.DypThePenguin.Scripts.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class Decorations : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Decorations : MonoBehaviour
 
     [SerializeField, Tooltip("Reference to the player script.")]
     private Character m_Player;
+
+    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
+    private CinemachineInputAxisController m_CinemachineInputAxisController;
 
     private void Awake()
     {
@@ -21,6 +25,7 @@ public class Decorations : MonoBehaviour
         shopUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
 
         m_Player.m_MovementMode = MovementMode.Free;
     }

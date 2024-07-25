@@ -237,6 +237,7 @@ MonoBehaviour:
   canvas: {fileID: 167165616}
   shopUI: {fileID: 5020628691968643271}
   m_Player: {fileID: 1004941543}
+  m_CinemachineInputAxisController: {fileID: 59924676}
   isEve: 0
 --- !u!1 &59924675
 GameObject:
@@ -5921,6 +5922,11 @@ PrefabInstance:
       propertyPath: mapCanvas
       value: 
       objectReference: {fileID: 167165616}
+    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: m_CinemachineInputAxisController
+      value: 
+      objectReference: {fileID: 59924676}
     - target: {fileID: 50178051288122541, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: m_MovementMode

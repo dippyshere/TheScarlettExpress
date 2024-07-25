@@ -6930,7 +6930,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1694192756}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerTeleport, Assembly-CSharp
         m_MethodName: Go2
         m_Mode: 1
@@ -7655,6 +7655,7 @@ MonoBehaviour:
   m_Prompt: {fileID: 845995367}
   m_ExitPrompt: {fileID: 0}
   m_Player: {fileID: 1694192743}
+  m_CinemachineInputAxisController: {fileID: 1138075484}
   decorationUpgradeCanvas: {fileID: 0}
 --- !u!65 &183136046
 BoxCollider:
@@ -40062,6 +40063,7 @@ MonoBehaviour:
   m_Prompt: {fileID: 845995367}
   m_ExitPrompt: {fileID: 1847125971}
   m_Player: {fileID: 1694192743}
+  m_CinemachineInputAxisController: {fileID: 1138075484}
   decorationUpgradeCanvas: {fileID: 115434184}
 --- !u!1 &698621720
 GameObject:
@@ -58613,7 +58615,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1694192756}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerTeleport, Assembly-CSharp
         m_MethodName: Go1
         m_Mode: 1
@@ -64537,6 +64539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Player: {fileID: 1694192743}
   m_PassengerManager: {fileID: 467363191}
+  m_CinemachineInputAxisController: {fileID: 1138075484}
   clipboardUI: {fileID: 538662505}
   passengerUI: {fileID: 1983100765}
   passengerUIPrefab: {fileID: 8365866167113409244, guid: 916199cbe15204945b2c9399b885e46c,
@@ -69579,7 +69582,9 @@ MonoBehaviour:
   decorationUpgradeCanvas: {fileID: 115434184}
   decorateCamera: {fileID: 1455512212}
   m_Player: {fileID: 1694192743}
+  m_CinemachineInputAxisController: {fileID: 1138075484}
   player: {fileID: 1606420767}
+  characterController: {fileID: 3090241438290652528}
   carriage1Go: {fileID: 507496471}
   carriage2Go: {fileID: 566947505}
   carriage3Go: {fileID: 1351795989}
@@ -76567,7 +76572,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1694192756}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerTeleport, Assembly-CSharp
         m_MethodName: Go3
         m_Mode: 1
@@ -85590,21 +85595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1ce8866c3a876428d51b96d263eed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1694192756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606420767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529b5f34ffe96f94b8266be4af301f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carriage1Go: {fileID: 507496471}
-  carriage2Go: {fileID: 566947505}
-  carriage3Go: {fileID: 1351795989}
 --- !u!1 &1696995028
 GameObject:
   m_ObjectHideFlags: 0
@@ -113593,6 +113583,11 @@ PrefabInstance:
       propertyPath: mapCanvas
       value: 
       objectReference: {fileID: 845995367}
+    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: m_CinemachineInputAxisController
+      value: 
+      objectReference: {fileID: 1138075484}
     - target: {fileID: 50178051288122541, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: m_MovementMode
@@ -113685,12 +113680,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 845995368}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3042057909666282272, guid: 0430b99f935d1404997864381a6b8160,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1694192756}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0430b99f935d1404997864381a6b8160, type: 3}
+--- !u!143 &3090241438290652528 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 8757891497119300546, guid: 0430b99f935d1404997864381a6b8160,
+    type: 3}
+  m_PrefabInstance: {fileID: 3090241438290652527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3631007036333892639
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -114,6 +114,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
             m_Movement = m_CharacterInputMovement + externalMovement + m_GravityMovement;
 
+            if (m_CharacterController.enabled)
             m_CharacterController.Move(m_Movement * Time.deltaTime);
         }
 
