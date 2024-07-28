@@ -23,21 +23,15 @@ public class ClipboardManager : MonoBehaviour
 
     public TextMeshProUGUI daysLeftText;
 
+    public int daysLeft;
+
     // Start is called before the first frame update
     void Start()
     {
         clipboardUI.SetActive(false);
 
-        int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
-        if (dist == 1)
-        {
-            daysLeftText.text = dist.ToString() + " Day Until Arrival";
-        }
-        else
-        {
-            daysLeftText.text = dist.ToString() + " Days Until Arrival";
-        }
-
+        daysLeft = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
+      
         Debug.Log(ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance));
     }
 
@@ -50,7 +44,14 @@ public class ClipboardManager : MonoBehaviour
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys + 100);
         }
 
-
+        if (daysLeft == 1)
+        {
+            daysLeftText.text = daysLeft.ToString() + " Day Until Arrival";
+        }
+        else
+        {
+            daysLeftText.text = daysLeft.ToString() + " Days Until Arrival";
+        }
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -112,16 +113,9 @@ public class ClipboardManager : MonoBehaviour
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
         Debug.Log(dist);
 
-        if(dist == 1)
-        {
-            daysLeftText.text = dist.ToString() + " Day Until Arrival";
-        }
-        else
-        {
-            daysLeftText.text = dist.ToString() + " Days Until Arrival";
-        }
-        
-
+        daysLeft--;
+   
+       
         isClipboardActive = false;
         clipboardUI.SetActive(false);
         m_Player.m_MovementMode = MovementMode.Free;
