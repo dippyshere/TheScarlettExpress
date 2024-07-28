@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Dypsloom.DypThePenguin.Scripts.Character;
 using Unity.Cinemachine;
+using TMPro;
 
 public class ClipboardManager : MonoBehaviour
 {
@@ -20,15 +21,38 @@ public class ClipboardManager : MonoBehaviour
     [SerializeField] private GameObject passUI;
     [SerializeField] private GameObject mainMenuUI;
 
+    public TextMeshProUGUI daysLeftText;
+
+    public int daysLeft;
+
     // Start is called before the first frame update
     void Start()
     {
         clipboardUI.SetActive(false);
+
+        daysLeft = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
+      
+        Debug.Log(ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance));
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            float moneys = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys + 100);
+        }
+
+        if (daysLeft == 1)
+        {
+            daysLeftText.text = daysLeft.ToString() + " Day Until Arrival";
+        }
+        else
+        {
+            daysLeftText.text = daysLeft.ToString() + " Days Until Arrival";
+        }
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (!isClipboardActive)
@@ -89,6 +113,9 @@ public class ClipboardManager : MonoBehaviour
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
         Debug.Log(dist);
 
+        daysLeft--;
+   
+       
         isClipboardActive = false;
         clipboardUI.SetActive(false);
         m_Player.m_MovementMode = MovementMode.Free;
