@@ -33,6 +33,9 @@ public class SideviewManager : MonoBehaviour
     public Transform carriage2Go;
     public Transform carriage3Go;
 
+    public GameObject sideviewButton;
+    public GameObject sterlingButton;
+
     [SerializeField] private GameObject clipboardUI;
 
     private void Update()
@@ -155,6 +158,7 @@ public class SideviewManager : MonoBehaviour
 
         //carriageSelectionUI.SetActive(true);
         sideviewCamera.SetActive(true);
+        carriageSelectionUI.SetActive(true);
 
         carriage1Camera.SetActive(false);
         carriage2Camera.SetActive(false);
@@ -163,6 +167,14 @@ public class SideviewManager : MonoBehaviour
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+
+        sideviewButton.SetActive(false);
+        sterlingButton.SetActive(false);
+
+        sideviewWall.SetActive(false);
+
+        decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
     }
 
     public void BackToSterling()
@@ -187,6 +199,9 @@ public class SideviewManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         m_CinemachineInputAxisController.enabled = true;
+
+        sideviewButton.SetActive(false);
+        sterlingButton.SetActive(false);
     }
 
     private void ActivateCarriageSelection()
@@ -217,6 +232,9 @@ public class SideviewManager : MonoBehaviour
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+
+        sideviewButton.SetActive(true);
+        sterlingButton.SetActive(true);
     }
 
     public void Go1()

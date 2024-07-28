@@ -33,7 +33,7 @@ public class PassengerController : MonoBehaviour
         hungerLevel = Random.Range(0, 3);
         comfortLevel = Random.Range(0, 3);
         //entertainmentLevel = Random.Range(0, 4);
-        destinationId = Random.Range(1, 3);
+        destinationId = Random.Range(0, 4);
     }
 
     public float CalculateHappinessValue()
