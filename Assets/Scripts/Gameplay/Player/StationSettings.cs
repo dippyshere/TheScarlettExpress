@@ -20,16 +20,18 @@ public class StationSettings : MonoBehaviour
     [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
     private CinemachineInputAxisController m_CinemachineInputAxisController;
 
-    [SerializeField] private GameObject confirm;
+    [SerializeField] private GameObject ThampConfirm;
+    [SerializeField] private GameObject RiverConfirm;
+    [SerializeField] private GameObject FurroConfirm;
 
     // Start is called before the first frame update
     void Start()
     {
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
-        confirm.SetActive(false);
-        
+        ThampConfirm.SetActive(false);
+        RiverConfirm.SetActive(false);
+        FurroConfirm.SetActive(false);
 
-        
 
     }
 
@@ -62,21 +64,21 @@ public class StationSettings : MonoBehaviour
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 1);
-        confirm.SetActive(true);
+        RiverConfirm.SetActive(true);
     }
 
     public void SetStation2()
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 2);
-        confirm.SetActive(true);
+        FurroConfirm.SetActive(true);
     }
 
     public void SetStation3()
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 3);
-        confirm.SetActive(true);
+        ThampConfirm.SetActive(true);
     }
 
     public void TravelToStation()
@@ -103,7 +105,9 @@ public class StationSettings : MonoBehaviour
 
     public void NotLoadTrain()
     {
-        confirm.SetActive(false);
+        ThampConfirm.SetActive(false);
+        RiverConfirm.SetActive(false);
+        FurroConfirm.SetActive(false);
     }
 
     public void LoadTarin()
