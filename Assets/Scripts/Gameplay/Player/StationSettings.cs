@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.Cinemachine;
 
 public class StationSettings : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class StationSettings : MonoBehaviour
     [SerializeField, Tooltip("Reference to the player script.")]
     private Character m_Player;
 
+    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
+    private CinemachineInputAxisController m_CinemachineInputAxisController;
+
     [SerializeField] private GameObject confirm;
 
     // Start is called before the first frame update
@@ -23,6 +27,9 @@ public class StationSettings : MonoBehaviour
     {
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
         confirm.SetActive(false);
+        
+
+        
 
     }
 
@@ -30,7 +37,7 @@ public class StationSettings : MonoBehaviour
     void Update()
     {
         int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
-        if (dist <= 0 && Input.GetKeyDown(KeyCode.M))
+        if (dist <= 0)
         {
             Debug.Log("Go To Station!");
             TravelToStation();
@@ -46,6 +53,7 @@ public class StationSettings : MonoBehaviour
         mapCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
 
         m_Player.m_MovementMode = MovementMode.Free;
     }
@@ -90,6 +98,7 @@ public class StationSettings : MonoBehaviour
             SceneManager.LoadScene("Station3");
         }
 
+        ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 1);
     }
 
     public void NotLoadTrain()

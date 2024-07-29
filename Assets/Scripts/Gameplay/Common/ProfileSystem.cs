@@ -14,6 +14,8 @@ public static class ProfileSystem
     {
         // add more variables here
         PlayerName,
+        PlayerPronoun1,
+        PlayerPronoun2,
         CurrentStation,
         StationDestination,
         StationDistance,
@@ -25,13 +27,20 @@ public static class ProfileSystem
         Deco2,
         Deco3,
         Deco4,
-        Deco5
+        Deco5,
+        Deco6,
+        Deco7,
+        Deco8,
+        Deco9,
+        Deco10
     }
 
     private static readonly Dictionary<Variable, object> defaultValues = new Dictionary<Variable, object>
     {
         // default values are set here
         { Variable.PlayerName, "Name" },
+        { Variable.PlayerPronoun1, "They" },
+        { Variable.PlayerPronoun2, "Them" },
         { Variable.CurrentStation, "None" },
         { Variable.StationDestination, 1 },
         { Variable.StationDistance, 1 },
@@ -44,6 +53,11 @@ public static class ProfileSystem
         { Variable.Deco3, 0 },
         { Variable.Deco4, 0 },
         { Variable.Deco5, 0 },
+        { Variable.Deco6, 0 },
+        { Variable.Deco7, 0 },
+        { Variable.Deco8, 0 },
+        { Variable.Deco9, 0 },
+        { Variable.Deco10, 0 },
 
     };
 

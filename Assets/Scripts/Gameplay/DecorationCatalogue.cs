@@ -10,6 +10,13 @@ public class DecorationCatalogue : MonoBehaviour
     public GameObject deco4Lock;
     public GameObject deco5Lock;
 
+    public GameObject deco6Lock;
+    public GameObject deco7Lock;
+    public GameObject deco8Lock;
+    public GameObject deco9Lock;
+    public GameObject deco10Lock;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +48,36 @@ public class DecorationCatalogue : MonoBehaviour
         if (deco5 == 1)
         {
             deco5Lock.SetActive(false);
+        }
+
+        int deco6 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco6);
+        if (deco6 == 1)
+        {
+            deco6Lock.SetActive(false);
+        }
+
+        int deco7 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco7);
+        if (deco7 == 1)
+        {
+            deco7Lock.SetActive(false);
+        }
+
+        int deco8 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco8);
+        if (deco8 == 1)
+        {
+            deco8Lock.SetActive(false);
+        }
+
+        int deco9 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco9);
+        if (deco9 == 1)
+        {
+            deco9Lock.SetActive(false);
+        }
+
+        int deco10 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco10);
+        if (deco10 == 1)
+        {
+            deco10Lock.SetActive(false);
         }
     }
 
