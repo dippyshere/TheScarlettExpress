@@ -38,11 +38,7 @@ public class ClipboardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            float moneys = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
-            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys + 100);
-        }
+        
 
         if (daysLeft == 1)
         {
