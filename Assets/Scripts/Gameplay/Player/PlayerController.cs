@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleRotation();
         CheckGroundStatus();
+        
     }
 
     public void OnMove(InputAction.CallbackContext context)
