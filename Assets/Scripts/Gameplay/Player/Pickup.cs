@@ -79,6 +79,7 @@ public class Pickup : MonoBehaviour
                 hasItem = true;
                 //pickupAudio.Play();
                 _throwing.throwUI = true;
+                pickupPrompt.SetActive(false);
             }
         }
 
