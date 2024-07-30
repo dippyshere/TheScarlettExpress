@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18036056, g: 0.22579919, b: 0.30703527, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -67159,6 +67159,7 @@ MonoBehaviour:
   passUI: {fileID: 1288678206}
   mainMenuUI: {fileID: 1407962185}
   daysLeftText: {fileID: 1495945166}
+  daysLeft: 0
 --- !u!4 &1246993064
 Transform:
   m_ObjectHideFlags: 0
@@ -90795,7 +90796,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -118709,11 +118710,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
-        type: 3}
-      propertyPath: confirm
-      value: 
-      objectReference: {fileID: 845995367}
     - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: mapCanvas

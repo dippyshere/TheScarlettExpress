@@ -107,6 +107,7 @@ public class ClipboardManager : MonoBehaviour
     {
         int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
+        m_PassengerManager.DayAdvanceCleanup();
         Debug.Log(dist);
 
         daysLeft--;
