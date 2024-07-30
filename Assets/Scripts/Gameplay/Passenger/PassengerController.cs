@@ -8,13 +8,16 @@ public class PassengerController : MonoBehaviour
     private FoodManager.FoodType foodType;
     [Header("Happiness variables")]
     [SerializeField, Tooltip("The current hunger level of the passenger (higher is better)"), Range(1, 3)]
-    private float hungerLevel = 3f;
+    public float hungerLevel = 3f;
     [SerializeField, Tooltip("The current comfort level of the passenger (higher is better)"), Range(1, 3)]
-    private float comfortLevel = 3f;
+    public float comfortLevel = 3f;
     [SerializeField, Tooltip("The current entertainment? level of the passenger (higher is better; unused)"), Range(0, 3)]
-    private float entertainmentLevel = 0f;
+    public float entertainmentLevel = 0f;
     [SerializeField, Tooltip("The desired station id of the destination"), Min(0)]
     public int destinationId = 2;
+    [SerializeField, Tooltip("The species of the passenger")] public string species = "species";
+    [SerializeField, Tooltip("The name of the passenger")] public string passengerName = "name";
+    [SerializeField, Tooltip("The sprite of the passenger")] public Sprite portrait;
     [SerializeField] private GameObject UIPrompt;
     public Transform plateTransform;
     public bool hasBeenFed = false;
@@ -30,7 +33,7 @@ public class PassengerController : MonoBehaviour
         hungerLevel = Random.Range(0, 3);
         comfortLevel = Random.Range(0, 3);
         //entertainmentLevel = Random.Range(0, 4);
-        destinationId = Random.Range(1, 3);
+        destinationId = Random.Range(0, 4);
     }
 
     public float CalculateHappinessValue()
@@ -70,6 +73,15 @@ public class PassengerController : MonoBehaviour
         }
         //GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(CalculateSimpleFoodValue());
         hasBeenFed = true;
+    }
+
+    public void CleanPlate()
+    {
+        hasBeenFed = false;
+        if (plateTransform.childCount > 0)
+        {
+            Destroy(plateTransform.GetChild(0).gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -8,6 +8,8 @@ TagManager:
   - Passenger
   - Map
   - Stove
+  - Eve
+  - Chihuahua
   layers:
   - Default
   - TransparentFX

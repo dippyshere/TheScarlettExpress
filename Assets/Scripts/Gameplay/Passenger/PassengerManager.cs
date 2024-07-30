@@ -5,7 +5,7 @@ using UnityEngine;
 public class PassengerManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton instance of the passenger manager")] public static PassengerManager instance;
-    [SerializeField, Tooltip("A list of all currently boarded passengers")] private List<PassengerController> passengers = new List<PassengerController>();
+    [Tooltip("A list of all currently boarded passengers")] public List<PassengerController> passengers = new List<PassengerController>();
     [SerializeField] private GameObject[] passengerPrefabs;
     [SerializeField, Tooltip("A list of passener spawn points")] private List<Transform> spawnPoints = new List<Transform>();
 
@@ -27,12 +27,7 @@ public class PassengerManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
-            ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
-            Debug.Log(dist);
-        }
+
     }
 
     public void SpawnPassenger()
@@ -67,6 +62,14 @@ public class PassengerManager : MonoBehaviour
         }
         closestSeat.gameObject.SetActive(true);
         Destroy(passenger.gameObject);
+    }
+
+    public void DayAdvanceCleanup()
+    {
+        foreach (var passenger in passengers)
+        {
+            passenger.CleanPlate();
+        }
     }
 
     public void ArriveAtStation(int stationId)
