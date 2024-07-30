@@ -33,26 +33,34 @@ public class ActivateDialogue : MonoBehaviour
             BeginConversation();
         }
 
-        if (!DialoguePanel.activeSelf)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+        //if (!DialoguePanel.activeSelf)
+        //{
+        //    Cursor.visible = false;
+        //    Cursor.lockState = CursorLockMode.Locked;
 
-            m_CinemachineInputAxisController.enabled = true;
+        //    m_CinemachineInputAxisController.enabled = true;
 
-            m_Player.m_MovementMode = MovementMode.Free;
-        }
+        //    m_Player.m_MovementMode = MovementMode.Free;
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Chihuahua"))
+        if (other.CompareTag("Player"))
         {
             //StartConversation();
             //ConversationManager.Instance.StartConversation(conversation);
             //Cursor.visible = true;
             //Cursor.lockState = CursorLockMode.None;
             isConversing = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isConversing = false;
         }
     }
 
@@ -70,6 +78,19 @@ public class ActivateDialogue : MonoBehaviour
     public void EnterTutorial()
     {
         SceneManager.LoadScene("Tutorial");
+    }
+
+    public void ResetMouseAndMovement()
+    {
+        m_CinemachineInputAxisController.enabled = true;
+
+        m_Player.m_MovementMode = MovementMode.Free;
+
+        if (!DialoguePanel.activeSelf)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     //private void StartConversation()

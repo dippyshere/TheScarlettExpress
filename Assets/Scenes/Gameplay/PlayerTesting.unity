@@ -67159,6 +67159,13 @@ MonoBehaviour:
   passUI: {fileID: 1288678206}
   mainMenuUI: {fileID: 1407962185}
   daysLeftText: {fileID: 1495945166}
+  daysLeft: 0
+  DialoguePanel: {fileID: 1272565864}
+  carriageSelection: {fileID: 1272565864}
+  carriage1UI: {fileID: 1628721027}
+  carriage2UI: {fileID: 1746074187}
+  carriage3UI: {fileID: 2067117474}
+  decorationCanvas: {fileID: 115434184}
 --- !u!4 &1246993064
 Transform:
   m_ObjectHideFlags: 0

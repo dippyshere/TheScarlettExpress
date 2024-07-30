@@ -38,6 +38,14 @@ public class SideviewManager : MonoBehaviour
 
     [SerializeField] private GameObject clipboardUI;
 
+    public GameObject decrepitObjects;
+    public float money;
+
+    void Start()
+    {
+        money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+    }
+
     private void Update()
     {
         //if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
@@ -319,5 +327,13 @@ public class SideviewManager : MonoBehaviour
         characterController.transform.rotation = transform.rotation;
         yield return new WaitForEndOfFrame();
         characterController.enabled = true;
+    }
+
+    public void RenovateCarriage()
+    {
+        if (money >= 25)
+        {
+            decrepitObjects.SetActive(false);
+        }
     }
 }

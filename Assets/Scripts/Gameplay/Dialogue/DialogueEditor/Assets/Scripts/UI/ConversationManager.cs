@@ -1,5 +1,4 @@
-﻿using Dypsloom.DypThePenguin.Scripts.Character;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
@@ -162,6 +161,7 @@ namespace DialogueEditor
 
             if (OnConversationEnded != null)
                 OnConversationEnded.Invoke();
+
         }
 
         public void SelectNextOption()
