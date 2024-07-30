@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class ActivateDialogue : MonoBehaviour
 {
     public NPCConversation conversation;
-    //public GameObject DialoguePanel;
+    public GameObject DialoguePanel;
     public bool isConversing;
 
     [SerializeField, Tooltip("Reference to the player script.")]
@@ -21,8 +21,8 @@ public class ActivateDialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked; 
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked; 
     }
 
     // Update is called once per frame
@@ -31,6 +31,16 @@ public class ActivateDialogue : MonoBehaviour
         if (isConversing && Input.GetKeyDown(KeyCode.E))
         {
             BeginConversation();
+        }
+
+        if (!DialoguePanel.activeSelf)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+
+            m_CinemachineInputAxisController.enabled = true;
+
+            m_Player.m_MovementMode = MovementMode.Free;
         }
     }
 

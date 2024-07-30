@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Dypsloom.DypThePenguin.Scripts.Character;
+using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
