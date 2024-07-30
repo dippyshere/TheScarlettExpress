@@ -8,6 +8,7 @@ public class StoveController : MonoBehaviour
     [SerializeField] private Transform foodSpawnPoint;
     [SerializeField] private GameObject[] foodPrefabs;
     private bool isPlayerNear;
+    private bool pendingPickup;
 
     void Update()
     {
@@ -16,12 +17,19 @@ public class StoveController : MonoBehaviour
             UIPrompt.SetActive(true);
             isPlayerNear = false;
             GameObject food = Instantiate(foodPrefabs[Random.Range(0, foodPrefabs.Length)], foodSpawnPoint.position, foodSpawnPoint.rotation);
+            food.GetComponent<FoodManager>().stoveController = this;
+            pendingPickup = true;
         }
+    }
+
+    public void PlacedFood()
+    {
+        pendingPickup = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !pendingPickup)
         {
             UIPrompt.SetActive(true);
             isPlayerNear = true;
