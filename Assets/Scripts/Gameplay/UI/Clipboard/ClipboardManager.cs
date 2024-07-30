@@ -83,7 +83,7 @@ public class ClipboardManager : MonoBehaviour
         {
             GameObject newPassengerUI = Instantiate(passengerUIPrefab, passengerUI.transform);
             PassengerEntry passengerEntry = newPassengerUI.GetComponent<PassengerEntry>();
-            passengerEntry.SetPassengerInfo(passenger.portrait, passenger.passengerName, passenger.species, passenger.CalculateHappinessValue().ToString(), passenger.hungerLevel.ToString(), passenger.comfortLevel.ToString());
+            passengerEntry.SetPassengerInfo(passenger.portrait, passenger.passengerName, passenger.species, passenger.CalculateSimpleFoodValue().ToString(), passenger.hungerLevel.ToString(), passenger.comfortLevel.ToString());
         }
         RectTransform rectTransform = passengerUI.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, m_PassengerManager.passengers.Count * 82);
