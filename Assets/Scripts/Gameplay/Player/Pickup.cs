@@ -134,7 +134,6 @@ public class Pickup : MonoBehaviour
         {
             pickupPrompt.SetActive(true);
         }
-
     }
     private void OnTriggerExit(Collider other)
     {

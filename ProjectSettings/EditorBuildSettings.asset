@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay/Station3.unity
     guid: 7024794b44c73d94f9b51632f708287f
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/OpeningScene.unity
+    guid: e387de9968c39c54ba200cfe997cfd0b
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Tutorial.unity
+    guid: 45d6240d80a8de543b4db18f6cb903d1
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f1836327ca37e874290d8a5937ab3995,
       type: 2}
