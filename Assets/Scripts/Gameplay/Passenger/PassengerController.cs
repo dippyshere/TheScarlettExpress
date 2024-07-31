@@ -75,6 +75,15 @@ public class PassengerController : MonoBehaviour
         hasBeenFed = true;
     }
 
+    public void CleanPlate()
+    {
+        hasBeenFed = false;
+        if (plateTransform.childCount > 0)
+        {
+            Destroy(plateTransform.GetChild(0).gameObject);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !hasBeenFed)

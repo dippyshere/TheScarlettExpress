@@ -64,6 +64,14 @@ public class PassengerManager : MonoBehaviour
         Destroy(passenger.gameObject);
     }
 
+    public void DayAdvanceCleanup()
+    {
+        foreach (var passenger in passengers)
+        {
+            passenger.CleanPlate();
+        }
+    }
+
     public void ArriveAtStation(int stationId)
     {
         List<PassengerController> passengersToRemove = new List<PassengerController>();

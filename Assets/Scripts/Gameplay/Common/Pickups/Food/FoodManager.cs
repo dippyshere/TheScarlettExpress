@@ -5,6 +5,7 @@ using UnityEngine;
 public class FoodManager : MonoBehaviour
 {
     [SerializeField, Tooltip("The type of food")] public FoodType foodType;
+    public StoveController stoveController;
 
     public enum FoodType
     {
