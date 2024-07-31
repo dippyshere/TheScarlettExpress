@@ -39,6 +39,7 @@ public class SideviewManager : MonoBehaviour
     [SerializeField] private GameObject clipboardUI;
 
     public GameObject decrepitObjects;
+    public GameObject renovationParticles;
     public float money;
 
     void Start()
@@ -331,9 +332,16 @@ public class SideviewManager : MonoBehaviour
 
     public void RenovateCarriage()
     {
-        if (money >= 25)
+        if (money >= 100)
         {
+            money -= 100;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
+
             decrepitObjects.SetActive(false);
+            renovationParticles.SetActive(true);
+
+            Invoke(nameof(BackToSterling), 1f);
+            
         }
     }
 }

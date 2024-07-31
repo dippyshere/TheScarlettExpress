@@ -25,13 +25,6 @@ public class ClipboardManager : MonoBehaviour
 
     public int daysLeft;
 
-    public GameObject DialoguePanel;
-    public GameObject carriageSelection;
-    public GameObject carriage1UI;
-    public GameObject carriage2UI;
-    public GameObject carriage3UI;
-    public GameObject decorationCanvas;
-
     // Start is called before the first frame update
     void Start()
     {

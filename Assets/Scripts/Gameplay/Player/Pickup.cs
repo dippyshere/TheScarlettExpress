@@ -40,7 +40,6 @@ public class Pickup : MonoBehaviour
         throwForce = 150;
 
         throwing = throwUi.GetComponent<ThrowUI>();
-
     }
 
     // Update is called once per frame
@@ -133,7 +132,6 @@ public class Pickup : MonoBehaviour
         {
             pickupPrompt.SetActive(true);
         }
-
     }
     private void OnTriggerExit(Collider other)
     {

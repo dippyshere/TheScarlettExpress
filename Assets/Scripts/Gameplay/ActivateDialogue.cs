@@ -70,9 +70,9 @@ public class ActivateDialogue : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        m_CinemachineInputAxisController.enabled = false;
+        //m_CinemachineInputAxisController.enabled = false;
 
-        m_Player.m_MovementMode = MovementMode.Decorating;
+        //m_Player.m_MovementMode = MovementMode.Decorating;
     }
 
     public void EnterTutorial()
@@ -82,15 +82,20 @@ public class ActivateDialogue : MonoBehaviour
 
     public void ResetMouseAndMovement()
     {
-        m_CinemachineInputAxisController.enabled = true;
+        //m_CinemachineInputAxisController.enabled = true;
 
-        m_Player.m_MovementMode = MovementMode.Free;
+        //m_Player.m_MovementMode = MovementMode.Free;
 
-        if (!DialoguePanel.activeSelf)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        //if (!DialoguePanel.activeSelf)
+        //{
+        //    Cursor.visible = false;
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //}
+    }
+
+    public void EnterFirstDay()
+    {
+        SceneManager.LoadScene("PlayerTesting");
     }
 
     //private void StartConversation()
