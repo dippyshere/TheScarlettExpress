@@ -51419,7 +51419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPos: {fileID: 2098585682}
-  lookAtCam: {fileID: 0}
+  lookAtCam: {fileID: 459285285}
   smoothing: 5
   offset: {x: 0, y: 2.6, z: 0}
 --- !u!212 &1114748975
@@ -51483,14 +51483,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114748973}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30849418, y: -0, z: -0, w: 0.95122623}
+  m_LocalRotation: {x: 0.00000007567247, y: -0.9512263, z: -0.30849418, w: 0.00000027567145}
   m_LocalPosition: {x: 0, y: 2.403, z: 0.69}
   m_LocalScale: {x: 0.48735, y: 0.48735005, z: 0.48735005}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1493017272}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 35.937, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -35.937, y: -180, z: 0}
 --- !u!1001 &1119213271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67475,16 +67475,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493017271}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.17}
+  m_LocalRotation: {x: 0.0000000123378765, y: 1, z: -5.074238e-15, w: 0.00000021531156}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0770011}
   m_LocalScale: {x: 0.32825, y: 0.32825, z: 0.32825}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1114748976}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.06, y: -0.01}
+  m_AnchoredPosition: {x: -0.023302676, y: -0.010000976}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1493017273
@@ -69059,6 +69059,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3175688695200588146, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 459285281}
     - target: {fileID: 6775451894038188349, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: throwUi
