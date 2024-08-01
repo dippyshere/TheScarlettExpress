@@ -70,9 +70,20 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 94c0afa5b7595514c9604d3ad87b1dc3, type: 2}
     - target: {fileID: 7354440028502877693, guid: c8ae35c37805db4498ad187eec8ec269,
         type: 3}
+      propertyPath: species
+      value: red
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354440028502877693, guid: c8ae35c37805db4498ad187eec8ec269,
+        type: 3}
       propertyPath: foodType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7354440028502877693, guid: c8ae35c37805db4498ad187eec8ec269,
+        type: 3}
+      propertyPath: portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 511b5b1339bff864687fcc35286273ab,
+        type: 3}
     - target: {fileID: 8650820052036948173, guid: c8ae35c37805db4498ad187eec8ec269,
         type: 3}
       propertyPath: m_LocalPosition.x

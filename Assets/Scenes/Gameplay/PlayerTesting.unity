@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.18036056, g: 0.22579919, b: 0.30703527, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -52480,7 +52480,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1518068293}
   m_HandleRect: {fileID: 1518068292}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -67363,12 +67363,6 @@ MonoBehaviour:
   mainMenuUI: {fileID: 1407962185}
   daysLeftText: {fileID: 1495945166}
   daysLeft: 0
-  DialoguePanel: {fileID: 1272565864}
-  carriageSelection: {fileID: 1272565864}
-  carriage1UI: {fileID: 1628721027}
-  carriage2UI: {fileID: 1746074187}
-  carriage3UI: {fileID: 2067117474}
-  decorationCanvas: {fileID: 115434184}
 --- !u!4 &1246993064
 Transform:
   m_ObjectHideFlags: 0
@@ -72528,6 +72522,9 @@ MonoBehaviour:
   sideviewButton: {fileID: 1737809178}
   sterlingButton: {fileID: 1847125971}
   clipboardUI: {fileID: 538662505}
+  decrepitObjects: {fileID: 0}
+  renovationParticles: {fileID: 0}
+  money: 0
 --- !u!4 &1337464564
 Transform:
   m_ObjectHideFlags: 0
