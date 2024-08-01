@@ -1914,86 +1914,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48193698}
   m_CullTransparentMesh: 1
---- !u!1 &51048199
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 51048200}
-  - component: {fileID: 51048201}
-  - component: {fileID: 51048202}
-  m_Layer: 0
-  m_Name: Dialogue3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &51048200
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51048199}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1754573690}
-  m_Father: {fileID: 666730638}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &51048201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51048199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentIDCounter: 2
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":325.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Best
-    get to cleaning her up, I suppose! Now that you''ve got some money, that is.
-    You renovate this carriage, and I''ll fix up the others while you''re at it!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
-  saveVersion: 110
-  DefaultName: 
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  NodeSerializedDataList:
-  - {fileID: 1754573691}
-  ContinueFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733,
-    type: 2}
-  Event:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &51048202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51048199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b01cd120a16781a4d8968a2d9aa0696c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 0
-  earnedConversation: {fileID: 51048201}
-  renovatedConversation: {fileID: 739316646}
-  decrepitObjects: {fileID: 1728410416}
-  sideviewCamera: {fileID: 1700624503}
-  carriage2Camera: {fileID: 2077522688}
 --- !u!1 &52074847
 GameObject:
   m_ObjectHideFlags: 0
@@ -11911,6 +11831,57 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 264052606}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &266132345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 266132346}
+  - component: {fileID: 266132347}
+  m_Layer: 0
+  m_Name: ConversationEventInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &266132346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266132345}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.3251449, z: -0, w: 0.9456642}
+  m_LocalPosition: {x: 6.7308316, y: -1, z: -6.3544006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 277487583}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &266132347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266132345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 0
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
+  Audio: {fileID: 0}
 --- !u!1 &267634890
 GameObject:
   m_ObjectHideFlags: 0
@@ -13194,6 +13165,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274951306}
   m_CullTransparentMesh: 1
+--- !u!1 &277487582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 277487583}
+  - component: {fileID: 277487584}
+  m_Layer: 0
+  m_Name: Dialogue3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &277487583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277487582}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 266132346}
+  m_Father: {fileID: 666730638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &277487584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277487582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentIDCounter: 1
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":325.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Best
+    get to cleaning her up, I suppose! Now that you''ve got some more money, that
+    is. You renovate this carriage, and I''ll fix up the others while you''re at
+    it!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  saveVersion: 110
+  DefaultName: 
+  DefaultSprite: {fileID: 0}
+  DefaultFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+  NodeSerializedDataList:
+  - {fileID: 266132347}
+  ContinueFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733,
+    type: 2}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!43 &278523212
 Mesh:
   m_ObjectHideFlags: 0
@@ -29874,7 +29907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 2
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":321.5,"yPos":192},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Lucky
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":325.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Lucky
     find, sir! I did notice how dismally empty your pockets were when you arrived,
     aside from the money you had left over from reclaiming the Scarlett Express.
     Very unlike you, sir.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
@@ -42860,7 +42893,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8589749762818712636, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 51048200}
+      addedObject: {fileID: 277487583}
     - targetCorrespondingSourceObject: {fileID: 8589749762818712636, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
       insertIndex: -1
@@ -42869,6 +42902,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1528194538}
+    - targetCorrespondingSourceObject: {fileID: 8589749762818712636, guid: 5157d3b36cb75dd45b0bbc246c198196,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2003592090}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5157d3b36cb75dd45b0bbc246c198196, type: 3}
 --- !u!4 &666730638 stripped
@@ -42959,19 +42996,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 668010058}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1246993063}
-        m_TargetAssemblyTypeName: ClipboardManager, TrainGame
-        m_MethodName: PassengerRosterTime
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &668010058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46018,13 +46043,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 8
-  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":443,\"yPos\":359},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[3],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":202,\"yPos\":208},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[2],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":-21.5,\"yPos\":66},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Very
-    good sir! I\u2019ve not seen her this sparkling for yonks!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":215,\"yPos\":65},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
-    reckon she\u2019s up to speed to say hello to some passengers\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":446,\"yPos\":200},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":790,\"yPos\":315},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[3],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":549,\"yPos\":164},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[2],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":325.5,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Very
+    good sir! I\u2019ve not seen her this sparkling for yonks!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":562,\"yPos\":21},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+    reckon she\u2019s up to speed to say hello to some passengers\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":793,\"yPos\":155},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
     heard from a little birdy that Bearstasia Travels had issues on their railway
-    line. \",\"parentUIDs\":[6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":700,\"yPos\":348},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Let's
-    help them out, see how much they're willing to pay, and see if the Scarlett Express
-    is up to par in their eyes! \",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":709,\"yPos\":463},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":null,\"parentUIDs\":[5],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
+    line so there'll be some desperate passengers up ahead.\",\"parentUIDs\":[6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1052,\"yPos\":298},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"The
+    closest station is Furrowood. Let's help these hitch-hikers get there, see how
+    much they're willing to pay, and see if the Scarlett Express is up to par!\",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1056,\"yPos\":419},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":null,\"parentUIDs\":[5],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -85218,19 +85243,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1502821852}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1246993063}
-        m_TargetAssemblyTypeName: ClipboardManager, TrainGame
-        m_MethodName: NextDay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1502821852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97483,57 +97496,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754501530}
   m_CullTransparentMesh: 1
---- !u!1 &1754573689
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1754573690}
-  - component: {fileID: 1754573691}
-  m_Layer: 0
-  m_Name: ConversationEventInfo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1754573690
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1754573689}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.3251449, z: -0, w: 0.9456642}
-  m_LocalPosition: {x: 6.7308316, y: -1, z: -6.3544006}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 51048200}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1754573691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1754573689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event:
-    m_PersistentCalls:
-      m_Calls: []
-  NodeID: 0
-  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!43 &1758370897
 Mesh:
   m_ObjectHideFlags: 0
@@ -117098,6 +117060,55 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &2003592088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003592090}
+  - component: {fileID: 2003592089}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2003592089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003592088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01cd120a16781a4d8968a2d9aa0696c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
+  earnedConversation: {fileID: 277487584}
+  renovatedConversation: {fileID: 739316646}
+  sideviewCamera: {fileID: 1700624503}
+  carriage2Camera: {fileID: 2077522688}
+--- !u!4 &2003592090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003592088}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 666730638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2007160794
 GameObject:
   m_ObjectHideFlags: 0
@@ -123397,6 +123408,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1337464563}
         m_TargetAssemblyTypeName: SideviewManager, TrainGame
         m_MethodName: RenovateCarriage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2003592089}
+        m_TargetAssemblyTypeName: QuestManager, TrainGame
+        m_MethodName: InitiateConversation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -8,7 +8,6 @@ public class QuestManager : MonoBehaviour
     public float money;
     public NPCConversation earnedConversation;
     public NPCConversation renovatedConversation;
-    public GameObject decrepitObjects;
     public GameObject sideviewCamera;
     public GameObject carriage2Camera;
 
@@ -21,24 +20,31 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (money == 100)
+        money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+
+        if (money >= 100f)
         {
             BeginEarnedConversation();
+            Debug.Log("ahhhhhhh");
         }
+    }
 
-        if (!decrepitObjects.activeSelf && !sideviewCamera.activeSelf && !carriage2Camera.activeSelf)
-        {
-            BeginRenovatedConversation();
-        }
+    public void InitiateConversation()
+    {
+        Invoke(nameof(BeginRenovatedConversation), 4f);
     }
 
     private void BeginEarnedConversation()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         ConversationManager.Instance.StartConversation(earnedConversation);
     }
 
     private void BeginRenovatedConversation()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         ConversationManager.Instance.StartConversation(renovatedConversation);
     }
 }

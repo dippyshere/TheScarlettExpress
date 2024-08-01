@@ -31,7 +31,8 @@ public class Cash : MonoBehaviour
     {
         if (isEarning && Input.GetKeyDown(KeyCode.E))
         {
-            this.gameObject.SetActive(false);
+            Invoke(nameof(DeleteCashGameObject), 0.01f);
+            //this.gameObject.SetActive(false);
             isEarning = false;
 
             money += 5;
@@ -66,6 +67,11 @@ public class Cash : MonoBehaviour
         {
             isEarning = false;
         }
+    }
+
+    private void DeleteCashGameObject()
+    {
+        this.gameObject.SetActive(false);
     }
 
     //private void BeginConversation()
