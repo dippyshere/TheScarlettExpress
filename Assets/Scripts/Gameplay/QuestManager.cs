@@ -10,6 +10,7 @@ public class QuestManager : MonoBehaviour
     public NPCConversation renovatedConversation;
     public GameObject sideviewCamera;
     public GameObject carriage2Camera;
+    bool hasCheckedMoney = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,9 @@ public class QuestManager : MonoBehaviour
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
 
-        if (money >= 100f)
+        if (money >= 100f && !hasCheckedMoney)
         {
+            hasCheckedMoney = true;
             BeginEarnedConversation();
             Debug.Log("ahhhhhhh");
         }
