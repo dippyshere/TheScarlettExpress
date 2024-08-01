@@ -17,6 +17,10 @@ public class ClipboardManager : MonoBehaviour
     [SerializeField] private GameObject clipboardUI;
     [SerializeField] private GameObject passengerUI;
     [SerializeField] private GameObject passengerUIPrefab;
+    [SerializeField] private GameObject UpgradeUI;
+    [SerializeField] private GameObject Carriage1;
+    [SerializeField] private GameObject Carriage2;
+
 
     [SerializeField] private GameObject passUI;
     [SerializeField] private GameObject mainMenuUI;
@@ -97,9 +101,28 @@ public class ClipboardManager : MonoBehaviour
         
     }
 
+    public void UpgradeMenu()
+    {
+        UpgradeUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+    }
+
+    public void CarriageUI1()
+    {
+        Carriage1.SetActive(true);
+        Carriage2.SetActive(false);
+    }
+
+    public void CarriageUI2()
+    {
+        Carriage1.SetActive(false);
+        Carriage2.SetActive(true);
+    }
+
     public void Back()
     {
         passUI.SetActive(false);
+        UpgradeUI.SetActive(false);
         mainMenuUI.SetActive(true);
     }
 
