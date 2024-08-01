@@ -49,6 +49,8 @@ public class SideviewManager : MonoBehaviour
 
     private void Update()
     {
+        money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+
         //if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
         //{
         //    Debug.Log("heyy???");

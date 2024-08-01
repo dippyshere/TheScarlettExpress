@@ -162,6 +162,8 @@ namespace DialogueEditor
             if (OnConversationEnded != null)
                 OnConversationEnded.Invoke();
 
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void SelectNextOption()

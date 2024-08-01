@@ -44,7 +44,7 @@ public static class ProfileSystem
         { Variable.CurrentStation, "None" },
         { Variable.StationDestination, 1 },
         { Variable.StationDistance, 1 },
-        { Variable.PlayerMoney, 0.0f },
+        { Variable.PlayerMoney, 75.0f },
         { Variable.GameVolume, 1.0f },
 
         //Decorations
