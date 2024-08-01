@@ -134,6 +134,16 @@ public class Pickup : MonoBehaviour
         {
             pickupPrompt.SetActive(true);
         }
+
+        if (other.gameObject.CompareTag("Chihuahua"))
+        {
+            pickupPrompt.SetActive(true);
+        }
+
+        if (other.gameObject.CompareTag("Cash"))
+        {
+            pickupPrompt.SetActive(true);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -153,6 +163,16 @@ public class Pickup : MonoBehaviour
         }
 
         if (other.gameObject.CompareTag("Map"))
+        {
+            pickupPrompt.SetActive(false);
+        }
+
+        if (other.gameObject.CompareTag("Chihuahua"))
+        {
+            pickupPrompt.SetActive(false);
+        }
+
+        if (other.gameObject.CompareTag("Cash"))
         {
             pickupPrompt.SetActive(false);
         }
