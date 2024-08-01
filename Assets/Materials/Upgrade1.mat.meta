@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/Upgrade1.mat.meta
+guid: faed6b1d3f12f426da7aece8be79223e
+NativeFormatImporter:
+========
+guid: 7034672c4dd546341bb412371bc09c1a
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> develop:Assets/Sprites/Icons.meta
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
