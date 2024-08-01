@@ -10,15 +10,15 @@ public class Cash : MonoBehaviour
     public bool isEarning;
     public float money;
 
-    public NPCConversation conversation;
+    //public NPCConversation conversation;
 
-    [SerializeField, Tooltip("Reference to the player script.")]
-    private Character m_Player;
+    //[SerializeField, Tooltip("Reference to the player script.")]
+    //private Character m_Player;
 
-    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
-    private CinemachineInputAxisController m_CinemachineInputAxisController;
+    //[SerializeField, Tooltip("Reference to the cinemachine input manager.")]
+    //private CinemachineInputAxisController m_CinemachineInputAxisController;
 
-    public GameObject cashDialogue;
+    //public GameObject cashDialogue;
 
     // Start is called before the first frame update
     void Start()
@@ -37,28 +37,45 @@ public class Cash : MonoBehaviour
             money += 5;
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
 
-            BeginConversation();
+            //BeginConversation();
 
-            cashDialogue.SetActive(false);
+            //cashDialogue.SetActive(false);
         }
+
+        money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             isEarning = true;
         }
+
+        //if (this.gameObject.tag == "Cash1" && other.gameObject.tag == "Player")
+        //{
+        //    //BeginConversation();
+
+        //    //cashDialogue.SetActive(false);
+        //}
     }
 
-    private void BeginConversation()
+    private void OnTriggerExit(Collider other)
     {
-        ConversationManager.Instance.StartConversation(conversation);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-
-        //m_CinemachineInputAxisController.enabled = false;
-
-        //m_Player.m_MovementMode = MovementMode.Decorating;
+        if (other.gameObject.tag == "Player")
+        {
+            isEarning = false;
+        }
     }
+
+    //private void BeginConversation()
+    //{
+    //    ConversationManager.Instance.StartConversation(conversation);
+    //    Cursor.visible = true;
+    //    Cursor.lockState = CursorLockMode.None;
+
+    //    //m_CinemachineInputAxisController.enabled = false;
+
+    //    //m_Player.m_MovementMode = MovementMode.Decorating;
+    //}
 }

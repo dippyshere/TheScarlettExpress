@@ -26,7 +26,7 @@ public class QuestManager : MonoBehaviour
             BeginEarnedConversation();
         }
 
-        if (!decrepitObjects.activeSelf && !sideviewCamera && !carriage2Camera)
+        if (!decrepitObjects.activeSelf && !sideviewCamera.activeSelf && !carriage2Camera.activeSelf)
         {
             BeginRenovatedConversation();
         }

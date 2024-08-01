@@ -223,10 +223,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEarning: 0
   money: 0
-  conversation: {fileID: 0}
-  m_Player: {fileID: 1694192743}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
-  cashDialogue: {fileID: 461568013}
 --- !u!1 &10162126
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +883,6 @@ Transform:
   - {fileID: 717691910}
   - {fileID: 1257939719}
   - {fileID: 1350651685}
-  - {fileID: 1732240960540601521}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &27982437
@@ -5956,6 +5951,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 413957958}
+    - targetCorrespondingSourceObject: {fileID: 3565260441531833399, guid: a262010541da55046a505efe294a6c63,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 413957962}
   m_SourcePrefab: {fileID: 100100000, guid: a262010541da55046a505efe294a6c63, type: 3}
 --- !u!1001 &129448216
 PrefabInstance:
@@ -8476,7 +8475,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 1870549488}
-  m_Prompt: {fileID: 845995367}
   m_ExitPrompt: {fileID: 0}
   m_Player: {fileID: 1694192743}
   m_CinemachineInputAxisController: {fileID: 1138075484}
@@ -26878,10 +26876,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEarning: 0
   money: 0
+--- !u!114 &413957962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413957954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba927fef787db8d4eb38248f8ab2c4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   conversation: {fileID: 461568015}
+  DialoguePanel: {fileID: 1103320249}
+  isConversing: 0
   m_Player: {fileID: 1694192743}
   m_CinemachineInputAxisController: {fileID: 1138075484}
-  cashDialogue: {fileID: 461568013}
 --- !u!1 &414837132
 GameObject:
   m_ObjectHideFlags: 0
@@ -36534,10 +36545,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEarning: 0
   money: 0
-  conversation: {fileID: 0}
-  m_Player: {fileID: 1694192743}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
-  cashDialogue: {fileID: 461568013}
 --- !u!43 &582199014
 Mesh:
   m_ObjectHideFlags: 0
@@ -43992,7 +43999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &687482413
 Transform:
   m_ObjectHideFlags: 0
@@ -44042,7 +44049,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 1455512212}
-  m_Prompt: {fileID: 845995367}
   m_ExitPrompt: {fileID: 1847125971}
   m_Player: {fileID: 1694192743}
   m_CinemachineInputAxisController: {fileID: 1138075484}
@@ -44712,10 +44718,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEarning: 0
   money: 0
-  conversation: {fileID: 0}
-  m_Player: {fileID: 1694192743}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
-  cashDialogue: {fileID: 461568013}
 --- !u!43 &723036981
 Mesh:
   m_ObjectHideFlags: 0
@@ -46016,13 +46018,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 8
-  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":474,\"yPos\":357},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[3],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":233,\"yPos\":206},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[2],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":9.5,\"yPos\":64},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Very
-    good sir! I\u2019ve not seen her this sparkling for yonks!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":246,\"yPos\":63},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
-    reckon she\u2019s up to speed to say hello to some passengers\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":477,\"yPos\":198},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":443,\"yPos\":359},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[3],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":202,\"yPos\":208},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[2],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":-21.5,\"yPos\":66},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Very
+    good sir! I\u2019ve not seen her this sparkling for yonks!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":215,\"yPos\":65},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+    reckon she\u2019s up to speed to say hello to some passengers\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":446,\"yPos\":200},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
     heard from a little birdy that Bearstasia Travels had issues on their railway
-    line. \",\"parentUIDs\":[6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":731,\"yPos\":346},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Let's
+    line. \",\"parentUIDs\":[6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":700,\"yPos\":348},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Let's
     help them out, see how much they're willing to pay, and see if the Scarlett Express
-    is up to par in their eyes! \",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":740,\"yPos\":461},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":null,\"parentUIDs\":[5],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
+    is up to par in their eyes! \",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":709,\"yPos\":463},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":null,\"parentUIDs\":[5],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -53985,10 +53987,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEarning: 0
   money: 0
-  conversation: {fileID: 0}
-  m_Player: {fileID: 1694192743}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
-  cashDialogue: {fileID: 461568013}
 --- !u!43 &883951113
 Mesh:
   m_ObjectHideFlags: 0
@@ -63594,7 +63592,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
   Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   Audio: {fileID: 0}
 --- !u!1 &1098780649
@@ -71046,12 +71044,6 @@ MonoBehaviour:
   mainMenuUI: {fileID: 1407962185}
   daysLeftText: {fileID: 1495945166}
   daysLeft: 0
-  DialoguePanel: {fileID: 1272565864}
-  carriageSelection: {fileID: 1272565864}
-  carriage1UI: {fileID: 1628721027}
-  carriage2UI: {fileID: 1746074187}
-  carriage3UI: {fileID: 2067117474}
-  decorationCanvas: {fileID: 115434184}
 --- !u!4 &1246993064
 Transform:
   m_ObjectHideFlags: 0
@@ -78840,7 +78832,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
   Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1374970777
@@ -97539,7 +97531,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
   Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   Audio: {fileID: 0}
 --- !u!43 &1758370897
@@ -124523,145 +124515,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1732240960540601520
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 19324232}
-    m_Modifications:
-    - target: {fileID: 1109665723373614893, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703013260768577041, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2563800584713402614, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2803349308291963924, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: UIPrompt
-      value: 
-      objectReference: {fileID: 845995367}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4348823706472921119, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_Name
-      value: Stove
-      objectReference: {fileID: 0}
-    - target: {fileID: 4348823706472921119, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4391688452895596557, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5266390249241021322, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8563948481806880591, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5487
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -28.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.70710677
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2b904fda158137743bb1f242e3e65b23, type: 3}
---- !u!4 &1732240960540601521 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9142717269243499882, guid: 2b904fda158137743bb1f242e3e65b23,
-    type: 3}
-  m_PrefabInstance: {fileID: 1732240960540601520}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3090241438290652527
 PrefabInstance:
   m_ObjectHideFlags: 0
