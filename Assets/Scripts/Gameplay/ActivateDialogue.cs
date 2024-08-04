@@ -12,12 +12,6 @@ public class ActivateDialogue : MonoBehaviour
     public GameObject DialoguePanel;
     public bool isConversing;
 
-    [SerializeField, Tooltip("Reference to the player script.")]
-    private Character m_Player;
-
-    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
-    private CinemachineInputAxisController m_CinemachineInputAxisController;
-
     // Start is called before the first frame update
     void Start()
     {

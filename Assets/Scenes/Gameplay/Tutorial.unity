@@ -26762,8 +26762,6 @@ MonoBehaviour:
   conversation: {fileID: 411471032}
   DialoguePanel: {fileID: 1103320249}
   isConversing: 0
-  m_Player: {fileID: 1694192743}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
 --- !u!135 &411471034
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26926,8 +26924,6 @@ MonoBehaviour:
   conversation: {fileID: 461568015}
   DialoguePanel: {fileID: 1103320249}
   isConversing: 0
-  m_Player: {fileID: 1694192743}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
 --- !u!1 &414837132
 GameObject:
   m_ObjectHideFlags: 0
@@ -42768,9 +42764,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
+      propertyPath: m_Player
+      value: 
+      objectReference: {fileID: 1694192743}
+    - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
+        type: 3}
       propertyPath: ScrollSpeed
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
+        type: 3}
+      propertyPath: m_CinemachineInputAxisController
+      value: 
+      objectReference: {fileID: 1138075484}
     - target: {fileID: 1717592540897304539, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -86984,8 +86990,6 @@ MonoBehaviour:
   conversation: {fileID: 739316646}
   DialoguePanel: {fileID: 1103320249}
   isConversing: 0
-  m_Player: {fileID: 1694192743}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
 --- !u!43 &1528276704
 Mesh:
   m_ObjectHideFlags: 0

@@ -6919,9 +6919,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472086, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca,
         type: 3}
+      propertyPath: m_Player
+      value: 
+      objectReference: {fileID: 2098585668}
+    - target: {fileID: 3900108755196472086, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca,
+        type: 3}
       propertyPath: ScrollSpeed
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3900108755196472086, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca,
+        type: 3}
+      propertyPath: m_CinemachineInputAxisController
+      value: 
+      objectReference: {fileID: 893346088}
     - target: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca,
         type: 3}
       propertyPath: m_Pivot.x
@@ -29293,6 +29303,7 @@ MonoBehaviour:
   decrepitObjects: {fileID: 0}
   renovationParticles: {fileID: 0}
   money: 0
+  musicR: {fileID: 0}
 --- !u!4 &618041751
 Transform:
   m_ObjectHideFlags: 0
@@ -95476,8 +95487,6 @@ MonoBehaviour:
   conversation: {fileID: 1371281635}
   DialoguePanel: {fileID: 0}
   isConversing: 0
-  m_Player: {fileID: 2098585668}
-  m_CinemachineInputAxisController: {fileID: 893346088}
 --- !u!1001 &2099712613
 PrefabInstance:
   m_ObjectHideFlags: 0

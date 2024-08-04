@@ -22,6 +22,8 @@ namespace DialogueEditor
         SerializedProperty ScrollTextProperty;
         SerializedProperty ScrollTextSpeedProperty;
         SerializedProperty AllowMouseInteractionProperty;
+        SerializedProperty PlayerReference;
+        SerializedProperty CameraReference;
 
         private void OnEnable()
         {
@@ -32,6 +34,8 @@ namespace DialogueEditor
             ScrollTextProperty = serializedObject.FindProperty("ScrollText");
             ScrollTextSpeedProperty = serializedObject.FindProperty("ScrollSpeed");
             AllowMouseInteractionProperty = serializedObject.FindProperty("AllowMouseInteraction");
+            PlayerReference = serializedObject.FindProperty("m_Player");
+            CameraReference = serializedObject.FindProperty("m_CinemachineInputAxisController");
         }
 
         public override void OnInspectorGUI()
@@ -69,6 +73,11 @@ namespace DialogueEditor
             // Interaction options
             GUILayout.Label("Interaction options", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(AllowMouseInteractionProperty);
+
+            EditorGUILayout.Space();
+            GUILayout.Label("TrainGameOptions", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(PlayerReference);
+            EditorGUILayout.PropertyField(CameraReference);
 
             // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
             serializedObject.ApplyModifiedProperties();
