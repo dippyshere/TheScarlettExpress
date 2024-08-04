@@ -10,6 +10,8 @@ public class ChairUpgrade : MonoBehaviour
     public int upgradeCost;
     public float moneys;
 
+    public AudioSource music;
+
     [SerializeField] GameObject baseUpgrade;
     [SerializeField] GameObject upgrade1;
     [SerializeField] GameObject upgrade2;
@@ -55,6 +57,7 @@ public class ChairUpgrade : MonoBehaviour
                 moneys -= 150;
                 ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys);
                 upgradeLvl++;
+                music.Play();
 
                 upgrade2.SetActive(false);
                 upgrade3.SetActive(true);
@@ -72,6 +75,7 @@ public class ChairUpgrade : MonoBehaviour
                 moneys -= 75;
                 ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys);
                 upgradeLvl++;
+                music.Play();
 
                 upgrade1.SetActive(false);
                 upgrade2.SetActive(true);
@@ -88,6 +92,7 @@ public class ChairUpgrade : MonoBehaviour
                 moneys -= 25;
                 ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys);
                 upgradeLvl++;
+                music.Play();
 
                 baseUpgrade.SetActive(false);
                 upgrade1.SetActive(true);

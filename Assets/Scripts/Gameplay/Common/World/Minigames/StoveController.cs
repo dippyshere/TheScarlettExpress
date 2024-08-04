@@ -20,6 +20,9 @@ public class StoveController : MonoBehaviour
     private bool _pendingPickup;
     private int _pendingFoodType;
 
+    [SerializeField] AudioSource musicC;
+    [SerializeField] AudioSource musicD;
+
     private void Start()
     {
         uiFoodTimer.SetActive(false);
@@ -62,12 +65,15 @@ public class StoveController : MonoBehaviour
     {
         uiFoodTimer.SetActive(true);
         float timer = 0;
+        musicC.Play();
         while (timer < foodCookTime)
         {
             timer += Time.smoothDeltaTime;
             foodTimerFill.fillAmount = timer / foodCookTime;
             yield return null;
         }
+        musicC.Stop();
+        musicD.Play();
         SpawnFood();
         uiFoodTimer.SetActive(false);
     }

@@ -10,6 +10,8 @@ public class Cash : MonoBehaviour
     public bool isEarning;
     public float money;
 
+    public AudioSource music;
+
     //public NPCConversation conversation;
 
     //[SerializeField, Tooltip("Reference to the player script.")]
@@ -31,6 +33,7 @@ public class Cash : MonoBehaviour
     {
         if (isEarning && Input.GetKeyDown(KeyCode.E))
         {
+            music.Play();
             Invoke(nameof(DeleteCashGameObject), 0.01f);
             //this.gameObject.SetActive(false);
             isEarning = false;
