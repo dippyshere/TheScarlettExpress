@@ -16,6 +16,9 @@ public class MapTest : MonoBehaviour
     private CinemachineInputAxisController m_CinemachineInputAxisController;
 
     public bool isEve;
+    public bool isMap;
+
+    public AudioSource music;
 
     private void Start()
     {
@@ -37,18 +40,24 @@ public class MapTest : MonoBehaviour
             m_Player.m_MovementMode = MovementMode.Decorating;
             m_CinemachineInputAxisController.enabled = false;
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Map"))
+       if (isMap && Input.GetKeyDown(KeyCode.E))
         {
+            music.Play();
             Debug.Log("MAP! ACTIVATE!");
             canvas.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             m_Player.m_MovementMode = MovementMode.Decorating;
             m_CinemachineInputAxisController.enabled = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Map"))
+        {
+            isMap = true;
         }
 
         if (other.CompareTag("Eve"))
@@ -62,6 +71,11 @@ public class MapTest : MonoBehaviour
         if (other.CompareTag("Eve"))
         {
             isEve = false;
+        }
+
+        if (other.CompareTag("Map"))
+        {
+            isMap = false;
         }
     }
 }
