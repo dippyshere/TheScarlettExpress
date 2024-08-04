@@ -27,6 +27,8 @@ public class Decorations : MonoBehaviour
     public GameObject deco9Lock;
     public GameObject deco10Lock;
 
+    public AudioSource music;
+
     private void Awake()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
@@ -108,6 +110,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco1, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
@@ -120,6 +123,7 @@ public class Decorations : MonoBehaviour
         if (money >= 15)
         {
             money -= 15;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco2, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
@@ -132,6 +136,7 @@ public class Decorations : MonoBehaviour
         if (money >= 20)
         {
             money -= 20;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco3, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
@@ -144,6 +149,7 @@ public class Decorations : MonoBehaviour
         if (money >= 25)
         {
             money -= 25;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco4, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
@@ -156,6 +162,7 @@ public class Decorations : MonoBehaviour
         if (money >= 30)
         {
             money -= 30;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco5, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
@@ -168,6 +175,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco6, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
@@ -180,6 +188,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco7, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
@@ -192,6 +201,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco8, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
@@ -204,6 +214,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco9, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
@@ -216,6 +227,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
+            music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco10, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
