@@ -128,7 +128,14 @@ public static class ProfileSystem
         }
         else if (typeof(T) == typeof(bool))
         {
-            return (T)(object)(PlayerPrefs.GetInt(key, (int)defaultValues[variable]) != 0);
+            if (PlayerPrefs.GetInt(PlayerPrefs.GetString(key, (string)defaultValues[variable]), 0) == 1)
+            {
+                return (T)(object)true;
+            }
+            else
+            {
+                return (T)(object)false;
+            }
         }
         else
         {
@@ -179,7 +186,14 @@ public static class ProfileSystem
         }
         else if (typeof(T) == typeof(bool))
         {
-            return (T)(object)(PlayerPrefs.GetInt(key, (int)defaultValues[variable]) != 0);
+            if (PlayerPrefs.GetInt(PlayerPrefs.GetString(key, (string)defaultValues[variable]), 0) == 1)
+            {
+                return (T)(object)true;
+            }
+            else
+            {
+                return (T)(object)false;
+            }
         }
         else
         {
