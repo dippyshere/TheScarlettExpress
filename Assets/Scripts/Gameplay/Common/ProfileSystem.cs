@@ -21,6 +21,7 @@ public static class ProfileSystem
         StationDistance,
         PlayerMoney,
         GameVolume,
+        EveTutorialDone,
 
         //Decorations
         Deco1,
@@ -32,7 +33,8 @@ public static class ProfileSystem
         Deco7,
         Deco8,
         Deco9,
-        Deco10
+        Deco10,
+        FreeDeco
     }
 
     private static readonly Dictionary<Variable, object> defaultValues = new Dictionary<Variable, object>
@@ -42,10 +44,11 @@ public static class ProfileSystem
         { Variable.PlayerPronoun1, "They" },
         { Variable.PlayerPronoun2, "Them" },
         { Variable.CurrentStation, "None" },
-        { Variable.StationDestination, 1 },
+        { Variable.StationDestination, 0 },
         { Variable.StationDistance, 1 },
         { Variable.PlayerMoney, 75.0f },
         { Variable.GameVolume, 1.0f },
+        { Variable.EveTutorialDone, false },
 
         //Decorations
         { Variable.Deco1, 0 },
@@ -98,6 +101,10 @@ public static class ProfileSystem
         {
             PlayerPrefs.SetString(key, stringValue);
         }
+        else if (value is bool boolValue)
+        {
+            PlayerPrefs.SetInt(key, boolValue ? 1 : 0);
+        }
         else
         {
             Debug.LogError("Unsupported type");
@@ -118,6 +125,31 @@ public static class ProfileSystem
         else if (typeof(T) == typeof(string))
         {
             return (T)(object)PlayerPrefs.GetString(key, (string)defaultValues[variable]);
+        }
+        else if (typeof(T) == typeof(bool))
+        {
+            if ((bool)defaultValues[variable])
+            {
+                if (PlayerPrefs.GetInt(key, 1) == 1)
+                {
+                    return (T)(object)true;
+                }
+                else
+                {
+                    return (T)(object)false;
+                }
+            }
+            else
+            {
+                if (PlayerPrefs.GetInt(key, 0) == 1)
+                {
+                    return (T)(object)true;
+                }
+                else
+                {
+                    return (T)(object)false;
+                }
+            }
         }
         else
         {
@@ -141,6 +173,10 @@ public static class ProfileSystem
         {
             PlayerPrefs.SetString(key, stringValue);
         }
+        else if (value is bool boolValue)
+        {
+            PlayerPrefs.SetInt(key, boolValue ? 1 : 0);
+        }
         else
         {
             Debug.LogError("Unsupported type");
@@ -161,6 +197,31 @@ public static class ProfileSystem
         else if (typeof(T) == typeof(string))
         {
             return (T)(object)PlayerPrefs.GetString(key, (string)defaultValues[variable]);
+        }
+        else if (typeof(T) == typeof(bool))
+        {
+            if ((bool)defaultValues[variable])
+            {
+                if (PlayerPrefs.GetInt(key, 1) == 1)
+                {
+                    return (T)(object)true;
+                }
+                else
+                {
+                    return (T)(object)false;
+                }
+            }
+            else
+            {
+                if (PlayerPrefs.GetInt(key, 0) == 1)
+                {
+                    return (T)(object)true;
+                }
+                else
+                {
+                    return (T)(object)false;
+                }
+            }
         }
         else
         {

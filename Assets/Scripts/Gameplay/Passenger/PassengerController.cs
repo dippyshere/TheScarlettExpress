@@ -34,6 +34,10 @@ public class PassengerController : MonoBehaviour
         comfortLevel = Random.Range(0, 3);
         //entertainmentLevel = Random.Range(0, 4);
         destinationId = Random.Range(0, 4);
+        string[] speciesList = { "Rabbit", "Beaver", "Deer", "Wolf", "Bear" };
+        species = speciesList[Random.Range(0, speciesList.Length)];
+        string[] names = { "Mudd", "Park", "Stone", "Biffy", "Sticks", "Hatman", "Temples", "Raynott", "Woodbead", "Nithercot", "Tickner", "Southwark", "Portendorfer", "Butterworth", "Greenwood", "Haigh", "Kershaw", "O’Phelan", "Teahan", "O’Rinn", "Tigue", "O’Proinntigh", "O’Tuathail", "O’Sioda", "Orman", "O’Meallain", "Lane", "Shine", "Wellbeluff", "Lloyd" };
+        passengerName = names[Random.Range(0, names.Length)];
     }
 
     public float CalculateHappinessValue()

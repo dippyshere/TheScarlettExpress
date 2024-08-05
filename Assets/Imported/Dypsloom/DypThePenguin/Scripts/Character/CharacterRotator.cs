@@ -42,7 +42,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
             if (m_Character.m_MovementMode == MovementMode.RailZ || m_Character.m_MovementMode == MovementMode.RailX) {
                 targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg;
-            } else {
+            } else if (m_Character.m_MovementMode == MovementMode.Free) {
                 targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg + m_Character.CharacterCamera.transform.eulerAngles.y;
             }
 

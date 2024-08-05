@@ -24,6 +24,8 @@ public class StationSettings : MonoBehaviour
     [SerializeField] private GameObject RiverConfirm;
     [SerializeField] private GameObject FurroConfirm;
 
+    public AudioSource music;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class StationSettings : MonoBehaviour
 
     public void back()
     {
+        music.Play();
         mapCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -104,6 +107,11 @@ public class StationSettings : MonoBehaviour
         if (destin == 3)
         {
             SceneManager.LoadScene("Station3");
+        }
+
+        if (destin == 0)
+        {
+            SceneManager.LoadScene("StationTutorial");
         }
 
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 1);

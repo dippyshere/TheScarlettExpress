@@ -17,6 +17,12 @@ public class ClipboardManager : MonoBehaviour
     [SerializeField] private GameObject clipboardUI;
     [SerializeField] private GameObject passengerUI;
     [SerializeField] private GameObject passengerUIPrefab;
+    [SerializeField] private GameObject UpgradeUI;
+    [SerializeField] private GameObject Carriage1;
+    [SerializeField] private GameObject Carriage2;
+
+    [SerializeField] AudioSource music;
+
 
     [SerializeField] private GameObject passUI;
     [SerializeField] private GameObject mainMenuUI;
@@ -53,6 +59,7 @@ public class ClipboardManager : MonoBehaviour
         {
             if (!isClipboardActive)
             {
+                music.Play();
                 isClipboardActive = true;
                 clipboardUI.SetActive(true);
                 m_Player.m_MovementMode = MovementMode.Decorating;
@@ -63,6 +70,7 @@ public class ClipboardManager : MonoBehaviour
             }
             else
             {
+                music.Play();
                 isClipboardActive = false;
                 clipboardUI.SetActive(false);
                 m_Player.m_MovementMode = MovementMode.Free;
@@ -91,15 +99,36 @@ public class ClipboardManager : MonoBehaviour
 
     public void PassengerRosterTime()
     {
+        music.Play();
         passUI.SetActive(true);
         mainMenuUI.SetActive(false);
         PopulatePassengersUI();
         
     }
 
+    public void UpgradeMenu()
+    {
+        music.Play();
+        UpgradeUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+    }
+
+    public void CarriageUI1()
+    {
+        Carriage1.SetActive(true);
+        Carriage2.SetActive(false);
+    }
+
+    public void CarriageUI2()
+    {
+        Carriage1.SetActive(false);
+        Carriage2.SetActive(true);
+    }
+
     public void Back()
     {
         passUI.SetActive(false);
+        UpgradeUI.SetActive(false);
         mainMenuUI.SetActive(true);
     }
 

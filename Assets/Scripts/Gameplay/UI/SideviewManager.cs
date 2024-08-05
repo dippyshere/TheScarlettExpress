@@ -42,6 +42,8 @@ public class SideviewManager : MonoBehaviour
     public GameObject renovationParticles;
     public float money;
 
+    public AudioSource musicR;
+
     void Start()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
@@ -336,6 +338,7 @@ public class SideviewManager : MonoBehaviour
     {
         if (money >= 100)
         {
+            musicR.Play();
             money -= 100;
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
 
