@@ -7,6 +7,8 @@ public class MenuManager : MonoBehaviour
 {
     public void OnPlayButtonClicked()
     {
-        SceneManager.LoadSceneAsync("PlayerTesting");
+        // clear profile for playtesting
+        ProfileSystem.ClearProfile();
+        SceneManager.LoadSceneAsync("OpeningScene");
     }
 }

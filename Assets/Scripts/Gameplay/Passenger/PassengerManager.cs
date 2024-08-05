@@ -4,71 +4,97 @@ using UnityEngine;
 
 public class PassengerManager : MonoBehaviour
 {
-    [SerializeField, Tooltip("The type of food the passenger wants")]
-    private FoodManager.FoodType foodType;
-    [Header("Happiness variables")]
-    [SerializeField, Tooltip("The current hunger level of the passenger (higher is better)"), Range(1, 3)]
-    private float hungerLevel = 3f;
-    [SerializeField, Tooltip("The current comfort level of the passenger (higher is better)"), Range(1, 3)]
-    private float comfortLevel = 3f;
-    [SerializeField, Tooltip("The current entertainment? level of the passenger (higher is better; unused)"), Range(0, 3)]
-    private float entertainmentLevel = 0f;
-    [SerializeField] private GameObject UIPrompt;
-    public Transform plateTransform;
-    public bool hasBeenFed = false;
+    [HideInInspector, Tooltip("Singleton instance of the passenger manager")] public static PassengerManager instance;
+    [Tooltip("A list of all currently boarded passengers")] public List<PassengerController> passengers = new List<PassengerController>();
+    [SerializeField] private GameObject[] passengerPrefabs;
+    [SerializeField, Tooltip("A list of passener spawn points")] private List<Transform> spawnPoints = new List<Transform>();
 
-    [SerializeField] private GameObject moneyUi;
+    //StationSettings sSettings;
 
-    public float CalculateHappinessValue()
+    private void Awake()
     {
-        if (entertainmentLevel == 0)
+        instance = this;
+    }
+
+    public void Start()
+    {
+        int random = Random.Range(4, 7);
+        for (int i = 0; i < random; i++)
         {
-            return (hungerLevel + comfortLevel) / 5;
-        }
-        else
-        {
-            return (hungerLevel + comfortLevel + entertainmentLevel) / 5;
+            SpawnPassenger();
         }
     }
 
-    public int CalculateSimpleFoodValue()
+    public void Update()
     {
-        return (int)(CalculateHappinessValue() * 5);
+
     }
 
-    public void FeedPassenger(FoodManager.FoodType food)
+    public void SpawnPassenger()
     {
-        UIPrompt.SetActive(false);
-        if (food == foodType)
+        foreach (Transform spawnPoint in spawnPoints)
         {
-            hungerLevel += 2;
-        }
-        else
-        {
-            hungerLevel += 1;
-        }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(CalculateSimpleFoodValue());
-        hasBeenFed = true;
-
-        moneyUi.GetComponent<AddedMoneyUI>().MoneyAnimation();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && !hasBeenFed)
-        {
-            if (other.GetComponent<Pickup>().hasItem == true)
+            if (spawnPoint.gameObject.activeSelf)
             {
-                UIPrompt.SetActive(true);
+                GameObject passengerPrefab = passengerPrefabs[Random.Range(0, passengerPrefabs.Length)];
+                GameObject newPassenger = Instantiate(passengerPrefab, spawnPoint.position, spawnPoint.rotation);
+                passengers.Add(newPassenger.GetComponent<PassengerController>());
+                spawnPoint.gameObject.SetActive(false);
+                break;
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void RemovePassenger(PassengerController passenger)
     {
-        if (other.CompareTag("Player"))
+        int owed = passenger.CalculateTripValue();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(owed);
+        Transform closestSeat = spawnPoints[0];
+        float closestDistance = Vector3.Distance(passenger.transform.position, spawnPoints[0].position);
+        foreach (Transform spawnPoint in spawnPoints)
         {
-            UIPrompt.SetActive(false);
+            float distance = Vector3.Distance(passenger.transform.position, spawnPoint.position);
+            if (distance < closestDistance)
+            {
+                closestSeat = spawnPoint;
+                closestDistance = distance;
+            }
+        }
+        closestSeat.gameObject.SetActive(true);
+        Destroy(passenger.gameObject);
+    }
+
+    public void DayAdvanceCleanup()
+    {
+        foreach (var passenger in passengers)
+        {
+            passenger.CleanPlate();
         }
     }
+
+    public void ArriveAtStation(int stationId)
+    {
+        List<PassengerController> passengersToRemove = new List<PassengerController>();
+        foreach (PassengerController passenger in passengers)
+        {
+            if (passenger.destinationId == stationId)
+            {
+                RemovePassenger(passenger);
+                passengersToRemove.Add(passenger);
+            }
+        }
+        foreach (PassengerController passenger in passengersToRemove)
+        {
+            passengers.Remove(passenger);
+        }
+    }
+
+    //public IEnumerator DelayedSpawnPassengers()
+    //{
+    //    yield return new WaitForSeconds(2);
+    //    for (int i = 0; i < spawnPoints.Count; i++)
+    //    {
+    //        SpawnPassenger();
+    //    }
+    //}
 }

@@ -11,14 +11,19 @@ public class MoneyUI : MonoBehaviour
     public GameObject player;
     Economy economy;
 
+    public float nomini;
+
     private void Start()
     {
-        economy = player.GetComponent<Economy>();
+        
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        moneyText.text = ": $" + economy.money;
+        nomini = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+        moneyText.text = ": $" + nomini;
     }
 }

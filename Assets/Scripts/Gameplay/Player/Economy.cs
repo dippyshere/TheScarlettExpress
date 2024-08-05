@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class Economy : MonoBehaviour
 {
-    public float money = 0;
+    public float money = 0.0f;
+    public AddedMoneyUI addedMoneyUI;
+
+    private void Awake()
+    {
+        money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+    }
 
     public void AddMoney(float money)
     {
+        addedMoneyUI.MoneyAnimation(money);
         this.money += money;
+        ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, this.money);
     }
 }

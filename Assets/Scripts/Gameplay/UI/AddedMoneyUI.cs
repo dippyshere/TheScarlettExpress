@@ -4,34 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
-
 public class AddedMoneyUI : MonoBehaviour
 {
     public TextMeshProUGUI moneyTxt;
     public GameObject moneys;
 
-    public float moneyy = 0;
+    public float moneyy = 0.0f;
 
     void Start()
     {
         moneys.SetActive(false);
+        UpdateAddedMoneyUI();
     }
 
-    void Update()
+    private void UpdateAddedMoneyUI()
     {
         moneyTxt.text = "+ $" + moneyy;
     }
 
-    public void AddMoney(float money)
+    public void MoneyAnimation(float addedMoney)
     {
-        moneyy = money;
-    }
-
-    public void MoneyAnimation()
-    {
+        moneyy = addedMoney;
+        UpdateAddedMoneyUI();
         StartCoroutine(MoneyAnim());
     }
+
     public IEnumerator MoneyAnim()
     {
         moneys.SetActive(true);
@@ -39,8 +36,5 @@ public class AddedMoneyUI : MonoBehaviour
         //moneys.GetComponent<Animation>().Play();  ANIMATION NOT CURRENTLY WORKING YET :P
         //yield return new WaitForSeconds(2);
         moneys.SetActive(false);
-        moneyy = 0;
     }
-
-
 }
