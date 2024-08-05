@@ -28,7 +28,6 @@ public class MapTest : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         m_CinemachineInputAxisController.enabled = true;
-        hasTalkedToEve = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveTutorialDone);
     }
 
     // Update is called once per frame
@@ -54,6 +53,8 @@ public class MapTest : MonoBehaviour
             m_Player.m_MovementMode = MovementMode.Decorating;
             m_CinemachineInputAxisController.enabled = false;
         }
+
+        hasTalkedToEve = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveTutorialDone);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -83,6 +84,6 @@ public class MapTest : MonoBehaviour
     }
     public void AbleToLeaveStation()
     {
-        ProfileSystem.Set<bool>(ProfileSystem.Variable.EveTutorialDone, true);
+        ProfileSystem.Set(ProfileSystem.Variable.EveTutorialDone, true);
     }
 }

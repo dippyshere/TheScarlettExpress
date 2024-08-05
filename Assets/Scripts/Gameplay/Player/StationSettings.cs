@@ -109,6 +109,11 @@ public class StationSettings : MonoBehaviour
             SceneManager.LoadScene("Station3");
         }
 
+        if (destin == 0)
+        {
+            SceneManager.LoadScene("StationTutorial");
+        }
+
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 1);
     }
 

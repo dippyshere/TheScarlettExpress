@@ -44,7 +44,7 @@ public static class ProfileSystem
         { Variable.PlayerPronoun1, "They" },
         { Variable.PlayerPronoun2, "Them" },
         { Variable.CurrentStation, "None" },
-        { Variable.StationDestination, 1 },
+        { Variable.StationDestination, 0 },
         { Variable.StationDistance, 1 },
         { Variable.PlayerMoney, 75.0f },
         { Variable.GameVolume, 1.0f },
