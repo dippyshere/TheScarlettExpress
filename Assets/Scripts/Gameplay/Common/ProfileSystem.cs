@@ -21,6 +21,7 @@ public static class ProfileSystem
         StationDistance,
         PlayerMoney,
         GameVolume,
+        EveTutorialDone,
 
         //Decorations
         Deco1,
@@ -32,7 +33,8 @@ public static class ProfileSystem
         Deco7,
         Deco8,
         Deco9,
-        Deco10
+        Deco10,
+        FreeDeco
     }
 
     private static readonly Dictionary<Variable, object> defaultValues = new Dictionary<Variable, object>
@@ -46,6 +48,7 @@ public static class ProfileSystem
         { Variable.StationDistance, 1 },
         { Variable.PlayerMoney, 75.0f },
         { Variable.GameVolume, 1.0f },
+        { Variable.EveTutorialDone, false },
 
         //Decorations
         { Variable.Deco1, 0 },
