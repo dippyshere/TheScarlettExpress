@@ -21,9 +21,13 @@ public static class ProfileSystem
         StationDistance,
         PlayerMoney,
         GameVolume,
-        EveTutorialDone,
 
-        //Decorations
+        //tutorials
+        EveTutorialDone,
+        RestaurantTutorialDone,
+        DecoratingTutorialDone,
+
+        //decorations
         Deco1,
         Deco2,
         Deco3,
@@ -49,6 +53,8 @@ public static class ProfileSystem
         { Variable.PlayerMoney, 75.0f },
         { Variable.GameVolume, 1.0f },
         { Variable.EveTutorialDone, false },
+        { Variable.RestaurantTutorialDone, false },
+        { Variable.DecoratingTutorialDone, false },
 
         //Decorations
         { Variable.Deco1, 0 },

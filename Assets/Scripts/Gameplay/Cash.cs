@@ -22,6 +22,8 @@ public class Cash : MonoBehaviour
 
     //public GameObject cashDialogue;
 
+    public GameObject promptUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,7 @@ public class Cash : MonoBehaviour
             money += 5;
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
 
+            promptUI.SetActive(false);
             //BeginConversation();
 
             //cashDialogue.SetActive(false);
@@ -54,6 +57,7 @@ public class Cash : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isEarning = true;
+            promptUI.SetActive(true);
         }
 
         //if (this.gameObject.tag == "Cash1" && other.gameObject.tag == "Player")
