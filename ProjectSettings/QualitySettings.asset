@@ -168,8 +168,8 @@ QualitySettings:
     - Server
     - Android
     - iPhone
-    - WebGL
     - tvOS
+    - WebGL
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 1

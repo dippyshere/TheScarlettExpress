@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickup
+  - Passenger
+  - Map
+  - Stove
+  - Eve
+  - Chihuahua
+  - Cash
+  - FxTemporaire
+  - Cash2
   layers:
   - Default
   - TransparentFX
@@ -13,8 +21,8 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
+  - OutlineMask
+  - Outline
   - 
   - 
   - 
