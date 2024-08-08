@@ -63008,6 +63008,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BuyDeco7
       objectReference: {fileID: 0}
+    - target: {fileID: 5663966478885530538, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40.794
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663966478885530538, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.236
+      objectReference: {fileID: 0}
     - target: {fileID: 5956350956660704940, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
