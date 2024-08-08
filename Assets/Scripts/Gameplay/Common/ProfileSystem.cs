@@ -38,7 +38,24 @@ public static class ProfileSystem
         Deco8,
         Deco9,
         Deco10,
-        FreeDeco
+        FreeDeco,
+        Bed1Painting1,
+        Bed1Painting2,
+        Bed1Rug1,
+        Bed1Upgrade,
+        Restraunt1Table1,
+        Restraunt1Table2,
+        Restraunt1Table3,
+        Restraunt1Table4,
+        Restraunt1Table5,
+        Restraunt1Table6,
+        Restraunt2Table1,
+        Restraunt2Table2,
+        Restraunt2Table3,
+        Restraunt2Table4,
+        Restraunt2Table5,
+        Restraunt2Table6,
+        PassengerStorage
     }
 
     private static readonly Dictionary<Variable, object> defaultValues = new Dictionary<Variable, object>
@@ -67,7 +84,26 @@ public static class ProfileSystem
         { Variable.Deco8, 0 },
         { Variable.Deco9, 0 },
         { Variable.Deco10, 0 },
+        { Variable.FreeDeco, 0 },
 
+        { Variable.Bed1Painting1, -1 },
+        { Variable.Bed1Painting2, -1 },
+        { Variable.Bed1Rug1, -1 },
+        { Variable.Bed1Upgrade, 0 },
+        { Variable.Restraunt1Table1, 0 },
+        { Variable.Restraunt1Table2, 0 },
+        { Variable.Restraunt1Table3, 0 },
+        { Variable.Restraunt1Table4, 0 },
+        { Variable.Restraunt1Table5, 0 },
+        { Variable.Restraunt1Table6, 0 },
+        { Variable.Restraunt2Table1, 0 },
+        { Variable.Restraunt2Table2, 0 },
+        { Variable.Restraunt2Table3, 0 },
+        { Variable.Restraunt2Table4, 0 },
+        { Variable.Restraunt2Table5, 0 },
+        { Variable.Restraunt2Table6, 0 },
+        
+        { Variable.PassengerStorage, "{}" }
     };
 
     static ProfileSystem()
