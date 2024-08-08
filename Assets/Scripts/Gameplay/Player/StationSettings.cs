@@ -23,6 +23,8 @@ public class StationSettings : MonoBehaviour
     [SerializeField] private GameObject ThampConfirm;
     [SerializeField] private GameObject RiverConfirm;
     [SerializeField] private GameObject FurroConfirm;
+    [SerializeField] private GameObject BranchConfirm;
+    [SerializeField] private GameObject FernConfirm;
 
     public AudioSource music;
 
@@ -33,7 +35,8 @@ public class StationSettings : MonoBehaviour
         ThampConfirm.SetActive(false);
         RiverConfirm.SetActive(false);
         FurroConfirm.SetActive(false);
-
+        BranchConfirm.SetActive(false);
+        FernConfirm.SetActive(false);
 
     }
 
@@ -90,11 +93,30 @@ public class StationSettings : MonoBehaviour
         ThampConfirm.SetActive(true);
     }
 
+    public void SetStation4()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
+        ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 4);
+        BranchConfirm.SetActive(true);
+    }
+
+    public void SetStation5()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
+        ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 5);
+        FernConfirm.SetActive(true);
+    }
+
     public void TravelToStation()
     {
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
         PassengerManager.instance.ArriveAtStation(destin);
         // check if the StationDestination is 1,2 or 3 to go to the station
+
+        if (destin == 0)
+        {
+            SceneManager.LoadScene("StationTutorial");
+        }
         if (destin <= 1)
         {
             Debug.Log("Load Station1");
@@ -108,10 +130,13 @@ public class StationSettings : MonoBehaviour
         {
             SceneManager.LoadScene("Station3");
         }
-
-        if (destin == 0)
+        if (destin == 4)
         {
-            SceneManager.LoadScene("StationTutorial");
+            SceneManager.LoadScene("Station4");
+        }
+        if (destin == 5)
+        {
+            SceneManager.LoadScene("Station5");
         }
 
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 1);
@@ -122,6 +147,8 @@ public class StationSettings : MonoBehaviour
         ThampConfirm.SetActive(false);
         RiverConfirm.SetActive(false);
         FurroConfirm.SetActive(false);
+        BranchConfirm.SetActive(false);
+        FernConfirm.SetActive(false);
     }
 
     public void LoadTarin()
