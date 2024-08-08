@@ -23194,6 +23194,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3245411251358912351, guid: c8ae35c37805db4498ad187eec8ec269,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 876938345}
     - target: {fileID: 5095970117196372480, guid: c8ae35c37805db4498ad187eec8ec269,
         type: 3}
       propertyPath: m_Name
@@ -33264,6 +33269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3175688695200588146, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 876938345}
     - target: {fileID: 6775451894038188349, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: throwUi
@@ -52177,7 +52187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPos: {fileID: 1031027200}
-  lookAtCam: {fileID: 0}
+  lookAtCam: {fileID: 876938346}
   smoothing: 5
   offset: {x: 0, y: 2.6, z: 0}
 --- !u!212 &1699012400
@@ -57358,6 +57368,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1989910259954742328, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 876938345}
     - target: {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: music
@@ -57367,12 +57382,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1031027201}
     - target: {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_CinemachineInputAxisController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 766899794}
     - target: {fileID: 3178151099761287054, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_Name
