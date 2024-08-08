@@ -5,6 +5,9 @@ using UnityEngine;
 public class Eve : MonoBehaviour
 {
     public GameObject eveDrawing;
+    public GameObject shopEve;
+    public GameObject panelDialogue;
+    public GameObject panelOptions;
 
     // Start is called before the first frame update
     void Start()
@@ -26,5 +29,12 @@ public class Eve : MonoBehaviour
     public void HidePainting()
     {
         eveDrawing.SetActive(false);
+    }
+
+    public void ActivateShopEve()
+    {
+        shopEve.SetActive(true);
+        panelDialogue.SetActive(false);
+        panelOptions.SetActive(false);
     }
 }
