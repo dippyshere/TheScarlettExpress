@@ -117,7 +117,7 @@ public class StationSettings : MonoBehaviour
         {
             SceneManager.LoadScene("StationTutorial");
         }
-        if (destin <= 1)
+        if (destin == 1)
         {
             Debug.Log("Load Station1");
             SceneManager.LoadScene("Station1");
