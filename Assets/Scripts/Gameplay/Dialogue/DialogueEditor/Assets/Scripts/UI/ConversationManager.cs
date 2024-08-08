@@ -3,6 +3,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Dypsloom.DypThePenguin.Scripts.Character;
 
 namespace DialogueEditor
 {
@@ -83,6 +84,13 @@ namespace DialogueEditor
         private int m_currentSelectedIndex;
 
 
+        [SerializeField, Tooltip("Reference to the player script.")]
+        private Character m_Player;
+
+        [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
+        private CinemachineInputAxisController m_CinemachineInputAxisController;
+
+
         //--------------------------------------
         // Awake, Start, Destroy, Update
         //--------------------------------------
@@ -153,6 +161,11 @@ namespace DialogueEditor
             TurnOnUI();
             m_currentSpeech = m_conversation.Root;
             SetState(eState.TransitioningDialogueBoxOn);
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            m_Player.m_MovementMode = MovementMode.Decorating;
+            m_CinemachineInputAxisController.enabled = false;
         }
 
         public void EndConversation()
@@ -164,6 +177,8 @@ namespace DialogueEditor
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            m_Player.m_MovementMode = MovementMode.Free;
+            m_CinemachineInputAxisController.enabled = true;
         }
 
         public void SelectNextOption()

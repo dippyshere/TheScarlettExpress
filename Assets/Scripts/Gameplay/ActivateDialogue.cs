@@ -11,12 +11,7 @@ public class ActivateDialogue : MonoBehaviour
     public NPCConversation conversation;
     public GameObject DialoguePanel;
     public bool isConversing;
-
-    [SerializeField, Tooltip("Reference to the player script.")]
-    private Character m_Player;
-
-    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
-    private CinemachineInputAxisController m_CinemachineInputAxisController;
+    public GameObject promptUI;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +48,7 @@ public class ActivateDialogue : MonoBehaviour
             //Cursor.visible = true;
             //Cursor.lockState = CursorLockMode.None;
             isConversing = true;
+            promptUI.SetActive(true);
         }
     }
 
@@ -70,6 +66,8 @@ public class ActivateDialogue : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+        this.gameObject.SetActive(false);
+        promptUI.SetActive(false);
         //m_CinemachineInputAxisController.enabled = false;
 
         //m_Player.m_MovementMode = MovementMode.Decorating;

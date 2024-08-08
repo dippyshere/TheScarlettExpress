@@ -26,6 +26,8 @@ public class ChairUpgrade : MonoBehaviour
 
     public TextMeshProUGUI UpgradeCostText;
 
+    [SerializeField] private ProfileSystem.Variable chairSaveKey = ProfileSystem.Variable.Restraunt1Table1;
+
     private void Start()
     {
         baseUpgrade.SetActive(true);
@@ -37,6 +39,38 @@ public class ChairUpgrade : MonoBehaviour
         upgradeCost = 25;
 
         moneys = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+
+        int chairUpgrade = ProfileSystem.Get<int>(chairSaveKey);
+        switch (chairUpgrade)
+        {
+            case 1:
+                baseUpgrade.SetActive(false);
+                upgrade1.SetActive(true);
+                upgradeCost = 75;
+                upgradeLvl = 1;
+                upgradeStar1.SetActive(true);
+                break;
+            case 2:
+                baseUpgrade.SetActive(false);
+                upgrade1.SetActive(false);
+                upgrade2.SetActive(true);
+                upgradeCost = 150;
+                upgradeLvl = 2;
+                upgradeStar1.SetActive(true);
+                upgradeStar2.SetActive(true);
+                break;
+            case 3:
+                baseUpgrade.SetActive(false);
+                upgrade1.SetActive(false);
+                upgrade2.SetActive(false);
+                upgrade3.SetActive(true);
+                upgradeCost = 0;
+                upgradeLvl = 3;
+                upgradeStar1.SetActive(true);
+                upgradeStar2.SetActive(true);
+                upgradeStar3.SetActive(true);
+                break;
+        }
     }
 
     private void Update()
@@ -64,6 +98,8 @@ public class ChairUpgrade : MonoBehaviour
                 upgradeButton.SetActive(false);
                 upgradeCost = 0;
                 upgradeStar3.SetActive(true);
+
+                ProfileSystem.Set(ProfileSystem.Variable.Restraunt1Table1, 3);
             }
 
         }
@@ -81,6 +117,8 @@ public class ChairUpgrade : MonoBehaviour
                 upgrade2.SetActive(true);
                 upgradeCost = 150;
                 upgradeStar2.SetActive(true);
+
+                ProfileSystem.Set(ProfileSystem.Variable.Restraunt1Table1, 2);
             }
 
         }
@@ -98,6 +136,8 @@ public class ChairUpgrade : MonoBehaviour
                 upgrade1.SetActive(true);
                 upgradeCost = 75;
                 upgradeStar1.SetActive(true);
+
+                ProfileSystem.Set(ProfileSystem.Variable.Restraunt1Table1, 1);
             }
 
         }

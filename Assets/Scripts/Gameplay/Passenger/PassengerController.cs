@@ -5,7 +5,7 @@ using UnityEngine;
 public class PassengerController : MonoBehaviour
 {
     [SerializeField, Tooltip("The type of food the passenger wants")]
-    private FoodManager.FoodType foodType;
+    public FoodManager.FoodType foodType;
     [Header("Happiness variables")]
     [SerializeField, Tooltip("The current hunger level of the passenger (higher is better)"), Range(1, 3)]
     public float hungerLevel = 3f;
@@ -38,6 +38,16 @@ public class PassengerController : MonoBehaviour
         species = speciesList[Random.Range(0, speciesList.Length)];
         string[] names = { "Mudd", "Park", "Stone", "Biffy", "Sticks", "Hatman", "Temples", "Raynott", "Woodbead", "Nithercot", "Tickner", "Southwark", "Portendorfer", "Butterworth", "Greenwood", "Haigh", "Kershaw", "O’Phelan", "Teahan", "O’Rinn", "Tigue", "O’Proinntigh", "O’Tuathail", "O’Sioda", "Orman", "O’Meallain", "Lane", "Shine", "Wellbeluff", "Lloyd" };
         passengerName = names[Random.Range(0, names.Length)];
+    }
+
+    public void SetStats(float hunger, float comfort, float entertainment, int destination, string species, string name)
+    {
+        hungerLevel = hunger;
+        comfortLevel = comfort;
+        entertainmentLevel = entertainment;
+        destinationId = destination;
+        this.species = species;
+        passengerName = name;
     }
 
     public float CalculateHappinessValue()

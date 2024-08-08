@@ -20,6 +20,8 @@ public class MapTest : MonoBehaviour
 
     public AudioSource music;
 
+    bool hasTalkedToEve;
+
     private void Start()
     {
         canvas.SetActive(false);
@@ -41,7 +43,7 @@ public class MapTest : MonoBehaviour
             m_CinemachineInputAxisController.enabled = false;
         }
 
-       if (isMap && Input.GetKeyDown(KeyCode.E))
+       if (isMap && Input.GetKeyDown(KeyCode.E) && hasTalkedToEve)
         {
             music.Play();
             Debug.Log("MAP! ACTIVATE!");
@@ -51,6 +53,8 @@ public class MapTest : MonoBehaviour
             m_Player.m_MovementMode = MovementMode.Decorating;
             m_CinemachineInputAxisController.enabled = false;
         }
+
+        hasTalkedToEve = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveTutorialDone);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -77,5 +81,9 @@ public class MapTest : MonoBehaviour
         {
             isMap = false;
         }
+    }
+    public void AbleToLeaveStation()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.EveTutorialDone, true);
     }
 }
