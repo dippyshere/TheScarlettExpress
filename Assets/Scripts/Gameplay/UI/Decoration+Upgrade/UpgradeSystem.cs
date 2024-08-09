@@ -42,7 +42,7 @@ public class UpgradeSystem : MonoBehaviour
 
     public void Upgrade()
     {
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Upgrade, 1);
+        ProfileSystem.Set(bedSaveKey, 1);
         bed1.SetActive(false);
         bed2.SetActive(true);
     }
