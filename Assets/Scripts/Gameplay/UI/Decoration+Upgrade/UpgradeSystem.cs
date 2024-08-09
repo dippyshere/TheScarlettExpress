@@ -12,6 +12,19 @@ public class UpgradeSystem : MonoBehaviour
 
     public GameObject exitButton;
 
+    [SerializeField] private ProfileSystem.Variable bedSaveKey = ProfileSystem.Variable.Bed1Upgrade;
+
+    private void Start()
+    {
+        int bedUpgrade = ProfileSystem.Get<int>(bedSaveKey);
+        switch (bedUpgrade)
+        {
+            case 1:
+                Upgrade();
+                break;
+        }
+    }
+
     private void Update()
     {
         if (bed2.activeSelf)
@@ -29,6 +42,7 @@ public class UpgradeSystem : MonoBehaviour
 
     public void Upgrade()
     {
+        ProfileSystem.Set(bedSaveKey, 1);
         bed1.SetActive(false);
         bed2.SetActive(true);
     }

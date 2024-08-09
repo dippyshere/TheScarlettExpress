@@ -8,6 +8,11 @@ TagManager:
   - Passenger
   - Map
   - Stove
+  - Eve
+  - Chihuahua
+  - Cash
+  - FxTemporaire
+  - Cash2
   layers:
   - Default
   - TransparentFX

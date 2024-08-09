@@ -2,6 +2,7 @@ using Dypsloom.DypThePenguin.Scripts.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class SideviewManager : MonoBehaviour
 {
@@ -23,9 +24,80 @@ public class SideviewManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the player script.")]
     private Character m_Player;
 
+    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
+    private CinemachineInputAxisController m_CinemachineInputAxisController;
+
+    public GameObject player;
+    public CharacterController characterController;
+    public Transform carriage1Go;
+    public Transform carriage2Go;
+    public Transform carriage3Go;
+
+    public GameObject sideviewButton;
+    public GameObject sterlingButton;
+
+    [SerializeField] private GameObject clipboardUI;
+
+    public GameObject decrepitObjects;
+    public GameObject renovationParticles;
+    public float money;
+
+    public AudioSource musicR;
+
+    void Start()
+    {
+        money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+    }
+
     private void Update()
     {
-        if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+
+        //if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    Debug.Log("heyy???");
+        //    //Cursor.lockState = CursorLockMode.None;
+        //    //sideviewCamera.SetActive(true);
+        //    //carriageSelectionUI.SetActive(true);
+        //    Invoke(nameof(ActivateCarriageSelection), 2f);
+        //    //sideviewWall.SetActive(false);
+
+        //    Invoke(nameof(OpenSideviewMenu), 0.01f);
+        //    m_Player.m_MovementMode = MovementMode.Decorating;
+        //    m_CinemachineInputAxisController.enabled = false;
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //}
+
+        //if (sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
+        //    m_CinemachineInputAxisController.enabled = true;
+        //    sideviewCamera.SetActive(false);
+        //    carriageSelectionUI.SetActive(false);
+        //    sideviewWall.SetActive(true);
+
+        //    carriage1Camera.SetActive(false);
+        //    carriage2Camera.SetActive(false);
+        //    carriage3Camera.SetActive(false);
+
+        //    carriage1UI.SetActive(false);
+        //    carriage2UI.SetActive(false);
+        //    carriage3UI.SetActive(false);
+        //    m_Player.m_MovementMode = MovementMode.Free;
+
+        //}
+
+        //if (decorationUpgradeCanvas.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    decorationUpgradeCanvas.SetActive(false);
+        //}
+    }
+
+    public void SideViewButton()
+    {
+        if (!sideviewCamera.activeSelf)
         {
             Debug.Log("heyy???");
             //Cursor.lockState = CursorLockMode.None;
@@ -36,11 +108,16 @@ public class SideviewManager : MonoBehaviour
 
             Invoke(nameof(OpenSideviewMenu), 0.01f);
             m_Player.m_MovementMode = MovementMode.Decorating;
+            m_CinemachineInputAxisController.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
-        if (sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        if (sideviewCamera.activeSelf)
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            m_CinemachineInputAxisController.enabled = true;
             sideviewCamera.SetActive(false);
             carriageSelectionUI.SetActive(false);
             sideviewWall.SetActive(true);
@@ -56,10 +133,12 @@ public class SideviewManager : MonoBehaviour
 
         }
 
-        if (decorationUpgradeCanvas.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        if (decorationUpgradeCanvas.activeSelf)
         {
             decorationUpgradeCanvas.SetActive(false);
         }
+
+        clipboardUI.SetActive(false);
     }
 
     public void Carriage1()
@@ -86,12 +165,13 @@ public class SideviewManager : MonoBehaviour
         carriage3UI.SetActive(true);
     }
 
-    public void Back()
+    public void BackToSideview()
     {
         Invoke(nameof(ActivateCarriageSelection), 2f);
 
         //carriageSelectionUI.SetActive(true);
         sideviewCamera.SetActive(true);
+        carriageSelectionUI.SetActive(true);
 
         carriage1Camera.SetActive(false);
         carriage2Camera.SetActive(false);
@@ -100,6 +180,41 @@ public class SideviewManager : MonoBehaviour
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+
+        sideviewButton.SetActive(false);
+        sterlingButton.SetActive(false);
+
+        sideviewWall.SetActive(false);
+
+        decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
+    }
+
+    public void BackToSterling()
+    {
+        sideviewCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI.SetActive(false);
+        sideviewWall.SetActive(true);
+
+        decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
+
+        m_Player.m_MovementMode = MovementMode.Free;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
+
+        sideviewButton.SetActive(false);
+        sterlingButton.SetActive(false);
     }
 
     private void ActivateCarriageSelection()
@@ -112,6 +227,7 @@ public class SideviewManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        m_CinemachineInputAxisController.enabled = false;
         sideviewCamera.SetActive(true);
         sideviewWall.SetActive(false);
     }
@@ -129,15 +245,108 @@ public class SideviewManager : MonoBehaviour
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+
+        sideviewButton.SetActive(true);
+        sterlingButton.SetActive(true);
     }
 
     public void Go1()
     {
+        m_Player.m_MovementMode = MovementMode.Free;
+        StartCoroutine(LateTeleport(carriage1Go));
 
+        sideviewCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI.SetActive(false);
+        sideviewWall.SetActive(true);
+
+        decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
     }
 
-    public void HelpPlease()
+    public void Go2()
     {
+        m_Player.m_MovementMode = MovementMode.Free;
+        StartCoroutine(LateTeleport(carriage2Go));
+
+        sideviewCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI.SetActive(false);
+        sideviewWall.SetActive(true);
+
         decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
+    }
+
+    public void Go3()
+    {
+        m_Player.m_MovementMode = MovementMode.Free;
+        StartCoroutine(LateTeleport(carriage3Go));
+
+        sideviewCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI.SetActive(false);
+        sideviewWall.SetActive(true);
+
+        decorationUpgradeCanvas.SetActive(false);
+        decorateCamera.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        m_CinemachineInputAxisController.enabled = true;
+    }
+
+    private IEnumerator LateTeleport(Transform transform)
+    {
+        characterController.enabled = false;
+        characterController.transform.position = transform.position;
+        characterController.transform.rotation = transform.rotation;
+        yield return new WaitForEndOfFrame();
+        characterController.enabled = true;
+    }
+
+    public void RenovateCarriage()
+    {
+        if (money >= 100)
+        {
+            musicR.Play();
+            money -= 100;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
+
+            decrepitObjects.SetActive(false);
+            renovationParticles.SetActive(true);
+
+            Invoke(nameof(BackToSterling), 1f);
+            
+        }
     }
 }
