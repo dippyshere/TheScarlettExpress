@@ -51,7 +51,7 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 1);
+        ProfileSystem.Set(decorationSaveKey, 1);
     }
 
     public void paintingOptionTwo()
@@ -65,7 +65,7 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 2);
+        ProfileSystem.Set(decorationSaveKey, 2);
     }
 
     public void paintingOptionThree()
@@ -79,7 +79,7 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 3);
+        ProfileSystem.Set(decorationSaveKey, 3);
     }
 
     public void paintingOptionFour()
@@ -93,7 +93,7 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 4);
+        ProfileSystem.Set(decorationSaveKey, 4);
     }
 
     public void paintingOptionFive()
@@ -107,6 +107,6 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 5);
+        ProfileSystem.Set(decorationSaveKey, 5);
     }
 }
