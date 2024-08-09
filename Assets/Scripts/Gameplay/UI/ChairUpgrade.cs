@@ -99,7 +99,7 @@ public class ChairUpgrade : MonoBehaviour
                 upgradeCost = 0;
                 upgradeStar3.SetActive(true);
 
-                ProfileSystem.Set(ProfileSystem.Variable.Restraunt1Table1, 3);
+                ProfileSystem.Set(chairSaveKey, 3);
             }
 
         }
@@ -118,7 +118,7 @@ public class ChairUpgrade : MonoBehaviour
                 upgradeCost = 150;
                 upgradeStar2.SetActive(true);
 
-                ProfileSystem.Set(ProfileSystem.Variable.Restraunt1Table1, 2);
+                ProfileSystem.Set(chairSaveKey, 2);
             }
 
         }
@@ -137,7 +137,7 @@ public class ChairUpgrade : MonoBehaviour
                 upgradeCost = 75;
                 upgradeStar1.SetActive(true);
 
-                ProfileSystem.Set(ProfileSystem.Variable.Restraunt1Table1, 1);
+                ProfileSystem.Set(chairSaveKey, 1);
             }
 
         }
