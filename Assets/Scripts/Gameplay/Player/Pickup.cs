@@ -43,7 +43,8 @@ public class Pickup : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown("e") && hasItem)
+        // drop
+        if (Input.GetKeyDown(KeyCode.E) && hasItem)
         {
             objectIWantToPickup.transform.parent = null;
             hasItem = false;
@@ -67,11 +68,16 @@ public class Pickup : MonoBehaviour
             {
                 objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
             }
+            if (TrainGameAnalytics.instance != null)
+            {
+                TrainGameAnalytics.instance.RecordGameEvent("drop", new System.Collections.Generic.Dictionary<string, object>() { { "location", gameObject.transform.position } });
+            }
         }
 
+        // pickup
         if (canPickup)
         {          
-            if (Input.GetKeyDown("e"))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = true;
                 objectIWantToPickup.transform.position = myHands.transform.position;
@@ -80,31 +86,35 @@ public class Pickup : MonoBehaviour
                 //pickupAudio.Play();
                 _throwing.throwUI = true;
                 pickupPrompt.SetActive(false);
+                if (TrainGameAnalytics.instance != null)
+                {
+                    TrainGameAnalytics.instance.RecordGameEvent("pickup", new System.Collections.Generic.Dictionary<string, object>() { { "location", gameObject.transform.position } });
+                }
             }
         }
 
-        if (Input.GetKeyDown("f") && hasItem)
-        {
-            //StartCoroutine(ThrowMulti());
-            chargePS.Play();
-        }
+        //if (Input.GetKeyDown("f") && hasItem)
+        //{
+        //    //StartCoroutine(ThrowMulti());
+        //    chargePS.Play();
+        //}
 
-        if (Input.GetKeyUp("f") && hasItem)
-        {
-            //StopCoroutine(ThrowMulti());
-            throwForce = throwForce * throwMulti;
-            objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
-            objectIWantToPickup.transform.parent = null;
-            objectIWantToPickup.GetComponent<Rigidbody>().AddForce(myHands.transform.forward * throwForce);
-            Debug.Log(throwForce);
-            //throwAudio.Play();
-            hasItem = false;
+        //if (Input.GetKeyUp("f") && hasItem)
+        //{
+        //    //StopCoroutine(ThrowMulti());
+        //    throwForce = throwForce * throwMulti;
+        //    objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
+        //    objectIWantToPickup.transform.parent = null;
+        //    objectIWantToPickup.GetComponent<Rigidbody>().AddForce(myHands.transform.forward * throwForce);
+        //    Debug.Log(throwForce);
+        //    //throwAudio.Play();
+        //    hasItem = false;
           
-            chargePS.Stop();
-            throwForce = 150;
-            throwMulti = 1;
-            _throwing.throwUI = false;
-        }
+        //    chargePS.Stop();
+        //    throwForce = 150;
+        //    throwMulti = 1;
+        //    _throwing.throwUI = false;
+        //}
     }
     private void OnTriggerEnter(Collider other)
     {

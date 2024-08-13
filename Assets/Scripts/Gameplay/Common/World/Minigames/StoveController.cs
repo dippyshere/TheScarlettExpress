@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class StoveController : MonoBehaviour
     [SerializeField] private Image foodTimerFill;
     [SerializeField] private Transform foodSpawnPoint;
     [SerializeField] private GameObject[] foodPrefabs;
+    [SerializeField] private string stoveFoodType;
     public float foodCookTime = 5f;
     private GameObject uiPrompt;
     private bool _isPlayerNear;
@@ -49,6 +51,10 @@ public class StoveController : MonoBehaviour
         StartCoroutine(FoodTimer());
         _pendingPickup = true;
         uiPrompt.SetActive(false);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("food_cooked", new Dictionary<string, object>() { { "foodType", stoveFoodType + selectedFoodType } });
+        }
     }
 
     private void SpawnFood()

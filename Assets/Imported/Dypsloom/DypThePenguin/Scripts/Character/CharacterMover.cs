@@ -36,6 +36,8 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         protected const float c_StickyGravity = -0.3f;
         protected const float c_NoVerticalMovementOffset = 0.01f;
 
+        private float analyticsTick = 0;
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -67,6 +69,14 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                     m_IsJumping = true;
                     m_JumpForceMover.StartJump(m_Character.JumpForce, m_Character.JumpFallOff);
                     AddExternalMover(m_JumpForceMover);
+                    if (TrainGameAnalytics.instance != null)
+                    {
+                        TrainGameAnalytics.instance.RecordGameEvent("jump", new Dictionary<string, object>() {
+                            { "scene", m_Character.gameObject.scene.name },
+                            { "position", m_Character.transform.position },
+                            { "rotation", m_Character.transform.rotation }
+                        });
+                    }
                 }
 
                 if (m_Movement.y > c_NoVerticalMovementOffset) { m_GravityMovement = new Vector3(0, 0f, 0); } else {
@@ -116,6 +126,18 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
             if (m_CharacterController.enabled)
             m_CharacterController.Move(m_Movement * Time.deltaTime);
+
+            if (analyticsTick >= 0.1f) {
+                if (TrainGameAnalytics.instance != null)
+                {
+                    TrainGameAnalytics.instance.RecordGameEvent("character_movement", new Dictionary<string, object>() { 
+                        { "scene", m_Character.gameObject.scene.name }, 
+                        { "position", m_Character.transform.position }
+                    });
+                }
+                analyticsTick = 0;
+            }
+            analyticsTick += Time.deltaTime;
         }
 
         /// <summary>

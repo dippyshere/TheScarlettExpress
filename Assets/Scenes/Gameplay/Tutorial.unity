@@ -73221,6 +73221,50 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1264781363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264781365}
+  - component: {fileID: 1264781364}
+  m_Layer: 0
+  m_Name: SceneTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &1264781364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264781363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dd591230bb08d42a76a3cd042393da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1264781365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264781363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1265102430
 Mesh:
   m_ObjectHideFlags: 0
@@ -124452,11 +124496,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
-      propertyPath: confirm
-      value: 
-      objectReference: {fileID: 845995367}
-    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
-        type: 3}
       propertyPath: mapCanvas
       value: 
       objectReference: {fileID: 845995367}
@@ -125181,3 +125220,4 @@ SceneRoots:
   - {fileID: 581278416}
   - {fileID: 722901743}
   - {fileID: 896604191}
+  - {fileID: 1264781365}
