@@ -17,5 +17,9 @@ public class Economy : MonoBehaviour
         addedMoneyUI.MoneyAnimation(money);
         this.money += money;
         ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, this.money);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("money_earned", new Dictionary<string, object>() { { "money", money }, { "totalMoney", this.money } });
+        }
     }
 }

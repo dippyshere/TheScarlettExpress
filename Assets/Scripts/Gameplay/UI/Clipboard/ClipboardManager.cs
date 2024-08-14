@@ -44,8 +44,6 @@ public class ClipboardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         if (daysLeft == 1)
         {
             daysLeftText.text = daysLeft.ToString() + " Day Until Arrival";
@@ -67,6 +65,10 @@ public class ClipboardManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 m_CinemachineInputAxisController.enabled = false;
+                if (TrainGameAnalytics.instance != null)
+                {
+                    TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "clipboard" } });
+                }
             }
             else
             {
@@ -77,6 +79,10 @@ public class ClipboardManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 m_CinemachineInputAxisController.enabled = true;
+                if (TrainGameAnalytics.instance != null)
+                {
+                    TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuClosed", "clipboard" } });
+                }
             }
         }
     }
@@ -103,7 +109,10 @@ public class ClipboardManager : MonoBehaviour
         passUI.SetActive(true);
         mainMenuUI.SetActive(false);
         PopulatePassengersUI();
-        
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "passengerRoster" } });
+        }
     }
 
     public void UpgradeMenu()
@@ -111,18 +120,30 @@ public class ClipboardManager : MonoBehaviour
         music.Play();
         UpgradeUI.SetActive(true);
         mainMenuUI.SetActive(false);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "upgradeMenu" } });
+        }
     }
 
     public void CarriageUI1()
     {
         Carriage1.SetActive(true);
         Carriage2.SetActive(false);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("carriage_menu", new Dictionary<string, object>() { { "menuOpened", "carriage1" } });
+        }
     }
 
     public void CarriageUI2()
     {
         Carriage1.SetActive(false);
         Carriage2.SetActive(true);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("carriage_menu", new Dictionary<string, object>() { { "menuOpened", "carriage2" } });
+        }
     }
 
     public void Back()
@@ -130,6 +151,10 @@ public class ClipboardManager : MonoBehaviour
         passUI.SetActive(false);
         UpgradeUI.SetActive(false);
         mainMenuUI.SetActive(true);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "mainMenuBack" } });
+        }
     }
 
     public void NextDay()
@@ -148,6 +173,11 @@ public class ClipboardManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         m_CinemachineInputAxisController.enabled = true;
+
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("next_day", new Dictionary<string, object>() { { "daysLeft", daysLeft }, { "currentStation", ProfileSystem.Get<string>(ProfileSystem.Variable.CurrentStation) }, { "stationDestination", ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination) } });
+        }
     }
 
 }

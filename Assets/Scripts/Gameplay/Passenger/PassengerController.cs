@@ -85,8 +85,16 @@ public class PassengerController : MonoBehaviour
         {
             hungerLevel += 1;
         }
+        if (hungerLevel > 3)
+        {
+            hungerLevel = 3;
+        }
         //GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(CalculateSimpleFoodValue());
         hasBeenFed = true;
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("passenger_fed", new Dictionary<string, object>() { { "passengerType", foodType.ToString() }, { "foodType", food.ToString() }, { "hungerLevel", hungerLevel } });
+        }
     }
 
     public void CleanPlate()

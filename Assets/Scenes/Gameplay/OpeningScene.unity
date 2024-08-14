@@ -7600,11 +7600,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: UIPrompt
-      value: 
-      objectReference: {fileID: 1114748973}
     - target: {fileID: 4348823706472921119, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_Name
@@ -7794,6 +7789,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 175795383}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &177859102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177859104}
+  - component: {fileID: 177859103}
+  m_Layer: 0
+  m_Name: SceneTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &177859103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177859102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dd591230bb08d42a76a3cd042393da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &177859104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177859102}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &180001988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98294,36 +98333,6 @@ PrefabInstance:
       propertyPath: Event.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 885651400343041560, guid: 5157d3b36cb75dd45b0bbc246c198196,
-        type: 3}
-      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 885651400343041560, guid: 5157d3b36cb75dd45b0bbc246c198196,
-        type: 3}
-      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 276706460}
-    - target: {fileID: 885651400343041560, guid: 5157d3b36cb75dd45b0bbc246c198196,
-        type: 3}
-      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 885651400343041560, guid: 5157d3b36cb75dd45b0bbc246c198196,
-        type: 3}
-      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EnterTutorial
-      objectReference: {fileID: 0}
-    - target: {fileID: 885651400343041560, guid: 5157d3b36cb75dd45b0bbc246c198196,
-        type: 3}
-      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ActivateDialogue, TrainGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 885651400343041560, guid: 5157d3b36cb75dd45b0bbc246c198196,
-        type: 3}
-      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1665438023335839896, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
       propertyPath: m_TagString
@@ -98488,3 +98497,4 @@ SceneRoots:
   - {fileID: 789195180}
   - {fileID: 627522819}
   - {fileID: 138439665}
+  - {fileID: 177859104}

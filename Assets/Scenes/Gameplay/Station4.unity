@@ -6189,6 +6189,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 169023486}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &173607814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 173607816}
+  - component: {fileID: 173607815}
+  m_Layer: 0
+  m_Name: SceneTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &173607815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173607814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dd591230bb08d42a76a3cd042393da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &173607816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173607814}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &179163601
 GameObject:
   m_ObjectHideFlags: 0
@@ -24472,7 +24516,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7354440028502877693, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     m_RemovedGameObjects:
-    - {fileID: 3249703568220615087, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     - {fileID: 7461716009380690213, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     - {fileID: 316630076765471024, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     - {fileID: 8371459710919176203, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
@@ -34755,11 +34798,6 @@ PrefabInstance:
       propertyPath: music
       value: 
       objectReference: {fileID: 504900232}
-    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
-        type: 3}
-      propertyPath: confirm
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: m_Player
@@ -70999,3 +71037,4 @@ SceneRoots:
   - {fileID: 1594431755}
   - {fileID: 1000685789}
   - {fileID: 1695417922}
+  - {fileID: 173607816}

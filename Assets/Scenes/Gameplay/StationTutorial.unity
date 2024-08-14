@@ -1216,7 +1216,6 @@ PrefabInstance:
     - {fileID: 8371459710919176203, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     - {fileID: 7461716009380690213, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     - {fileID: 316630076765471024, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
-    - {fileID: 3249703568220615087, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
@@ -30750,11 +30749,6 @@ PrefabInstance:
       objectReference: {fileID: 639603987}
     - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
-      propertyPath: confirm
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
-        type: 3}
       propertyPath: m_Player
       value: 
       objectReference: {fileID: 1004941543}
@@ -38825,6 +38819,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1257393262}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1258087688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258087690}
+  - component: {fileID: 1258087689}
+  m_Layer: 0
+  m_Name: SceneTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &1258087689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258087688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6dd591230bb08d42a76a3cd042393da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1258087690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258087688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1261695095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52469,7 +52507,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7354440028502877693, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     m_RemovedGameObjects:
-    - {fileID: 3249703568220615087, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     - {fileID: 7461716009380690213, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     - {fileID: 316630076765471024, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
     - {fileID: 8371459710919176203, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
@@ -62943,46 +62980,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eve's Stall
       objectReference: {fileID: 0}
-    - target: {fileID: 3287765966731925076, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5020628691968643272}
-    - target: {fileID: 3287765966731925076, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuyDeco4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3287765966731925076, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Decorations, TrainGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 3566025389962203376, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5020628691968643272}
-    - target: {fileID: 3566025389962203376, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuyDeco10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3802507423807806916, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5020628691968643272}
-    - target: {fileID: 3802507423807806916, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuyDeco5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3802507423807806916, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Decorations, TrainGame
-      objectReference: {fileID: 0}
     - target: {fileID: 4138372692528786294, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -62998,16 +62995,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Decorations, TrainGame
       objectReference: {fileID: 0}
-    - target: {fileID: 5565826628601747522, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5020628691968643272}
-    - target: {fileID: 5565826628601747522, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuyDeco7
-      objectReference: {fileID: 0}
     - target: {fileID: 5663966478885530538, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -63018,46 +63005,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.236
       objectReference: {fileID: 0}
-    - target: {fileID: 5956350956660704940, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5020628691968643272}
-    - target: {fileID: 5956350956660704940, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuyDeco8
-      objectReference: {fileID: 0}
     - target: {fileID: 6176238922052619925, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bce97a0ceaca0b844b71f975363f71e8, type: 2}
-    - target: {fileID: 6264800645677113720, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5020628691968643272}
-    - target: {fileID: 6264800645677113720, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuyDeco3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6264800645677113720, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Decorations, TrainGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 7376557071170803782, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5020628691968643272}
-    - target: {fileID: 7376557071170803782, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuyDeco6
-      objectReference: {fileID: 0}
     - target: {fileID: 7967021180818205197, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -63097,16 +63049,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564892082976121669, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5020628691968643272}
-    - target: {fileID: 8564892082976121669, guid: 7be832bfe6de93842a2c21f53677d15a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuyDeco9
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5802792177748663962, guid: 7be832bfe6de93842a2c21f53677d15a, type: 3}
@@ -63154,3 +63096,4 @@ SceneRoots:
   - {fileID: 380458855}
   - {fileID: 1287878613}
   - {fileID: 1868854821}
+  - {fileID: 1258087690}

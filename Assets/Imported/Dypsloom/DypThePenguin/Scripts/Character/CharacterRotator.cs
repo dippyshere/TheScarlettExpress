@@ -45,6 +45,10 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
             } else if (m_Character.m_MovementMode == MovementMode.Free) {
                 targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg + m_Character.CharacterCamera.transform.eulerAngles.y;
             }
+            else
+            {
+                targetRotation = m_Character.transform.eulerAngles.y;
+            }
 
             float rotation = Mathf.SmoothDampAngle(m_Character.transform.eulerAngles.y, targetRotation, ref previousRotation, 0.025f);
             
