@@ -20,12 +20,16 @@ public class PassengerController : MonoBehaviour
     [SerializeField, Tooltip("The sprite of the passenger")] public Sprite portrait;
     [SerializeField] private GameObject UIPrompt;
     public Transform plateTransform;
+    public bool randomiseStats = true;
     public bool hasBeenFed = false;
 
     [SerializeField] private ParticleSystem happyPS;
     private void Start()
     {
-        SetRandomStats();
+        if (randomiseStats)
+        {
+            SetRandomStats();
+        }
     }
 
     public void SetRandomStats()
@@ -36,7 +40,7 @@ public class PassengerController : MonoBehaviour
         destinationId = Random.Range(0, 4);
         string[] speciesList = { "Rabbit", "Beaver", "Deer", "Wolf", "Bear" };
         species = speciesList[Random.Range(0, speciesList.Length)];
-        string[] names = { "Mudd", "Park", "Stone", "Biffy", "Sticks", "Hatman", "Temples", "Raynott", "Woodbead", "Nithercot", "Tickner", "Southwark", "Portendorfer", "Butterworth", "Greenwood", "Haigh", "Kershaw", "O’Phelan", "Teahan", "O’Rinn", "Tigue", "O’Proinntigh", "O’Tuathail", "O’Sioda", "Orman", "O’Meallain", "Lane", "Shine", "Wellbeluff", "Lloyd" };
+        string[] names = { "Mudd", "Park", "Stone", "Biffy", "Sticks", "Hatman", "Temples", "Raynott", "Woodbead", "Nithercot", "Tickner", "Southwark", "Portendorfer", "Butterworth", "Greenwood", "Haigh", "Kershaw", "Oï¿½Phelan", "Teahan", "Oï¿½Rinn", "Tigue", "Oï¿½Proinntigh", "Oï¿½Tuathail", "Oï¿½Sioda", "Orman", "Oï¿½Meallain", "Lane", "Shine", "Wellbeluff", "Lloyd" };
         passengerName = names[Random.Range(0, names.Length)];
     }
 
