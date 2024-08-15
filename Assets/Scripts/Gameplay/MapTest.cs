@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
+using DialogueEditor;
 
 public class MapTest : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class MapTest : MonoBehaviour
     public AudioSource music;
 
     bool hasTalkedToEve;
+    public NPCConversation eveReminder;
 
     private void Start()
     {
@@ -53,6 +55,14 @@ public class MapTest : MonoBehaviour
             m_Player.m_MovementMode = MovementMode.Decorating;
             m_CinemachineInputAxisController.enabled = false;
         }
+
+       if (isMap && Input.GetKeyDown(KeyCode.E) && !hasTalkedToEve)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            ConversationManager.Instance.StartConversation(eveReminder);
+        }
+
 
         hasTalkedToEve = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveTutorialDone);
     }
