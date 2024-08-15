@@ -10,6 +10,11 @@ public class RestaurantEve : MonoBehaviour
     [SerializeField] private bool talkToEve = false;
     [SerializeField] private bool canTalkToEve = true;
 
+    public SphereCollider cookingStove;
+    public SphereCollider saladStove;
+    public SphereCollider jellyStove;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -37,5 +42,8 @@ public class RestaurantEve : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         canTalkToEve = false;
+        cookingStove.enabled = true;
+        saladStove.enabled = true;
+        jellyStove.enabled = true;
     }
 }
