@@ -51469,8 +51469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 18
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":379.5,"yPos":187},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"...","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":123,"yPos":177},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Didn''t
-    you want to talk to that fella with the fun purple ears? I think I saw her down
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":604.166748,"yPos":269.999969},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"...","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":347.666718,"yPos":260},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Didn''t
+    you want to talk to that cat with the fun purple ears? I think I saw her down
     the other end of the platform!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: 
