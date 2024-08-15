@@ -12,9 +12,11 @@ public class RestaurantTutorial : MonoBehaviour
     public NPCConversation stoveTutorial;
     public NPCConversation nowWeWait;
     public NPCConversation beginRestaurantTutorial;
+    //public NPCConversation eveConversation;
 
     [SerializeField] private bool stoveTime;
     [SerializeField] private bool canStoveTutorial = true;
+    //[SerializeField] private bool talkToEve = false;
     //[SerializeField] private bool waitingTime;
 
     public GameObject panelDialogue;
@@ -64,6 +66,11 @@ public class RestaurantTutorial : MonoBehaviour
         //{
         //    BeginStoveTutorial();
         //}
+
+        //if (talkToEve && Input.GetKeyDown(KeyCode.E))
+        //{
+        //    BeginEveConversation();
+        //}
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -72,6 +79,11 @@ public class RestaurantTutorial : MonoBehaviour
         {
             stoveTime = true;
         }
+
+        //if (collision.gameObject.CompareTag("Pickup") && collision.gameObject.CompareTag("Player"))
+        //{
+        //    talkToEve = true;
+        //}
     }
 
     private void OnTriggerExit(Collider other)
@@ -110,4 +122,11 @@ public class RestaurantTutorial : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+
+    //private void BeginEveConversation()
+    //{
+    //    ConversationManager.Instance.StartConversation(eveConversation);
+    //    Cursor.visible = true;
+    //    Cursor.lockState = CursorLockMode.None;
+    //}
 }

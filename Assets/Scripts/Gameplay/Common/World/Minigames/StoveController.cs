@@ -42,6 +42,14 @@ public class StoveController : MonoBehaviour
             Cursor.visible = true;
             cinemachineInputAxisController.enabled = false;
         }
+
+        if (uiFoodPicker.activeSelf)
+        {
+            player.m_MovementMode = MovementMode.Decorating;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            cinemachineInputAxisController.enabled = false;
+        }
     }
 
     public void SelectFood(int selectedFoodType)
