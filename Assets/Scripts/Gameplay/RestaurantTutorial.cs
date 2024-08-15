@@ -8,7 +8,10 @@ public class RestaurantTutorial : MonoBehaviour
     bool hasCompletedRTutorial;
     public GameObject tutorialChihuahua;
     public GameObject exclamation;
-    public GameObject foodSelection;
+    public GameObject drinkStoveSelection;
+    public GameObject cookingStoveSelection;
+    public GameObject saladStoveSelection;
+    public GameObject jellyStoveSelection;
     public NPCConversation stoveTutorial;
     public NPCConversation nowWeWait;
     public NPCConversation beginRestaurantTutorial;
@@ -20,6 +23,8 @@ public class RestaurantTutorial : MonoBehaviour
     //[SerializeField] private bool waitingTime;
 
     public GameObject panelDialogue;
+
+    public GameObject clipboard;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +42,7 @@ public class RestaurantTutorial : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
         
-        if (!panelDialogue.activeSelf && !foodSelection.activeSelf)
+        if (!panelDialogue.activeSelf && !drinkStoveSelection.activeSelf && !cookingStoveSelection.activeSelf && !saladStoveSelection.activeSelf && !jellyStoveSelection.activeSelf && !clipboard.activeSelf)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
