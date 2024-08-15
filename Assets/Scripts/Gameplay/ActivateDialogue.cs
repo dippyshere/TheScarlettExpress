@@ -93,7 +93,7 @@ public class ActivateDialogue : MonoBehaviour
 
     public void EnterFirstDay()
     {
-        SceneManager.LoadScene("PlayerTesting");
+        SceneManager.LoadScene("RestaurantTutorial");
     }
 
     //private void StartConversation()
