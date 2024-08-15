@@ -23,6 +23,8 @@ public class PassengerController : MonoBehaviour
     public bool randomiseStats = true;
     public bool hasBeenFed = false;
 
+    [SerializeField] AudioSource eat;
+
     [SerializeField] private ParticleSystem happyPS;
     private void Start()
     {
@@ -30,6 +32,7 @@ public class PassengerController : MonoBehaviour
         {
             SetRandomStats();
         }
+
     }
 
     public void SetRandomStats()
@@ -79,6 +82,7 @@ public class PassengerController : MonoBehaviour
     public void FeedPassenger(FoodManager.FoodType food)
     {
         happyPS.Play();
+        eat.Play();
 
         UIPrompt.SetActive(false);
         if (food == foodType)
