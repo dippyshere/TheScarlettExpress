@@ -23,6 +23,7 @@ public class ClipboardManager : MonoBehaviour
 
     [SerializeField] AudioSource music;
 
+    public bool canClipboard;
 
     [SerializeField] private GameObject passUI;
     [SerializeField] private GameObject mainMenuUI;
@@ -34,6 +35,7 @@ public class ClipboardManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canClipboard = true;
         clipboardUI.SetActive(false);
 
         daysLeft = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
@@ -55,35 +57,39 @@ public class ClipboardManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (!isClipboardActive)
+            if(canClipboard == true)
             {
-                music.Play();
-                isClipboardActive = true;
-                clipboardUI.SetActive(true);
-                m_Player.m_MovementMode = MovementMode.Decorating;
-                //PopulatePassengersUI();
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                m_CinemachineInputAxisController.enabled = false;
-                if (TrainGameAnalytics.instance != null)
+                if (!isClipboardActive)
                 {
-                    TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "clipboard" } });
+                    music.Play();
+                    isClipboardActive = true;
+                    clipboardUI.SetActive(true);
+                    m_Player.m_MovementMode = MovementMode.Decorating;
+                    //PopulatePassengersUI();
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    m_CinemachineInputAxisController.enabled = false;
+                    if (TrainGameAnalytics.instance != null)
+                    {
+                        TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "clipboard" } });
+                    }
+                }
+                else
+                {
+                    music.Play();
+                    isClipboardActive = false;
+                    clipboardUI.SetActive(false);
+                    m_Player.m_MovementMode = MovementMode.Free;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    m_CinemachineInputAxisController.enabled = true;
+                    if (TrainGameAnalytics.instance != null)
+                    {
+                        TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuClosed", "clipboard" } });
+                    }
                 }
             }
-            else
-            {
-                music.Play();
-                isClipboardActive = false;
-                clipboardUI.SetActive(false);
-                m_Player.m_MovementMode = MovementMode.Free;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                m_CinemachineInputAxisController.enabled = true;
-                if (TrainGameAnalytics.instance != null)
-                {
-                    TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuClosed", "clipboard" } });
-                }
-            }
+           
         }
     }
 

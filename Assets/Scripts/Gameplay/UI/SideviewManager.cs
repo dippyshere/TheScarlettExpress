@@ -38,6 +38,8 @@ public class SideviewManager : MonoBehaviour
 
     [SerializeField] private GameObject clipboardUI;
 
+    [SerializeField] private GameObject clipboard;
+
     public GameObject decrepitObjects;
     public GameObject renovationParticles;
     public float money;
@@ -47,6 +49,7 @@ public class SideviewManager : MonoBehaviour
     void Start()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+        
     }
 
     private void Update()
@@ -111,6 +114,7 @@ public class SideviewManager : MonoBehaviour
             m_CinemachineInputAxisController.enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            clipboard.GetComponent<ClipboardManager>().canClipboard = false;
         }
 
         if (sideviewCamera.activeSelf)
@@ -130,6 +134,7 @@ public class SideviewManager : MonoBehaviour
             carriage2UI.SetActive(false);
             carriage3UI.SetActive(false);
             m_Player.m_MovementMode = MovementMode.Free;
+            clipboard.GetComponent<ClipboardManager>().canClipboard = true;
 
         }
 
@@ -215,6 +220,7 @@ public class SideviewManager : MonoBehaviour
 
         sideviewButton.SetActive(false);
         sterlingButton.SetActive(false);
+        clipboard.GetComponent<ClipboardManager>().canClipboard = true;
     }
 
     private void ActivateCarriageSelection()
