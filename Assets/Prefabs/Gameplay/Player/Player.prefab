@@ -1005,6 +1005,9 @@ MonoBehaviour:
   ThampConfirm: {fileID: 0}
   RiverConfirm: {fileID: 0}
   FurroConfirm: {fileID: 0}
+  BranchConfirm: {fileID: 0}
+  FernConfirm: {fileID: 0}
+  music: {fileID: 0}
 --- !u!135 &7443095997819372329
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7294,7 +7297,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ce73e980dc7e8d04cbf7fa18c714194e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.033
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce73e980dc7e8d04cbf7fa18c714194e,
         type: 3}

@@ -31,13 +31,16 @@ public class StationSettings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
-        ThampConfirm.SetActive(false);
-        RiverConfirm.SetActive(false);
-        FurroConfirm.SetActive(false);
-        BranchConfirm.SetActive(false);
-        FernConfirm.SetActive(false);
-
+        if (ThampConfirm != null)
+            ThampConfirm.SetActive(false);
+        if (RiverConfirm != null)
+            RiverConfirm.SetActive(false);
+        if (FurroConfirm != null)
+            FurroConfirm.SetActive(false);
+        if (BranchConfirm != null)
+            BranchConfirm.SetActive(false);
+        if (FernConfirm != null)
+            FernConfirm.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,9 +59,6 @@ public class StationSettings : MonoBehaviour
             TravelToStation();
             StationDistanceA = 3;
         }
-
-        
-        int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
     }
 
     public void back()

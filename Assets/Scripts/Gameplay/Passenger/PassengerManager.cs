@@ -10,6 +10,7 @@ public class PassengerManager : MonoBehaviour
     [Tooltip("A list of all currently boarded passengers")] public List<PassengerController> passengers = new List<PassengerController>();
     [SerializeField] private GameObject[] passengerPrefabs;
     [SerializeField, Tooltip("A list of passener spawn points")] private List<Transform> spawnPoints = new List<Transform>();
+    [SerializeField] private bool spawnPassengers = true;
 
     private Dictionary<string, Dictionary<string, object>> passengerData = new Dictionary<string, Dictionary<string, object>>();
 
@@ -23,10 +24,13 @@ public class PassengerManager : MonoBehaviour
     public void Start()
     {
         LoadPassengerData();
-        int random = UnityEngine.Random.Range(4, 7);
-        for (int i = 0; i < random; i++)
+        if (spawnPassengers)
         {
-            SpawnPassenger();
+            int random = UnityEngine.Random.Range(4, 7);
+            for (int i = 0; i < random; i++)
+            {
+                SpawnPassenger();
+            }
         }
     }
 
