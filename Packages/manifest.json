@@ -1,11 +1,12 @@
 {
   "dependencies": {
+    "com.autodesk.fbx": "5.1.1",
     "com.benoitfreslon.vibration": "https://github.com/BenoitFreslon/Vibration.git",
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.starasgames.tmpro-dynamic-data-cleaner": "https://github.com/STARasGAMES/tmpro-dynamic-data-cleaner.git#upm",
     "com.unity.2d.animation": "9.1.1",
-    "com.unity.2d.aseprite": "1.1.4",
+    "com.unity.2d.aseprite": "1.1.5",
     "com.unity.2d.common": "8.0.2",
     "com.unity.2d.pixel-perfect": "5.0.3",
     "com.unity.2d.psdimporter": "8.0.5",
@@ -30,7 +31,7 @@
     "com.unity.memoryprofiler": "1.1.0",
     "com.unity.nuget.mono-cecil": "1.11.4",
     "com.unity.nuget.newtonsoft-json": "3.2.1",
-    "com.unity.probuilder": "5.2.2",
+    "com.unity.probuilder": "5.2.3",
     "com.unity.profiling.core": "1.0.2",
     "com.unity.render-pipelines.core": "14.0.11",
     "com.unity.render-pipelines.universal": "14.0.11",
