@@ -17712,7 +17712,7 @@ MonoBehaviour:
   - {fileID: 1499816575}
   - {fileID: 1934062060}
   - {fileID: 154272655}
-  spawnPassengers: 0
+  spawnPassengers: 1
 --- !u!4 &467363192
 Transform:
   m_ObjectHideFlags: 0
@@ -35923,7 +35923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &853505628
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35932,7 +35932,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853505627}
   m_LocalRotation: {x: -0, y: 0.2637607, z: -0, w: 0.9645882}
-  m_LocalPosition: {x: 0, y: 0, z: -21.368}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35940,7 +35940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 30.587, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.5379925, y: -6.077}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.7638, y: 2.0324}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853505629
@@ -35973,8 +35973,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278255370
+  m_fontColor: {r: 0.039443612, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -35998,8 +35998,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -55845,6 +55845,7 @@ GameObject:
   - component: {fileID: 1343192504}
   - component: {fileID: 1343192503}
   - component: {fileID: 1343192502}
+  - component: {fileID: 1343192505}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -55859,8 +55860,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343192500}
-  m_LocalRotation: {x: -0, y: -0.3251449, z: 0, w: 0.9456642}
-  m_LocalPosition: {x: 0, y: 0, z: 36.7375}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 11.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55869,8 +55870,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.1875, y: 9.0915}
-  m_SizeDelta: {x: 39.1511, y: 20.1831}
+  m_AnchoredPosition: {x: 0.76, y: 1.9699998}
+  m_SizeDelta: {x: 0.8119, y: 1.6043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1343192502
 MonoBehaviour:
@@ -55922,7 +55923,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 330585545}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -55935,6 +55936,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1343192505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343192500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6719542569f0481db10096096ff13fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 330585545}
 --- !u!1001 &1346527144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87911,8 +87925,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 2.4124248
+  m_Center: {x: 0.0875752, y: 0, z: 0}
 --- !u!114 &1846015488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99717,6 +99731,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3175688695200588146, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 6775451894038188349, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: throwUi

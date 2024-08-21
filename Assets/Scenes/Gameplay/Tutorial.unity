@@ -546,6 +546,7 @@ MonoBehaviour:
   isEarning: 0
   money: 0
   music: {fileID: 3090241438290652529}
+  conversation: {fileID: 461568015}
   promptUI: {fileID: 938718134}
 --- !u!1 &10162126
 GameObject:
@@ -3172,10 +3173,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 413957958}
-    - targetCorrespondingSourceObject: {fileID: 3565260441531833399, guid: a262010541da55046a505efe294a6c63,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 413957962}
   m_SourcePrefab: {fileID: 100100000, guid: a262010541da55046a505efe294a6c63, type: 3}
 --- !u!1 &127075664
 GameObject:
@@ -8503,8 +8500,6 @@ GameObject:
   m_Component:
   - component: {fileID: 411471031}
   - component: {fileID: 411471032}
-  - component: {fileID: 411471034}
-  - component: {fileID: 411471033}
   m_Layer: 0
   m_Name: Dialogue
   m_TagString: Untagged
@@ -8541,10 +8536,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 8
-  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":95.5,\"yPos\":0},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":328.5,\"yPos\":133},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\".
-    . .\",\"parentUIDs\":[3],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":571,\"yPos\":258},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[6],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":-142,\"yPos\":-6},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hmm\u2026
-    I fear the inside is a bit of a fixer-upper, sir!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":93.5,\"yPos\":118},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Well
-    sir, you took the key with you the last time I saw you!\",\"parentUIDs\":[2],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":321.5,\"yPos\":239},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Take
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":562.5,\"yPos\":28},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":795.5,\"yPos\":161},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\".
+    . .\",\"parentUIDs\":[3],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1038,\"yPos\":286},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[6],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":325,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hmm\u2026
+    I fear the inside is a bit of a fixer-upper, sir!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":560.5,\"yPos\":146},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Well
+    sir, you took the key with you the last time I saw you!\",\"parentUIDs\":[2],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":788.5,\"yPos\":267},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Take
     a look around! \",\"parentUIDs\":[5],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
   saveVersion: 110
   DefaultName: 
@@ -8563,43 +8558,6 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &411471033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 411471030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba927fef787db8d4eb38248f8ab2c4cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conversation: {fileID: 411471032}
-  DialoguePanel: {fileID: 1103320249}
-  isConversing: 0
-  promptUI: {fileID: 938718134}
---- !u!135 &411471034
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 411471030}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.5163648
-  m_Center: {x: 1.0163643, y: 0, z: -0.000000005823864}
 --- !u!43 &412768459
 Mesh:
   m_ObjectHideFlags: 0
@@ -8786,22 +8744,7 @@ MonoBehaviour:
   isEarning: 0
   money: 0
   music: {fileID: 3090241438290652529}
-  promptUI: {fileID: 938718134}
---- !u!114 &413957962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413957954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba927fef787db8d4eb38248f8ab2c4cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   conversation: {fileID: 461568015}
-  DialoguePanel: {fileID: 1103320249}
-  isConversing: 0
   promptUI: {fileID: 938718134}
 --- !u!1 &422524786
 GameObject:
@@ -9861,7 +9804,7 @@ PrefabInstance:
     - target: {fileID: 9157105887711818997, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.049999
+      value: 3.4300003
       objectReference: {fileID: 0}
     - target: {fileID: 9157105887711818997, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
         type: 3}
@@ -10280,8 +10223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 3
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":494,"yPos":164},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":".
-    . .","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":246,"yPos":145},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Lucky
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":573,"yPos":41},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":".
+    . .","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":325,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Lucky
     find, sir! I did notice how dismally empty your pockets were when you arrived,
     aside from the money you had left over after reclaiming the Scarlett Express.
     Very unlike you, sir.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
@@ -12682,6 +12625,7 @@ MonoBehaviour:
   isEarning: 0
   money: 0
   music: {fileID: 3090241438290652529}
+  conversation: {fileID: 461568015}
   promptUI: {fileID: 938718134}
 --- !u!1 &584349526
 GameObject:
@@ -14841,7 +14785,7 @@ PrefabInstance:
     - target: {fileID: 8589749762818712636, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.15
+      value: 4.16
       objectReference: {fileID: 0}
     - target: {fileID: 8589749762818712636, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
@@ -15755,6 +15699,7 @@ MonoBehaviour:
   isEarning: 0
   money: 0
   music: {fileID: 3090241438290652529}
+  conversation: {fileID: 461568015}
   promptUI: {fileID: 938718134}
 --- !u!1001 &730212855
 PrefabInstance:
@@ -19170,6 +19115,7 @@ MonoBehaviour:
   isEarning: 0
   money: 0
   music: {fileID: 3090241438290652529}
+  conversation: {fileID: 461568015}
   promptUI: {fileID: 938718134}
 --- !u!1 &888502171
 GameObject:
@@ -21105,7 +21051,7 @@ PrefabInstance:
     - target: {fileID: 9157105887711818997, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.05
+      value: 13.43
       objectReference: {fileID: 0}
     - target: {fileID: 9157105887711818997, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
         type: 3}
@@ -25840,7 +25786,7 @@ PrefabInstance:
     - target: {fileID: 9157105887711818997, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0499992
+      value: -6.57
       objectReference: {fileID: 0}
     - target: {fileID: 9157105887711818997, guid: c4f829cb7dd4b864caf8832ec5b1ee55,
         type: 3}
@@ -33078,6 +33024,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371506101786088563, guid: a6d2b339112f0e74caaee2c6868d0939,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5371506101786088563, guid: a6d2b339112f0e74caaee2c6868d0939,
         type: 3}
@@ -50728,6 +50679,7 @@ MonoBehaviour:
   money: 0
   earnedConversation: {fileID: 277487584}
   renovatedConversation: {fileID: 739316646}
+  beginTutorial: {fileID: 411471032}
   sideviewCamera: {fileID: 1700624503}
   carriage2Camera: {fileID: 2077522688}
 --- !u!4 &2003592090
@@ -53550,18 +53502,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2003592089}
-        m_TargetAssemblyTypeName: QuestManager, TrainGame
-        m_MethodName: InitiateConversation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2109372167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54236,6 +54176,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3175688695200588146, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 6775451894038188349, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: throwUi

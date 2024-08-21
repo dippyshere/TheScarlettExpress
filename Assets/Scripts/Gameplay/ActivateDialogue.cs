@@ -57,6 +57,7 @@ public class ActivateDialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isConversing = false;
+            promptUI.SetActive(false);
         }
     }
 

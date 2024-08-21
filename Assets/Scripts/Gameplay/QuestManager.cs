@@ -9,14 +9,18 @@ public class QuestManager : MonoBehaviour
     public float money;
     public NPCConversation earnedConversation;
     public NPCConversation renovatedConversation;
+    public NPCConversation beginTutorial;
     public GameObject sideviewCamera;
     public GameObject carriage2Camera;
     bool hasCheckedMoney = false;
+
+    bool hasRenovated = false;
 
     // Start is called before the first frame update
     void Start()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+        BeginTutorial();
     }
 
     // Update is called once per frame
@@ -30,11 +34,24 @@ public class QuestManager : MonoBehaviour
             BeginEarnedConversation();
             Debug.Log("ahhhhhhh");
         }
+
+        if (money <= 0f && !hasRenovated)
+        {
+            InitiateConversation();
+        }
+    }
+
+    private void BeginTutorial()
+    {
+        ConversationManager.Instance.StartConversation(beginTutorial);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void InitiateConversation()
     {
         Invoke(nameof(BeginRenovatedConversation), 4f);
+        hasRenovated = true;
     }
 
     private void BeginEarnedConversation()
@@ -44,8 +61,9 @@ public class QuestManager : MonoBehaviour
         ConversationManager.Instance.StartConversation(earnedConversation);
     }
 
-    private void BeginRenovatedConversation()
+    public void BeginRenovatedConversation()
     {
+        hasRenovated = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         ConversationManager.Instance.StartConversation(renovatedConversation);

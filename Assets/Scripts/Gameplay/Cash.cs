@@ -12,7 +12,7 @@ public class Cash : MonoBehaviour
 
     public AudioSource music;
 
-    //public NPCConversation conversation;
+    public NPCConversation conversation;
 
     //[SerializeField, Tooltip("Reference to the player script.")]
     //private Character m_Player;
@@ -33,7 +33,7 @@ public class Cash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isEarning && Input.GetKeyDown(KeyCode.E))
+        if (isEarning && Input.GetKeyDown(KeyCode.E) && money <= 75f)
         {
             music.Play();
             Invoke(nameof(DeleteCashGameObject), 0.01f);
@@ -44,7 +44,22 @@ public class Cash : MonoBehaviour
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
 
             promptUI.SetActive(false);
-            //BeginConversation();
+            BeginConversation();
+
+            //cashDialogue.SetActive(false);
+        }
+
+        if (isEarning && Input.GetKeyDown(KeyCode.E) && money >= 76f)
+        {
+            music.Play();
+            Invoke(nameof(DeleteCashGameObject), 0.01f);
+            //this.gameObject.SetActive(false);
+            isEarning = false;
+
+            money += 5;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
+
+            promptUI.SetActive(false);
 
             //cashDialogue.SetActive(false);
         }
@@ -68,11 +83,12 @@ public class Cash : MonoBehaviour
         //}
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider collision)
     {
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             isEarning = false;
+            promptUI.SetActive(false);
         }
     }
 
@@ -81,14 +97,10 @@ public class Cash : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    //private void BeginConversation()
-    //{
-    //    ConversationManager.Instance.StartConversation(conversation);
-    //    Cursor.visible = true;
-    //    Cursor.lockState = CursorLockMode.None;
-
-    //    //m_CinemachineInputAxisController.enabled = false;
-
-    //    //m_Player.m_MovementMode = MovementMode.Decorating;
-    //}
+    private void BeginConversation()
+    {
+        ConversationManager.Instance.StartConversation(conversation);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
 }
