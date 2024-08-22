@@ -5,7 +5,7 @@ using UnityEngine;
 public class PassengerController : MonoBehaviour
 {
     [SerializeField, Tooltip("The type of food the passenger wants")]
-    private FoodManager.FoodType foodType;
+    public FoodManager.FoodType foodType;
     [Header("Happiness variables")]
     [SerializeField, Tooltip("The current hunger level of the passenger (higher is better)"), Range(1, 3)]
     public float hungerLevel = 3f;
@@ -20,12 +20,19 @@ public class PassengerController : MonoBehaviour
     [SerializeField, Tooltip("The sprite of the passenger")] public Sprite portrait;
     [SerializeField] private GameObject UIPrompt;
     public Transform plateTransform;
+    public bool randomiseStats = true;
     public bool hasBeenFed = false;
+
+    [SerializeField] AudioSource eat;
 
     [SerializeField] private ParticleSystem happyPS;
     private void Start()
     {
-        SetRandomStats();
+        if (randomiseStats)
+        {
+            SetRandomStats();
+        }
+
     }
 
     public void SetRandomStats()
@@ -34,6 +41,20 @@ public class PassengerController : MonoBehaviour
         comfortLevel = Random.Range(0, 3);
         //entertainmentLevel = Random.Range(0, 4);
         destinationId = Random.Range(0, 4);
+        string[] speciesList = { "Rabbit", "Beaver", "Deer", "Wolf", "Bear" };
+        species = speciesList[Random.Range(0, speciesList.Length)];
+        string[] names = { "Mudd", "Park", "Stone", "Biffy", "Sticks", "Hatman", "Temples", "Raynott", "Woodbead", "Nithercot", "Tickner", "Southwark", "Portendorfer", "Butterworth", "Greenwood", "Haigh", "Kershaw", "O�Phelan", "Teahan", "O�Rinn", "Tigue", "O�Proinntigh", "O�Tuathail", "O�Sioda", "Orman", "O�Meallain", "Lane", "Shine", "Wellbeluff", "Lloyd" };
+        passengerName = names[Random.Range(0, names.Length)];
+    }
+
+    public void SetStats(float hunger, float comfort, float entertainment, int destination, string species, string name)
+    {
+        hungerLevel = hunger;
+        comfortLevel = comfort;
+        entertainmentLevel = entertainment;
+        destinationId = destination;
+        this.species = species;
+        passengerName = name;
     }
 
     public float CalculateHappinessValue()
@@ -61,6 +82,7 @@ public class PassengerController : MonoBehaviour
     public void FeedPassenger(FoodManager.FoodType food)
     {
         happyPS.Play();
+        eat.Play();
 
         UIPrompt.SetActive(false);
         if (food == foodType)
@@ -71,8 +93,25 @@ public class PassengerController : MonoBehaviour
         {
             hungerLevel += 1;
         }
+        if (hungerLevel > 3)
+        {
+            hungerLevel = 3;
+        }
         //GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(CalculateSimpleFoodValue());
         hasBeenFed = true;
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("passenger_fed", new Dictionary<string, object>() { { "passengerType", foodType.ToString() }, { "foodType", food.ToString() }, { "hungerLevel", hungerLevel } });
+        }
+    }
+
+    public void CleanPlate()
+    {
+        hasBeenFed = false;
+        if (plateTransform.childCount > 0)
+        {
+            Destroy(plateTransform.GetChild(0).gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

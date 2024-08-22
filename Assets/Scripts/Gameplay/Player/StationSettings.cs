@@ -20,22 +20,38 @@ public class StationSettings : MonoBehaviour
     [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
     private CinemachineInputAxisController m_CinemachineInputAxisController;
 
-    [SerializeField] private GameObject confirm;
+    [SerializeField] private GameObject ThampConfirm;
+    [SerializeField] private GameObject RiverConfirm;
+    [SerializeField] private GameObject FurroConfirm;
+    [SerializeField] private GameObject BranchConfirm;
+    [SerializeField] private GameObject FernConfirm;
+
+    public AudioSource music;
 
     // Start is called before the first frame update
     void Start()
     {
-        int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
-        confirm.SetActive(false);
-        
-
-        
-
+        if (ThampConfirm != null)
+            ThampConfirm.SetActive(false);
+        if (RiverConfirm != null)
+            RiverConfirm.SetActive(false);
+        if (FurroConfirm != null)
+            FurroConfirm.SetActive(false);
+        if (BranchConfirm != null)
+            BranchConfirm.SetActive(false);
+        if (FernConfirm != null)
+            FernConfirm.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            float moneys = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys + 100);
+        }
+
         int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
         if (dist <= 0)
         {
@@ -43,13 +59,11 @@ public class StationSettings : MonoBehaviour
             TravelToStation();
             StationDistanceA = 3;
         }
-
-        
-        int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
     }
 
     public void back()
     {
+        music.Play();
         mapCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -62,21 +76,35 @@ public class StationSettings : MonoBehaviour
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 1);
-        confirm.SetActive(true);
+        RiverConfirm.SetActive(true);
     }
 
     public void SetStation2()
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 2);
-        confirm.SetActive(true);
+        FurroConfirm.SetActive(true);
     }
 
     public void SetStation3()
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 3);
-        confirm.SetActive(true);
+        ThampConfirm.SetActive(true);
+    }
+
+    public void SetStation4()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
+        ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 4);
+        BranchConfirm.SetActive(true);
+    }
+
+    public void SetStation5()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
+        ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 5);
+        FernConfirm.SetActive(true);
     }
 
     public void TravelToStation()
@@ -84,7 +112,12 @@ public class StationSettings : MonoBehaviour
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
         PassengerManager.instance.ArriveAtStation(destin);
         // check if the StationDestination is 1,2 or 3 to go to the station
-        if (destin <= 1)
+
+        if (destin == 0)
+        {
+            SceneManager.LoadScene("StationTutorial");
+        }
+        if (destin == 1)
         {
             Debug.Log("Load Station1");
             SceneManager.LoadScene("Station1");
@@ -97,13 +130,25 @@ public class StationSettings : MonoBehaviour
         {
             SceneManager.LoadScene("Station3");
         }
+        if (destin == 4)
+        {
+            SceneManager.LoadScene("Station4");
+        }
+        if (destin == 5)
+        {
+            SceneManager.LoadScene("Station5");
+        }
 
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 1);
     }
 
     public void NotLoadTrain()
     {
-        confirm.SetActive(false);
+        ThampConfirm.SetActive(false);
+        RiverConfirm.SetActive(false);
+        FurroConfirm.SetActive(false);
+        BranchConfirm.SetActive(false);
+        FernConfirm.SetActive(false);
     }
 
     public void LoadTarin()

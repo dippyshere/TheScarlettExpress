@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
+using DialogueEditor;
 
 public class MapTest : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class MapTest : MonoBehaviour
     private CinemachineInputAxisController m_CinemachineInputAxisController;
 
     public bool isEve;
+    public bool isMap;
+
+    public AudioSource music;
+
+    bool hasTalkedToEve;
+    public NPCConversation eveReminder;
 
     private void Start()
     {
@@ -37,18 +44,34 @@ public class MapTest : MonoBehaviour
             m_Player.m_MovementMode = MovementMode.Decorating;
             m_CinemachineInputAxisController.enabled = false;
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Map"))
+       if (isMap && Input.GetKeyDown(KeyCode.E) && hasTalkedToEve)
         {
+            music.Play();
             Debug.Log("MAP! ACTIVATE!");
             canvas.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             m_Player.m_MovementMode = MovementMode.Decorating;
             m_CinemachineInputAxisController.enabled = false;
+        }
+
+       if (isMap && Input.GetKeyDown(KeyCode.E) && !hasTalkedToEve)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            ConversationManager.Instance.StartConversation(eveReminder);
+        }
+
+
+        hasTalkedToEve = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveTutorialDone);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Map"))
+        {
+            isMap = true;
         }
 
         if (other.CompareTag("Eve"))
@@ -63,5 +86,14 @@ public class MapTest : MonoBehaviour
         {
             isEve = false;
         }
+
+        if (other.CompareTag("Map"))
+        {
+            isMap = false;
+        }
+    }
+    public void AbleToLeaveStation()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.EveTutorialDone, true);
     }
 }

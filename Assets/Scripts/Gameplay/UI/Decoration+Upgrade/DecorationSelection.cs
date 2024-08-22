@@ -15,6 +15,31 @@ public class DecorationSelection : MonoBehaviour
 
     public Image decoration;
 
+    [SerializeField] private ProfileSystem.Variable decorationSaveKey = ProfileSystem.Variable.Bed1Painting1;
+
+    private void Start()
+    {
+        int decorationSelection = ProfileSystem.Get<int>(decorationSaveKey);
+        switch (decorationSelection)
+        {
+            case 1:
+                paintingOptionOne();
+                break;
+            case 2:
+                paintingOptionTwo();
+                break;
+            case 3:
+                paintingOptionThree();
+                break;
+            case 4:
+                paintingOptionFour();
+                break;
+            case 5:
+                paintingOptionFive();
+                break;
+        }
+    }
+
     public void paintingOptionOne()
     {
         decorationOption1.SetActive(true);
@@ -25,6 +50,8 @@ public class DecorationSelection : MonoBehaviour
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
+
+        ProfileSystem.Set(decorationSaveKey, 1);
     }
 
     public void paintingOptionTwo()
@@ -37,6 +64,8 @@ public class DecorationSelection : MonoBehaviour
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
+
+        ProfileSystem.Set(decorationSaveKey, 2);
     }
 
     public void paintingOptionThree()
@@ -49,6 +78,8 @@ public class DecorationSelection : MonoBehaviour
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
+
+        ProfileSystem.Set(decorationSaveKey, 3);
     }
 
     public void paintingOptionFour()
@@ -61,6 +92,8 @@ public class DecorationSelection : MonoBehaviour
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
+
+        ProfileSystem.Set(decorationSaveKey, 4);
     }
 
     public void paintingOptionFive()
@@ -73,5 +106,7 @@ public class DecorationSelection : MonoBehaviour
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
+
+        ProfileSystem.Set(decorationSaveKey, 5);
     }
 }

@@ -17,6 +17,13 @@ public class ClipboardManager : MonoBehaviour
     [SerializeField] private GameObject clipboardUI;
     [SerializeField] private GameObject passengerUI;
     [SerializeField] private GameObject passengerUIPrefab;
+    [SerializeField] private GameObject UpgradeUI;
+    [SerializeField] private GameObject Carriage1;
+    [SerializeField] private GameObject Carriage2;
+
+    [SerializeField] AudioSource music;
+
+    public bool canClipboard;
 
     [SerializeField] private GameObject passUI;
     [SerializeField] private GameObject mainMenuUI;
@@ -28,6 +35,7 @@ public class ClipboardManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canClipboard = true;
         clipboardUI.SetActive(false);
 
         daysLeft = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
@@ -38,12 +46,6 @@ public class ClipboardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            float moneys = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
-            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys + 100);
-        }
-
         if (daysLeft == 1)
         {
             daysLeftText.text = daysLeft.ToString() + " Day Until Arrival";
@@ -55,25 +57,39 @@ public class ClipboardManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (!isClipboardActive)
+            if(canClipboard == true)
             {
-                isClipboardActive = true;
-                clipboardUI.SetActive(true);
-                m_Player.m_MovementMode = MovementMode.Decorating;
-                //PopulatePassengersUI();
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                m_CinemachineInputAxisController.enabled = false;
+                if (!isClipboardActive)
+                {
+                    music.Play();
+                    isClipboardActive = true;
+                    clipboardUI.SetActive(true);
+                    m_Player.m_MovementMode = MovementMode.Decorating;
+                    //PopulatePassengersUI();
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    m_CinemachineInputAxisController.enabled = false;
+                    if (TrainGameAnalytics.instance != null)
+                    {
+                        TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "clipboard" } });
+                    }
+                }
+                else
+                {
+                    music.Play();
+                    isClipboardActive = false;
+                    clipboardUI.SetActive(false);
+                    m_Player.m_MovementMode = MovementMode.Free;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    m_CinemachineInputAxisController.enabled = true;
+                    if (TrainGameAnalytics.instance != null)
+                    {
+                        TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuClosed", "clipboard" } });
+                    }
+                }
             }
-            else
-            {
-                isClipboardActive = false;
-                clipboardUI.SetActive(false);
-                m_Player.m_MovementMode = MovementMode.Free;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                m_CinemachineInputAxisController.enabled = true;
-            }
+           
         }
     }
 
@@ -87,7 +103,7 @@ public class ClipboardManager : MonoBehaviour
         {
             GameObject newPassengerUI = Instantiate(passengerUIPrefab, passengerUI.transform);
             PassengerEntry passengerEntry = newPassengerUI.GetComponent<PassengerEntry>();
-            passengerEntry.SetPassengerInfo(passenger.portrait, passenger.passengerName, passenger.species, passenger.CalculateHappinessValue().ToString(), passenger.hungerLevel.ToString(), passenger.comfortLevel.ToString());
+            passengerEntry.SetPassengerInfo(passenger.portrait, passenger.passengerName, passenger.species, passenger.CalculateSimpleFoodValue().ToString(), passenger.hungerLevel.ToString(), passenger.comfortLevel.ToString());
         }
         RectTransform rectTransform = passengerUI.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, m_PassengerManager.passengers.Count * 82);
@@ -95,22 +111,63 @@ public class ClipboardManager : MonoBehaviour
 
     public void PassengerRosterTime()
     {
+        music.Play();
         passUI.SetActive(true);
         mainMenuUI.SetActive(false);
         PopulatePassengersUI();
-        
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "passengerRoster" } });
+        }
+    }
+
+    public void UpgradeMenu()
+    {
+        music.Play();
+        UpgradeUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "upgradeMenu" } });
+        }
+    }
+
+    public void CarriageUI1()
+    {
+        Carriage1.SetActive(true);
+        Carriage2.SetActive(false);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("carriage_menu", new Dictionary<string, object>() { { "menuOpened", "carriage1" } });
+        }
+    }
+
+    public void CarriageUI2()
+    {
+        Carriage1.SetActive(false);
+        Carriage2.SetActive(true);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("carriage_menu", new Dictionary<string, object>() { { "menuOpened", "carriage2" } });
+        }
     }
 
     public void Back()
     {
         passUI.SetActive(false);
+        UpgradeUI.SetActive(false);
         mainMenuUI.SetActive(true);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu", new Dictionary<string, object>() { { "menuOpened", "mainMenuBack" } });
+        }
     }
 
     public void NextDay()
     {
         int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, dist - 1);
+        m_PassengerManager.DayAdvanceCleanup();
         Debug.Log(dist);
 
         daysLeft--;
@@ -122,6 +179,11 @@ public class ClipboardManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         m_CinemachineInputAxisController.enabled = true;
+
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("next_day", new Dictionary<string, object>() { { "daysLeft", daysLeft }, { "currentStation", ProfileSystem.Get<string>(ProfileSystem.Variable.CurrentStation) }, { "stationDestination", ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination) } });
+        }
     }
 
 }

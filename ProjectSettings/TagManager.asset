@@ -10,6 +10,9 @@ TagManager:
   - Stove
   - Eve
   - Chihuahua
+  - Cash
+  - FxTemporaire
+  - Cash2
   layers:
   - Default
   - TransparentFX

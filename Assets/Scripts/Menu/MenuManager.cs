@@ -9,6 +9,6 @@ public class MenuManager : MonoBehaviour
     {
         // clear profile for playtesting
         ProfileSystem.ClearProfile();
-        SceneManager.LoadSceneAsync("PlayerTesting");
+        SceneManager.LoadSceneAsync("OpeningScene");
     }
 }

@@ -22,7 +22,7 @@ public class PassengerEntry : MonoBehaviour
         }
         this.passengerName.text = passengerName;
         this.species.text = species;
-        this.happinessRating.text = "overall happiness: " + happinessRating + "/5";
+        this.happinessRating.text = "happiness: " + happinessRating + "/5";
         this.hungerRating.text = "hunger: " + hungerRating + "/3";
         this.comfortRating.text = "comfort: " + comfortRating + "/3";
     }
