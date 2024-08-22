@@ -14607,6 +14607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
+      propertyPath: m_Clipboard
+      value: 
+      objectReference: {fileID: 1246993062}
+    - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
+        type: 3}
       propertyPath: BackgroundImage
       value: 
       objectReference: {fileID: -177493934, guid: f3bda593513305542b0946de03cc240e,

@@ -9,6 +9,8 @@ namespace DialogueEditor
 {
     public class ConversationManager : MonoBehaviour
     {
+
+        
         private enum eState
         {
             TransitioningDialogueBoxOn,
@@ -40,6 +42,7 @@ namespace DialogueEditor
         public Sprite OptionImage;
         public bool OptionImageSliced;
         public bool AllowMouseInteraction;
+        
 
         // Non-User facing 
         // Not exposed via custom inspector
@@ -86,15 +89,20 @@ namespace DialogueEditor
 
         [SerializeField, Tooltip("Reference to the player script.")]
         private Character m_Player;
+        
 
         [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
         private CinemachineInputAxisController m_CinemachineInputAxisController;
 
+        [SerializeField, Tooltip("Reference to the clipboard.")]
+        private GameObject m_Clipboard;
+        
 
         //--------------------------------------
         // Awake, Start, Destroy, Update
         //--------------------------------------
 
+        
         private void Awake()
         {
             // Destroy myself if I am not the singleton
@@ -154,6 +162,8 @@ namespace DialogueEditor
 
         public void StartConversation(NPCConversation conversation)
         {
+            m_Clipboard.GetComponent<ClipboardManager>().canClipboard = false;
+
             m_conversation = conversation.Deserialize();
             if (OnConversationStarted != null)
                 OnConversationStarted.Invoke();
@@ -170,6 +180,7 @@ namespace DialogueEditor
 
         public void EndConversation()
         {
+            m_Clipboard.GetComponent<ClipboardManager>().canClipboard = true;
             SetState(eState.TransitioningDialogueOff);
 
             if (OnConversationEnded != null)
