@@ -25,6 +25,8 @@ public class StoveController : MonoBehaviour
     [SerializeField] AudioSource musicC;
     [SerializeField] AudioSource musicD;
 
+    [SerializeField] GameObject clipboard;
+
     private void Start()
     {
         uiFoodTimer.SetActive(false);
@@ -41,6 +43,7 @@ public class StoveController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             cinemachineInputAxisController.enabled = false;
+            clipboard.GetComponent<ClipboardManager>().canClipboard = false;
         }
 
         if (uiFoodPicker.activeSelf)
@@ -49,6 +52,7 @@ public class StoveController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             cinemachineInputAxisController.enabled = false;
+            clipboard.GetComponent<ClipboardManager>().canClipboard = false;
         }
     }
 
@@ -63,6 +67,7 @@ public class StoveController : MonoBehaviour
         {
             TrainGameAnalytics.instance.RecordGameEvent("food_cooked", new Dictionary<string, object>() { { "foodType", stoveFoodType + selectedFoodType } });
         }
+        clipboard.GetComponent<ClipboardManager>().canClipboard = true;
     }
 
     private void SpawnFood()
@@ -99,6 +104,7 @@ public class StoveController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         cinemachineInputAxisController.enabled = true;
+        clipboard.GetComponent<ClipboardManager>().canClipboard = true;
     }
 
     public void PlacedFood()

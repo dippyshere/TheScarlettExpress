@@ -24,6 +24,7 @@ namespace DialogueEditor
         SerializedProperty AllowMouseInteractionProperty;
         SerializedProperty PlayerReference;
         SerializedProperty CameraReference;
+        SerializedProperty ClipboardReference;
 
         private void OnEnable()
         {
@@ -36,6 +37,7 @@ namespace DialogueEditor
             AllowMouseInteractionProperty = serializedObject.FindProperty("AllowMouseInteraction");
             PlayerReference = serializedObject.FindProperty("m_Player");
             CameraReference = serializedObject.FindProperty("m_CinemachineInputAxisController");
+            ClipboardReference = serializedObject.FindProperty("m_Clipboard");
         }
 
         public override void OnInspectorGUI()
@@ -78,6 +80,7 @@ namespace DialogueEditor
             GUILayout.Label("TrainGameOptions", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(PlayerReference);
             EditorGUILayout.PropertyField(CameraReference);
+            EditorGUILayout.PropertyField(ClipboardReference);
 
             // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
             serializedObject.ApplyModifiedProperties();
