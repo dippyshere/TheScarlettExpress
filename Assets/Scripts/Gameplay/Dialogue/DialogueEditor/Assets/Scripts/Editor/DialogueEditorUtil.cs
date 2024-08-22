@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace DialogueEditor
 {
@@ -259,14 +261,18 @@ namespace DialogueEditor
             end = start + leftLine.normalized * len;
             toStart = (start - end).normalized;
             toEnd = (end - start).normalized;
+#if UNITY_EDITOR
             Handles.DrawBezier(start, end, start + toStart, end + toEnd, color, null, width);
+#endif
 
             // Right arc
             Vector2 rightLine = Quaternion.Euler(0, 0, -rotAmount) * -dir;
             end = start + rightLine.normalized * len;
             toStart = (start - end).normalized;
             toEnd = (end - start).normalized;
+#if UNITY_EDITOR
             Handles.DrawBezier(start, end, start + toStart, end + toEnd, color, null, width);
+#endif
         }
 
         public static Color Colour(float r, float g, float b)
@@ -316,7 +322,11 @@ namespace DialogueEditor
 
         public static Color GetEditorColor()
         {
+#if UNITY_EDITOR
             return EditorGUIUtility.isProSkin ? new Color32(56, 56, 56, 255) : new Color32(194, 194, 194, 255);
+#else
+            return new Color32(56, 56, 56, 255);
+#endif
         }
 
         public static Color ProSkinTextColour

@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace DialogueEditor
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(NPCConversation))]
     public class NPCConversationEditor : Editor
     {
@@ -63,4 +66,5 @@ namespace DialogueEditor
             serializedObject.ApplyModifiedProperties();
         }
     }
+#endif
 }

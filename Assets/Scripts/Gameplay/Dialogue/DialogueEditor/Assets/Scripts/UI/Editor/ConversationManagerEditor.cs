@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace DialogueEditor
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(ConversationManager))]
     public class ConversationManagerEditor : Editor
     {
@@ -178,4 +181,5 @@ namespace DialogueEditor
             EditorGUI.LabelField(optionTextRect, "Option.", textStyle);
         }
     }
+#endif
 }

@@ -217,7 +217,7 @@ public class SideviewManager : MonoBehaviour
             wall.SetActive(false);
         }
 
-        if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
+        if (decorationUpgradeCanvas != null)
         {
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);
@@ -257,7 +257,7 @@ public class SideviewManager : MonoBehaviour
         }
         clipboard.GetComponent<ClipboardManager>().canClipboard = true;
 
-        if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
+        if (decorationUpgradeCanvas != null)
         {
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);
@@ -284,7 +284,7 @@ public class SideviewManager : MonoBehaviour
 
     public void Decorate()
     {
-        if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
+        if (decorationUpgradeCanvas != null)
         {
             decorationUpgradeCanvas.SetActive(true);
             decorateCamera.SetActive(true);
@@ -333,7 +333,7 @@ public class SideviewManager : MonoBehaviour
             wall.SetActive(true);
         }
 
-        if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
+        if (decorationUpgradeCanvas != null)
         {
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);
@@ -367,7 +367,7 @@ public class SideviewManager : MonoBehaviour
             wall.SetActive(true);
         }
 
-        if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
+        if (decorationUpgradeCanvas != null)
         {
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);
@@ -401,7 +401,7 @@ public class SideviewManager : MonoBehaviour
             wall.SetActive(true);
         }
 
-        if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
+        if (decorationUpgradeCanvas != null)
         {
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);
@@ -435,7 +435,7 @@ public class SideviewManager : MonoBehaviour
             wall.SetActive(true);
         }
 
-        if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
+        if (decorationUpgradeCanvas != null)
         {
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);

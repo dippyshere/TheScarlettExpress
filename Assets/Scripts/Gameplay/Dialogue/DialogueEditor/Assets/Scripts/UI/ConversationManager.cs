@@ -162,11 +162,11 @@ namespace DialogueEditor
 
         public void StartConversation(NPCConversation conversation)
         {
-            m_Clipboard.GetComponent<ClipboardManager>().canClipboard = false;
+            if (m_Clipboard != null)
+                m_Clipboard.GetComponent<ClipboardManager>().canClipboard = false;
 
             m_conversation = conversation.Deserialize();
-            if (OnConversationStarted != null)
-                OnConversationStarted.Invoke();
+            OnConversationStarted?.Invoke();
 
             TurnOnUI();
             m_currentSpeech = m_conversation.Root;
@@ -180,11 +180,11 @@ namespace DialogueEditor
 
         public void EndConversation()
         {
-            m_Clipboard.GetComponent<ClipboardManager>().canClipboard = true;
+            if (m_Clipboard != null)
+                m_Clipboard.GetComponent<ClipboardManager>().canClipboard = true;
             SetState(eState.TransitioningDialogueOff);
 
-            if (OnConversationEnded != null)
-                OnConversationEnded.Invoke();
+            OnConversationEnded?.Invoke();
 
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

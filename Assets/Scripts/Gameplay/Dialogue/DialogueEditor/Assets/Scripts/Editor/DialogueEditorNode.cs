@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace DialogueEditor
 {
@@ -152,9 +154,11 @@ namespace DialogueEditor
 
                 Vector2 toStart = (start - end).normalized;
                 Vector2 toEnd = (end - start).normalized;
+#if UNITY_EDITOR
                 if (selected)
                     Handles.DrawBezier(start, end, start + toStart, end + toEnd, SelectedColor, null, LINE_WIDTH * 3);
                 Handles.DrawBezier(start, end, start + toStart, end + toEnd, DefaultColor, null, LINE_WIDTH);
+#endif
 
                 Vector2 intersection;
                 Vector2 boxPos = new Vector2(xPos, yPos);
@@ -203,7 +207,9 @@ namespace DialogueEditor
                     {
                         if (rect.Contains(e.mousePosition) && !inPanel)
                         {
+#if UNITY_EDITOR
                             DialogueEditorWindow.SelectableClickedOnThisUpdate = true;
+#endif
                             OnUINodeSelected?.Invoke(this, true);
                             e.Use();
                         }
@@ -336,11 +342,12 @@ namespace DialogueEditor
 
         public override void OnDraw()
         {
+#if UNITY_EDITOR
             if (DialogueEditorWindow.ConversationRoot == SpeechNode)
                 DrawTitle(isSelected ? "[Root]Speech node (selected)." : "[Root] Speech node.");
             else
                 DrawTitle(isSelected ? "Speech node (selected)." : "Speech node.");
-
+#endif
             // Name
             const int NAME_PADDING = 1;
             Rect name = new Rect(rect.x + TEXT_BORDER * 0.5f, rect.y + NAME_PADDING + TITLE_HEIGHT, rect.width - TEXT_BORDER * 0.5f, NAME_HEIGHT);
@@ -376,15 +383,16 @@ namespace DialogueEditor
         //---------------------------------
         // Right clicked
         //---------------------------------
-
         protected override void ProcessContextMenu()
         {
+#if UNITY_EDITOR
             GenericMenu rightClickMenu = new GenericMenu();
             rightClickMenu.AddItem(new GUIContent("Create Option"), false, CreateOption);
             rightClickMenu.AddItem(new GUIContent("Create Speech"), false, CreateSpeech);
             rightClickMenu.AddItem(new GUIContent("Connect"), false, ConnectToNode);
             rightClickMenu.AddItem(new GUIContent("Delete"), false, DeleteThisNode);
             rightClickMenu.ShowAsContext();
+#endif
         }
 
         private void CreateOption()
@@ -472,14 +480,15 @@ namespace DialogueEditor
         //---------------------------------
         // Right clicked
         //---------------------------------
-
         protected override void ProcessContextMenu()
         {
+#if UNITY_EDITOR
             GenericMenu rightClickMenu = new GenericMenu();
             rightClickMenu.AddItem(new GUIContent("Create Speech"), false, CreateSpeech);
             rightClickMenu.AddItem(new GUIContent("Connect"), false, ConnectToNode);
             rightClickMenu.AddItem(new GUIContent("Delete"), false, DeleteThisNode);
             rightClickMenu.ShowAsContext();
+#endif
         }
     }
 }

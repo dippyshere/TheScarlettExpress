@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace DialogueEditor
 {
+#if UNITY_EDITOR
     public class DialogueEditorWindow : EditorWindow
     {
         public abstract class SelectableUI
@@ -1583,4 +1586,5 @@ namespace DialogueEditor
             }
         }
     }
+#endif
 }

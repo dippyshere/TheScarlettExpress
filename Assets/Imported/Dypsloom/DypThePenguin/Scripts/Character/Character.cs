@@ -100,6 +100,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
             m_CharacterDamageable = GetComponent<IDamageable>();
 
             AssignCharacterControllers();
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         
         /// <summary>
