@@ -70,26 +70,31 @@ namespace FullscreenEditor {
             After.Frames(1, () => { // Call after one frame, so we don't acess the styles class before it's created
 
                 var stylesClass = Types.GameView.GetNestedType("Styles", ReflectionUtility.FULL_BINDING);
-                var currentContent = stylesClass.GetFieldValue<GUIContent>("maximizeOnPlayContent");
+                try
+                {
+                    var currentContent = stylesClass.GetFieldValue<GUIContent>("maximizeOnPlayContent");
+                    var newContent = new GUIContent("Fullscreen on Play", FullscreenUtility.FullscreenOnPlayIcon);
+                    var originalContent = new GUIContent(currentContent);
 
-                var newContent = new GUIContent("Fullscreen on Play", FullscreenUtility.FullscreenOnPlayIcon);
-                var originalContent = new GUIContent(currentContent);
+                    var overrideEnabled = FullscreenPreferences.FullscreenOnPlayEnabled;
 
-                var overrideEnabled = FullscreenPreferences.FullscreenOnPlayEnabled;
+                    currentContent.text = overrideEnabled ? newContent.text : originalContent.text;
+                    currentContent.image = overrideEnabled ? newContent.image : originalContent.image;
+                    currentContent.tooltip = overrideEnabled ? newContent.tooltip : originalContent.tooltip;
 
-                currentContent.text = overrideEnabled ? newContent.text : originalContent.text;
-                currentContent.image = overrideEnabled ? newContent.image : originalContent.image;
-                currentContent.tooltip = overrideEnabled ? newContent.tooltip : originalContent.tooltip;
+                    FullscreenPreferences.FullscreenOnPlayEnabled.OnValueSaved += v => {
+                        currentContent.text = v ? newContent.text : originalContent.text;
+                        currentContent.image = v ? newContent.image : originalContent.image;
+                        currentContent.tooltip = v ? newContent.tooltip : originalContent.tooltip;
 
-                FullscreenPreferences.FullscreenOnPlayEnabled.OnValueSaved += v => {
-                    currentContent.text = v ? newContent.text : originalContent.text;
-                    currentContent.image = v ? newContent.image : originalContent.image;
-                    currentContent.tooltip = v ? newContent.tooltip : originalContent.tooltip;
-
-                    if (FullscreenUtility.GetMainGameView())
-                        FullscreenUtility.GetMainGameView().SetPropertyValue("maximizeOnPlay", v);
-                };
-
+                        if (FullscreenUtility.GetMainGameView())
+                            FullscreenUtility.GetMainGameView().SetPropertyValue("maximizeOnPlay", v);
+                    };
+                }
+                catch (System.Exception)
+                {
+                    return;
+                }
             });
         }
 
