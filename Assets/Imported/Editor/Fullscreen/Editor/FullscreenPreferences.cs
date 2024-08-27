@@ -251,9 +251,11 @@ namespace FullscreenEditor {
         }
 
         private static void OnFooterGUI() {
+            
             Func<GUIContent, bool> linkLabel = (label) => typeof(EditorGUILayout).InvokeMethod<bool>("LinkLabel", label, new GUILayoutOption[0]);
 
-            using(new EditorGUILayout.HorizontalScope()) {
+
+            using (new EditorGUILayout.HorizontalScope()) {
                 GUILayout.FlexibleSpace();
                 if (linkLabel(new GUIContent("Consider leaving a review if you're enjoying Fullscreen Editor!", REVIEWS_LINK)))
                     Application.OpenURL(REVIEWS_LINK);

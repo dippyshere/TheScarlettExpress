@@ -121,7 +121,17 @@ namespace FullscreenEditor {
         public static void SetPropertyValue(this object obj, string propertyName, object value) { obj.GetType().FindProperty(propertyName).SetValue(obj, value, null); }
 
         /// <summary>Invoke a static method on the type and return the result.</summary>
-        public static T InvokeMethod<T>(this Type type, string methodName, params object[] args) { return (T)type.FindMethod(methodName, args.Select(a => a.GetType()).ToArray()).Invoke(null, args); }
+        public static T InvokeMethod<T>(this Type type, string methodName, params object[] args)
+        {
+            try
+            {
+                return (T)type.FindMethod(methodName, args.Select(a => a.GetType()).ToArray()).Invoke(null, args); 
+            }
+            catch (Exception)
+            {
+                return default;
+            }
+        }
 
         /// <summary>Invoke a method on the object instance and return the result.</summary>
         public static T InvokeMethod<T>(this object obj, string methodName, params object[] args) { return (T)obj.GetType().FindMethod(methodName, args.Select(a => a.GetType()).ToArray()).Invoke(obj, args); }

@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="681ee0ab-e61b-45d4-9486-ba1fe0dfd343" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/TheScarlettExpress.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TrainGameAnalytics/heatmap_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/link.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/link.xml.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/link.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/link.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity-Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity-Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +62,7 @@
   "keyToString": {
     "Python.heatmap_generator.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature/refinements",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/dippy/GitHub/TheScarlettExpress/src/TrainGameAnalytics/Data",
     "node.js.detected.package.eslint": "true",
@@ -126,6 +122,9 @@
       <updated>1723916051324</updated>
       <workItem from="1723916052408" duration="1791000" />
       <workItem from="1723917866009" duration="2292000" />
+      <workItem from="1724763471749" duration="587000" />
+      <workItem from="1725012128039" duration="703000" />
+      <workItem from="1725436155386" duration="332000" />
     </task>
     <servers />
   </component>
