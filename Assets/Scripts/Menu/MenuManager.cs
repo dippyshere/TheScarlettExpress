@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+#endregion
 
 public class MenuManager : MonoBehaviour
 {
@@ -9,6 +11,6 @@ public class MenuManager : MonoBehaviour
     {
         // clear profile for playtesting
         ProfileSystem.ClearProfile();
-        SceneManager.LoadSceneAsync("OpeningScene");
+        SceneManager.LoadSceneAsync("_Onboarding");
     }
 }

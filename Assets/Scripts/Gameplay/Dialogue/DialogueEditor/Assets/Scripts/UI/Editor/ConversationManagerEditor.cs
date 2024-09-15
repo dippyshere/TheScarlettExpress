@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿#region
+
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+
+#endregion
 
 namespace DialogueEditor
 {
@@ -9,27 +13,27 @@ namespace DialogueEditor
     [CustomEditor(typeof(ConversationManager))]
     public class ConversationManagerEditor : Editor
     {
-        private const string PREVIEW_TEXT = "Placeholder text. This image acts as a preview of the in-game GUI.";
-        private const float BOX_HEIGHT = 75;
-        private const float BUFFER = 15;
-        private const float ICON_SIZE = 50;
-        private const float OPTION_HEIGHT = 35;
-        private const float OPTION_BUFFER = 5;
-        private const float OPTION_TEXT_BUF_Y = 10;
+        const string PREVIEW_TEXT = "Placeholder text. This image acts as a preview of the in-game GUI.";
+        const float BOX_HEIGHT = 75;
+        const float BUFFER = 15;
+        const float ICON_SIZE = 50;
+        const float OPTION_HEIGHT = 35;
+        const float OPTION_BUFFER = 5;
+        const float OPTION_TEXT_BUF_Y = 10;
+        SerializedProperty AllowMouseInteractionProperty;
 
 
         SerializedProperty BackgroundImageProperty;
         SerializedProperty BackgroundImageSlicedProperty;
-        SerializedProperty OptionImageProperty;
-        SerializedProperty OptionImageSlicedProperty;
-        SerializedProperty ScrollTextProperty;
-        SerializedProperty ScrollTextSpeedProperty;
-        SerializedProperty AllowMouseInteractionProperty;
-        SerializedProperty PlayerReference;
         SerializedProperty CameraReference;
         SerializedProperty ClipboardReference;
+        SerializedProperty OptionImageProperty;
+        SerializedProperty OptionImageSlicedProperty;
+        SerializedProperty PlayerReference;
+        SerializedProperty ScrollTextProperty;
+        SerializedProperty ScrollTextSpeedProperty;
 
-        private void OnEnable()
+        void OnEnable()
         {
             BackgroundImageProperty = serializedObject.FindProperty("BackgroundImage");
             BackgroundImageSlicedProperty = serializedObject.FindProperty("BackgroundImageSliced");
@@ -59,7 +63,7 @@ namespace DialogueEditor
             // Background image
             GUILayout.Label("Dialogue Image Options", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(BackgroundImageProperty);
-            EditorGUILayout.PropertyField(BackgroundImageSlicedProperty); 
+            EditorGUILayout.PropertyField(BackgroundImageSlicedProperty);
             EditorGUILayout.Space();
 
             // Option image
@@ -72,7 +76,10 @@ namespace DialogueEditor
             GUILayout.Label("Text options", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(ScrollTextProperty);
             if (t.ScrollText)
+            {
                 EditorGUILayout.PropertyField(ScrollTextSpeedProperty);
+            }
+
             EditorGUILayout.Space();
 
             // Interaction options
@@ -89,7 +96,7 @@ namespace DialogueEditor
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void RenderPreviewImage(ConversationManager t)
+        void RenderPreviewImage(ConversationManager t)
         {
             Rect contextRect = EditorGUILayout.GetControlRect();
 
@@ -109,8 +116,8 @@ namespace DialogueEditor
 
                 if (t.BackgroundImageSliced)
                 {
-                    GUIStyle style = new GUIStyle();
-                    RectOffset ro = new RectOffset();
+                    GUIStyle style = new();
+                    RectOffset ro = new();
                     ro.left = (int)t.BackgroundImage.border.w;
                     ro.top = (int)t.BackgroundImage.border.x;
                     ro.right = (int)t.BackgroundImage.border.y;
@@ -128,9 +135,9 @@ namespace DialogueEditor
 
             // Draw icon
             float difference = BOX_HEIGHT - ICON_SIZE;
-            Rect iconRect = new Rect(boxRect.x + BUFFER, boxRect.y + difference * 0.5f, ICON_SIZE, ICON_SIZE);
+            Rect iconRect = new(boxRect.x + BUFFER, boxRect.y + difference * 0.5f, ICON_SIZE, ICON_SIZE);
             EditorGUI.DrawRect(iconRect, Color.white);
-            Rect tmpt = new Rect(iconRect);
+            Rect tmpt = new(iconRect);
             tmpt.x += 2f;
             tmpt.y += ICON_SIZE * 0.1f;
             EditorGUI.LabelField(tmpt, "<Icon>");
@@ -138,9 +145,9 @@ namespace DialogueEditor
             // Draw text
             float text_x, text_wid;
             text_x = iconRect.x + iconRect.width + difference * 0.5f;
-            text_wid = ((boxRect.x + boxRect.width) - difference * 0.5f) - text_x;
-            Rect textRect = new Rect(text_x, iconRect.y, text_wid, ICON_SIZE);
-            GUIStyle textStyle = new GUIStyle();
+            text_wid = boxRect.x + boxRect.width - difference * 0.5f - text_x;
+            Rect textRect = new(text_x, iconRect.y, text_wid, ICON_SIZE);
+            GUIStyle textStyle = new();
             textStyle.normal.textColor = Color.white;
             textStyle.wordWrap = true;
             textStyle.clipping = TextClipping.Clip;
@@ -151,8 +158,8 @@ namespace DialogueEditor
             float option_x, option_wid;
             option_wid = boxRect.width * 0.8f;
             option_x = boxRect.x + boxRect.width * 0.1f;
-            Rect optionRect = new Rect(option_x, boxRect.y + boxRect.height + OPTION_BUFFER, option_wid, OPTION_HEIGHT);
-            Rect optionTextRect = new Rect(optionRect);
+            Rect optionRect = new(option_x, boxRect.y + boxRect.height + OPTION_BUFFER, option_wid, OPTION_HEIGHT);
+            Rect optionTextRect = new(optionRect);
             optionTextRect.x += optionRect.width * 0.4f;
             optionTextRect.y += OPTION_TEXT_BUF_Y;
             if (t.OptionImage == null)
@@ -163,8 +170,8 @@ namespace DialogueEditor
             {
                 if (t.OptionImageSliced)
                 {
-                    GUIStyle style = new GUIStyle();
-                    RectOffset ro = new RectOffset();
+                    GUIStyle style = new();
+                    RectOffset ro = new();
                     ro.left = (int)t.OptionImage.border.w;
                     ro.top = (int)t.OptionImage.border.x;
                     ro.right = (int)t.OptionImage.border.y;
@@ -178,6 +185,7 @@ namespace DialogueEditor
                     GUI.DrawTexture(optionRect, t.OptionImage.texture, ScaleMode.StretchToFill);
                 }
             }
+
             EditorGUI.LabelField(optionTextRect, "Option.", textStyle);
         }
     }

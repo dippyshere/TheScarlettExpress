@@ -1,15 +1,17 @@
+#region
+
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+
+#endregion
 
 public class AddedMoneyUI : MonoBehaviour
 {
-    public TextMeshProUGUI moneyTxt;
     public GameObject moneys;
+    public TextMeshProUGUI moneyTxt;
 
-    public float moneyy = 0.0f;
+    public float moneyy;
 
     void Start()
     {
@@ -17,7 +19,7 @@ public class AddedMoneyUI : MonoBehaviour
         UpdateAddedMoneyUI();
     }
 
-    private void UpdateAddedMoneyUI()
+    void UpdateAddedMoneyUI()
     {
         moneyTxt.text = "+ $" + moneyy;
     }

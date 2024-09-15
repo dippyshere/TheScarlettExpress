@@ -1,25 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
+
+#endregion
 
 public class Eve : MonoBehaviour
 {
     public GameObject eveDrawing;
-    public GameObject shopEve;
     public GameObject panelDialogue;
     public GameObject panelOptions;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject shopEve;
 
     public void ShowPainting()
     {

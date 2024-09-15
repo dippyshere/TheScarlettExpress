@@ -1,13 +1,16 @@
-using System.Collections;
+#region
+
 using System.Collections.Generic;
 using UnityEngine;
 
+#endregion
+
 public class Economy : MonoBehaviour
 {
-    public float money = 0.0f;
     public AddedMoneyUI addedMoneyUI;
+    public float money;
 
-    private void Awake()
+    void Awake()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
     }
@@ -19,7 +22,8 @@ public class Economy : MonoBehaviour
         ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, this.money);
         if (TrainGameAnalytics.instance != null)
         {
-            TrainGameAnalytics.instance.RecordGameEvent("money_earned", new Dictionary<string, object>() { { "money", money }, { "totalMoney", this.money } });
+            TrainGameAnalytics.instance.RecordGameEvent("money_earned",
+                new Dictionary<string, object> { { "money", money }, { "totalMoney", this.money } });
         }
     }
 }

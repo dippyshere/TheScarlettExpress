@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿#region
+
 using System.Collections.Generic;
-using UnityEngine;
+using TMPro;
+
+#endregion
 
 //--------------------------------------
 // Conversation C# class - User Facing
@@ -11,27 +14,27 @@ namespace DialogueEditor
     public enum eParamStatus
     {
         OK = 0,
-        NoParamFound = 1,
+        NoParamFound = 1
     }
 
     public class Conversation
     {
-        public Conversation()
-        {
-            Parameters = new List<Parameter>();
-        }
+        /// <summary> The font used for the 'Continue' button. </summary>
+        public TMP_FontAsset ContinueFont;
 
-        /// <summary> The start of the conversation </summary>
-        public SpeechNode Root;
+        /// <summary> The font used for the 'End' button. </summary>
+        public TMP_FontAsset EndConversationFont;
 
         /// <summary> The parameters of this conversation, and their values </summary>
         public List<Parameter> Parameters;
 
-        /// <summary> The font used for the 'Continue' button. </summary>
-        public TMPro.TMP_FontAsset ContinueFont;
+        /// <summary> The start of the conversation </summary>
+        public SpeechNode Root;
 
-        /// <summary> The font used for the 'End' button. </summary>
-        public TMPro.TMP_FontAsset EndConversationFont;
+        public Conversation()
+        {
+            Parameters = new List<Parameter>();
+        }
 
         // ---
 
@@ -71,10 +74,8 @@ namespace DialogueEditor
                 status = eParamStatus.OK;
                 return param.IntValue;
             }
-            else
-            {
-                status = eParamStatus.NoParamFound;
-            }
+
+            status = eParamStatus.NoParamFound;
             return 0;
         }
 
@@ -85,22 +86,22 @@ namespace DialogueEditor
             {
                 status = eParamStatus.OK;
                 return param.BoolValue;
-                
             }
-            else
-            {
-                status = eParamStatus.NoParamFound;
-            }
+
+            status = eParamStatus.NoParamFound;
             return false;
         }
 
-        private Parameter GetParameter(string name)
+        Parameter GetParameter(string name)
         {
             for (int i = 0; i < Parameters.Count; i++)
             {
                 if (Parameters[i].ParameterName == name)
+                {
                     return Parameters[i];
+                }
             }
+
             return null;
         }
     }

@@ -8,9 +8,9 @@
             BoolCondition
         }
 
-        public abstract eConditionType ConditionType { get; }
-
         public string ParameterName;
+
+        public abstract eConditionType ConditionType { get; }
     }
 
     public class IntCondition : Condition
@@ -22,23 +22,29 @@
             greaterThan
         }
 
-        public override eConditionType ConditionType { get { return eConditionType.IntCondition; } }
-
         public eCheckType CheckType;
         public int RequiredValue;
+
+        public override eConditionType ConditionType
+        {
+            get { return eConditionType.IntCondition; }
+        }
     }
 
     public class BoolCondition : Condition
     {
+        public eCheckType CheckType;
+        public bool RequiredValue;
+
+        public override eConditionType ConditionType
+        {
+            get { return eConditionType.BoolCondition; }
+        }
+
         public enum eCheckType
         {
             equal,
             notEqual
         }
-
-        public override eConditionType ConditionType { get { return eConditionType.BoolCondition; } }
-
-        public eCheckType CheckType;
-        public bool RequiredValue;
     }
 }

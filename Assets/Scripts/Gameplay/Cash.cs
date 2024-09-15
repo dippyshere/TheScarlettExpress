@@ -1,78 +1,67 @@
+#region
+
 using DialogueEditor;
 using Dypsloom.DypThePenguin.Scripts.Character;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Cinemachine;
 using UnityEngine;
+
+#endregion
 
 public class Cash : MonoBehaviour
 {
+    public NPCConversation conversation;
     public bool isEarning;
-    public float money;
+    float _money;
 
     public AudioSource music;
-
-    public NPCConversation conversation;
-
-    //[SerializeField, Tooltip("Reference to the player script.")]
-    //private Character m_Player;
-
-    //[SerializeField, Tooltip("Reference to the cinemachine input manager.")]
-    //private CinemachineInputAxisController m_CinemachineInputAxisController;
-
-    //public GameObject cashDialogue;
-
-    public GameObject promptUI;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+        _money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isEarning && Input.GetKeyDown(KeyCode.E) && money <= 75f)
+        if (isEarning && Input.GetKeyDown(KeyCode.E) && _money <= 75f)
         {
             music.Play();
             Invoke(nameof(DeleteCashGameObject), 0.01f);
             //this.gameObject.SetActive(false);
             isEarning = false;
 
-            money += 5;
-            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
+            _money += 5;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, _money);
 
-            promptUI.SetActive(false);
+            Character.Instance.promptUI.SetActive(false);
             BeginConversation();
 
             //cashDialogue.SetActive(false);
         }
 
-        if (isEarning && Input.GetKeyDown(KeyCode.E) && money >= 76f)
+        if (isEarning && Input.GetKeyDown(KeyCode.E) && _money >= 76f)
         {
             music.Play();
             Invoke(nameof(DeleteCashGameObject), 0.01f);
             //this.gameObject.SetActive(false);
             isEarning = false;
 
-            money += 5;
-            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
+            _money += 5;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, _money);
 
-            promptUI.SetActive(false);
+            Character.Instance.promptUI.SetActive(false);
 
             //cashDialogue.SetActive(false);
         }
 
-        money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+        _money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             isEarning = true;
-            promptUI.SetActive(true);
+            Character.Instance.promptUI.SetActive(true);
         }
 
         //if (this.gameObject.tag == "Cash1" && other.gameObject.tag == "Player")
@@ -83,24 +72,22 @@ public class Cash : MonoBehaviour
         //}
     }
 
-    private void OnTriggerExit(Collider collision)
+    void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             isEarning = false;
-            promptUI.SetActive(false);
+            Character.Instance.promptUI.SetActive(false);
         }
     }
 
-    private void DeleteCashGameObject()
+    void DeleteCashGameObject()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
-    private void BeginConversation()
+    void BeginConversation()
     {
         ConversationManager.Instance.StartConversation(conversation);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
     }
 }

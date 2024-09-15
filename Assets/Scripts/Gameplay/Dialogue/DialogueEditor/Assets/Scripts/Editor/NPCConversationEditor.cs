@@ -1,9 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+
+#endregion
 
 namespace DialogueEditor
 {
@@ -11,8 +13,8 @@ namespace DialogueEditor
     [CustomEditor(typeof(NPCConversation))]
     public class NPCConversationEditor : Editor
     {
-        private static GUIStyle boldStyle;
-        private static GUIStyle regularStyle;
+        static GUIStyle boldStyle;
+        static GUIStyle regularStyle;
 
         void OnEnable()
         {
@@ -49,11 +51,11 @@ namespace DialogueEditor
     [CustomEditor(typeof(NodeEventHolder))]
     public class NodeEventHolderEditor : Editor
     {
-        private NodeEventHolder n;
+        NodeEventHolder n;
 
         void OnEnable()
         {
-            n = (base.target as NodeEventHolder);
+            n = target as NodeEventHolder;
         }
 
         public override void OnInspectorGUI()

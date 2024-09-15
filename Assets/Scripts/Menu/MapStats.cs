@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+
+#endregion
 
 public class MapStats : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] GameObject stationStats;
 
-    private void Start()
+    void Start()
     {
         stationStats.SetActive(false);
     }
@@ -23,7 +24,4 @@ public class MapStats : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         stationStats.SetActive(false);
     }
-
-
-
 }

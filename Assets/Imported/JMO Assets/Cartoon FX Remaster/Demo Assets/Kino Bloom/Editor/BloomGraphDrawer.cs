@@ -1,28 +1,9 @@
-//
-// Kino/Bloom v2 - Bloom filter for Unity
-//
-// Copyright (C) 2015, 2016 Keijiro Takahashi
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-//
-using UnityEngine;
+#region
+
 using UnityEditor;
+using UnityEngine;
+
+#endregion
 
 namespace Kino
 {
@@ -34,11 +15,11 @@ namespace Kino
         // Update internal state with a given bloom instance.
         public void Prepare(Bloom bloom)
         {
-            #if UNITY_5_6_OR_NEWER
+#if UNITY_5_6_OR_NEWER
             if (bloom.GetComponent<Camera>().allowHDR)
-            #else
+#else
             if (bloom.GetComponent<Camera>().hdr)
-            #endif
+#endif
             {
                 _rangeX = 6;
                 _rangeY = 1.5f;
@@ -68,12 +49,16 @@ namespace Kino
             DrawRect(_threshold - _knee, 0, _threshold + _knee, _rangeY, 0.25f, -1);
 
             // Horizontal lines
-            for (var i = 1; i < _rangeY; i++)
+            for (int i = 1; i < _rangeY; i++)
+            {
                 DrawLine(0, i, _rangeX, i, 0.4f);
+            }
 
             // Vertical lines
-            for (var i = 1; i < _rangeX; i++)
+            for (int i = 1; i < _rangeX; i++)
+            {
                 DrawLine(i, 0, i, _rangeY, 0.4f);
+            }
 
             // Label
             Handles.Label(
@@ -85,11 +70,11 @@ namespace Kino
             DrawLine(_threshold, 0, _threshold, _rangeY, 0.6f);
 
             // Response curve
-            var vcount = 0;
+            int vcount = 0;
             while (vcount < _curveResolution)
             {
-                var x = _rangeX * vcount / (_curveResolution - 1);
-                var y = ResponseFunction(x);
+                float x = _rangeX * vcount / (_curveResolution - 1);
+                float y = ResponseFunction(x);
                 if (y < _rangeY)
                 {
                     _curveVertices[vcount++] = PointInRect(x, y);
@@ -99,11 +84,12 @@ namespace Kino
                     if (vcount > 1)
                     {
                         // Extend the last segment to the top edge of the rect.
-                        var v1 = _curveVertices[vcount - 2];
-                        var v2 = _curveVertices[vcount - 1];
-                        var clip = (_rectGraph.y - v1.y) / (v2.y - v1.y);
+                        Vector3 v1 = _curveVertices[vcount - 2];
+                        Vector3 v2 = _curveVertices[vcount - 1];
+                        float clip = (_rectGraph.y - v1.y) / (v2.y - v1.y);
                         _curveVertices[vcount - 1] = v1 + (v2 - v1) * clip;
                     }
+
                     break;
                 }
             }
@@ -125,7 +111,7 @@ namespace Kino
 
         float ResponseFunction(float x)
         {
-            var rq = Mathf.Clamp(x - _threshold + _knee, 0, _knee * 2);
+            float rq = Mathf.Clamp(x - _threshold + _knee, 0, _knee * 2);
             rq = rq * rq * 0.25f / _knee;
             return Mathf.Max(rq, x - _threshold) * _intensity;
         }
@@ -138,9 +124,9 @@ namespace Kino
         const int _curveResolution = 96;
 
         // Vertex buffers
-        Vector3[] _rectVertices = new Vector3[4];
-        Vector3[] _lineVertices = new Vector3[2];
-        Vector3[] _curveVertices = new Vector3[_curveResolution];
+        readonly Vector3[] _rectVertices = new Vector3[4];
+        readonly Vector3[] _lineVertices = new Vector3[2];
+        readonly Vector3[] _curveVertices = new Vector3[_curveResolution];
 
         Rect _rectGraph;
         float _rangeX;

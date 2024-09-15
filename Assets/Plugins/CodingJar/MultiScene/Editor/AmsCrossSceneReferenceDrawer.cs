@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using UnityEditor;
-
-namespace CodingJar.MultiScene
+﻿namespace CodingJar.MultiScene
 {
 #if false
     [CustomPropertyDrawer(typeof(SceneData.CrossSceneReference))]
@@ -66,11 +63,11 @@ namespace CodingJar.MultiScene
 
             // Calculate rects
             float lineHeight = EditorGUIUtility.singleLineHeight;
-            Rect fromSubSceneRect   = new Rect(position.x, position.y + lineHeight * 0, position.width, lineHeight);
-            Rect fromObjectRect     = new Rect(position.x, position.y + lineHeight * 1, position.width, lineHeight);
-            Rect fromPropertyRect   = new Rect(position.x, position.y + lineHeight * 2, position.width, lineHeight);
-            Rect toSubSceneRect     = new Rect(position.x, position.y + lineHeight * 3, position.width, lineHeight);
-            Rect toObjectRect       = new Rect(position.x, position.y + lineHeight * 4, position.width, lineHeight);
+            Rect fromSubSceneRect = new Rect(position.x, position.y + lineHeight * 0, position.width, lineHeight);
+            Rect fromObjectRect = new Rect(position.x, position.y + lineHeight * 1, position.width, lineHeight);
+            Rect fromPropertyRect = new Rect(position.x, position.y + lineHeight * 2, position.width, lineHeight);
+            Rect toSubSceneRect = new Rect(position.x, position.y + lineHeight * 3, position.width, lineHeight);
+            Rect toObjectRect = new Rect(position.x, position.y + lineHeight * 4, position.width, lineHeight);
 
             Color oldColor = GUI.color;
 
@@ -100,7 +97,8 @@ namespace CodingJar.MultiScene
                 toSubScene = SubSceneEx.GetSubScene( toObject );
                 if ( toSubScene )
                 {
-                    content = new GUIContent( propToSubScene.displayName, "This value was computed from a deep-search for the Object. It is probably a deep reference" );
+                    content =
+ new GUIContent( propToSubScene.displayName, "This value was computed from a deep-search for the Object. It is probably a deep reference" );
                     GUI.color = Color.yellow;
                 }
             }
@@ -115,7 +113,8 @@ namespace CodingJar.MultiScene
                 if ( bWasDeepObjRef )
                 {
                     GUI.color = Color.yellow;
-                    content.tooltip = "This value was computed from a deep-search for the Object. It is probably a deep reference";
+                    content.tooltip =
+ "This value was computed from a deep-search for the Object. It is probably a deep reference";
                 }
 
                 EditorGUI.ObjectField( toObjectRect, "To Object Ref", toObject, typeof(Object), true );

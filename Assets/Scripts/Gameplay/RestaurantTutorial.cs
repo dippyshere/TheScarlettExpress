@@ -1,61 +1,64 @@
+#region
+
 using DialogueEditor;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+#endregion
 
 public class RestaurantTutorial : MonoBehaviour
 {
-    bool hasCompletedRTutorial;
-    public GameObject tutorialChihuahua;
-    public GameObject exclamation;
-    public GameObject drinkStoveSelection;
-    public GameObject cookingStoveSelection;
-    public GameObject saladStoveSelection;
-    public GameObject jellyStoveSelection;
-    public NPCConversation stoveTutorial;
-    public NPCConversation nowWeWait;
     public NPCConversation beginRestaurantTutorial;
-    //public NPCConversation eveConversation;
+    [SerializeField] bool canStoveTutorial = true;
 
-    [SerializeField] private bool stoveTime;
-    [SerializeField] private bool canStoveTutorial = true;
+    public GameObject cookingStoveSelection;
+    public GameObject drinkStoveSelection;
+    public GameObject exclamation;
+    bool _hasCompletedRTutorial;
+    public GameObject jellyStoveSelection;
+
+    public NPCConversation nowWeWait;
     //[SerializeField] private bool talkToEve = false;
     //[SerializeField] private bool waitingTime;
 
     public GameObject panelDialogue;
 
-    public GameObject clipboard;
+    public GameObject saladStoveSelection;
+    //public NPCConversation eveConversation;
 
-    // Start is called before the first frame update
+    [SerializeField] bool stoveTime;
+    public NPCConversation stoveTutorial;
+    public GameObject tutorialChihuahua;
+    
     void Start()
     {
-        hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
+        _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
         ConversationManager.Instance.StartConversation(beginRestaurantTutorial);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (panelDialogue.activeSelf)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        
-        if (!panelDialogue.activeSelf && !drinkStoveSelection.activeSelf && !cookingStoveSelection.activeSelf && !saladStoveSelection.activeSelf && !jellyStoveSelection.activeSelf && !clipboard.activeSelf)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+//        if (panelDialogue.activeSelf)
+//        {
+//            Cursor.visible = true;
+//            Cursor.lockState = CursorLockMode.None;
+//        }
+//
+//        if (!panelDialogue.activeSelf && !drinkStoveSelection.activeSelf && !cookingStoveSelection.activeSelf &&
+//            !saladStoveSelection.activeSelf && !jellyStoveSelection.activeSelf && !ClipboardManager.Instance.clipboardUI.activeSelf)
+//        {
+//            Cursor.visible = false;
+//            Cursor.lockState = CursorLockMode.Locked;
+//        }
 
-        hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
+        _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
 
-        if (!hasCompletedRTutorial)
+        if (!_hasCompletedRTutorial)
         {
             tutorialChihuahua.SetActive(true);
         }
 
-        if (hasCompletedRTutorial)
+        if (_hasCompletedRTutorial)
         {
             tutorialChihuahua.SetActive(false);
         }
@@ -78,7 +81,7 @@ public class RestaurantTutorial : MonoBehaviour
         //}
     }
 
-    private void OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -91,7 +94,7 @@ public class RestaurantTutorial : MonoBehaviour
         //}
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -101,7 +104,7 @@ public class RestaurantTutorial : MonoBehaviour
 
     public void RestaurantTutorialCompleted()
     {
-        hasCompletedRTutorial = true;
+        _hasCompletedRTutorial = true;
     }
 
     public void StartTutorial()
@@ -110,11 +113,9 @@ public class RestaurantTutorial : MonoBehaviour
         canStoveTutorial = true;
     }
 
-    private void BeginStoveTutorial()
+    void BeginStoveTutorial()
     {
         ConversationManager.Instance.StartConversation(stoveTutorial);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
 
         canStoveTutorial = false;
         stoveTime = false;
@@ -124,14 +125,10 @@ public class RestaurantTutorial : MonoBehaviour
     {
         exclamation.SetActive(false);
         ConversationManager.Instance.StartConversation(nowWeWait);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
     }
 
     //private void BeginEveConversation()
     //{
     //    ConversationManager.Instance.StartConversation(eveConversation);
-    //    Cursor.visible = true;
-    //    Cursor.lockState = CursorLockMode.None;
     //}
 }

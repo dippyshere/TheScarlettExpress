@@ -2,72 +2,78 @@
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "Dypsloom/Outline"
 {
-	Properties
-	{
-		_ASEOutlineColor( "Outline Color", Color ) = (0,0,0,0)
-		_ASEOutlineWidth( "Outline Width", Float ) = 0
-		_Texture("Texture", 2D) = "white" {}
-		[HideInInspector] _texcoord( "", 2D ) = "white" {}
-		[HideInInspector] __dirty( "", Int ) = 1
-	}
+    Properties
+    {
+        _ASEOutlineColor( "Outline Color", Color ) = (0,0,0,0)
+        _ASEOutlineWidth( "Outline Width", Float ) = 0
+        _Texture("Texture", 2D) = "white" {}
+        [HideInInspector] _texcoord( "", 2D ) = "white" {}
+        [HideInInspector] __dirty( "", Int ) = 1
+    }
 
-	SubShader
-	{
-		Tags{ }
-		Cull Front
-		CGPROGRAM
-		#pragma target 3.0
-		#pragma surface outlineSurf Outline nofog  keepalpha noshadow noambient novertexlights nolightmap nodynlightmap nodirlightmap nometa noforwardadd vertex:outlineVertexDataFunc 
-		
-		
-		
-		struct Input {
-			half filler;
-		};
-		uniform half4 _ASEOutlineColor;
-		uniform half _ASEOutlineWidth;
-		void outlineVertexDataFunc( inout appdata_full v, out Input o )
-		{
-			UNITY_INITIALIZE_OUTPUT( Input, o );
-			v.vertex.xyz += ( v.normal * _ASEOutlineWidth );
-		}
-		inline half4 LightingOutline( SurfaceOutput s, half3 lightDir, half atten ) { return half4 ( 0,0,0, s.Alpha); }
-		void outlineSurf( Input i, inout SurfaceOutput o )
-		{
-			o.Emission = _ASEOutlineColor.rgb;
-			o.Alpha = 1;
-		}
-		ENDCG
-		
+    SubShader
+    {
+        Tags {}
+        Cull Front
+        CGPROGRAM
+        #pragma target 3.0
+        #pragma surface outlineSurf Outline nofog  keepalpha noshadow noambient novertexlights nolightmap nodynlightmap nodirlightmap nometa noforwardadd vertex:outlineVertexDataFunc
 
-		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" "IsEmissive" = "true"  }
-		Cull Back
-		CGPROGRAM
-		#pragma target 3.0
-		#pragma surface surf Unlit keepalpha addshadow fullforwardshadows exclude_path:deferred 
-		struct Input
-		{
-			float2 uv_texcoord;
-		};
 
-		uniform sampler2D _Texture;
-		uniform float4 _Texture_ST;
+        struct Input
+        {
+            half filler;
+        };
 
-		inline half4 LightingUnlit( SurfaceOutput s, half3 lightDir, half atten )
-		{
-			return half4 ( 0, 0, 0, s.Alpha );
-		}
+        uniform half4 _ASEOutlineColor;
+        uniform half _ASEOutlineWidth;
 
-		void surf( Input i , inout SurfaceOutput o )
-		{
-			float2 uv_Texture = i.uv_texcoord * _Texture_ST.xy + _Texture_ST.zw;
-			o.Emission = tex2D( _Texture, uv_Texture ).rgb;
-			o.Alpha = 1;
-		}
+        void outlineVertexDataFunc(inout appdata_full v, out Input o)
+        {
+                UNITY_INITIALIZE_OUTPUT(Input, o);
+            v.vertex.xyz += (v.normal * _ASEOutlineWidth);
+        }
 
-		ENDCG
-	}
-	Fallback "Diffuse"
+        inline half4 LightingOutline(SurfaceOutput s, half3 lightDir, half atten) { return half4(0, 0, 0, s.Alpha); }
+
+        void outlineSurf(Input i, inout SurfaceOutput o)
+        {
+            o.Emission = _ASEOutlineColor.rgb;
+            o.Alpha = 1;
+        }
+        ENDCG
+
+
+        Tags
+        {
+            "RenderType" = "Opaque" "Queue" = "Geometry+0" "IsEmissive" = "true"
+        }
+        Cull Back
+        CGPROGRAM
+        #pragma target 3.0
+        #pragma surface surf Unlit keepalpha addshadow fullforwardshadows exclude_path:deferred
+        struct Input
+        {
+            float2 uv_texcoord;
+        };
+
+        uniform sampler2D _Texture;
+        uniform float4 _Texture_ST;
+
+        inline half4 LightingUnlit(SurfaceOutput s, half3 lightDir, half atten)
+        {
+            return half4(0, 0, 0, s.Alpha);
+        }
+
+        void surf(Input i, inout SurfaceOutput o)
+        {
+            float2 uv_Texture = i.uv_texcoord * _Texture_ST.xy + _Texture_ST.zw;
+            o.Emission = tex2D(_Texture, uv_Texture).rgb;
+            o.Alpha = 1;
+        }
+        ENDCG
+    }
+    Fallback "Diffuse"
 }
 /*ASEBEGIN
 Version=17800

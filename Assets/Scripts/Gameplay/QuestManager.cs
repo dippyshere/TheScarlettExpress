@@ -1,22 +1,20 @@
+#region
+
 using DialogueEditor;
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+#endregion
 
 public class QuestManager : MonoBehaviour
 {
-    public float money;
-    public NPCConversation earnedConversation;
-    public NPCConversation renovatedConversation;
     public NPCConversation beginTutorial;
-    public GameObject sideviewCamera;
-    public GameObject carriage2Camera;
-    bool hasCheckedMoney = false;
+    public NPCConversation earnedConversation;
+    bool _hasCheckedMoney;
 
-    bool hasRenovated = false;
+    bool _hasRenovated;
+    public float money;
+    public NPCConversation renovatedConversation;
 
-    // Start is called before the first frame update
     void Start()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
@@ -28,44 +26,37 @@ public class QuestManager : MonoBehaviour
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
 
-        if (money >= 100f && !hasCheckedMoney)
+        if (money >= 100f && !_hasCheckedMoney)
         {
-            hasCheckedMoney = true;
+            _hasCheckedMoney = true;
             BeginEarnedConversation();
-            Debug.Log("ahhhhhhh");
         }
 
-        if (money <= 0f && !hasRenovated)
+        if (money <= 0f && !_hasRenovated)
         {
             InitiateConversation();
         }
     }
 
-    private void BeginTutorial()
+    void BeginTutorial()
     {
         ConversationManager.Instance.StartConversation(beginTutorial);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
     }
 
     public void InitiateConversation()
     {
         Invoke(nameof(BeginRenovatedConversation), 4f);
-        hasRenovated = true;
+        _hasRenovated = true;
     }
 
-    private void BeginEarnedConversation()
+    void BeginEarnedConversation()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         ConversationManager.Instance.StartConversation(earnedConversation);
     }
 
     public void BeginRenovatedConversation()
     {
-        hasRenovated = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        _hasRenovated = true;
         ConversationManager.Instance.StartConversation(renovatedConversation);
     }
 }

@@ -1,33 +1,39 @@
-﻿using System.Collections;
+﻿#region
+
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
+using TMPro;
+using UnityEditor;
+using UnityEngine;
+
+#endregion
 
 namespace DialogueEditor
 {
-    [DataContract]
-    [KnownType(typeof(EditableSpeechConnection))]
-    [KnownType(typeof(EditableOptionConnection))]
-    [KnownType(typeof(EditableSetIntParamAction))]
-    [KnownType(typeof(EditableSetBoolParamAction))]
+    [DataContract, KnownType(typeof(EditableSpeechConnection)), KnownType(typeof(EditableOptionConnection)),
+     KnownType(typeof(EditableSetIntParamAction)), KnownType(typeof(EditableSetBoolParamAction))]
     public abstract class EditableConversationNode
     {
-        public enum eNodeType
-        {
-            Speech,
-            Option
-        }
+        [DataMember] public List<EditableConnection> Connections;
 
-        /// <summary> Info used internally by the editor window. </summary>
-        [DataContract]
-        public class EditorArgs
-        {
-            [DataMember] public float xPos;
-            [DataMember] public float yPos;
-            [DataMember] public bool isRoot;
-        }
+        // ----
+        // Serialized Editor vars
+        [DataMember] public EditorArgs EditorInfo;
+        [DataMember] public int ID;
+        [DataMember] public List<EditableSetParamAction> ParamActions;
+        public List<EditableConversationNode> parents;
+        [DataMember] public List<int> parentUIDs;
+
+        // ----
+        // Serialized Node data
+        [DataMember] public string Text;
+
+        // ----
+        // Volatile
+        public TMP_FontAsset TMPFont;
+
+        /// <summary> Deprecated as of V1.03 </summary>
+        [DataMember] public string TMPFontGUID;
 
         public EditableConversationNode()
         {
@@ -40,32 +46,15 @@ namespace DialogueEditor
 
         public abstract eNodeType NodeType { get; }
 
-        // ----
-        // Serialized Editor vars
-        [DataMember] public EditorArgs EditorInfo;
-        [DataMember] public int ID;
-
-        // ----
-        // Serialized Node data
-        [DataMember] public string Text;
-        [DataMember] public List<EditableConnection> Connections;
-        [DataMember] public List<int> parentUIDs;
-        [DataMember] public List<EditableSetParamAction> ParamActions;
-        /// <summary> Deprecated as of V1.03 </summary>
-        [DataMember] public string TMPFontGUID;
-
-        // ----
-        // Volatile
-        public TMPro.TMP_FontAsset TMPFont;
-        public List<EditableConversationNode> parents;
-
 
         // ------------------------
 
         public void RegisterUIDs()
         {
             if (parentUIDs != null)
+            {
                 parentUIDs.Clear();
+            }
 
             parentUIDs = new List<int>();
 
@@ -97,12 +86,14 @@ namespace DialogueEditor
             {
                 parents[i].DeleteConnectionChild(this);
             }
-        }    
+        }
 
         public void DeleteConnectionChild(EditableConversationNode node)
         {
             if (Connections.Count == 0)
+            {
                 return;
+            }
 
             if (node.NodeType == eNodeType.Speech && Connections[0] is EditableSpeechConnection)
             {
@@ -136,42 +127,72 @@ namespace DialogueEditor
 
         public virtual void SerializeAssetData(NPCConversation conversation)
         {
-            conversation.GetNodeData(this.ID).TMPFont = this.TMPFont;
+            conversation.GetNodeData(ID).TMPFont = TMPFont;
         }
 
         public virtual void DeserializeAssetData(NPCConversation conversation)
         {
-            this.TMPFont = conversation.GetNodeData(this.ID).TMPFont;
+            TMPFont = conversation.GetNodeData(ID).TMPFont;
 
 #if UNITY_EDITOR
             // If under V1.03, Load from database via GUID, so data is not lost for people who are upgrading
             if (conversation.Version < (int)eSaveVersion.V1_03)
             {
-                if (this.TMPFont == null)
+                if (TMPFont == null)
                 {
                     if (!string.IsNullOrEmpty(TMPFontGUID))
                     {
-                        string path = UnityEditor.AssetDatabase.GUIDToAssetPath(TMPFontGUID);
-                        this.TMPFont = (TMPro.TMP_FontAsset)UnityEditor.AssetDatabase.LoadAssetAtPath(path, typeof(TMPro.TMP_FontAsset));
+                        string path = AssetDatabase.GUIDToAssetPath(TMPFontGUID);
+                        TMPFont = (TMP_FontAsset)AssetDatabase.LoadAssetAtPath(path, typeof(TMP_FontAsset));
                     }
                 }
             }
 #endif
         }
+
+        public enum eNodeType
+        {
+            Speech,
+            Option
+        }
+
+        /// <summary> Info used internally by the editor window. </summary>
+        [DataContract]
+        public class EditorArgs
+        {
+            [DataMember] public bool isRoot;
+            [DataMember] public float xPos;
+            [DataMember] public float yPos;
+        }
     }
-
-
 
 
     [DataContract]
     public class EditableSpeechNode : EditableConversationNode
     {
-        public EditableSpeechNode() : base()
-        {
+        /// <summary>
+        ///     If this dialogue leads onto another dialogue...
+        ///     Should the dialogue advance automatially?
+        /// </summary>
+        [DataMember] public bool AdvanceDialogueAutomatically;
 
-        }
+        /// <summary> The Audio Clip acompanying this Speech. </summary>
+        public AudioClip Audio;
 
-        public override eNodeType NodeType { get { return eNodeType.Speech; } }
+        /// <summary> Deprecated as of V1.03 </summary>
+        [DataMember] public string AudioGUID;
+
+        /// <summary>
+        ///     If this dialogue automatically advances, should it also display an
+        ///     "end" / "continue" button?
+        /// </summary>
+        [DataMember] public bool AutoAdvanceShouldDisplayOption;
+
+        /// <summary> The NPC Icon </summary>
+        public Sprite Icon;
+
+        /// <summary> Deprecated as of V1.03 </summary>
+        [DataMember] public string IconGUID;
 
         // ----
         // Serialized Node data
@@ -179,42 +200,32 @@ namespace DialogueEditor
         /// <summary> The NPC Name </summary>
         [DataMember] public string Name;
 
-        /// <summary> The NPC Icon </summary>
-        public Sprite Icon;
-        /// <summary> Deprecated as of V1.03 </summary>
-        [DataMember] public string IconGUID;
-
-        /// <summary> The Audio Clip acompanying this Speech. </summary>
-        public AudioClip Audio;
-        /// <summary> Deprecated as of V1.03 </summary>
-        [DataMember] public string AudioGUID;
-
-        /// <summary> The Volume for the AudioClip; </summary>
-        [DataMember] public float Volume;
-
-        /// <summary> If this dialogue leads onto another dialogue... 
-        /// Should the dialogue advance automatially? </summary>
-        [DataMember] public bool AdvanceDialogueAutomatically;
-
-        /// <summary> If this dialogue automatically advances, should it also display an 
-        /// "end" / "continue" button? </summary>
-        [DataMember] public bool AutoAdvanceShouldDisplayOption;
-
-        /// <summary>  The time it will take for the Dialogue to automaically advance </summary>
-        [DataMember] public float TimeUntilAdvance;
-
 
         //--------
         // Deprecated
 
         /// <summary> Deprecated as of V1.1 </summary>
         public List<EditableOptionNode> Options;
+
         /// <summary> Deprecated as of V1.1 </summary>
         [DataMember] public List<int> OptionUIDs;
+
         /// <summary> Deprecated as of V1.1 </summary>
         public EditableSpeechNode Speech;
+
         /// <summary> Deprecated as of V1.1 </summary>
         [DataMember] public int SpeechUID;
+
+        /// <summary>  The time it will take for the Dialogue to automaically advance </summary>
+        [DataMember] public float TimeUntilAdvance;
+
+        /// <summary> The Volume for the AudioClip; </summary>
+        [DataMember] public float Volume;
+
+        public override eNodeType NodeType
+        {
+            get { return eNodeType.Speech; }
+        }
 
 
         // ------------------------------
@@ -222,13 +233,14 @@ namespace DialogueEditor
         public void AddOption(EditableOptionNode newOption)
         {
             // Remove any speech connections I may have
-            if (this.Connections.Count > 0 && this.Connections[0] is EditableSpeechConnection)
+            if (Connections.Count > 0 && Connections[0] is EditableSpeechConnection)
             {
                 // I am no longer a parent of these speechs'
                 for (int i = 0; i < Connections.Count; i++)
                 {
                     (Connections[0] as EditableSpeechConnection).Speech.parents.Remove(this);
                 }
+
                 Connections.Clear();
             }
 
@@ -238,26 +250,31 @@ namespace DialogueEditor
                 for (int i = 0; i < Connections.Count; i++)
                 {
                     if ((Connections[0] as EditableOptionConnection).Option == newOption)
+                    {
                         return;
+                    }
                 }
             }
 
             // Setup option connection
-            this.Connections.Add(new EditableOptionConnection(newOption));
+            Connections.Add(new EditableOptionConnection(newOption));
             if (!newOption.parents.Contains(this))
+            {
                 newOption.parents.Add(this);
+            }
         }
 
         public void AddSpeech(EditableSpeechNode newSpeech)
         {
             // Remove any option connections I may have
-            if (this.Connections.Count > 0 && this.Connections[0] is EditableOptionConnection)
+            if (Connections.Count > 0 && Connections[0] is EditableOptionConnection)
             {
                 // I am no longer a parent of these speechs'
                 for (int i = 0; i < Connections.Count; i++)
                 {
                     (Connections[0] as EditableOptionConnection).Option.parents.Remove(this);
                 }
+
                 Connections.Clear();
             }
 
@@ -267,60 +284,62 @@ namespace DialogueEditor
                 for (int i = 0; i < Connections.Count; i++)
                 {
                     if ((Connections[0] as EditableSpeechConnection).Speech == newSpeech)
+                    {
                         return;
+                    }
                 }
             }
 
             // If a relationship the other-way-around between these speechs already exists, swap it. 
             // A 2way speech<->speech relationship cannot exist.
-            if (this.parents.Contains(newSpeech))
+            if (parents.Contains(newSpeech))
             {
-                this.parents.Remove(newSpeech);
+                parents.Remove(newSpeech);
                 newSpeech.DeleteConnectionChild(this);
             }
 
             // Setup option connection
-            this.Connections.Add(new EditableSpeechConnection(newSpeech));
+            Connections.Add(new EditableSpeechConnection(newSpeech));
             if (!newSpeech.parents.Contains(this))
+            {
                 newSpeech.parents.Add(this);
+            }
         }
 
         public override void SerializeAssetData(NPCConversation conversation)
         {
             base.SerializeAssetData(conversation);
 
-            conversation.GetNodeData(this.ID).Audio = this.Audio;
-            conversation.GetNodeData(this.ID).Icon = this.Icon;
+            conversation.GetNodeData(ID).Audio = Audio;
+            conversation.GetNodeData(ID).Icon = Icon;
         }
 
         public override void DeserializeAssetData(NPCConversation conversation)
         {
             base.DeserializeAssetData(conversation);
 
-            this.Audio = conversation.GetNodeData(this.ID).Audio;
-            this.Icon = conversation.GetNodeData(this.ID).Icon;
+            Audio = conversation.GetNodeData(ID).Audio;
+            Icon = conversation.GetNodeData(ID).Icon;
 
 #if UNITY_EDITOR
             // If under V1.03, Load from database via GUID, so data is not lost for people who are upgrading
             if (conversation.Version < (int)eSaveVersion.V1_03)
             {
-                if (this.Audio == null)
+                if (Audio == null)
                 {
                     if (!string.IsNullOrEmpty(AudioGUID))
                     {
-                        string path = UnityEditor.AssetDatabase.GUIDToAssetPath(AudioGUID);
-                        this.Audio = (AudioClip)UnityEditor.AssetDatabase.LoadAssetAtPath(path, typeof(AudioClip));
-
+                        string path = AssetDatabase.GUIDToAssetPath(AudioGUID);
+                        Audio = (AudioClip)AssetDatabase.LoadAssetAtPath(path, typeof(AudioClip));
                     }
                 }
 
-                if (this.Icon == null)
+                if (Icon == null)
                 {
                     if (!string.IsNullOrEmpty(IconGUID))
                     {
-                        string path = UnityEditor.AssetDatabase.GUIDToAssetPath(IconGUID);
-                        this.Icon = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
-
+                        string path = AssetDatabase.GUIDToAssetPath(IconGUID);
+                        Icon = (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
                     }
                 }
             }
@@ -329,23 +348,24 @@ namespace DialogueEditor
     }
 
 
-
-
     [DataContract]
     public class EditableOptionNode : EditableConversationNode
     {
-        public EditableOptionNode() : base()
+        /// <summary> Deprecated as of V1.1 </summary>
+        public EditableSpeechNode Speech;
+
+        /// <summary> Deprecated as of V1.1 </summary>
+        [DataMember] public int SpeechUID;
+
+        public EditableOptionNode()
         {
             SpeechUID = EditableConversation.INVALID_UID;
         }
 
-        public override eNodeType NodeType { get { return eNodeType.Option; } }
-
-
-        /// <summary> Deprecated as of V1.1 </summary>
-        public EditableSpeechNode Speech;
-        /// <summary> Deprecated as of V1.1 </summary>
-        [DataMember] public int SpeechUID;
+        public override eNodeType NodeType
+        {
+            get { return eNodeType.Option; }
+        }
 
 
         // ------------------------------
@@ -353,7 +373,7 @@ namespace DialogueEditor
         public void AddSpeech(EditableSpeechNode newSpeech)
         {
             // Add new speech connection
-            this.Connections.Add(new EditableSpeechConnection(newSpeech));
+            Connections.Add(new EditableSpeechConnection(newSpeech));
             newSpeech.parents.Add(this);
         }
     }

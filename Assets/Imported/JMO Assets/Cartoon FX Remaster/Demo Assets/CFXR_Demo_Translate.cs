@@ -1,42 +1,41 @@
-﻿//--------------------------------------------------------------------------------------------------------------------------------
-// Cartoon FX
-// (c) 2012-2020 Jean Moreno
-//--------------------------------------------------------------------------------------------------------------------------------
+﻿#region
 
 using UnityEngine;
 
+#endregion
+
 namespace CartoonFX
 {
-	public class CFXR_Demo_Translate : MonoBehaviour
-	{
-		public Vector3 direction = new Vector3(0,1,0);
-		public bool randomRotation;
+    public class CFXR_Demo_Translate : MonoBehaviour
+    {
+        public Vector3 direction = new(0, 1, 0);
+        public bool randomRotation;
 
 
-		bool initialized;
-		Vector3 initialPosition;
+        bool initialized;
+        Vector3 initialPosition;
 
-		void Awake()
-		{
-			if (!initialized)
-			{
-				initialized = true;
-				initialPosition = this.transform.position;
-			}
-		}
+        void Awake()
+        {
+            if (!initialized)
+            {
+                initialized = true;
+                initialPosition = transform.position;
+            }
+        }
 
-		void OnEnable()
-		{
-			this.transform.position = initialPosition;
-			if (randomRotation)
-			{
-				this.transform.eulerAngles = Vector3.Lerp(Vector3.zero, Vector3.up * 360, Random.value);
-			}
-		}
+        void Update()
+        {
+            transform.Translate(direction * Time.deltaTime);
+        }
 
-		void Update()
-		{
-			this.transform.Translate(direction * Time.deltaTime);
-		}
-	}
+        void OnEnable()
+        {
+            transform.position = initialPosition;
+            if (randomRotation)
+            {
+                transform.eulerAngles = Vector3.Lerp(Vector3.zero, Vector3.up * 360, Random.value);
+            }
+        }
+    }
 }

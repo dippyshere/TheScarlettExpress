@@ -2,196 +2,207 @@
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "Custom/Cloud"
 {
-	Properties
-	{
-		[HDR]_BlendColor1("Blend Color 1", Color) = (1,0,0,0)
-		[HDR]_BlendColor2("Blend Color 2", Color) = (0.2180707,1,0,0)
-		_BlendScale("Blend Scale", Float) = 0
-		_BlendOffset("Blend Offset", Float) = 0
-		_SummedWeight("Summed Weight", Vector) = (1,0.5,0,0)
-		_TimeOffset("Time Offset", Vector) = (0.3,0.3,0,0)
-		_EdgeLength ( "Edge length", Range( 2, 50 ) ) = 15
-		_DeformationScale("Deformation Scale", Float) = 0.1
-		[HDR]_FresnelColor("Fresnel Color", Color) = (0.7028302,0.965398,1,0)
-		[HDR]_NoiseColor("Noise Color", Color) = (1,1,1,1)
-		_NoiseColorScale("Noise Color Scale", Float) = 0.22
-		_NoiseSize("Noise Size", Float) = 1.04
-		_Bias("Bias", Float) = 0
-		_Power("Power", Float) = 0
-		_Scale("Scale", Float) = 0
-		[HideInInspector] __dirty( "", Int ) = 1
-	}
+    Properties
+    {
+        [HDR]_BlendColor1("Blend Color 1", Color) = (1,0,0,0)
+        [HDR]_BlendColor2("Blend Color 2", Color) = (0.2180707,1,0,0)
+        _BlendScale("Blend Scale", Float) = 0
+        _BlendOffset("Blend Offset", Float) = 0
+        _SummedWeight("Summed Weight", Vector) = (1,0.5,0,0)
+        _TimeOffset("Time Offset", Vector) = (0.3,0.3,0,0)
+        _EdgeLength ( "Edge length", Range( 2, 50 ) ) = 15
+        _DeformationScale("Deformation Scale", Float) = 0.1
+        [HDR]_FresnelColor("Fresnel Color", Color) = (0.7028302,0.965398,1,0)
+        [HDR]_NoiseColor("Noise Color", Color) = (1,1,1,1)
+        _NoiseColorScale("Noise Color Scale", Float) = 0.22
+        _NoiseSize("Noise Size", Float) = 1.04
+        _Bias("Bias", Float) = 0
+        _Power("Power", Float) = 0
+        _Scale("Scale", Float) = 0
+        [HideInInspector] __dirty( "", Int ) = 1
+    }
 
-	SubShader
-	{
-		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" "IsEmissive" = "true"  }
-		Cull Off
-		CGINCLUDE
-		#include "UnityShaderVariables.cginc"
-		#include "Tessellation.cginc"
-		#include "UnityPBSLighting.cginc"
-		#include "Lighting.cginc"
-		#pragma target 4.6
-		struct Input
-		{
-			float3 worldPos;
-			float3 worldNormal;
-		};
+    SubShader
+    {
+        Tags
+        {
+            "RenderType" = "Opaque" "Queue" = "Geometry+0" "IsEmissive" = "true"
+        }
+        Cull Off
+        CGINCLUDE
+        #include "UnityShaderVariables.cginc"
+        #include "Tessellation.cginc"
+        #include "UnityPBSLighting.cginc"
+        #include "Lighting.cginc"
+        #pragma target 4.6
+        struct Input
+        {
+            float3 worldPos;
+            float3 worldNormal;
+        };
 
-		uniform float2 _TimeOffset;
-		uniform float _NoiseSize;
-		uniform float _DeformationScale;
-		uniform float4 _FresnelColor;
-		uniform float _Bias;
-		uniform float _Scale;
-		uniform float _Power;
-		uniform float2 _SummedWeight;
-		uniform float4 _BlendColor2;
-		uniform float4 _BlendColor1;
-		uniform float _BlendOffset;
-		uniform float _BlendScale;
-		uniform float _NoiseColorScale;
-		uniform float4 _NoiseColor;
-		uniform float _EdgeLength;
-
-
-		float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-
-		float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-
-		float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-
-		float snoise( float2 v )
-		{
-			const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-			float2 i = floor( v + dot( v, C.yy ) );
-			float2 x0 = v - i + dot( i, C.xx );
-			float2 i1;
-			i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-			float4 x12 = x0.xyxy + C.xxzz;
-			x12.xy -= i1;
-			i = mod2D289( i );
-			float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-			float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-			m = m * m;
-			m = m * m;
-			float3 x = 2.0 * frac( p * C.www ) - 1.0;
-			float3 h = abs( x ) - 0.5;
-			float3 ox = floor( x + 0.5 );
-			float3 a0 = x - ox;
-			m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-			float3 g;
-			g.x = a0.x * x0.x + h.x * x0.y;
-			g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-			return 130.0 * dot( m, g );
-		}
+        uniform float2 _TimeOffset;
+        uniform float _NoiseSize;
+        uniform float _DeformationScale;
+        uniform float4 _FresnelColor;
+        uniform float _Bias;
+        uniform float _Scale;
+        uniform float _Power;
+        uniform float2 _SummedWeight;
+        uniform float4 _BlendColor2;
+        uniform float4 _BlendColor1;
+        uniform float _BlendOffset;
+        uniform float _BlendScale;
+        uniform float _NoiseColorScale;
+        uniform float4 _NoiseColor;
+        uniform float _EdgeLength;
 
 
-		float4 tessFunction( appdata_full v0, appdata_full v1, appdata_full v2 )
-		{
-			return UnityEdgeLengthBasedTess (v0.vertex, v1.vertex, v2.vertex, _EdgeLength);
-		}
+        float3 mod2D289(float3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 
-		void vertexDataFunc( inout appdata_full v )
-		{
-			float3 ase_worldPos = mul( unity_ObjectToWorld, v.vertex );
-			float simplePerlin2D108 = snoise( (ase_worldPos*0.12 + float3( ( _Time.y * _TimeOffset ) ,  0.0 )).xy*_NoiseSize );
-			simplePerlin2D108 = simplePerlin2D108*0.5 + 0.5;
-			float3 ase_vertexNormal = v.normal.xyz;
-			v.vertex.xyz += ( ( simplePerlin2D108 * ase_vertexNormal ) * _DeformationScale );
-		}
+        float2 mod2D289(float2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 
-		void surf( Input i , inout SurfaceOutputStandard o )
-		{
-			float3 ase_worldPos = i.worldPos;
-			float3 ase_worldViewDir = normalize( UnityWorldSpaceViewDir( ase_worldPos ) );
-			float3 ase_worldNormal = i.worldNormal;
-			float fresnelNdotV117 = dot( ase_worldNormal, ase_worldViewDir );
-			float fresnelNode117 = ( _Bias + _Scale * pow( 1.0 - fresnelNdotV117, _Power ) );
-			float3 ase_vertex3Pos = mul( unity_WorldToObject, float4( i.worldPos , 1 ) );
-			float4 lerpResult219 = lerp( _BlendColor2 , _BlendColor1 , ( ( ase_vertex3Pos.y + _BlendOffset ) * _BlendScale ));
-			float simplePerlin2D108 = snoise( (ase_worldPos*0.12 + float3( ( _Time.y * _TimeOffset ) ,  0.0 )).xy*_NoiseSize );
-			simplePerlin2D108 = simplePerlin2D108*0.5 + 0.5;
-			float temp_output_138_0 = ( simplePerlin2D108 + _NoiseColorScale );
-			float2 weightedBlendVar215 = _SummedWeight;
-			float4 weightedBlend215 = ( weightedBlendVar215.x*( ( 1.0 - fresnelNode117 ) * lerpResult219 ) + weightedBlendVar215.y*( ( temp_output_138_0 * lerpResult219 ) + ( ( 1.0 - temp_output_138_0 ) * _NoiseColor ) ) );
-			o.Emission = ( ( _FresnelColor * fresnelNode117 ) + weightedBlend215 ).rgb;
-			o.Alpha = 1;
-		}
+        float3 permute(float3 x) { return mod2D289(((x * 34.0) + 1.0) * x); }
 
-		ENDCG
-		CGPROGRAM
-		#pragma surface surf Standard keepalpha fullforwardshadows vertex:vertexDataFunc tessellate:tessFunction 
+        float snoise(float2 v)
+        {
+            const float4 C = float4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+            float2 i = floor(v + dot(v, C.yy));
+            float2 x0 = v - i + dot(i, C.xx);
+            float2 i1;
+            i1 = (x0.x > x0.y) ? float2(1.0, 0.0) : float2(0.0, 1.0);
+            float4 x12 = x0.xyxy + C.xxzz;
+            x12.xy -= i1;
+            i = mod2D289(i);
+            float3 p = permute(permute(i.y + float3(0.0, i1.y, 1.0)) + i.x + float3(0.0, i1.x, 1.0));
+            float3 m = max(0.5 - float3(dot(x0, x0), dot(x12.xy, x12.xy), dot(x12.zw, x12.zw)), 0.0);
+            m = m * m;
+            m = m * m;
+            float3 x = 2.0 * frac(p * C.www) - 1.0;
+            float3 h = abs(x) - 0.5;
+            float3 ox = floor(x + 0.5);
+            float3 a0 = x - ox;
+            m *= 1.79284291400159 - 0.85373472095314 * (a0 * a0 + h * h);
+            float3 g;
+            g.x = a0.x * x0.x + h.x * x0.y;
+            g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+            return 130.0 * dot(m, g);
+        }
 
-		ENDCG
-		Pass
-		{
-			Name "ShadowCaster"
-			Tags{ "LightMode" = "ShadowCaster" }
-			ZWrite On
-			CGPROGRAM
-			#pragma vertex vert
-			#pragma fragment frag
-			#pragma target 4.6
-			#pragma multi_compile_shadowcaster
-			#pragma multi_compile UNITY_PASS_SHADOWCASTER
-			#pragma skip_variants FOG_LINEAR FOG_EXP FOG_EXP2
-			#include "HLSLSupport.cginc"
-			#if ( SHADER_API_D3D11 || SHADER_API_GLCORE || SHADER_API_GLES || SHADER_API_GLES3 || SHADER_API_METAL || SHADER_API_VULKAN )
-				#define CAN_SKIP_VPOS
-			#endif
-			#include "UnityCG.cginc"
-			#include "Lighting.cginc"
-			#include "UnityPBSLighting.cginc"
-			struct v2f
-			{
-				V2F_SHADOW_CASTER;
-				float3 worldPos : TEXCOORD1;
-				float3 worldNormal : TEXCOORD2;
-				UNITY_VERTEX_INPUT_INSTANCE_ID
-				UNITY_VERTEX_OUTPUT_STEREO
-			};
-			v2f vert( appdata_full v )
-			{
-				v2f o;
-				UNITY_SETUP_INSTANCE_ID( v );
-				UNITY_INITIALIZE_OUTPUT( v2f, o );
-				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
-				UNITY_TRANSFER_INSTANCE_ID( v, o );
-				Input customInputData;
-				vertexDataFunc( v );
-				float3 worldPos = mul( unity_ObjectToWorld, v.vertex ).xyz;
-				half3 worldNormal = UnityObjectToWorldNormal( v.normal );
-				o.worldNormal = worldNormal;
-				o.worldPos = worldPos;
-				TRANSFER_SHADOW_CASTER_NORMALOFFSET( o )
-				return o;
-			}
-			half4 frag( v2f IN
-			#if !defined( CAN_SKIP_VPOS )
+
+        float4 tessFunction(appdata_full v0, appdata_full v1, appdata_full v2)
+        {
+            return UnityEdgeLengthBasedTess(v0.vertex, v1.vertex, v2.vertex, _EdgeLength);
+        }
+
+        void vertexDataFunc(inout appdata_full v)
+        {
+            float3 ase_worldPos = mul(unity_ObjectToWorld, v.vertex);
+            float simplePerlin2D108 = snoise(
+                (ase_worldPos * 0.12 + float3((_Time.y * _TimeOffset), 0.0)).xy * _NoiseSize);
+            simplePerlin2D108 = simplePerlin2D108 * 0.5 + 0.5;
+            float3 ase_vertexNormal = v.normal.xyz;
+            v.vertex.xyz += ((simplePerlin2D108 * ase_vertexNormal) * _DeformationScale);
+        }
+
+        void surf(Input i, inout SurfaceOutputStandard o)
+        {
+            float3 ase_worldPos = i.worldPos;
+            float3 ase_worldViewDir = normalize(UnityWorldSpaceViewDir(ase_worldPos));
+            float3 ase_worldNormal = i.worldNormal;
+            float fresnelNdotV117 = dot(ase_worldNormal, ase_worldViewDir);
+            float fresnelNode117 = (_Bias + _Scale * pow(1.0 - fresnelNdotV117, _Power));
+            float3 ase_vertex3Pos = mul(unity_WorldToObject, float4(i.worldPos, 1));
+            float4 lerpResult219 = lerp(_BlendColor2, _BlendColor1, ((ase_vertex3Pos.y + _BlendOffset) * _BlendScale));
+            float simplePerlin2D108 = snoise(
+                (ase_worldPos * 0.12 + float3((_Time.y * _TimeOffset), 0.0)).xy * _NoiseSize);
+            simplePerlin2D108 = simplePerlin2D108 * 0.5 + 0.5;
+            float temp_output_138_0 = (simplePerlin2D108 + _NoiseColorScale);
+            float2 weightedBlendVar215 = _SummedWeight;
+            float4 weightedBlend215 = (weightedBlendVar215.x * ((1.0 - fresnelNode117) * lerpResult219) +
+                weightedBlendVar215.y * ((temp_output_138_0 * lerpResult219) + ((1.0 - temp_output_138_0) *
+                    _NoiseColor)));
+            o.Emission = ((_FresnelColor * fresnelNode117) + weightedBlend215).rgb;
+            o.Alpha = 1;
+        }
+        ENDCG
+        CGPROGRAM
+        #pragma surface surf Standard keepalpha fullforwardshadows vertex:vertexDataFunc tessellate:tessFunction
+        ENDCG
+        Pass
+        {
+            Name "ShadowCaster"
+            Tags
+            {
+                "LightMode" = "ShadowCaster"
+            }
+            ZWrite On
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma target 4.6
+            #pragma multi_compile_shadowcaster
+            #pragma multi_compile UNITY_PASS_SHADOWCASTER
+            #pragma skip_variants FOG_LINEAR FOG_EXP FOG_EXP2
+            #include "HLSLSupport.cginc"
+            #if ( SHADER_API_D3D11 || SHADER_API_GLCORE || SHADER_API_GLES || SHADER_API_GLES3 || SHADER_API_METAL || SHADER_API_VULKAN )
+            #define CAN_SKIP_VPOS
+            #endif
+            #include "UnityCG.cginc"
+            #include "Lighting.cginc"
+            #include "UnityPBSLighting.cginc"
+
+            struct v2f
+            {
+                V2F_SHADOW_CASTER;
+                float3 worldPos : TEXCOORD1;
+                float3 worldNormal : TEXCOORD2;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+                UNITY_VERTEX_OUTPUT_STEREO
+            };
+
+            v2f vert(appdata_full v)
+            {
+                v2f o;
+                UNITY_SETUP_INSTANCE_ID(v);
+                    UNITY_INITIALIZE_OUTPUT(v2f, o);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+                UNITY_TRANSFER_INSTANCE_ID(v, o);
+                Input customInputData;
+                vertexDataFunc(v);
+                float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+                half3 worldNormal = UnityObjectToWorldNormal(v.normal);
+                o.worldNormal = worldNormal;
+                o.worldPos = worldPos;
+                TRANSFER_SHADOW_CASTER_NORMALOFFSET(o)
+                return o;
+            }
+
+            half4 frag(v2f IN
+                #if !defined( CAN_SKIP_VPOS )
 			, UNITY_VPOS_TYPE vpos : VPOS
-			#endif
-			) : SV_Target
-			{
-				UNITY_SETUP_INSTANCE_ID( IN );
-				Input surfIN;
-				UNITY_INITIALIZE_OUTPUT( Input, surfIN );
-				float3 worldPos = IN.worldPos;
-				half3 worldViewDir = normalize( UnityWorldSpaceViewDir( worldPos ) );
-				surfIN.worldPos = worldPos;
-				surfIN.worldNormal = IN.worldNormal;
-				SurfaceOutputStandard o;
-				UNITY_INITIALIZE_OUTPUT( SurfaceOutputStandard, o )
-				surf( surfIN, o );
-				#if defined( CAN_SKIP_VPOS )
-				float2 vpos = IN.pos;
-				#endif
-				SHADOW_CASTER_FRAGMENT( IN )
-			}
-			ENDCG
-		}
-	}
-	Fallback "Diffuse"
+                #endif
+            ) : SV_Target
+            {
+                UNITY_SETUP_INSTANCE_ID(IN);
+                Input surfIN;
+                UNITY_INITIALIZE_OUTPUT(Input, surfIN);
+                float3 worldPos = IN.worldPos;
+                half3 worldViewDir = normalize(UnityWorldSpaceViewDir(worldPos));
+                surfIN.worldPos = worldPos;
+                surfIN.worldNormal = IN.worldNormal;
+                SurfaceOutputStandard o;
+                UNITY_INITIALIZE_OUTPUT(SurfaceOutputStandard, o)
+                surf(surfIN, o);
+                #if defined( CAN_SKIP_VPOS )
+                float2 vpos = IN.pos;
+                #endif
+                SHADOW_CASTER_FRAGMENT(IN)
+            }
+            ENDCG
+        }
+    }
+    Fallback "Diffuse"
 }
 /*ASEBEGIN
 Version=17800

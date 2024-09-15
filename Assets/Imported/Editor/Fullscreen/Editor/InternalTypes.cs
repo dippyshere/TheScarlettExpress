@@ -1,9 +1,14 @@
+#region
+
 using System;
 
-namespace FullscreenEditor {
-    /// <summary>Class containing types of UnityEditor internal classes.</summary>
-    public static class Types {
+#endregion
 
+namespace FullscreenEditor
+{
+    /// <summary>Class containing types of UnityEditor internal classes.</summary>
+    public static class Types
+    {
         /// <summary>UnityEditor.HostView</summary>
         public static readonly Type HostView = ReflectionUtility.FindClass("UnityEditor.HostView");
 
@@ -20,7 +25,8 @@ namespace FullscreenEditor {
         public static readonly Type GameView = ReflectionUtility.FindClass("UnityEditor.GameView");
 
         /// <summary>UnityEditor.PreviewEditorWindow</summary>
-        public static readonly Type PreviewEditorWindow = ReflectionUtility.FindClass("UnityEditor.PreviewEditorWindow");
+        public static readonly Type PreviewEditorWindow =
+            ReflectionUtility.FindClass("UnityEditor.PreviewEditorWindow");
 
         /// <summary>UnityEditor.PlayModeView</summary>
         public static readonly Type PlayModeView = ReflectionUtility.FindClass("UnityEditor.PlayModeView");
@@ -30,6 +36,5 @@ namespace FullscreenEditor {
 
         /// <summary>UnityEditor.WindowLayout</summary>
         public static readonly Type WindowLayout = ReflectionUtility.FindClass("UnityEditor.WindowLayout");
-
     }
 }

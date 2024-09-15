@@ -1,20 +1,20 @@
-using UnityEngine;
-using System.Collections;
+#region
 
+using UnityEngine;
+
+#endregion
 
 namespace TMPro.Examples
 {
-
     public class Benchmark04 : MonoBehaviour
     {
-
-        public int SpawnType = 0;
+        public int SpawnType;
 
         public int MinPointSize = 12;
         public int MaxPointSize = 64;
         public int Steps = 4;
 
-        private Transform m_Transform;
+        Transform m_Transform;
         //private TextMeshProFloatingText floatingText_Script;
         //public Material material;
 
@@ -32,11 +32,16 @@ namespace TMPro.Examples
                 if (SpawnType == 0)
                 {
                     // TextMesh Pro Implementation
-                    GameObject go = new GameObject("Text - " + i + " Pts");
+                    GameObject go = new("Text - " + i + " Pts");
 
-                    if (lineHeight > orthoSize * 2) return;
+                    if (lineHeight > orthoSize * 2)
+                    {
+                        return;
+                    }
 
-                    go.transform.position = m_Transform.position + new Vector3(ratio * -orthoSize * 0.975f, orthoSize * 0.975f - lineHeight, 0);
+                    go.transform.position = m_Transform.position +
+                                            new Vector3(ratio * -orthoSize * 0.975f, orthoSize * 0.975f - lineHeight,
+                                                0);
 
                     TextMeshPro textMeshPro = go.AddComponent<TextMeshPro>();
 
@@ -55,11 +60,9 @@ namespace TMPro.Examples
 
                     lineHeight += i;
                 }
-                else
-                {
-                    // TextMesh Implementation
-                    // Causes crashes since atlas needed exceeds 4096 X 4096
-                    /*
+                // TextMesh Implementation
+                // Causes crashes since atlas needed exceeds 4096 X 4096
+                /*
                     GameObject go = new GameObject("Arial " + i);
 
                     //if (lineHeight > orthoSize * 2 * 0.9f) return;
@@ -77,9 +80,7 @@ namespace TMPro.Examples
 
                     lineHeight += i;
                     */
-                }
             }
         }
-
     }
 }

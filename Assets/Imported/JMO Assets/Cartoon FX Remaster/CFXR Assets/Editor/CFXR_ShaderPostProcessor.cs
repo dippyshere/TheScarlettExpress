@@ -1,6 +1,10 @@
+#region
+
 using System;
 using UnityEditor;
 using UnityEngine;
+
+#endregion
 
 namespace CartoonFX
 {
@@ -8,21 +12,23 @@ namespace CartoonFX
     {
         public class CFXR_ShaderPostProcessor : AssetPostprocessor
         {
-            static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
+            static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets,
+                string[] movedFromAssetPaths)
             {
                 CleanCFXRShaders(importedAssets);
             }
 
             static void CleanCFXRShaders(string[] paths)
             {
-                foreach (var assetPath in paths)
+                foreach (string assetPath in paths)
                 {
-                    if (!assetPath.EndsWith(CFXR_ShaderImporter.FILE_EXTENSION, StringComparison.InvariantCultureIgnoreCase))
+                    if (!assetPath.EndsWith(CFXR_ShaderImporter.FILE_EXTENSION,
+                            StringComparison.InvariantCultureIgnoreCase))
                     {
                         continue;
                     }
 
-                    var shader = AssetDatabase.LoadMainAssetAtPath(assetPath) as Shader;
+                    Shader shader = AssetDatabase.LoadMainAssetAtPath(assetPath) as Shader;
                     if (shader != null)
                     {
                         ShaderUtil.ClearShaderMessages(shader);

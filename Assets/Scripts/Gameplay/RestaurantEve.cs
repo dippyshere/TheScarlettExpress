@@ -1,18 +1,20 @@
+#region
+
 using DialogueEditor;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+#endregion
 
 public class RestaurantEve : MonoBehaviour
 {
-    public NPCConversation eveConversation;
-
-    [SerializeField] private bool talkToEve = false;
-    [SerializeField] private bool canTalkToEve = true;
+    [SerializeField] bool canTalkToEve = true;
 
     public SphereCollider cookingStove;
-    public SphereCollider saladStove;
+    public NPCConversation eveConversation;
     public SphereCollider jellyStove;
+    public SphereCollider saladStove;
+
+    [SerializeField] bool talkToEve;
 
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class RestaurantEve : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Pickup"))
         {
@@ -36,11 +38,9 @@ public class RestaurantEve : MonoBehaviour
         }
     }
 
-    private void BeginEveConversation()
+    void BeginEveConversation()
     {
         ConversationManager.Instance.StartConversation(eveConversation);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         canTalkToEve = false;
         cookingStove.enabled = true;
         saladStove.enabled = true;

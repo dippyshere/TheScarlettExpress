@@ -1,29 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Newtonsoft.Json;
+#region
+
 using System;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+using UnityEngine;
+
+#endregion
 
 public class TrainGameAnalytics : MonoBehaviour
 {
-    [SerializeField] private bool analyticsEnabled = true;
-    [HideInInspector, Tooltip("Singleton instance of the analytics manager")] public static TrainGameAnalytics instance;
-    [HideInInspector, Tooltip("A list of all recorded game events")] public List<Dictionary<string, object>> gameEvents = new List<Dictionary<string, object>>();
-    private DateTime startTime;
+    [HideInInspector, Tooltip("Singleton instance of the analytics manager")]
+    public static TrainGameAnalytics instance;
 
-    private void Awake()
+    [SerializeField] bool analyticsEnabled = true;
+
+    [HideInInspector, Tooltip("A list of all recorded game events")]
+    public List<Dictionary<string, object>> gameEvents = new();
+
+    DateTime startTime;
+
+    void Awake()
     {
         if (instance != null)
         {
             Destroy(gameObject);
             return;
         }
+
         instance = this;
         DontDestroyOnLoad(gameObject);
         startTime = DateTime.Now;
     }
 
-    private void OnApplicationQuit()
+    void OnApplicationQuit()
     {
         if (analyticsEnabled)
         {
@@ -32,15 +42,15 @@ public class TrainGameAnalytics : MonoBehaviour
     }
 
     /// <summary>
-    /// Record a game event with a name and data<br></br><br></br>
-    /// Example usage:<br></br>
-    /// <code>TrainGameAnalytics.instance.RecordGameEvent("passenger_health", new Dictionary&lt;string, object&gt;() { { "passengerType", 0 }, { "foodType", 1 }, { "hungerLevel", 0.5f } });</code>
+    ///     Record a game event with a name and data<br></br><br></br>
+    ///     Example usage:<br></br>
+    ///     <code>TrainGameAnalytics.instance.RecordGameEvent("passenger_health", new Dictionary&lt;string, object&gt;() { { "passengerType", 0 }, { "foodType", 1 }, { "hungerLevel", 0.5f } });</code>
     /// </summary>
     /// <param name="eventName">A string name of the event type being recorded</param>
     /// <param name="eventData">A dictionary of the event data to record</param>
     public void RecordGameEvent(string eventName, Dictionary<string, object> eventData)
     {
-        Dictionary<string, object> gameEvent = new Dictionary<string, object>
+        Dictionary<string, object> gameEvent = new()
         {
             ["eventName"] = eventName,
             ["eventData"] = eventData,
@@ -49,15 +59,18 @@ public class TrainGameAnalytics : MonoBehaviour
         gameEvents.Add(gameEvent);
     }
 
-    private void SaveGameEvents()
+    void SaveGameEvents()
     {
         string json = JsonConvert.SerializeObject(gameEvents, new JsonSerializerSettings
         {
             Formatting = Formatting.Indented,
             Converters = new List<JsonConverter> { new Vector3Converter(), new QuaternionConverter() }
         });
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/" + startTime.ToString("yyyy-MM-dd_HH-mm-ss") + "_game_events.json", json);
-        Debug.Log("Game events saved to: " + Application.persistentDataPath + "/" + startTime.ToString("yyyy-MM-dd_HH-mm-ss") + "_game_events.json");
+        File.WriteAllText(
+            Application.persistentDataPath + "/" + startTime.ToString("yyyy-MM-dd_HH-mm-ss") + "_game_events.json",
+            json);
+        Debug.Log("Game events saved to: " + Application.persistentDataPath + "/" +
+                  startTime.ToString("yyyy-MM-dd_HH-mm-ss") + "_game_events.json");
     }
 
     public class Vector3Converter : JsonConverter
@@ -75,12 +88,13 @@ public class TrainGameAnalytics : MonoBehaviour
             writer.WriteEndObject();
         }
 
-        public override object ReadJson(JsonReader reader, System.Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public override bool CanConvert(System.Type objectType)
+        public override bool CanConvert(Type objectType)
         {
             return objectType == typeof(Vector3);
         }
@@ -103,12 +117,13 @@ public class TrainGameAnalytics : MonoBehaviour
             writer.WriteEndObject();
         }
 
-        public override object ReadJson(JsonReader reader, System.Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public override bool CanConvert(System.Type objectType)
+        public override bool CanConvert(Type objectType)
         {
             return objectType == typeof(Quaternion);
         }

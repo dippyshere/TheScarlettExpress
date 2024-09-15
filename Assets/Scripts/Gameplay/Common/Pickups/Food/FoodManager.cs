@@ -1,10 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
+
+#endregion
 
 public class FoodManager : MonoBehaviour
 {
-    [SerializeField, Tooltip("The type of food")] public FoodType foodType;
+    [SerializeField, Tooltip("The type of food")]
+    public FoodType foodType;
+
     public StoveController stoveController;
 
     public enum FoodType

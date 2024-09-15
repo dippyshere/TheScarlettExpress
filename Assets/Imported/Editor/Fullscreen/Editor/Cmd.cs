@@ -1,48 +1,63 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Diagnostics;
 using System.Text;
 using UnityEngine;
 
-namespace FullscreenEditor {
-    public static class Cmd {
+#endregion
 
-        public static string Run(string command, params object[] formatArgs) {
+namespace FullscreenEditor
+{
+    public static class Cmd
+    {
+        public static string Run(string command, params object[] formatArgs)
+        {
             return Run(command, false, formatArgs);
         }
 
-        public static string Run(string command, bool asAdmin, params object[] formatArgs) {
+        public static string Run(string command, bool asAdmin, params object[] formatArgs)
+        {
             command = string.Format(command, formatArgs);
 
-            var stdout = string.Empty;
-            var stderr = string.Empty;
-            var exitCode = Run(command, asAdmin, out stdout, out stderr);
+            string stdout = string.Empty;
+            string stderr = string.Empty;
+            int exitCode = Run(command, asAdmin, out stdout, out stderr);
 
             if (exitCode == 0)
+            {
                 return stdout.Trim();
+            }
 
             throw new Exception(string.Format("Command {0} exited with code {1}", command, exitCode));
         }
 
-        public static int Run(string command, bool asAdmin, out string stdout, out string stderr) {
-            var proc = new Process();
-            var stdoutBuilder = new StringBuilder();
-            var stderrBuilder = new StringBuilder();
+        public static int Run(string command, bool asAdmin, out string stdout, out string stderr)
+        {
+            Process proc = new Process();
+            StringBuilder stdoutBuilder = new StringBuilder();
+            StringBuilder stderrBuilder = new StringBuilder();
 
             proc.EnableRaisingEvents = true;
 
             if (Application.platform == RuntimePlatform.WindowsEditor)
-                proc.StartInfo = new ProcessStartInfo() {
+            {
+                proc.StartInfo = new ProcessStartInfo
+                {
                     FileName = "cmd.exe",
                     Arguments = "/C \"" + command + "\"",
                     UseShellExecute = asAdmin,
                     RedirectStandardError = !asAdmin,
                     RedirectStandardOutput = !asAdmin,
-                    Verb = asAdmin? "runas": "",
+                    Verb = asAdmin ? "runas" : "",
                     CreateNoWindow = !asAdmin,
                     WorkingDirectory = Environment.CurrentDirectory
                 };
+            }
             else
-                proc.StartInfo = new ProcessStartInfo() {
+            {
+                proc.StartInfo = new ProcessStartInfo
+                {
                     FileName = "/bin/bash",
                     Arguments = "-c \"" + command + "\"",
                     UseShellExecute = asAdmin,
@@ -51,16 +66,24 @@ namespace FullscreenEditor {
                     CreateNoWindow = !asAdmin,
                     WorkingDirectory = Environment.CurrentDirectory
                 };
+            }
 
-            if (!asAdmin) {
-                proc.OutputDataReceived += (sender, args) => {
+            if (!asAdmin)
+            {
+                proc.OutputDataReceived += (sender, args) =>
+                {
                     if (!string.IsNullOrEmpty(args.Data))
+                    {
                         stdoutBuilder.AppendLine(args.Data);
+                    }
                 };
 
-                proc.ErrorDataReceived += (sender, args) => {
+                proc.ErrorDataReceived += (sender, args) =>
+                {
                     if (!string.IsNullOrEmpty(args.Data))
+                    {
                         stderrBuilder.AppendLine(args.Data);
+                    }
                 };
             }
 
@@ -68,11 +91,14 @@ namespace FullscreenEditor {
             //    Debug.LogWarningFormat("Command {0} exited with code {1}", command, proc.ExitCode);
             //};
 
-            if (proc.Start()) {
-                if (!asAdmin) {
+            if (proc.Start())
+            {
+                if (!asAdmin)
+                {
                     proc.BeginOutputReadLine();
                     proc.BeginErrorReadLine();
                 }
+
                 proc.WaitForExit();
 
                 stdout = stdoutBuilder.ToString();
@@ -85,6 +111,5 @@ namespace FullscreenEditor {
 
             throw new Exception(string.Format("Failed to start process for {0}", command));
         }
-
     }
 }

@@ -1,22 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
+
+#endregion
 
 public class DecorationSystem : MonoBehaviour
 {
     public GameObject painting1Camera;
-    public GameObject painting2Camera;
-    public GameObject rugCamera;
 
     public GameObject painting1UI;
+    public GameObject painting2Camera;
     public GameObject painting2UI;
+
+    public GameObject paintingBlocks;
+    public GameObject rugBlocks;
+    public GameObject rugCamera;
     public GameObject rugUI;
 
     public GameObject sideviewButton;
     public GameObject sterlingButton;
-
-    public GameObject paintingBlocks;
-    public GameObject rugBlocks;
 
     public void Painting1()
     {

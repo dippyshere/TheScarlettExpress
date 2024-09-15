@@ -1,24 +1,18 @@
+#region
+
 using DialogueEditor;
 using Dypsloom.DypThePenguin.Scripts.Character;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
+
+#endregion
 
 public class ActivateDialogue : MonoBehaviour
 {
     public NPCConversation conversation;
-    public GameObject DialoguePanel;
+    [FormerlySerializedAs("DialoguePanel")] public GameObject dialoguePanel;
     public bool isConversing;
-    public GameObject promptUI;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked; 
-    }
 
     // Update is called once per frame
     void Update()
@@ -27,86 +21,43 @@ public class ActivateDialogue : MonoBehaviour
         {
             BeginConversation();
         }
-
-        //if (!DialoguePanel.activeSelf)
-        //{
-        //    Cursor.visible = false;
-        //    Cursor.lockState = CursorLockMode.Locked;
-
-        //    m_CinemachineInputAxisController.enabled = true;
-
-        //    m_Player.m_MovementMode = MovementMode.Free;
-        //}
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //StartConversation();
-            //ConversationManager.Instance.StartConversation(conversation);
-            //Cursor.visible = true;
-            //Cursor.lockState = CursorLockMode.None;
             isConversing = true;
-            promptUI.SetActive(true);
+            Character.Instance.promptUI.SetActive(true);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isConversing = false;
-            promptUI.SetActive(false);
+            Character.Instance.promptUI.SetActive(false);
         }
     }
 
-    private void BeginConversation()
+    void BeginConversation()
     {
         ConversationManager.Instance.StartConversation(conversation);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        this.gameObject.SetActive(false);
-        promptUI.SetActive(false);
-        //m_CinemachineInputAxisController.enabled = false;
-
-        //m_Player.m_MovementMode = MovementMode.Decorating;
+        gameObject.SetActive(false);
+        Character.Instance.promptUI.SetActive(false);
     }
 
     public void EnterTutorial()
     {
-        SceneManager.LoadScene("Tutorial");
-    }
-
-    public void ResetMouseAndMovement()
-    {
-        //m_CinemachineInputAxisController.enabled = true;
-
-        //m_Player.m_MovementMode = MovementMode.Free;
-
-        //if (!DialoguePanel.activeSelf)
-        //{
-        //    Cursor.visible = false;
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //}
+        SceneManager.LoadScene("_TrainTutorial");
     }
 
     public void EnterFirstDay()
     {
         SceneManager.LoadScene("RestaurantTutorial");
     }
-
-    //private void StartConversation()
-    //{
-    //    // Check if DialoguePanel is active
-    //    if (ConversationManager.Instance.DialoguePanel.gameObject.activeInHierarchy)
-    //    {
-    //        Debug.LogWarning("Cannot start a new conversation while the dialogue panel is active.");
-    //        return;
-    //    }
-
-    //    // Start the conversation
-    //    ConversationManager.Instance.StartConversation(conversation);
-    //}
 }

@@ -1,62 +1,80 @@
-﻿/// ---------------------------------------------
-/// Dyp Penguin Character | Dypsloom
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
+﻿#region
+
+using Dypsloom.DypThePenguin.Scripts.Damage;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+#endregion
 
 namespace Dypsloom.DypThePenguin.Scripts.UI
 {
-    using Dypsloom.DypThePenguin.Scripts.Damage;
-    using TMPro;
-    using UnityEngine;
-    using UnityEngine.UI;
-
     /// <summary>
-    /// Health Monitor.
+    ///     Health Monitor.
     /// </summary>
     public class HealthMonitor : MonoBehaviour
     {
-        [Tooltip("The health slider.")]
-        [SerializeField] protected Slider m_Slider;
-        [Tooltip("The health text.")]
-        [SerializeField] protected TextMeshProUGUI m_Text;
-        [Tooltip("The damageable to monitor.")]
-        [SerializeField] protected Damageable m_StartDamageable;
+        [Tooltip("The health slider."), SerializeField]
+        
+        protected Slider m_Slider;
+
+        [Tooltip("The health text."), SerializeField]
+        
+        protected TextMeshProUGUI m_Text;
+
+        [Tooltip("The damageable to monitor."), SerializeField]
+        
+        protected Damageable m_StartDamageable;
 
         protected IDamageable m_Damageable;
 
         /// <summary>
-        /// Cache components.
+        ///     Cache components.
         /// </summary>
-        private void Awake()
+        void Awake()
         {
             m_Damageable = m_StartDamageable;
         }
 
         /// <summary>
-        /// Set a listener.
+        ///     Set a listener.
         /// </summary>
-        private void OnEnable()
+        void OnEnable()
         {
             SetListener(true);
         }
 
         /// <summary>
-        /// Listen to the damageable.
+        ///     Remove the listener when disabled.
+        /// </summary>
+        void OnDisable()
+        {
+            SetListener(false);
+        }
+
+        /// <summary>
+        ///     Listen to the damageable.
         /// </summary>
         /// <param name="listen">listen?</param>
         protected void SetListener(bool listen)
         {
-            if(m_Damageable == null){return;}
-            if (listen) {
+            if (m_Damageable == null)
+            {
+                return;
+            }
+
+            if (listen)
+            {
                 m_Damageable.OnHpChanged += HealthChanged;
-            } else {
+            }
+            else
+            {
                 m_Damageable.OnHpChanged -= HealthChanged;
             }
         }
 
         /// <summary>
-        /// Set the damageable to monitor.
+        ///     Set the damageable to monitor.
         /// </summary>
         /// <param name="damageable">The damageable.</param>
         public void SetDamageable(IDamageable damageable)
@@ -64,30 +82,24 @@ namespace Dypsloom.DypThePenguin.Scripts.UI
             SetListener(false);
 
             m_Damageable = damageable;
-        
+
             SetListener(true);
         }
 
         /// <summary>
-        /// The health amount changed.
+        ///     The health amount changed.
         /// </summary>
-        private void HealthChanged()
+        void HealthChanged()
         {
-            if (m_Slider != null) {
+            if (m_Slider != null)
+            {
                 m_Slider.value = (float)m_Damageable.CurrentHp / m_Damageable.MaxHp;
             }
-            
-            if (m_Text != null) {
+
+            if (m_Text != null)
+            {
                 m_Text.text = m_Damageable.CurrentHp + "/" + m_Damageable.MaxHp;
             }
-        }
-    
-        /// <summary>
-        /// Remove the listener when disabled.
-        /// </summary>
-        private void OnDisable()
-        {
-            SetListener(false);
         }
     }
 }

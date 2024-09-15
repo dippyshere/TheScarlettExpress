@@ -1,6 +1,9 @@
-using System.Collections;
+#region
+
 using System.Collections.Generic;
 using UnityEngine;
+
+#endregion
 
 public class SceneTracker : MonoBehaviour
 {
@@ -9,7 +12,8 @@ public class SceneTracker : MonoBehaviour
     {
         if (TrainGameAnalytics.instance != null)
         {
-            TrainGameAnalytics.instance.RecordGameEvent("scene_change", new Dictionary<string, object>() { { "sceneName", gameObject.scene.name } });
+            TrainGameAnalytics.instance.RecordGameEvent("scene_change",
+                new Dictionary<string, object> { { "sceneName", gameObject.scene.name } });
         }
     }
 }

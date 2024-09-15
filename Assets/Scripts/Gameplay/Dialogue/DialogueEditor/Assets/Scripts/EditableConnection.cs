@@ -1,62 +1,68 @@
-﻿using System.Collections;
+﻿#region
+
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
+
+#endregion
 
 namespace DialogueEditor
 {
-    [DataContract]
-    [KnownType(typeof(EditableIntCondition))]
-    [KnownType(typeof(EditableBoolCondition))]
+    [DataContract, KnownType(typeof(EditableIntCondition)), KnownType(typeof(EditableBoolCondition))]
     public abstract class EditableConnection
     {
-        public enum eConnectiontype
-        {
-            Speech,
-            Option
-        }
-
-        public abstract eConnectiontype ConnectionType { get; }
+        [DataMember] public List<EditableCondition> Conditions;
+        [DataMember] public int NodeUID;
 
         public EditableConnection()
         {
             Conditions = new List<EditableCondition>();
         }
 
+        public abstract eConnectiontype ConnectionType { get; }
+
         public void AddCondition(EditableCondition condition)
         {
             Conditions.Add(condition);
         }
 
-        [DataMember] public List<EditableCondition> Conditions;
-        [DataMember] public int NodeUID;
+        public enum eConnectiontype
+        {
+            Speech,
+            Option
+        }
     }
 
     [DataContract]
     public class EditableSpeechConnection : EditableConnection
     {
-        public override eConnectiontype ConnectionType { get { return eConnectiontype.Speech; } }
-
         public EditableSpeechNode Speech;
 
-        public EditableSpeechConnection(EditableSpeechNode node) : base()
+        public EditableSpeechConnection(EditableSpeechNode node)
         {
             Speech = node;
             NodeUID = node.ID;
+        }
+
+        public override eConnectiontype ConnectionType
+        {
+            get { return eConnectiontype.Speech; }
         }
     }
 
     [DataContract]
     public class EditableOptionConnection : EditableConnection
     {
-        public override eConnectiontype ConnectionType { get { return eConnectiontype.Option; } }
-
         public EditableOptionNode Option;
 
-        public EditableOptionConnection(EditableOptionNode node) : base()
+        public EditableOptionConnection(EditableOptionNode node)
         {
             Option = node;
             NodeUID = node.ID;
+        }
+
+        public override eConnectiontype ConnectionType
+        {
+            get { return eConnectiontype.Option; }
         }
     }
 }

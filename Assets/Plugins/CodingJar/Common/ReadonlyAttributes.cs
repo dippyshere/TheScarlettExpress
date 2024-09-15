@@ -1,13 +1,23 @@
-﻿using UnityEngine;
+﻿#region
+
+using UnityEngine;
+
+#endregion
 
 namespace CodingJar
 {
-    /// <summary>
-    /// Denotes a field as read-only
-    /// </summary>
-    public class ReadonlyAttribute : PropertyAttribute {}
+	/// <summary>
+	///     Denotes a field as read-only
+	/// </summary>
+	public class ReadonlyAttribute : PropertyAttribute
+    {
+    }
 
-	public class BeginReadonlyAttribute : PropertyAttribute {}
+    public class BeginReadonlyAttribute : PropertyAttribute
+    {
+    }
 
-	public class EndReadonlyAttribute : PropertyAttribute {}
+    public class EndReadonlyAttribute : PropertyAttribute
+    {
+    }
 }

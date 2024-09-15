@@ -2,101 +2,105 @@
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "Dypsloom/Grass"
 {
-	Properties
-	{
-		_Cutoff( "Mask Clip Value", Float ) = 0.5
-		_SpecColor("Specular Color",Color)=(1,1,1,1)
-		_NoiseValue("Noise Value", Float) = 0.47
-		_NoiseSize("Noise Size", Float) = 1.04
-		_TimeOffset("Time Offset", Vector) = (6,0,0,0)
-		_Texture("Texture", 2D) = "white" {}
-		_Mask("Mask", 2D) = "white" {}
-		[HideInInspector] _texcoord( "", 2D ) = "white" {}
-		[HideInInspector] __dirty( "", Int ) = 1
-	}
+    Properties
+    {
+        _Cutoff( "Mask Clip Value", Float ) = 0.5
+        _SpecColor("Specular Color",Color)=(1,1,1,1)
+        _NoiseValue("Noise Value", Float) = 0.47
+        _NoiseSize("Noise Size", Float) = 1.04
+        _TimeOffset("Time Offset", Vector) = (6,0,0,0)
+        _Texture("Texture", 2D) = "white" {}
+        _Mask("Mask", 2D) = "white" {}
+        [HideInInspector] _texcoord( "", 2D ) = "white" {}
+        [HideInInspector] __dirty( "", Int ) = 1
+    }
 
-	SubShader
-	{
-		Tags{ "RenderType" = "TransparentCutout"  "Queue" = "AlphaTest+0" "IgnoreProjector" = "True" "IsEmissive" = "true"  }
-		Cull Off
-		AlphaToMask On
-		CGPROGRAM
-		#include "UnityShaderVariables.cginc"
-		#pragma target 3.0
-		#pragma surface surf BlinnPhong keepalpha noshadow exclude_path:deferred vertex:vertexDataFunc 
-		struct Input
-		{
-			float2 uv_texcoord;
-		};
+    SubShader
+    {
+        Tags
+        {
+            "RenderType" = "TransparentCutout" "Queue" = "AlphaTest+0" "IgnoreProjector" = "True" "IsEmissive" = "true"
+        }
+        Cull Off
+        AlphaToMask On
+        CGPROGRAM
+        #include "UnityShaderVariables.cginc"
+        #pragma target 3.0
+        #pragma surface surf BlinnPhong keepalpha noshadow exclude_path:deferred vertex:vertexDataFunc
+        struct Input
+        {
+            float2 uv_texcoord;
+        };
 
-		uniform float2 _TimeOffset;
-		uniform float _NoiseSize;
-		uniform float _NoiseValue;
-		uniform sampler2D _Texture;
-		uniform float4 _Texture_ST;
-		uniform sampler2D _Mask;
-		uniform float4 _Mask_ST;
-		uniform float _Cutoff = 0.5;
-
-
-		float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-
-		float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-
-		float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-
-		float snoise( float2 v )
-		{
-			const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-			float2 i = floor( v + dot( v, C.yy ) );
-			float2 x0 = v - i + dot( i, C.xx );
-			float2 i1;
-			i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-			float4 x12 = x0.xyxy + C.xxzz;
-			x12.xy -= i1;
-			i = mod2D289( i );
-			float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-			float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-			m = m * m;
-			m = m * m;
-			float3 x = 2.0 * frac( p * C.www ) - 1.0;
-			float3 h = abs( x ) - 0.5;
-			float3 ox = floor( x + 0.5 );
-			float3 a0 = x - ox;
-			m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-			float3 g;
-			g.x = a0.x * x0.x + h.x * x0.y;
-			g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-			return 130.0 * dot( m, g );
-		}
+        uniform float2 _TimeOffset;
+        uniform float _NoiseSize;
+        uniform float _NoiseValue;
+        uniform sampler2D _Texture;
+        uniform float4 _Texture_ST;
+        uniform sampler2D _Mask;
+        uniform float4 _Mask_ST;
+        uniform float _Cutoff = 0.5;
 
 
-		void vertexDataFunc( inout appdata_full v, out Input o )
-		{
-			UNITY_INITIALIZE_OUTPUT( Input, o );
-			float3 ase_vertex3Pos = v.vertex.xyz;
-			float simplePerlin2D15 = snoise( (ase_vertex3Pos*1.0 + float3( ( _Time.y * _TimeOffset ) ,  0.0 )).xy*_NoiseSize );
-			simplePerlin2D15 = simplePerlin2D15*0.5 + 0.5;
-			float temp_output_25_0 = ( ( simplePerlin2D15 - 0.5 ) * _NoiseValue );
-			float3 break27 = ase_vertex3Pos;
-			float4 appendResult29 = (float4(( temp_output_25_0 + break27.x ) , break27.y , ( temp_output_25_0 + break27.z ) , 0.0));
-			float4 lerpResult55 = lerp( float4( ase_vertex3Pos , 0.0 ) , appendResult29 , v.texcoord.xy.y);
-			float4 break72 = lerpResult55;
-			float4 appendResult73 = (float4(break72.x , break72.y , break72.z , break72.w));
-			v.vertex.xyz += appendResult73.xyz;
-		}
+        float3 mod2D289(float3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 
-		void surf( Input i , inout SurfaceOutput o )
-		{
-			float2 uv_Texture = i.uv_texcoord * _Texture_ST.xy + _Texture_ST.zw;
-			o.Emission = tex2D( _Texture, uv_Texture ).rgb;
-			o.Alpha = 1;
-			float2 uv_Mask = i.uv_texcoord * _Mask_ST.xy + _Mask_ST.zw;
-			clip( tex2D( _Mask, uv_Mask ).r - _Cutoff );
-		}
+        float2 mod2D289(float2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 
-		ENDCG
-	}
+        float3 permute(float3 x) { return mod2D289(((x * 34.0) + 1.0) * x); }
+
+        float snoise(float2 v)
+        {
+            const float4 C = float4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+            float2 i = floor(v + dot(v, C.yy));
+            float2 x0 = v - i + dot(i, C.xx);
+            float2 i1;
+            i1 = (x0.x > x0.y) ? float2(1.0, 0.0) : float2(0.0, 1.0);
+            float4 x12 = x0.xyxy + C.xxzz;
+            x12.xy -= i1;
+            i = mod2D289(i);
+            float3 p = permute(permute(i.y + float3(0.0, i1.y, 1.0)) + i.x + float3(0.0, i1.x, 1.0));
+            float3 m = max(0.5 - float3(dot(x0, x0), dot(x12.xy, x12.xy), dot(x12.zw, x12.zw)), 0.0);
+            m = m * m;
+            m = m * m;
+            float3 x = 2.0 * frac(p * C.www) - 1.0;
+            float3 h = abs(x) - 0.5;
+            float3 ox = floor(x + 0.5);
+            float3 a0 = x - ox;
+            m *= 1.79284291400159 - 0.85373472095314 * (a0 * a0 + h * h);
+            float3 g;
+            g.x = a0.x * x0.x + h.x * x0.y;
+            g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+            return 130.0 * dot(m, g);
+        }
+
+
+        void vertexDataFunc(inout appdata_full v, out Input o)
+        {
+                UNITY_INITIALIZE_OUTPUT(Input, o);
+            float3 ase_vertex3Pos = v.vertex.xyz;
+            float simplePerlin2D15 = snoise(
+                (ase_vertex3Pos * 1.0 + float3((_Time.y * _TimeOffset), 0.0)).xy * _NoiseSize);
+            simplePerlin2D15 = simplePerlin2D15 * 0.5 + 0.5;
+            float temp_output_25_0 = ((simplePerlin2D15 - 0.5) * _NoiseValue);
+            float3 break27 = ase_vertex3Pos;
+            float4 appendResult29 = (float4((temp_output_25_0 + break27.x), break27.y, (temp_output_25_0 + break27.z),
+                                        0.0));
+            float4 lerpResult55 = lerp(float4(ase_vertex3Pos, 0.0), appendResult29, v.texcoord.xy.y);
+            float4 break72 = lerpResult55;
+            float4 appendResult73 = (float4(break72.x, break72.y, break72.z, break72.w));
+            v.vertex.xyz += appendResult73.xyz;
+        }
+
+        void surf(Input i, inout SurfaceOutput o)
+        {
+            float2 uv_Texture = i.uv_texcoord * _Texture_ST.xy + _Texture_ST.zw;
+            o.Emission = tex2D(_Texture, uv_Texture).rgb;
+            o.Alpha = 1;
+            float2 uv_Mask = i.uv_texcoord * _Mask_ST.xy + _Mask_ST.zw;
+            clip(tex2D(_Mask, uv_Mask).r - _Cutoff);
+        }
+        ENDCG
+    }
 }
 /*ASEBEGIN
 Version=17800

@@ -1,39 +1,29 @@
-﻿/// ---------------------------------------------
-/// Dyp The Penguin Character | Dypsloom
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
+﻿#region
+
+using System;
+using UnityEngine;
+
+#endregion
 
 namespace Dypsloom.DypThePenguin.Scripts.Damage
 {
-    using System;
-    using UnityEngine;
-
     /// <summary>
-    /// A damageable that changes the active gameobject depending on its HP.
+    ///     A damageable that changes the active gameobject depending on its HP.
     /// </summary>
     public class MultiStateDamageable : Damageable
     {
-        /// <summary>
-        /// Damageable state.
-        /// </summary>
-        [Serializable]
-        public struct State
-        {
-            public GameObject Object;
-            public float HPUpperLimit;
-        }
-
-        [Tooltip("The object states.")]
-        [SerializeField] protected State[] m_States;
+        [Tooltip("The object states."), SerializeField]
+        
+        protected State[] m_States;
 
         /// <summary>
-        /// Set the active object and listen to the damageable events.
+        ///     Set the active object and listen to the damageable events.
         /// </summary>
-        private void Awake()
+        void Awake()
         {
             m_States[0].Object.SetActive(true);
-            for (int i = 1; i < m_States.Length; i++) {
+            for (int i = 1; i < m_States.Length; i++)
+            {
                 m_States[i].Object.SetActive(false);
             }
 
@@ -41,20 +31,33 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
         }
 
         /// <summary>
-        /// Update the active object depending on the HP.
+        ///     Update the active object depending on the HP.
         /// </summary>
-        private void UpdateState()
+        void UpdateState()
         {
-            for (int j = 0; j < m_States.Length; j++) {
+            for (int j = 0; j < m_States.Length; j++)
+            {
                 m_States[j].Object.SetActive(false);
             }
-            
-            for (int i = 0; i < m_States.Length; i++) {
-                if (CurrentHp > m_States[i].HPUpperLimit) {
+
+            for (int i = 0; i < m_States.Length; i++)
+            {
+                if (CurrentHp > m_States[i].HPUpperLimit)
+                {
                     m_States[i].Object.SetActive(true);
                     break;
                 }
             }
+        }
+
+        /// <summary>
+        ///     Damageable state.
+        /// </summary>
+        [Serializable]
+        public struct State
+        {
+            public GameObject Object;
+            public float HPUpperLimit;
         }
     }
 }

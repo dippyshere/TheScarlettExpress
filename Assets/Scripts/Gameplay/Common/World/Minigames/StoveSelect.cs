@@ -1,145 +1,144 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
+using UnityEngine.Serialization;
+
+#endregion
 
 public class StoveSelect : MonoBehaviour
 {
-    [SerializeField] GameObject Select1;
-    [SerializeField] GameObject Select2;
-    [SerializeField] GameObject Select3;
-    [SerializeField] GameObject Select4;
+    [FormerlySerializedAs("Select1"),SerializeField] GameObject select1;
+    [FormerlySerializedAs("Select10"),SerializeField] GameObject select10;
+    [FormerlySerializedAs("Select11"),SerializeField] GameObject select11;
+    [FormerlySerializedAs("Select12"),SerializeField] GameObject select12;
 
-    [SerializeField] GameObject Select5;
-    [SerializeField] GameObject Select6;
-    [SerializeField] GameObject Select7;
-    [SerializeField] GameObject Select8;
+    [FormerlySerializedAs("Select13"),SerializeField] GameObject select13;
+    [FormerlySerializedAs("Select2"),SerializeField] GameObject select2;
+    [FormerlySerializedAs("Select3"),SerializeField] GameObject select3;
+    [FormerlySerializedAs("Select4"),SerializeField] GameObject select4;
 
-    [SerializeField] GameObject Select9;
-    [SerializeField] GameObject Select10;
-    [SerializeField] GameObject Select11;
-    [SerializeField] GameObject Select12;
+    [FormerlySerializedAs("Select5"),SerializeField] GameObject select5;
+    [FormerlySerializedAs("Select6"),SerializeField] GameObject select6;
+    [FormerlySerializedAs("Select7"),SerializeField] GameObject select7;
+    [FormerlySerializedAs("Select8"),SerializeField] GameObject select8;
 
-    [SerializeField] GameObject Select13;
+    [FormerlySerializedAs("Select9"),SerializeField] GameObject select9;
 
-    public void Select1GO()
+    public void Select1Go()
     {
-        Select1.SetActive(true);
-        Select2.SetActive(false);
-        Select3.SetActive(false);
-        Select4.SetActive(false);
-    }
-       
-    public void Select2GO()
-    {
-        Select1.SetActive(false); 
-        Select2.SetActive(true);
-        Select3.SetActive(false);
-        Select4.SetActive(false);
-    }
-    
-    public void Select3GO()
-    {
-        Select1.SetActive(false);
-        Select2.SetActive(false);
-        Select3.SetActive(true);
-        Select4.SetActive(false);
+        select1.SetActive(true);
+        select2.SetActive(false);
+        select3.SetActive(false);
+        select4.SetActive(false);
     }
 
-    public void Select4GO()
+    public void Select2Go()
     {
-        Select1.SetActive(false);
-        Select2.SetActive(false);
-        Select3.SetActive(false);
-        Select4.SetActive(true);
+        select1.SetActive(false);
+        select2.SetActive(true);
+        select3.SetActive(false);
+        select4.SetActive(false);
     }
 
-    public void Select5GO()
+    public void Select3Go()
     {
-        Select5.SetActive(true);
-        Select6.SetActive(false);
-        Select7.SetActive(false);
-        Select8.SetActive(false);
+        select1.SetActive(false);
+        select2.SetActive(false);
+        select3.SetActive(true);
+        select4.SetActive(false);
     }
 
-    public void Select6GO()
+    public void Select4Go()
     {
-        Select5.SetActive(false);
-        Select6.SetActive(true);
-        Select7.SetActive(false);
-        Select8.SetActive(false);
+        select1.SetActive(false);
+        select2.SetActive(false);
+        select3.SetActive(false);
+        select4.SetActive(true);
     }
 
-    public void Select7GO()
+    public void Select5Go()
     {
-        Select5.SetActive(false);
-        Select6.SetActive(false);
-        Select7.SetActive(true);
-        Select8.SetActive(false);
+        select5.SetActive(true);
+        select6.SetActive(false);
+        select7.SetActive(false);
+        select8.SetActive(false);
     }
 
-    public void Select8GO()
+    public void Select6Go()
     {
-        Select5.SetActive(false);
-        Select6.SetActive(false);
-        Select7.SetActive(false);
-        Select8.SetActive(true);
+        select5.SetActive(false);
+        select6.SetActive(true);
+        select7.SetActive(false);
+        select8.SetActive(false);
     }
 
-    public void Select9GO()
+    public void Select7Go()
     {
-        Select9.SetActive(true);
-        Select10.SetActive(false);
-        Select11.SetActive(false);
-        Select12.SetActive(false);
+        select5.SetActive(false);
+        select6.SetActive(false);
+        select7.SetActive(true);
+        select8.SetActive(false);
     }
 
-    public void Select10GO()
+    public void Select8Go()
     {
-        Select9.SetActive(false);
-        Select10.SetActive(true);
-        Select11.SetActive(false);
-        Select12.SetActive(false);
+        select5.SetActive(false);
+        select6.SetActive(false);
+        select7.SetActive(false);
+        select8.SetActive(true);
     }
 
-    public void Select11GO()
+    public void Select9Go()
     {
-        Select9.SetActive(false);
-        Select10.SetActive(false);
-        Select11.SetActive(true);
-        Select12.SetActive(false);
+        select9.SetActive(true);
+        select10.SetActive(false);
+        select11.SetActive(false);
+        select12.SetActive(false);
     }
 
-    public void Select12GO()
+    public void Select10Go()
     {
-        Select9.SetActive(false);
-        Select10.SetActive(false);
-        Select11.SetActive(false);
-        Select12.SetActive(true);
+        select9.SetActive(false);
+        select10.SetActive(true);
+        select11.SetActive(false);
+        select12.SetActive(false);
     }
 
-    public void Select13GO()
+    public void Select11Go()
     {
-        Select13.SetActive(true);
+        select9.SetActive(false);
+        select10.SetActive(false);
+        select11.SetActive(true);
+        select12.SetActive(false);
     }
 
+    public void Select12Go()
+    {
+        select9.SetActive(false);
+        select10.SetActive(false);
+        select11.SetActive(false);
+        select12.SetActive(true);
+    }
+
+    public void Select13Go()
+    {
+        select13.SetActive(true);
+    }
 
     public void Close()
     {
-        Select1.SetActive(false);
-        Select2.SetActive(false);
-        Select3.SetActive(false);
-        Select4.SetActive(false);
-        Select5.SetActive(false);
-        Select6.SetActive(false);
-        Select7.SetActive(false);
-        Select8.SetActive(false);
-        Select9.SetActive(false);
-        Select10.SetActive(false);
-        Select11.SetActive(false);
-        Select12.SetActive(false);
-        Select13.SetActive(false);
-
+        select1.SetActive(false);
+        select2.SetActive(false);
+        select3.SetActive(false);
+        select4.SetActive(false);
+        select5.SetActive(false);
+        select6.SetActive(false);
+        select7.SetActive(false);
+        select8.SetActive(false);
+        select9.SetActive(false);
+        select10.SetActive(false);
+        select11.SetActive(false);
+        select12.SetActive(false);
+        select13.SetActive(false);
     }
-    
-
 }

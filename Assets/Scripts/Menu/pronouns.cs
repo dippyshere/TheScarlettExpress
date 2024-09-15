@@ -1,43 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+#region
+
 using TMPro;
+using UnityEngine;
+
+#endregion
 
 public class pronouns : MonoBehaviour
 {
+    public TMP_InputField nameField;
 
     public string PlayerName;
-    public string Pronouns1;
-    public string Pronouns2;
-
-    public TMP_InputField nameField;
     public TMP_InputField pronoun1Field;
     public TMP_InputField pronoun2Field;
+    public string Pronouns1;
+    public string Pronouns2;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-
     }
 
     public void SubmitName()
     {
-        if(string.IsNullOrEmpty(nameField.text) == false)
+        if (string.IsNullOrEmpty(nameField.text) == false)
         {
             PlayerName = nameField.text;
 
             ProfileSystem.Set(ProfileSystem.Variable.PlayerName, PlayerName);
             Debug.Log("PLAYER NAME, " + ProfileSystem.Get<string>(ProfileSystem.Variable.PlayerName));
         }
-
     }
 
     public void SubmitPronoun1()
@@ -61,5 +57,4 @@ public class pronouns : MonoBehaviour
             Debug.Log("PLAYER PRONOUNS, " + ProfileSystem.Get<string>(ProfileSystem.Variable.PlayerPronoun2));
         }
     }
-
 }

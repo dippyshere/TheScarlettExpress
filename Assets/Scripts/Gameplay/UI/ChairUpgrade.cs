@@ -1,34 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+#region
+
 using TMPro;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+#endregion
 
 public class ChairUpgrade : MonoBehaviour
 {
+    [SerializeField] GameObject baseUpgrade;
 
-    public int upgradeLvl;
-    public int upgradeCost;
+    [SerializeField] ProfileSystem.Variable chairSaveKey = ProfileSystem.Variable.Restraunt1Table1;
     public float moneys;
 
     public AudioSource music;
-
-    [SerializeField] GameObject baseUpgrade;
     [SerializeField] GameObject upgrade1;
     [SerializeField] GameObject upgrade2;
     [SerializeField] GameObject upgrade3;
+
+    [SerializeField] GameObject upgradeButton;
+    public int upgradeCost;
+
+    [FormerlySerializedAs("UpgradeCostText")] public TextMeshProUGUI upgradeCostText;
+
+    public int upgradeLvl;
 
     [SerializeField] GameObject upgradeStar1;
     [SerializeField] GameObject upgradeStar2;
     [SerializeField] GameObject upgradeStar3;
 
-
-    [SerializeField] GameObject upgradeButton;
-
-    public TextMeshProUGUI UpgradeCostText;
-
-    [SerializeField] private ProfileSystem.Variable chairSaveKey = ProfileSystem.Variable.Restraunt1Table1;
-
-    private void Start()
+    void Start()
     {
         baseUpgrade.SetActive(true);
         upgrade1.SetActive(false);
@@ -73,11 +74,9 @@ public class ChairUpgrade : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
-        UpgradeCostText.text = "$ " + upgradeCost.ToString();
-
-
+        upgradeCostText.text = "$ " + upgradeCost;
     }
 
     public void UpgradeChair()
@@ -101,7 +100,6 @@ public class ChairUpgrade : MonoBehaviour
 
                 ProfileSystem.Set(chairSaveKey, 3);
             }
-
         }
 
         if (upgradeLvl == 1)
@@ -120,12 +118,11 @@ public class ChairUpgrade : MonoBehaviour
 
                 ProfileSystem.Set(chairSaveKey, 2);
             }
-
         }
 
         if (upgradeLvl == 0)
         {
-            if(moneys >= 25)
+            if (moneys >= 25)
             {
                 moneys -= 25;
                 ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys);
@@ -139,12 +136,6 @@ public class ChairUpgrade : MonoBehaviour
 
                 ProfileSystem.Set(chairSaveKey, 1);
             }
-
         }
-
-
-        
     }
-
-
 }

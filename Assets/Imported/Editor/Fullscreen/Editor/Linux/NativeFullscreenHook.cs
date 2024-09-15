@@ -1,22 +1,35 @@
+#region
+
 using UnityEditor;
 
-namespace FullscreenEditor.Linux {
-    internal static class NativeFullscreenHooks {
+#endregion
 
+namespace FullscreenEditor.Linux
+{
+    static class NativeFullscreenHooks
+    {
         [InitializeOnLoadMethod]
-        private static void Init() {
+        static void Init()
+        {
             if (!FullscreenUtility.IsLinux)
+            {
                 return;
+            }
 
-            FullscreenCallbacks.afterFullscreenOpen += (fs) => {
+            FullscreenCallbacks.afterFullscreenOpen += fs =>
+            {
                 if (wmctrl.IsInstalled && !FullscreenPreferences.DoNotUseWmctrl.Value)
+                {
                     wmctrl.SetNativeFullscreen(true, fs.m_dst.Container);
+                }
             };
-            FullscreenCallbacks.beforeFullscreenClose += (fs) => {
+            FullscreenCallbacks.beforeFullscreenClose += fs =>
+            {
                 if (wmctrl.IsInstalled && !FullscreenPreferences.DoNotUseWmctrl.Value)
+                {
                     wmctrl.SetNativeFullscreen(false, fs.m_dst.Container);
+                }
             };
         }
-
     }
 }

@@ -1,54 +1,51 @@
-using Dypsloom.DypThePenguin.Scripts.Character;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Unity.Cinemachine;
-using TMPro;
+#region
 
+using Dypsloom.DypThePenguin.Scripts.Character;
+using TMPro;
+using Unity.Cinemachine;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+#endregion
 
 public class Decorations : MonoBehaviour
 {
-    public GameObject shopUI;
-    public float money;
-
-    [SerializeField, Tooltip("Reference to the player script.")]
-    private Character m_Player;
-
-    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
-    private CinemachineInputAxisController m_CinemachineInputAxisController;
-
-    public GameObject deco1Lock;
-    public GameObject deco2Lock;
-    public GameObject deco3Lock;
-    public GameObject deco4Lock;
-    public GameObject deco5Lock;
-
-    public GameObject deco6Lock;
-    public GameObject deco7Lock;
-    public GameObject deco8Lock;
-    public GameObject deco9Lock;
     public GameObject deco10Lock;
-
-    public GameObject deco1Lock2;
-    public GameObject deco2Lock2;
-    public GameObject deco3Lock2;
-    public GameObject deco4Lock2;
-    public GameObject deco5Lock2;
-
-    public GameObject deco6Lock2;
-    public GameObject deco7Lock2;
-    public GameObject deco8Lock2;
-    public GameObject deco9Lock2;
     public GameObject deco10Lock2;
 
-    public AudioSource music;
+    public GameObject deco1Lock;
+
+    public GameObject deco1Lock2;
+    public GameObject deco2Lock;
+    public GameObject deco2Lock2;
+    public GameObject deco3Lock;
+    public GameObject deco3Lock2;
+    public GameObject deco4Lock;
+    public GameObject deco4Lock2;
+    public GameObject deco5Lock;
+    public GameObject deco5Lock2;
+
+    public GameObject deco6Lock;
+
+    public GameObject deco6Lock2;
+    public GameObject deco7Lock;
+    public GameObject deco7Lock2;
+    public GameObject deco8Lock;
+    public GameObject deco8Lock2;
+    public GameObject deco9Lock;
+    public GameObject deco9Lock2;
+
+    public float money;
 
     public TextMeshProUGUI moneyText;
 
-    private void Awake()
+    public AudioSource music;
+    public GameObject shopUI;
+
+    void Awake()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
-        moneyText.text = "$ " + money.ToString();
+        moneyText.text = "$ " + money;
 
         int deco1 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco1);
         if (deco1 == 1)
@@ -125,11 +122,7 @@ public class Decorations : MonoBehaviour
     public void ExitShop()
     {
         shopUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_CinemachineInputAxisController.enabled = true;
-
-        m_Player.m_MovementMode = MovementMode.Free;
+        CameraManager.Instance.SetInputModeGameplay();
     }
 
     public void BuyDeco1()
@@ -137,7 +130,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco1, 1);
@@ -152,7 +145,7 @@ public class Decorations : MonoBehaviour
         if (money >= 15)
         {
             money -= 15;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco2, 1);
@@ -167,7 +160,7 @@ public class Decorations : MonoBehaviour
         if (money >= 20)
         {
             money -= 20;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco3, 1);
@@ -182,7 +175,7 @@ public class Decorations : MonoBehaviour
         if (money >= 25)
         {
             money -= 25;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco4, 1);
@@ -197,7 +190,7 @@ public class Decorations : MonoBehaviour
         if (money >= 30)
         {
             money -= 30;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco5, 1);
@@ -212,7 +205,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco6, 1);
@@ -227,7 +220,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco7, 1);
@@ -242,7 +235,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco8, 1);
@@ -257,7 +250,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco9, 1);
@@ -272,7 +265,7 @@ public class Decorations : MonoBehaviour
         if (money >= 10)
         {
             money -= 10;
-            moneyText.text = "$ " + money.ToString();
+            moneyText.text = "$ " + money;
             music.Play();
 
             ProfileSystem.Set(ProfileSystem.Variable.Deco10, 1);

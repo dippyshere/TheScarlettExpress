@@ -1,5 +1,10 @@
-﻿using UnityEngine;
+﻿#region
+
+using System.IO;
 using UnityEditor;
+using UnityEngine;
+
+#endregion
 
 namespace CodingJar.MultiScene.Editor
 {
@@ -8,14 +13,14 @@ namespace CodingJar.MultiScene.Editor
     {
         // Summary:
         //     Override this method to specify how tall the GUI for this field is in pixels.
-        public override float GetPropertyHeight( SerializedProperty property, GUIContent label )
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             return EditorGUIUtility.singleLineHeight;
         }
 
         // Summary:
         //     Override this method to make your own GUI for the property.
-        public override void OnGUI( Rect position, SerializedProperty property, GUIContent label )
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             // Using BeginProperty / EndProperty on the parent property means that
             // prefab override logic works on the entire property.
@@ -29,38 +34,38 @@ namespace CodingJar.MultiScene.Editor
             EditorGUI.indentLevel = 0;
 
             // Find all of the data and grab it so we can start displaying (and calculating using it)
-            var propAssetGUID = property.FindPropertyRelative ("editorAssetGUID");
+            SerializedProperty propAssetGUID = property.FindPropertyRelative("editorAssetGUID");
             string assetGUID = propAssetGUID.stringValue;
 
-            var propName = property.FindPropertyRelative ("name");
+            SerializedProperty propName = property.FindPropertyRelative("name");
             string name = propName.stringValue;
 
-            var propPath = property.FindPropertyRelative ("_path");
-            string path= propPath.stringValue;
+            SerializedProperty propPath = property.FindPropertyRelative("_path");
+            string path = propPath.stringValue;
 
-			string realPath = AssetDatabase.GUIDToAssetPath( assetGUID );
-			Object sceneAsset = AssetDatabase.LoadMainAssetAtPath( realPath );
+            string realPath = AssetDatabase.GUIDToAssetPath(assetGUID);
+            Object sceneAsset = AssetDatabase.LoadMainAssetAtPath(realPath);
 
-			// Draw the ObjectField and apply changes.
-			EditorGUI.BeginChangeCheck();
-			sceneAsset = EditorGUI.ObjectField( position, sceneAsset, typeof(SceneAsset), false );
-			if ( EditorGUI.EndChangeCheck() )
-			{
-				path = AssetDatabase.GetAssetOrScenePath( sceneAsset );
-				name = System.IO.Path.GetFileNameWithoutExtension( path );
-				assetGUID = AssetDatabase.AssetPathToGUID( path );
+            // Draw the ObjectField and apply changes.
+            EditorGUI.BeginChangeCheck();
+            sceneAsset = EditorGUI.ObjectField(position, sceneAsset, typeof(SceneAsset), false);
+            if (EditorGUI.EndChangeCheck())
+            {
+                path = AssetDatabase.GetAssetOrScenePath(sceneAsset);
+                name = Path.GetFileNameWithoutExtension(path);
+                assetGUID = AssetDatabase.AssetPathToGUID(path);
 
-				// Reassign the properties
-				propAssetGUID.stringValue = assetGUID;
-				propPath.stringValue = path;
-				propName.stringValue = name;
+                // Reassign the properties
+                propAssetGUID.stringValue = assetGUID;
+                propPath.stringValue = path;
+                propName.stringValue = name;
 
-				property.serializedObject.ApplyModifiedProperties();
-			}
+                property.serializedObject.ApplyModifiedProperties();
+            }
 
-			propPath.Dispose();
-			propName.Dispose();
-			propAssetGUID.Dispose();
+            propPath.Dispose();
+            propName.Dispose();
+            propAssetGUID.Dispose();
 
             EditorGUI.indentLevel = oldIndentLevel;
             EditorGUI.EndProperty();

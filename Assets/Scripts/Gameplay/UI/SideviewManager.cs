@@ -1,63 +1,54 @@
-using Dypsloom.DypThePenguin.Scripts.Character;
+#region
+
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Dypsloom.DypThePenguin.Scripts.Character;
 using Unity.Cinemachine;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+#endregion
 
 public class SideviewManager : MonoBehaviour
 {
-    public GameObject sideviewCamera;
-    public GameObject carriageSelectionUI;
-    public GameObject[] sideviewWalls;
-
-    public GameObject kitchenCarriageUI;
-    public GameObject carriage1UI;
-    public GameObject carriage2UI;
-    public GameObject carriage3UI;
-
-    public GameObject kitchenCarriageCamera;
     public GameObject carriage1Camera;
+    public Transform carriage1Go;
+    public GameObject carriage1UI;
     public GameObject carriage2Camera;
+    public Transform carriage2Go;
+    public GameObject carriage2UI;
     public GameObject carriage3Camera;
+    public Transform carriage3Go;
+    public GameObject carriage3UI;
+    public GameObject carriageSelectionUI;
 
-    public GameObject decorationUpgradeCanvas;
     public GameObject decorateCamera;
 
-    [SerializeField, Tooltip("Reference to the player script.")]
-    private Character m_Player;
-
-    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
-    private CinemachineInputAxisController m_CinemachineInputAxisController;
-
-    public GameObject player;
-    public CharacterController characterController;
-    public Transform kitchenCarriageGo;
-    public Transform carriage1Go;
-    public Transform carriage2Go;
-    public Transform carriage3Go;
-
-    public GameObject sideviewButton;
-    public GameObject sterlingButton;
-
-    [SerializeField] private GameObject clipboardUI;
-
-    [SerializeField] private GameObject clipboard;
+    public GameObject decorationUpgradeCanvas;
 
     public GameObject decrepitObjects;
-    public GameObject renovationParticles;
+
+    public GameObject kitchenCarriageCamera;
+    public Transform kitchenCarriageGo;
+
+    public GameObject kitchenCarriageUI;
+
     public float money;
 
     public AudioSource musicR;
 
-    public ClipboardManager clipboardManager;
+    public GameObject renovationParticles;
+
+    public GameObject sideviewButton;
+    public GameObject sideviewCamera;
+    public GameObject[] sideviewWalls;
+    public GameObject sterlingButton;
 
     void Start()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
-        
     }
 
-    private void Update()
+    void Update()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
 
@@ -115,18 +106,12 @@ public class SideviewManager : MonoBehaviour
             //sideviewWall.SetActive(false);
 
             Invoke(nameof(OpenSideviewMenu), 0.01f);
-            m_Player.m_MovementMode = MovementMode.Decorating;
-            m_CinemachineInputAxisController.enabled = false;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            clipboard.GetComponent<ClipboardManager>().canClipboard = false;
+            CameraManager.Instance.SetInputModeUI();
         }
 
         if (sideviewCamera.activeSelf)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            m_CinemachineInputAxisController.enabled = true;
+            CameraManager.Instance.SetInputModeGameplay();
             sideviewCamera.SetActive(false);
             carriageSelectionUI.SetActive(false);
             foreach (GameObject wall in sideviewWalls)
@@ -143,9 +128,6 @@ public class SideviewManager : MonoBehaviour
             carriage1UI.SetActive(false);
             carriage2UI.SetActive(false);
             carriage3UI.SetActive(false);
-            m_Player.m_MovementMode = MovementMode.Free;
-            clipboard.GetComponent<ClipboardManager>().canClipboard = true;
-
         }
 
         if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
@@ -153,7 +135,7 @@ public class SideviewManager : MonoBehaviour
             decorationUpgradeCanvas.SetActive(false);
         }
 
-        clipboardUI.SetActive(false);
+        ClipboardManager.Instance.clipboardUI.SetActive(false);
     }
 
     public void KitchenCarriage()
@@ -242,20 +224,14 @@ public class SideviewManager : MonoBehaviour
         {
             wall.SetActive(true);
         }
-
-
-        m_Player.m_MovementMode = MovementMode.Free;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_CinemachineInputAxisController.enabled = true;
+        
+        CameraManager.Instance.SetInputModeGameplay();
 
         if (sideviewButton != null && sterlingButton != null)
         {
             sideviewButton.SetActive(false);
             sterlingButton.SetActive(false);
         }
-        clipboard.GetComponent<ClipboardManager>().canClipboard = true;
 
         if (decorationUpgradeCanvas != null)
         {
@@ -264,17 +240,14 @@ public class SideviewManager : MonoBehaviour
         }
     }
 
-    private void ActivateCarriageSelection()
+    void ActivateCarriageSelection()
     {
         carriageSelectionUI.SetActive(true);
-
     }
 
-    private void OpenSideviewMenu()
+    void OpenSideviewMenu()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        m_CinemachineInputAxisController.enabled = false;
+        CameraManager.Instance.SetInputModeUI();
         sideviewCamera.SetActive(true);
         foreach (GameObject wall in sideviewWalls)
         {
@@ -289,6 +262,7 @@ public class SideviewManager : MonoBehaviour
             decorationUpgradeCanvas.SetActive(true);
             decorateCamera.SetActive(true);
         }
+
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -313,7 +287,6 @@ public class SideviewManager : MonoBehaviour
 
     public void Go0()
     {
-        m_Player.m_MovementMode = MovementMode.Free;
         StartCoroutine(LateTeleport(kitchenCarriageGo));
 
         sideviewCamera.SetActive(false);
@@ -339,15 +312,11 @@ public class SideviewManager : MonoBehaviour
             decorateCamera.SetActive(false);
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_CinemachineInputAxisController.enabled = true;
-        clipboardManager.canClipboard = true;
+        CameraManager.Instance.SetInputModeGameplay();
     }
 
     public void Go1()
     {
-        m_Player.m_MovementMode = MovementMode.Free;
         StartCoroutine(LateTeleport(carriage1Go));
 
         sideviewCamera.SetActive(false);
@@ -373,15 +342,11 @@ public class SideviewManager : MonoBehaviour
             decorateCamera.SetActive(false);
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_CinemachineInputAxisController.enabled = true;
-        clipboardManager.canClipboard = true;
+        CameraManager.Instance.SetInputModeGameplay();
     }
 
     public void Go2()
     {
-        m_Player.m_MovementMode = MovementMode.Free;
         StartCoroutine(LateTeleport(carriage2Go));
 
         sideviewCamera.SetActive(false);
@@ -407,15 +372,11 @@ public class SideviewManager : MonoBehaviour
             decorateCamera.SetActive(false);
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_CinemachineInputAxisController.enabled = true;
-        clipboardManager.canClipboard = true;
+        CameraManager.Instance.SetInputModeGameplay();
     }
 
     public void Go3()
     {
-        m_Player.m_MovementMode = MovementMode.Free;
         StartCoroutine(LateTeleport(carriage3Go));
 
         sideviewCamera.SetActive(false);
@@ -441,14 +402,12 @@ public class SideviewManager : MonoBehaviour
             decorateCamera.SetActive(false);
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_CinemachineInputAxisController.enabled = true;
-        clipboardManager.canClipboard = true;
+        CameraManager.Instance.SetInputModeGameplay();
     }
 
-    private IEnumerator LateTeleport(Transform transform)
+    IEnumerator LateTeleport(Transform transform)
     {
+        CharacterController characterController = Character.Instance.GetComponent<CharacterController>();
         characterController.enabled = false;
         characterController.transform.SetPositionAndRotation(transform.position, transform.rotation);
         yield return new WaitForEndOfFrame();
@@ -467,7 +426,6 @@ public class SideviewManager : MonoBehaviour
             renovationParticles.SetActive(true);
 
             Invoke(nameof(BackToSterling), 1f);
-            
         }
     }
 }

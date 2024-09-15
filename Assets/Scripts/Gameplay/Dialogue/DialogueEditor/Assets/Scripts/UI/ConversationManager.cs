@@ -1,115 +1,96 @@
-﻿using System.Collections.Generic;
+﻿#region
+
+using System.Collections.Generic;
+using Dypsloom.DypThePenguin.Scripts.Character;
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using Dypsloom.DypThePenguin.Scripts.Character;
+
+#endregion
 
 namespace DialogueEditor
 {
     public class ConversationManager : MonoBehaviour
     {
-
-        
-        private enum eState
-        {
-            TransitioningDialogueBoxOn,
-            ScrollingText,
-            TransitioningOptionsOn,
-            Idle,
-            TransitioningOptionsOff,
-            TransitioningDialogueOff,
-            Off,
-            NONE,
-        }
-
-        private const float TRANSITION_TIME = 0.2f; // Transition time for fades
-
-        public static ConversationManager Instance { get; private set; }
-
-        public delegate void ConversationStartEvent();
-        public delegate void ConversationEndEvent();
+        const float TRANSITION_TIME = 0.2f; // Transition time for fades
 
         public static ConversationStartEvent OnConversationStarted;
         public static ConversationEndEvent OnConversationEnded;
 
-        // User-Facing options
-        // Drawn by custom inspector
-        public bool ScrollText;
-        public float ScrollSpeed = 1;
-        public Sprite BackgroundImage;
-        public bool BackgroundImageSliced;
-        public Sprite OptionImage;
-        public bool OptionImageSliced;
         public bool AllowMouseInteraction;
-        
+
+        // Components
+        public AudioSource AudioPlayer;
+        public Sprite BackgroundImage;
+
+        public bool BackgroundImageSliced;
+
+        // Default values
+        public Sprite BlankSprite;
+
+        // Prefabs
+        public UIConversationButton ButtonPrefab;
+
+        // Dialogue UI
+        public Image DialogueBackground;
+
 
         // Non-User facing 
         // Not exposed via custom inspector
         // 
         // Base panels
         public RectTransform DialoguePanel;
-        public RectTransform OptionsPanel;
-        // Dialogue UI
-        public Image DialogueBackground;
+        public TextMeshProUGUI DialogueText;
+
+        Conversation m_conversation;
+        int m_currentSelectedIndex;
+        SpeechNode m_currentSpeech;
+
+        // Private
+        float m_elapsedScrollTime;
+
+        int m_scrollIndex;
+        OptionNode m_selectedOption;
+        eState m_state;
+        float m_stateTime;
+        public int m_targetScrollTextCount;
+
+        // Selection options
+        List<UIConversationButton> m_uiOptions;
+        public TextMeshProUGUI NameText;
         public Image NpcIcon;
-        public TMPro.TextMeshProUGUI NameText;
-        public TMPro.TextMeshProUGUI DialogueText;
-        // Components
-        public AudioSource AudioPlayer;
-        // Prefabs
-        public UIConversationButton ButtonPrefab;
-        // Default values
-        public Sprite BlankSprite;
+        public Sprite OptionImage;
+        public bool OptionImageSliced;
+        public RectTransform OptionsPanel;
+        public float ScrollSpeed = 1;
+
+        // User-Facing options
+        // Drawn by custom inspector
+        public bool ScrollText;
+
+        public static ConversationManager Instance { get; private set; }
 
         // Getter properties
         public bool IsConversationActive
         {
-            get
-            {
-                return m_state != eState.NONE && m_state != eState.Off;
-            }
+            get { return m_state != eState.NONE && m_state != eState.Off; }
         }
 
-        // Private
-        private float m_elapsedScrollTime;
-        private int m_scrollIndex;
-        public int m_targetScrollTextCount;
-        private eState m_state;
-        private float m_stateTime;
-        
-        private Conversation m_conversation;
-        private SpeechNode m_currentSpeech;
-        private OptionNode m_selectedOption;
-
-        // Selection options
-        private List<UIConversationButton> m_uiOptions;
-        private int m_currentSelectedIndex;
-
-
-        [SerializeField, Tooltip("Reference to the player script.")]
-        private Character m_Player;
-        
-
-        [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
-        private CinemachineInputAxisController m_CinemachineInputAxisController;
-
-        [SerializeField, Tooltip("Reference to the clipboard.")]
-        private GameObject m_Clipboard;
-        
 
         //--------------------------------------
         // Awake, Start, Destroy, Update
         //--------------------------------------
 
-        
-        private void Awake()
+
+        void Awake()
         {
             // Destroy myself if I am not the singleton
             if (Instance != null && Instance != this)
             {
-                GameObject.Destroy(this.gameObject);
+                Destroy(gameObject);
             }
+
             Instance = this;
 
             m_uiOptions = new List<UIConversationButton>();
@@ -119,12 +100,12 @@ namespace DialogueEditor
             TurnOffUI();
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             Instance = null;
         }
 
-        private void Update()
+        void Update()
         {
             switch (m_state)
             {
@@ -155,15 +136,16 @@ namespace DialogueEditor
         }
 
 
-
         //--------------------------------------
         // Public functions
         //--------------------------------------
 
         public void StartConversation(NPCConversation conversation)
         {
-            if (m_Clipboard != null)
-                m_Clipboard.GetComponent<ClipboardManager>().canClipboard = false;
+            if (ClipboardManager.Instance)
+            {
+                ClipboardManager.Instance.canClipboard = false;
+            }
 
             m_conversation = conversation.Deserialize();
             OnConversationStarted?.Invoke();
@@ -172,24 +154,21 @@ namespace DialogueEditor
             m_currentSpeech = m_conversation.Root;
             SetState(eState.TransitioningDialogueBoxOn);
 
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            m_Player.m_MovementMode = MovementMode.Decorating;
-            m_CinemachineInputAxisController.enabled = false;
+            CameraManager.Instance.SetInputModeUI();
         }
 
         public void EndConversation()
         {
-            if (m_Clipboard != null)
-                m_Clipboard.GetComponent<ClipboardManager>().canClipboard = true;
+            if (ClipboardManager.Instance)
+            {
+                ClipboardManager.Instance.canClipboard = true;
+            }
+
             SetState(eState.TransitioningDialogueOff);
 
             OnConversationEnded?.Invoke();
 
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            m_Player.m_MovementMode = MovementMode.Free;
-            m_CinemachineInputAxisController.enabled = true;
+            CameraManager.Instance.SetInputModeGameplay();
         }
 
         public void SelectNextOption()
@@ -199,6 +178,7 @@ namespace DialogueEditor
             {
                 next = 0;
             }
+
             SetSelectedOption(next);
         }
 
@@ -209,15 +189,31 @@ namespace DialogueEditor
             {
                 previous = m_uiOptions.Count - 1;
             }
+
             SetSelectedOption(previous);
         }
 
         public void PressSelectedOption()
         {
-            if (m_state != eState.Idle) { return; }
-            if (m_currentSelectedIndex < 0) { return; }
-            if (m_currentSelectedIndex >= m_uiOptions.Count) { return; }
-            if (m_uiOptions.Count == 0) { return; }
+            if (m_state != eState.Idle)
+            {
+                return;
+            }
+
+            if (m_currentSelectedIndex < 0)
+            {
+                return;
+            }
+
+            if (m_currentSelectedIndex >= m_uiOptions.Count)
+            {
+                return;
+            }
+
+            if (m_uiOptions.Count == 0)
+            {
+                return;
+            }
 
             UIConversationButton button = m_uiOptions[m_currentSelectedIndex];
             button.OnButtonPressed();
@@ -235,7 +231,9 @@ namespace DialogueEditor
             }
 
             if (button == null)
+            {
                 UnselectOption();
+            }
         }
 
         public void SetInt(string paramName, int value)
@@ -248,7 +246,7 @@ namespace DialogueEditor
                 LogWarning("parameter \'" + paramName + "\' does not exist.");
             }
         }
-        
+
         public void SetBool(string paramName, bool value)
         {
             eParamStatus status;
@@ -291,7 +289,7 @@ namespace DialogueEditor
         // Set state
         //--------------------------------------
 
-        private void SetState(eState newState)
+        void SetState(eState newState)
         {
             // Exit
             switch (m_state)
@@ -313,46 +311,44 @@ namespace DialogueEditor
             switch (m_state)
             {
                 case eState.TransitioningDialogueBoxOn:
-                    {
-                        SetColorAlpha(DialogueBackground, 0);
-                        SetColorAlpha(NpcIcon, 0);
-                        SetColorAlpha(NameText, 0);
+                {
+                    SetColorAlpha(DialogueBackground, 0);
+                    SetColorAlpha(NpcIcon, 0);
+                    SetColorAlpha(NameText, 0);
 
-                        DialogueText.text = "";
-                        NameText.text = m_currentSpeech.Name;
-                        NpcIcon.sprite = m_currentSpeech.Icon != null ? m_currentSpeech.Icon : BlankSprite;
-                    }
+                    DialogueText.text = "";
+                    NameText.text = m_currentSpeech.Name;
+                    NpcIcon.sprite = m_currentSpeech.Icon != null ? m_currentSpeech.Icon : BlankSprite;
+                }
                     break;
 
                 case eState.ScrollingText:
-                    {
-                        SetColorAlpha(DialogueText, 1);
-                    }
+                {
+                    SetColorAlpha(DialogueText, 1);
+                }
                     break;
 
                 case eState.TransitioningOptionsOn:
+                {
+                    SetColorAlpha(DialogueText, 1);
+
+                    CreateUIOptions();
+
+                    for (int i = 0; i < m_uiOptions.Count; i++)
                     {
-                        SetColorAlpha(DialogueText, 1);
-
-                        CreateUIOptions();
-
-                        for (int i = 0; i < m_uiOptions.Count; i++)
-                        {
-                            m_uiOptions[i].gameObject.SetActive(true);
-                        }
+                        m_uiOptions[i].gameObject.SetActive(true);
                     }
+                }
                     break;
             }
         }
-
-
 
 
         //--------------------------------------
         // Update
         //--------------------------------------
 
-        private void TransitioningDialogueBoxOn_Update()
+        void TransitioningDialogueBoxOn_Update()
         {
             m_stateTime += Time.deltaTime;
             float t = m_stateTime / TRANSITION_TIME;
@@ -368,10 +364,10 @@ namespace DialogueEditor
             SetColorAlpha(NameText, t);
         }
 
-        private void ScrollingText_Update()
+        void ScrollingText_Update()
         {
             const float charactersPerSecond = 1500;
-            float timePerChar = (60.0f / charactersPerSecond);
+            float timePerChar = 60.0f / charactersPerSecond;
             timePerChar *= ScrollSpeed;
 
             m_elapsedScrollTime += Time.deltaTime;
@@ -391,7 +387,7 @@ namespace DialogueEditor
             }
         }
 
-        private void TransitionOptionsOn_Update()
+        void TransitionOptionsOn_Update()
         {
             m_stateTime += Time.deltaTime;
             float t = m_stateTime / TRANSITION_TIME;
@@ -403,16 +399,19 @@ namespace DialogueEditor
             }
 
             for (int i = 0; i < m_uiOptions.Count; i++)
+            {
                 m_uiOptions[i].SetAlpha(t);
+            }
         }
 
-        private void Idle_Update()
+        void Idle_Update()
         {
             m_stateTime += Time.deltaTime;
 
             if (m_currentSpeech.AutomaticallyAdvance)
             {
-                if (m_currentSpeech.ConnectionType == Connection.eConnectionType.None || m_currentSpeech.ConnectionType == Connection.eConnectionType.Speech)
+                if (m_currentSpeech.ConnectionType == Connection.eConnectionType.None ||
+                    m_currentSpeech.ConnectionType == Connection.eConnectionType.Speech)
                 {
                     if (m_stateTime > m_currentSpeech.TimeUntilAdvance)
                     {
@@ -422,7 +421,7 @@ namespace DialogueEditor
             }
         }
 
-        private void TransitionOptionsOff_Update()
+        void TransitionOptionsOff_Update()
         {
             m_stateTime += Time.deltaTime;
             float t = m_stateTime / TRANSITION_TIME;
@@ -434,7 +433,9 @@ namespace DialogueEditor
                 if (m_currentSpeech.AutomaticallyAdvance)
                 {
                     if (IsAutoAdvance())
+                    {
                         return;
+                    }
                 }
 
                 if (m_selectedOption == null)
@@ -452,17 +453,20 @@ namespace DialogueEditor
                 {
                     SetupSpeech(nextSpeech);
                 }
+
                 return;
             }
 
 
             for (int i = 0; i < m_uiOptions.Count; i++)
+            {
                 m_uiOptions[i].SetAlpha(1 - t);
+            }
 
             SetColorAlpha(DialogueText, 1 - t);
         }
 
-        private void TransitioningDialogueBoxOff_Update()
+        void TransitioningDialogueBoxOff_Update()
         {
             m_stateTime += Time.deltaTime;
             float t = m_stateTime / TRANSITION_TIME;
@@ -479,13 +483,11 @@ namespace DialogueEditor
         }
 
 
-
-
         //--------------------------------------
         // Do Speech
         //--------------------------------------
 
-        private void SetupSpeech(SpeechNode speech)
+        void SetupSpeech(SpeechNode speech)
         {
             if (speech == null)
             {
@@ -558,7 +560,9 @@ namespace DialogueEditor
 
             // Call the event
             if (speech.Event != null)
+            {
                 speech.Event.Invoke();
+            }
 
             DoParamAction(speech);
 
@@ -577,10 +581,8 @@ namespace DialogueEditor
             else
             {
                 SetState(eState.TransitioningOptionsOn);
-            }            
+            }
         }
-
-
 
 
         //--------------------------------------
@@ -597,7 +599,10 @@ namespace DialogueEditor
             m_selectedOption = option;
             DoParamAction(option);
             if (option.Event != null)
+            {
                 option.Event.Invoke();
+            }
+
             SetState(eState.TransitioningOptionsOff);
         }
 
@@ -608,13 +613,11 @@ namespace DialogueEditor
         }
 
 
-
-
         //--------------------------------------
         // Util
         //--------------------------------------
 
-        private bool IsAutoAdvance()
+        bool IsAutoAdvance()
         {
             if (m_currentSpeech.ConnectionType == Connection.eConnectionType.Speech)
             {
@@ -630,14 +633,22 @@ namespace DialogueEditor
                 EndConversation();
                 return true;
             }
+
             return false;
         }
 
         /// <summary> Returns the first, valid child connection to a Speech Node. </summary>
-        private SpeechNode GetValidSpeechOfNode(ConversationNode parentNode)
+        SpeechNode GetValidSpeechOfNode(ConversationNode parentNode)
         {
-            if (parentNode.ConnectionType != Connection.eConnectionType.Speech) { return null; }
-            if (parentNode.Connections.Count == 0) { return null; }
+            if (parentNode.ConnectionType != Connection.eConnectionType.Speech)
+            {
+                return null;
+            }
+
+            if (parentNode.Connections.Count == 0)
+            {
+                return null;
+            }
 
             // Loop through connections, until a valid connection is found.
             for (int i = 0; i < parentNode.Connections.Count; i++)
@@ -654,7 +665,7 @@ namespace DialogueEditor
             return null;
         }
 
-        private void TurnOnUI()
+        void TurnOnUI()
         {
             DialoguePanel.gameObject.SetActive(true);
             OptionsPanel.gameObject.SetActive(true);
@@ -664,15 +675,19 @@ namespace DialogueEditor
                 DialogueBackground.sprite = BackgroundImage;
 
                 if (BackgroundImageSliced)
+                {
                     DialogueBackground.type = Image.Type.Sliced;
+                }
                 else
+                {
                     DialogueBackground.type = Image.Type.Simple;
+                }
             }
 
             NpcIcon.sprite = BlankSprite;
         }
 
-        private void TurnOffUI()
+        void TurnOffUI()
         {
             DialoguePanel.gameObject.SetActive(false);
             OptionsPanel.gameObject.SetActive(false);
@@ -682,7 +697,7 @@ namespace DialogueEditor
 #endif
         }
 
-        private void CreateUIOptions()
+        void CreateUIOptions()
         {
             // Display new options
             if (m_currentSpeech.ConnectionType == Connection.eConnectionType.Option)
@@ -701,7 +716,8 @@ namespace DialogueEditor
             else
             {
                 bool notAutoAdvance = !m_currentSpeech.AutomaticallyAdvance;
-                bool allowVisibleOptionWithAuto = (m_currentSpeech.AutomaticallyAdvance && m_currentSpeech.AutoAdvanceShouldDisplayOption);
+                bool allowVisibleOptionWithAuto = m_currentSpeech.AutomaticallyAdvance &&
+                                                  m_currentSpeech.AutoAdvanceShouldDisplayOption;
 
                 if (notAutoAdvance || allowVisibleOptionWithAuto)
                 {
@@ -713,23 +729,25 @@ namespace DialogueEditor
                         // If there was no valid speech node (due to no conditions being met) this becomes a None button type
                         if (next == null)
                         {
-                            uiOption.SetupButton(UIConversationButton.eButtonType.End, null, endFont: m_conversation.EndConversationFont);
+                            uiOption.SetupButton(UIConversationButton.eButtonType.End, null,
+                                endFont: m_conversation.EndConversationFont);
                         }
                         // Else, valid speech node found
                         else
                         {
-                            uiOption.SetupButton(UIConversationButton.eButtonType.Speech, next, continueFont: m_conversation.ContinueFont);
+                            uiOption.SetupButton(UIConversationButton.eButtonType.Speech, next,
+                                continueFont: m_conversation.ContinueFont);
                         }
-                        
                     }
                     else if (m_currentSpeech.ConnectionType == Connection.eConnectionType.None)
                     {
                         UIConversationButton uiOption = CreateButton();
-                        uiOption.SetupButton(UIConversationButton.eButtonType.End, null, endFont: m_conversation.EndConversationFont);
+                        uiOption.SetupButton(UIConversationButton.eButtonType.End, null,
+                            endFont: m_conversation.EndConversationFont);
                     }
                 }
-
             }
+
             SetSelectedOption(0);
 
             // Set the button sprite and alpha
@@ -741,53 +759,67 @@ namespace DialogueEditor
             }
         }
 
-        private void ClearOptions()
+        void ClearOptions()
         {
             while (m_uiOptions.Count != 0)
             {
-                GameObject.Destroy(m_uiOptions[0].gameObject);
+                Destroy(m_uiOptions[0].gameObject);
                 m_uiOptions.RemoveAt(0);
             }
         }
 
-        private void SetColorAlpha(MaskableGraphic graphic, float a)
+        void SetColorAlpha(MaskableGraphic graphic, float a)
         {
             Color col = graphic.color;
             col.a = a;
             graphic.color = col;
         }
 
-        private void SetSelectedOption(int index)
+        void SetSelectedOption(int index)
         {
-            if (m_uiOptions.Count == 0) { return; }
+            if (m_uiOptions.Count == 0)
+            {
+                return;
+            }
 
             if (index < 0)
+            {
                 index = 0;
+            }
+
             if (index > m_uiOptions.Count - 1)
+            {
                 index = m_uiOptions.Count - 1;
+            }
 
             if (m_currentSelectedIndex >= 0)
+            {
                 m_uiOptions[m_currentSelectedIndex].SetHovering(false);
+            }
+
             m_currentSelectedIndex = index;
             m_uiOptions[index].SetHovering(true);
         }
 
-        private void UnselectOption()
+        void UnselectOption()
         {
-            if (m_currentSelectedIndex < 0) { return; }
+            if (m_currentSelectedIndex < 0)
+            {
+                return;
+            }
 
             m_uiOptions[m_currentSelectedIndex].SetHovering(false);
             m_currentSelectedIndex = -1;
         }
 
-        private UIConversationButton CreateButton()
+        UIConversationButton CreateButton()
         {
             UIConversationButton button = GameObject.Instantiate(ButtonPrefab, OptionsPanel);
             m_uiOptions.Add(button);
             return button;
         }
 
-        private bool ConditionsMet(Connection connection)
+        bool ConditionsMet(Connection connection)
         {
             List<Condition> conditions = connection.Conditions;
             for (int i = 0; i < conditions.Count; i++)
@@ -807,18 +839,19 @@ namespace DialogueEditor
                     switch (condition.CheckType)
                     {
                         case IntCondition.eCheckType.equal:
-                            conditionMet = (currentValue == requiredValue);
+                            conditionMet = currentValue == requiredValue;
                             break;
 
                         case IntCondition.eCheckType.greaterThan:
-                            conditionMet = (currentValue > requiredValue);
+                            conditionMet = currentValue > requiredValue;
                             break;
 
                         case IntCondition.eCheckType.lessThan:
-                            conditionMet = (currentValue < requiredValue);
+                            conditionMet = currentValue < requiredValue;
                             break;
                     }
                 }
+
                 // Bool condition
                 if (conditions[i].ConditionType == Condition.eConditionType.BoolCondition)
                 {
@@ -832,11 +865,11 @@ namespace DialogueEditor
                     switch (condition.CheckType)
                     {
                         case BoolCondition.eCheckType.equal:
-                            conditionMet = (currentValue == requiredValue);
+                            conditionMet = currentValue == requiredValue;
                             break;
 
                         case BoolCondition.eCheckType.notEqual:
-                            conditionMet = (currentValue != requiredValue);
+                            conditionMet = currentValue != requiredValue;
                             break;
                     }
                 }
@@ -852,7 +885,10 @@ namespace DialogueEditor
 
         public void DoParamAction(ConversationNode node)
         {
-            if (node.ParamActions == null) { return; }
+            if (node.ParamActions == null)
+            {
+                return;
+            }
 
             for (int i = 0; i < node.ParamActions.Count; i++)
             {
@@ -871,11 +907,28 @@ namespace DialogueEditor
             }
         }
 
-        private void LogWarning(string warning)
+        void LogWarning(string warning)
         {
 #if UNITY_EDITOR
             Debug.LogWarning("[Dialogue Editor]: " + warning);
 #endif
         }
+
+
+        enum eState
+        {
+            TransitioningDialogueBoxOn,
+            ScrollingText,
+            TransitioningOptionsOn,
+            Idle,
+            TransitioningOptionsOff,
+            TransitioningDialogueOff,
+            Off,
+            NONE
+        }
+
+        public delegate void ConversationStartEvent();
+
+        public delegate void ConversationEndEvent();
     }
 }

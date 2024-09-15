@@ -1,24 +1,26 @@
+#region
+
 using UnityEditor;
 
-namespace FullscreenEditor {
+#endregion
+
+namespace FullscreenEditor
+{
     [InitializeOnLoad]
-    public class GlobalToolbarHiding {
+    public class GlobalToolbarHiding
+    {
+        static readonly float defaultToolbarHeight;
 
-        private static readonly float defaultToolbarHeight;
-
-        private static bool GlobalToolbarShouldBeHidden {
-            get {
-                return !FullscreenPreferences.ToolbarVisible &&
-                    Fullscreen.GetAllFullscreen(false).Length > 0;
-            }
-        }
-
-        static GlobalToolbarHiding() {
+        static GlobalToolbarHiding()
+        {
             defaultToolbarHeight = FullscreenUtility.GetToolbarHeight();
 
-            FullscreenPreferences.UseGlobalToolbarHiding.OnValueSaved += v => {
+            FullscreenPreferences.UseGlobalToolbarHiding.OnValueSaved += v =>
+            {
                 if (!v)
+                {
                     FullscreenUtility.SetToolbarHeight(defaultToolbarHeight);
+                }
             };
 
             FullscreenPreferences.ToolbarVisible.OnValueSaved += v => UpdateGlobalToolbarStatus();
@@ -32,10 +34,21 @@ namespace FullscreenEditor {
             FullscreenCallbacks.afterFullscreenOpen += fs => UpdateGlobalToolbarStatus();
         }
 
-        public static void UpdateGlobalToolbarStatus() {
-            if (FullscreenPreferences.UseGlobalToolbarHiding)
-                FullscreenUtility.SetToolbarHeight(GlobalToolbarShouldBeHidden ? 0f : defaultToolbarHeight);
+        static bool GlobalToolbarShouldBeHidden
+        {
+            get
+            {
+                return !FullscreenPreferences.ToolbarVisible &&
+                       Fullscreen.GetAllFullscreen(false).Length > 0;
+            }
         }
 
+        public static void UpdateGlobalToolbarStatus()
+        {
+            if (FullscreenPreferences.UseGlobalToolbarHiding)
+            {
+                FullscreenUtility.SetToolbarHeight(GlobalToolbarShouldBeHidden ? 0f : defaultToolbarHeight);
+            }
+        }
     }
 }

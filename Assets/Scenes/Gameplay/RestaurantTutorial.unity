@@ -35,7 +35,7 @@ RenderSettings:
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
-  m_ReflectionBounces: 2
+  m_ReflectionBounces: 4
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 700203546}
@@ -412,7 +412,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContinueFont: {fileID: 0}
   CurrentIDCounter: 6
+  DefaultFont: {fileID: 0}
+  DefaultName: 
+  DefaultSprite: {fileID: 0}
+  EndConversationFont: {fileID: 0}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
   json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-98.5,\"yPos\":-55},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":)\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":140.5,\"yPos\":62},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D!\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":379.5,\"yPos\":167},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[4],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":-356.5,\"yPos\":-78},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Wowsers!
     This milkshake tastes totally fantasimismo! Thanks, Cap\u2019n fox!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-100.5,\"yPos\":39},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"By
     the way, I\u2019ve decided to set up a little stall to sell the art I made while
@@ -420,10 +428,6 @@ MonoBehaviour:
     good, sir! It seems we're coming up on Riverside Station now. You can either
     finish feeding the other passengers or prepare for the stop by looking at the
     TAB in your clipboard that marks the end of the day.\",\"parentUIDs\":[3],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
-  saveVersion: 110
-  DefaultName: 
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 0}
   NodeSerializedDataList:
   - {fileID: 1699985159}
   - {fileID: 1699985158}
@@ -431,11 +435,7 @@ MonoBehaviour:
   - {fileID: 1699985160}
   - {fileID: 1699985162}
   - {fileID: 1699985161}
-  ContinueFont: {fileID: 0}
-  EndConversationFont: {fileID: 0}
-  Event:
-    m_PersistentCalls:
-      m_Calls: []
+  saveVersion: 110
 --- !u!1001 &6086366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2635,41 +2635,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73715776}
   m_CullTransparentMesh: 1
---- !u!1 &75182215
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 75182216}
-  m_Layer: 5
-  m_Name: WPon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!224 &75182216
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75182215}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1725577607}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 121, y: -27.909912}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &75502730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11118,20 +11083,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 1220719116}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 1220719116}
   upgrade1: {fileID: 1904730552}
   upgrade2: {fileID: 953620227}
   upgrade3: {fileID: 1137917339}
+  upgradeButton: {fileID: 1076509584}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 1952219009}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 690400814}
   upgradeStar2: {fileID: 1445920612}
   upgradeStar3: {fileID: 712032384}
-  upgradeButton: {fileID: 1076509584}
-  UpgradeCostText: {fileID: 1952219009}
-  chairSaveKey: 26
 --- !u!1 &287625961
 GameObject:
   m_ObjectHideFlags: 0
@@ -11617,12 +11582,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3bb5383f1e9a624a8b1f316882324e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decoration: {fileID: 1527918601}
   decorationOption1: {fileID: 1056395006}
   decorationOption2: {fileID: 391070219}
   decorationOption3: {fileID: 939949506}
   decorationOption4: {fileID: 912657121}
   decorationOption5: {fileID: 1198264339}
-  decoration: {fileID: 1527918601}
   decorationSaveKey: 22
 --- !u!4 &300360030
 Transform:
@@ -17213,11 +17178,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
-      propertyPath: m_Player
-      value: 
-      objectReference: {fileID: 1694192743}
-    - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
-        type: 3}
       propertyPath: OptionImage
       value: 
       objectReference: {fileID: 1755912847, guid: 777848965c0782d4da1d4d21703e29ca,
@@ -17229,20 +17189,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
-      propertyPath: m_Clipboard
-      value: 
-      objectReference: {fileID: 1246993062}
-    - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
-        type: 3}
       propertyPath: BackgroundImage
       value: 
       objectReference: {fileID: -177493934, guid: f3bda593513305542b0946de03cc240e,
         type: 3}
-    - target: {fileID: 1717592540698064966, guid: 5157d3b36cb75dd45b0bbc246c198196,
-        type: 3}
-      propertyPath: m_CinemachineInputAxisController
-      value: 
-      objectReference: {fileID: 1138075484}
     - target: {fileID: 1717592540897304536, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
       propertyPath: m_Type
@@ -17884,20 +17834,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7b93bbf97ac844ea51f92be12b441f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passengers:
-  - {fileID: 844218487}
   passengerPrefabs:
   - {fileID: 5095970117196372480, guid: c8ae35c37805db4498ad187eec8ec269, type: 3}
   - {fileID: 8673069970722433370, guid: 8f8b27e9b460ee249b85980cfbf09f49, type: 3}
   - {fileID: 8756091381033801575, guid: 71e3d9be9040b1c44acde3d52f1c9a6e, type: 3}
   - {fileID: 6224784734797702935, guid: 170f4fd5815f5c748bf970ba702e4820, type: 3}
   - {fileID: 4089226083128170101, guid: 5ba1dc9c06c735e4a870c70e605ca8a9, type: 3}
+  passengers:
+  - {fileID: 844218487}
+  spawnPassengers: 1
   spawnPoints:
   - {fileID: 1758035438}
   - {fileID: 1912487472}
   - {fileID: 1499816575}
   - {fileID: 1934062060}
-  spawnPassengers: 1
 --- !u!4 &467363192
 Transform:
   m_ObjectHideFlags: 0
@@ -18094,13 +18044,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 0
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &481192988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18113,13 +18063,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 1
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!1 &481559296
 GameObject:
   m_ObjectHideFlags: 0
@@ -19509,20 +19459,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 1182312082}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 1182312082}
   upgrade1: {fileID: 878964192}
   upgrade2: {fileID: 809169369}
   upgrade3: {fileID: 744070980}
+  upgradeButton: {fileID: 19857545}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 1342309711}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 1322532985}
   upgradeStar2: {fileID: 1986678774}
   upgradeStar3: {fileID: 1928492447}
-  upgradeButton: {fileID: 19857545}
-  UpgradeCostText: {fileID: 1342309711}
-  chairSaveKey: 26
 --- !u!4 &498858283
 Transform:
   m_ObjectHideFlags: 0
@@ -20012,21 +19962,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContinueFont: {fileID: 0}
   CurrentIDCounter: 2
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":509.5,"yPos":147},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":)","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":251.5,"yPos":124},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Now
-    we wait!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
-  saveVersion: 110
+  DefaultFont: {fileID: 0}
   DefaultName: 
   DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 0}
-  NodeSerializedDataList:
-  - {fileID: 1040477125}
-  - {fileID: 1040477124}
-  ContinueFont: {fileID: 0}
   EndConversationFont: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":509.5,"yPos":147},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":)","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":251.5,"yPos":124},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Now
+    we wait!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  NodeSerializedDataList:
+  - {fileID: 1040477125}
+  - {fileID: 1040477124}
+  saveVersion: 110
 --- !u!1 &507496470
 GameObject:
   m_ObjectHideFlags: 0
@@ -22324,20 +22274,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 231732442}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 231732442}
   upgrade1: {fileID: 270704617}
   upgrade2: {fileID: 1088128130}
   upgrade3: {fileID: 1641549306}
+  upgradeButton: {fileID: 2044726851}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 2019159497}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 1623024307}
   upgradeStar2: {fileID: 763851582}
   upgradeStar3: {fileID: 347598702}
-  upgradeButton: {fileID: 2044726851}
-  UpgradeCostText: {fileID: 2019159497}
-  chairSaveKey: 26
 --- !u!4 &581928407
 Transform:
   m_ObjectHideFlags: 0
@@ -27811,11 +27761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d9d25ab67eefb4490d7844bf5ddb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 1455512212}
-  m_ExitPrompt: {fileID: 1847125971}
-  m_Player: {fileID: 1694192743}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
   decorationUpgradeCanvas: {fileID: 115434184}
+  mCamera: {fileID: 1455512212}
+  mExitPrompt: {fileID: 1847125971}
 --- !u!1 &690400814
 GameObject:
   m_ObjectHideFlags: 0
@@ -32997,6 +32945,11 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 2066924080317431231, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: cameraToFace
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 2279381885918649211, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_text
@@ -33012,11 +32965,6 @@ PrefabInstance:
       propertyPath: musicD
       value: 
       objectReference: {fileID: 811626981}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1694192743}
     - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: clipboard
@@ -33043,11 +32991,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6769893332235002885, guid: e788c70d154b4a44490c6951f064aea3,
         type: 3}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: cinemachineInputAxisController
-      value: 
-      objectReference: {fileID: 1138075484}
     - target: {fileID: 4218564339023619636, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -34349,20 +34292,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 1164071}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 1164071}
   upgrade1: {fileID: 188819930}
   upgrade2: {fileID: 332772133}
   upgrade3: {fileID: 1965443973}
+  upgradeButton: {fileID: 878339822}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 1663823418}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 1044478624}
   upgradeStar2: {fileID: 1980616553}
   upgradeStar3: {fileID: 1032857533}
-  upgradeButton: {fileID: 878339822}
-  UpgradeCostText: {fileID: 1663823418}
-  chairSaveKey: 26
 --- !u!1 &820933998
 GameObject:
   m_ObjectHideFlags: 0
@@ -37370,41 +37313,6 @@ Transform:
   - {fileID: 1148369595}
   m_Father: {fileID: 498858283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &888502171
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 888502172}
-  m_Layer: 5
-  m_Name: WPoff
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!224 &888502172
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888502171}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1725577607}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -148.3003, y: -27.909912}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &889728160
 GameObject:
   m_ObjectHideFlags: 0
@@ -40993,6 +40901,11 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 2066924080317431231, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: cameraToFace
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 2279381885918649211, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_text
@@ -41046,11 +40959,6 @@ PrefabInstance:
       objectReference: {fileID: 1523536453}
     - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1694192743}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
       propertyPath: clipboard
       value: 
       objectReference: {fileID: 1246993062}
@@ -41064,11 +40972,6 @@ PrefabInstance:
       propertyPath: foodCookTime
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: cinemachineInputAxisController
-      value: 
-      objectReference: {fileID: 1138075484}
     - target: {fileID: 3833532521198004585, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -41696,20 +41599,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 1793682523}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 1793682523}
   upgrade1: {fileID: 103748359}
   upgrade2: {fileID: 316735920}
   upgrade3: {fileID: 315987016}
+  upgradeButton: {fileID: 105280904}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 897143153}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 1108363343}
   upgradeStar2: {fileID: 683570174}
   upgradeStar3: {fileID: 802782177}
-  upgradeButton: {fileID: 105280904}
-  UpgradeCostText: {fileID: 897143153}
-  chairSaveKey: 26
 --- !u!4 &1028192030
 Transform:
   m_ObjectHideFlags: 0
@@ -41939,12 +41842,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3bb5383f1e9a624a8b1f316882324e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decoration: {fileID: 698621723}
   decorationOption1: {fileID: 348717088}
   decorationOption2: {fileID: 1151973912}
   decorationOption3: {fileID: 1330263646}
   decorationOption4: {fileID: 156771053}
   decorationOption5: {fileID: 1772114188}
-  decoration: {fileID: 698621723}
   decorationSaveKey: 22
 --- !u!4 &1035760225
 Transform:
@@ -42334,13 +42237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 1
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1040477125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42353,13 +42256,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 0
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!1 &1044478624
 GameObject:
   m_ObjectHideFlags: 0
@@ -42707,6 +42610,11 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 2066924080317431231, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: cameraToFace
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 2279381885918649211, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_text
@@ -42770,11 +42678,6 @@ PrefabInstance:
       objectReference: {fileID: 1053307413}
     - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1694192743}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
       propertyPath: clipboard
       value: 
       objectReference: {fileID: 1246993062}
@@ -42783,11 +42686,6 @@ PrefabInstance:
       propertyPath: foodCookTime
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: cinemachineInputAxisController
-      value: 
-      objectReference: {fileID: 1138075484}
     - target: {fileID: 3788977015005412740, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -44122,7 +44020,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContinueFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
   CurrentIDCounter: 14
+  DefaultFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+  DefaultName: 
+  DefaultSprite: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
+  EndConversationFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733,
+    type: 2}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
   json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-856.5,\"yPos\":-302},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-643.5,\"yPos\":-211},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-411.5,\"yPos\":-106},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":\\/\",\"parentUIDs\":[4],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":43.5,\"yPos\":82},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\".
     . .\\n\",\"parentUIDs\":[12],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":274.5,\"yPos\":177},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[8],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":12}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-176.5,\"yPos\":-12},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\".
     . .\\n\",\"parentUIDs\":[6],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":509,\"yPos\":281},\"ID\":13,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[10],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":-1112,\"yPos\":-327},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
@@ -44137,10 +44044,6 @@ MonoBehaviour:
     guest with the fun purple ears has asked for a banana milkshake! Approach the
     drinks station and see what you can whip up.\",\"parentUIDs\":[9],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-180.5,\"yPos\":69},\"ID\":12,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\".
     . .\",\"parentUIDs\":[11],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
-  saveVersion: 110
-  DefaultName: 
-  DefaultSprite: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  DefaultFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
   NodeSerializedDataList:
   - {fileID: 1542701642}
   - {fileID: 1542701641}
@@ -44156,12 +44059,7 @@ MonoBehaviour:
   - {fileID: 1542701631}
   - {fileID: 1542701630}
   - {fileID: 1542701643}
-  ContinueFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733,
-    type: 2}
-  Event:
-    m_PersistentCalls:
-      m_Calls: []
+  saveVersion: 110
 --- !u!1 &1076509584
 GameObject:
   m_ObjectHideFlags: 0
@@ -50311,12 +50209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3bb5383f1e9a624a8b1f316882324e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decoration: {fileID: 819952950}
   decorationOption1: {fileID: 524400311}
   decorationOption2: {fileID: 282789849}
   decorationOption3: {fileID: 892106784}
   decorationOption4: {fileID: 1228851199}
   decorationOption5: {fileID: 1356984070}
-  decoration: {fileID: 819952950}
   decorationSaveKey: 22
 --- !u!4 &1213222976
 Transform:
@@ -51600,22 +51498,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7149a6f71117682429f2a20c4bd2e1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Player: {fileID: 1694192743}
-  m_PassengerManager: {fileID: 467363191}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
+  canClipboard: 0
+  carriage1: {fileID: 243406943}
+  carriage2: {fileID: 1728575623}
   clipboardUI: {fileID: 538662505}
+  daysLeft: 0
+  daysLeftText: {fileID: 1495945166}
+  mainMenuUI: {fileID: 1407962185}
+  music: {fileID: 1246993066}
   passengerUI: {fileID: 1983100765}
   passengerUIPrefab: {fileID: 8365866167113409244, guid: 916199cbe15204945b2c9399b885e46c,
     type: 3}
-  UpgradeUI: {fileID: 237505154}
-  Carriage1: {fileID: 243406943}
-  Carriage2: {fileID: 1728575623}
-  music: {fileID: 1246993066}
-  canClipboard: 0
   passUI: {fileID: 1288678206}
-  mainMenuUI: {fileID: 1407962185}
-  daysLeftText: {fileID: 1495945166}
-  daysLeft: 0
+  upgradeUI: {fileID: 237505154}
 --- !u!4 &1246993064
 Transform:
   m_ObjectHideFlags: 0
@@ -51644,18 +51539,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dbfd7e0d5e41045b1df4e3262f32c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Car1Chair1: {fileID: 980932947}
-  Car1Chair2: {fileID: 934001157}
-  Car1Chair3: {fileID: 816368041}
-  Car1Chair4: {fileID: 236459176}
-  Car1Chair5: {fileID: 632626311}
-  Car1Chair6: {fileID: 1376428504}
-  Car2Chair1: {fileID: 1822048896}
-  Car2Chair2: {fileID: 1066570387}
-  Car2Chair3: {fileID: 1819506529}
-  Car2Chair4: {fileID: 1315833883}
-  Car2Chair5: {fileID: 821847277}
-  Car2Chair6: {fileID: 827458125}
+  car1Chair1: {fileID: 980932947}
+  car1Chair2: {fileID: 934001157}
+  car1Chair3: {fileID: 816368041}
+  car1Chair4: {fileID: 236459176}
+  car1Chair5: {fileID: 632626311}
+  car1Chair6: {fileID: 1376428504}
+  car2Chair1: {fileID: 1822048896}
+  car2Chair2: {fileID: 1066570387}
+  car2Chair3: {fileID: 1819506529}
+  car2Chair4: {fileID: 1315833883}
+  car2Chair5: {fileID: 821847277}
+  car2Chair6: {fileID: 827458125}
 --- !u!82 &1246993066
 AudioSource:
   m_ObjectHideFlags: 0
@@ -52683,20 +52578,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 1534151271}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 1534151271}
   upgrade1: {fileID: 1139213695}
   upgrade2: {fileID: 2047175543}
   upgrade3: {fileID: 679914694}
+  upgradeButton: {fileID: 1687377782}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 355132827}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 1050548203}
   upgradeStar2: {fileID: 79655882}
   upgradeStar3: {fileID: 1964675602}
-  upgradeButton: {fileID: 1687377782}
-  UpgradeCostText: {fileID: 355132827}
-  chairSaveKey: 26
 --- !u!1 &1280239575
 GameObject:
   m_ObjectHideFlags: 0
@@ -54518,20 +54413,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 16986557}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 16986557}
   upgrade1: {fileID: 1544338146}
   upgrade2: {fileID: 306709298}
   upgrade3: {fileID: 312959338}
+  upgradeButton: {fileID: 1687377782}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 1626090983}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 1691904975}
   upgradeStar2: {fileID: 1329379622}
   upgradeStar3: {fileID: 1002636506}
-  upgradeButton: {fileID: 1687377782}
-  UpgradeCostText: {fileID: 1626090983}
-  chairSaveKey: 26
 --- !u!4 &1315381774
 Transform:
   m_ObjectHideFlags: 0
@@ -55359,10 +55254,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bed1: {fileID: 1665634716}
   bed2: {fileID: 268949365}
-  upgradeUI: {fileID: 1098780649}
-  hammer: {fileID: 362352082}
-  exitButton: {fileID: 1847125971}
   bedSaveKey: 25
+  exitButton: {fileID: 1847125971}
+  hammer: {fileID: 362352082}
+  upgradeUI: {fileID: 1098780649}
 --- !u!4 &1328098255
 Transform:
   m_ObjectHideFlags: 0
@@ -55923,36 +55818,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb7ed718a8912249b3f84385ba1672e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideviewCamera: {fileID: 1700624503}
-  carriageSelectionUI: {fileID: 1272565864}
-  sideviewWalls: []
-  kitchenCarriageUI: {fileID: 0}
-  carriage1UI: {fileID: 1628721027}
-  carriage2UI: {fileID: 1746074187}
-  carriage3UI: {fileID: 2067117474}
-  kitchenCarriageCamera: {fileID: 0}
   carriage1Camera: {fileID: 947870638}
-  carriage2Camera: {fileID: 2077522688}
-  carriage3Camera: {fileID: 82516340}
-  decorationUpgradeCanvas: {fileID: 115434184}
-  decorateCamera: {fileID: 1455512212}
-  m_Player: {fileID: 1694192743}
-  m_CinemachineInputAxisController: {fileID: 1138075484}
-  player: {fileID: 1606420767}
-  characterController: {fileID: 3090241438290652528}
-  kitchenCarriageGo: {fileID: 0}
   carriage1Go: {fileID: 507496471}
+  carriage1UI: {fileID: 1628721027}
+  carriage2Camera: {fileID: 2077522688}
   carriage2Go: {fileID: 566947505}
+  carriage2UI: {fileID: 1746074187}
+  carriage3Camera: {fileID: 82516340}
   carriage3Go: {fileID: 1351795989}
-  sideviewButton: {fileID: 1737809178}
-  sterlingButton: {fileID: 1847125971}
-  clipboardUI: {fileID: 538662505}
-  clipboard: {fileID: 1246993062}
+  carriage3UI: {fileID: 2067117474}
+  carriageSelectionUI: {fileID: 1272565864}
+  decorateCamera: {fileID: 1455512212}
+  decorationUpgradeCanvas: {fileID: 115434184}
   decrepitObjects: {fileID: 0}
-  renovationParticles: {fileID: 0}
+  kitchenCarriageCamera: {fileID: 0}
+  kitchenCarriageGo: {fileID: 0}
+  kitchenCarriageUI: {fileID: 0}
   money: 0
   musicR: {fileID: 1246993066}
-  clipboardManager: {fileID: 0}
+  renovationParticles: {fileID: 0}
+  sideviewButton: {fileID: 1737809178}
+  sideviewCamera: {fileID: 1700624503}
+  sideviewWalls: []
+  sterlingButton: {fileID: 1847125971}
 --- !u!4 &1337464564
 Transform:
   m_ObjectHideFlags: 0
@@ -56186,20 +56074,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 288692533}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 288692533}
   upgrade1: {fileID: 815734985}
   upgrade2: {fileID: 1314305327}
   upgrade3: {fileID: 1411433114}
+  upgradeButton: {fileID: 2019953587}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 910389710}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 555026800}
   upgradeStar2: {fileID: 526029195}
   upgradeStar3: {fileID: 218060083}
-  upgradeButton: {fileID: 2019953587}
-  UpgradeCostText: {fileID: 910389710}
-  chairSaveKey: 26
 --- !u!1 &1342309709
 GameObject:
   m_ObjectHideFlags: 0
@@ -56509,7 +56397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6719542569f0481db10096096ff13fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 330585545}
+  cameraToFace: {fileID: 330585545}
   faceUp: 1
 --- !u!1001 &1346527144
 PrefabInstance:
@@ -57027,145 +56915,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349056296}
-  m_CullTransparentMesh: 1
---- !u!1 &1349888592
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1349888593}
-  - component: {fileID: 1349888595}
-  - component: {fileID: 1349888594}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!224 &1349888593
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349888592}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6245706, y: 0.6245706, z: 0.6245706}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1741981693}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 84.613686, y: -38.7323}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1349888594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349888592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Currently Holding : Food
-
-    ''E'' To Drop'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  m_sharedMaterial: {fileID: 3169229196539728586, guid: 5321fd2b43769794fb1bcaa247c5d733,
-    type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 1
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -57.2359, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1349888595
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349888592}
   m_CullTransparentMesh: 1
 --- !u!1 &1350491221
 GameObject:
@@ -71071,20 +70820,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 1387919678}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 1387919678}
   upgrade1: {fileID: 192637514}
   upgrade2: {fileID: 1830393716}
   upgrade3: {fileID: 225957055}
+  upgradeButton: {fileID: 283899555}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 474175138}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 1280239575}
   upgradeStar2: {fileID: 580160971}
   upgradeStar3: {fileID: 2018825356}
-  upgradeButton: {fileID: 283899555}
-  UpgradeCostText: {fileID: 474175138}
-  chairSaveKey: 26
 --- !u!4 &1464883260
 Transform:
   m_ObjectHideFlags: 0
@@ -71225,21 +70974,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContinueFont: {fileID: 0}
   CurrentIDCounter: 2
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":444.5,"yPos":100},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"!","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":200.5,"yPos":88},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Now,
-    select the correct item and the clever thing will start mixing on its own!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
-  saveVersion: 110
+  DefaultFont: {fileID: 0}
   DefaultName: 
   DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 0}
-  NodeSerializedDataList:
-  - {fileID: 481192987}
-  - {fileID: 481192988}
-  ContinueFont: {fileID: 0}
   EndConversationFont: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":444.5,"yPos":100},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"!","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":200.5,"yPos":88},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Now,
+    select the correct item and the clever thing will start mixing on its own!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  NodeSerializedDataList:
+  - {fileID: 481192987}
+  - {fileID: 481192988}
+  saveVersion: 110
 --- !u!1 &1470545577
 GameObject:
   m_ObjectHideFlags: 0
@@ -73106,20 +72855,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 1028114135}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 1028114135}
   upgrade1: {fileID: 1815382852}
   upgrade2: {fileID: 386119718}
   upgrade3: {fileID: 1183591763}
+  upgradeButton: {fileID: 1319745405}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 67455967}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 344671302}
   upgradeStar2: {fileID: 1627799490}
   upgradeStar3: {fileID: 400664684}
-  upgradeButton: {fileID: 1319745405}
-  UpgradeCostText: {fileID: 67455967}
-  chairSaveKey: 26
 --- !u!1 &1508377881
 GameObject:
   m_ObjectHideFlags: 0
@@ -73364,19 +73113,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa08ad6ec44dad548ae6e49cbed42ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialChihuahua: {fileID: 1004812210}
-  exclamation: {fileID: 1343192500}
-  drinkStoveSelection: {fileID: 1477472361}
-  cookingStoveSelection: {fileID: 160768157}
-  saladStoveSelection: {fileID: 1809570088}
-  jellyStoveSelection: {fileID: 1619897795}
-  stoveTutorial: {fileID: 1465822567}
-  nowWeWait: {fileID: 506860552}
   beginRestaurantTutorial: {fileID: 1072002791}
-  stoveTime: 0
   canStoveTutorial: 0
+  cookingStoveSelection: {fileID: 160768157}
+  drinkStoveSelection: {fileID: 1477472361}
+  exclamation: {fileID: 1343192500}
+  jellyStoveSelection: {fileID: 1619897795}
+  nowWeWait: {fileID: 506860552}
   panelDialogue: {fileID: 1926476124}
-  clipboard: {fileID: 538662505}
+  saladStoveSelection: {fileID: 1809570088}
+  stoveTime: 0
+  stoveTutorial: {fileID: 1465822567}
+  tutorialChihuahua: {fileID: 1004812210}
 --- !u!135 &1510209269
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -74503,20 +74251,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 1761654092}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 1761654092}
   upgrade1: {fileID: 1792004785}
   upgrade2: {fileID: 1105734529}
   upgrade3: {fileID: 641446566}
+  upgradeButton: {fileID: 1765585663}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 1289492640}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 1583609}
   upgradeStar2: {fileID: 378995219}
   upgradeStar3: {fileID: 1637288002}
-  upgradeButton: {fileID: 1765585663}
-  UpgradeCostText: {fileID: 1289492640}
-  chairSaveKey: 26
 --- !u!4 &1526522111
 Transform:
   m_ObjectHideFlags: 0
@@ -75388,13 +75136,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 12
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &1542701631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75407,13 +75155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 11
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1542701632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75426,6 +75174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls:
@@ -75441,10 +75190,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 10
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &1542701633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75457,13 +75205,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 9
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1542701634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75476,13 +75224,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 8
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &1542701635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75495,13 +75243,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 7
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1542701636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75514,13 +75262,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 6
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &1542701637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75533,13 +75281,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 5
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1542701638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75552,13 +75300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 4
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &1542701639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75571,13 +75319,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 3
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1542701640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75590,13 +75338,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 2
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &1542701641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75609,13 +75357,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 1
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1542701642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75628,13 +75376,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 0
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &1542701643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75647,13 +75395,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 13
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!1 &1544338146
 GameObject:
   m_ObjectHideFlags: 0
@@ -77415,7 +77163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 644113261}
-  player: {fileID: 1606420767}
   nomini: 0
 --- !u!114 &1588634283
 MonoBehaviour:
@@ -77429,8 +77176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabb4942af5629346bb40bf8ba235466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyTxt: {fileID: 654823167}
   moneys: {fileID: 654823164}
+  moneyTxt: {fileID: 654823167}
   moneyy: 0
 --- !u!1 &1589997771
 GameObject:
@@ -80294,6 +80041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5a81a0b7c85a944a2ee51fcc34a8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deco10Lock: {fileID: 527194899}
   deco1Lock: {fileID: 2140115162}
   deco2Lock: {fileID: 200738626}
   deco3Lock: {fileID: 1351715013}
@@ -80303,7 +80051,6 @@ MonoBehaviour:
   deco7Lock: {fileID: 1607359065}
   deco8Lock: {fileID: 1391657991}
   deco9Lock: {fileID: 1342773295}
-  deco10Lock: {fileID: 527194899}
 --- !u!1 &1654201090
 GameObject:
   m_ObjectHideFlags: 0
@@ -81534,18 +81281,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692738892}
   m_CullTransparentMesh: 1
---- !u!114 &1694192743 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 50178051288122541, guid: 0430b99f935d1404997864381a6b8160,
-    type: 3}
-  m_PrefabInstance: {fileID: 3090241438290652527}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606420767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1ce8866c3a876428d51b96d263eed1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1699985155
 GameObject:
   m_ObjectHideFlags: 0
@@ -81595,13 +81330,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: e1b2138bbe0489b4f92a57f918551d4f, type: 3}
   NodeID: 2
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: e1b2138bbe0489b4f92a57f918551d4f, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &1699985158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81614,13 +81349,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 1
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1699985159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81633,13 +81368,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: e1b2138bbe0489b4f92a57f918551d4f, type: 3}
   NodeID: 0
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: e1b2138bbe0489b4f92a57f918551d4f, type: 3}
-  Audio: {fileID: 0}
 --- !u!114 &1699985160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81652,13 +81387,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 3
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1699985161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81671,13 +81406,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 0}
   NodeID: 5
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 0}
-  Audio: {fileID: 0}
 --- !u!114 &1699985162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81690,13 +81425,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
   NodeID: 4
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  Icon: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
-  Audio: {fileID: 0}
 --- !u!1 &1700624503
 GameObject:
   m_ObjectHideFlags: 0
@@ -82533,9 +82268,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1741981693}
-  - {fileID: 75182216}
-  - {fileID: 888502172}
   - {fileID: 1588634281}
   - {fileID: 1737710339}
   m_Father: {fileID: 0}
@@ -83835,100 +83567,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740662506}
-  m_CullTransparentMesh: 1
---- !u!1 &1741981692
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1741981693}
-  - component: {fileID: 1741981696}
-  - component: {fileID: 1741981695}
-  - component: {fileID: 1741981694}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!224 &1741981693
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741981692}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6011, y: 1.6011, z: 1.6011}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1349888593}
-  m_Father: {fileID: 1725577607}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -148.3003, y: -27.909912}
-  m_SizeDelta: {x: 181.0559, y: 70.5224}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1741981694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741981692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409cb81465aac0a48b1449e193457e6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WPoff: {fileID: 888502172}
-  WPon: {fileID: 75182216}
-  WP: {fileID: 0}
-  moveSpeed: 10
-  throwUI: 1
---- !u!114 &1741981695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741981692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.16862746}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1741981696
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741981692}
   m_CullTransparentMesh: 1
 --- !u!1001 &1742687669
 PrefabInstance:
@@ -88624,12 +88262,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321efa64da15cba44922efef8233afae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eveConversation: {fileID: 2601979}
-  talkToEve: 0
   canTalkToEve: 1
   cookingStove: {fileID: 1732240960540601526}
-  saladStove: {fileID: 1523536456}
+  eveConversation: {fileID: 2601979}
   jellyStove: {fileID: 811626984}
+  saladStove: {fileID: 1523536456}
+  talkToEve: 0
 --- !u!1 &1847125971
 GameObject:
   m_ObjectHideFlags: 0
@@ -90705,20 +90343,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a35d34009c0e64d8e447b7110d9bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeLvl: 0
-  upgradeCost: 0
+  baseUpgrade: {fileID: 1528432693}
+  chairSaveKey: 26
   moneys: 0
   music: {fileID: 133359680}
-  baseUpgrade: {fileID: 1528432693}
   upgrade1: {fileID: 1491602561}
   upgrade2: {fileID: 281987959}
   upgrade3: {fileID: 436634265}
+  upgradeButton: {fileID: 1341706295}
+  upgradeCost: 0
+  upgradeCostText: {fileID: 1063324162}
+  upgradeLvl: 0
   upgradeStar1: {fileID: 304376950}
   upgradeStar2: {fileID: 985664450}
   upgradeStar3: {fileID: 2116813426}
-  upgradeButton: {fileID: 1341706295}
-  UpgradeCostText: {fileID: 1063324162}
-  chairSaveKey: 26
 --- !u!1 &1914341490
 GameObject:
   m_ObjectHideFlags: 0
@@ -96358,19 +95996,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724cca16813a7cc49809787061b2c316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Select1: {fileID: 589406151}
-  Select2: {fileID: 1873627161}
-  Select3: {fileID: 1124747119}
-  Select4: {fileID: 1643584834}
-  Select5: {fileID: 1713063977}
-  Select6: {fileID: 1616216737}
-  Select7: {fileID: 1387250827}
-  Select8: {fileID: 1016318346}
-  Select9: {fileID: 182548569}
-  Select10: {fileID: 1211063547}
-  Select11: {fileID: 1850740827}
-  Select12: {fileID: 225959614}
-  Select13: {fileID: 1907740690}
+  select1: {fileID: 589406151}
+  select10: {fileID: 1211063547}
+  select11: {fileID: 1850740827}
+  select12: {fileID: 225959614}
+  select13: {fileID: 1907740690}
+  select2: {fileID: 1873627161}
+  select3: {fileID: 1124747119}
+  select4: {fileID: 1643584834}
+  select5: {fileID: 1713063977}
+  select6: {fileID: 1616216737}
+  select7: {fileID: 1387250827}
+  select8: {fileID: 1016318346}
+  select9: {fileID: 182548569}
 --- !u!4 &2053475310
 Transform:
   m_ObjectHideFlags: 0
@@ -97789,15 +97427,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   painting1Camera: {fileID: 1508377881}
-  painting2Camera: {fileID: 1106148444}
-  rugCamera: {fileID: 530504570}
   painting1UI: {fileID: 1428086756}
+  painting2Camera: {fileID: 1106148444}
   painting2UI: {fileID: 225784907}
+  paintingBlocks: {fileID: 1110734277}
+  rugBlocks: {fileID: 775973689}
+  rugCamera: {fileID: 530504570}
   rugUI: {fileID: 356535871}
   sideviewButton: {fileID: 1737809178}
   sterlingButton: {fileID: 1847125971}
-  paintingBlocks: {fileID: 1110734277}
-  rugBlocks: {fileID: 775973689}
 --- !u!4 &2101382956
 Transform:
   m_ObjectHideFlags: 0
@@ -99899,6 +99537,11 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 2066924080317431231, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: cameraToFace
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 2279381885918649211, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -99952,11 +99595,6 @@ PrefabInstance:
       objectReference: {fileID: 1732240960540601523}
     - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1694192743}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
       propertyPath: clipboard
       value: 
       objectReference: {fileID: 1246993062}
@@ -99970,11 +99608,6 @@ PrefabInstance:
       propertyPath: foodCookTime
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
-        type: 3}
-      propertyPath: cinemachineInputAxisController
-      value: 
-      objectReference: {fileID: 1138075484}
     - target: {fileID: 3833532521198004585, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -100612,9 +100245,19 @@ PrefabInstance:
       objectReference: {fileID: 2124482083}
     - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
-      propertyPath: m_CinemachineInputAxisController
+      propertyPath: furroConfirm
       value: 
-      objectReference: {fileID: 1138075484}
+      objectReference: {fileID: 2124482083}
+    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: riverConfirm
+      value: 
+      objectReference: {fileID: 2124482083}
+    - target: {fileID: -8876784983485215285, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: thampConfirm
+      value: 
+      objectReference: {fileID: 2124482083}
     - target: {fileID: 50178051288122541, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: m_SpawnTransform
@@ -100685,11 +100328,11 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 330585545}
-    - target: {fileID: 6775451894038188349, guid: 0430b99f935d1404997864381a6b8160,
+    - target: {fileID: 3175688695200588146, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
-      propertyPath: throwUi
+      propertyPath: cameraToFace
       value: 
-      objectReference: {fileID: 1741981692}
+      objectReference: {fileID: 330585545}
     - target: {fileID: 7120460524217411146, guid: 0430b99f935d1404997864381a6b8160,
         type: 3}
       propertyPath: addedMoneyUI
@@ -100704,12 +100347,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3090241438290652540}
   m_SourcePrefab: {fileID: 100100000, guid: 0430b99f935d1404997864381a6b8160, type: 3}
---- !u!143 &3090241438290652528 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 8757891497119300546, guid: 0430b99f935d1404997864381a6b8160,
-    type: 3}
-  m_PrefabInstance: {fileID: 3090241438290652527}
-  m_PrefabAsset: {fileID: 0}
 --- !u!81 &3090241438290652540
 AudioListener:
   m_ObjectHideFlags: 0

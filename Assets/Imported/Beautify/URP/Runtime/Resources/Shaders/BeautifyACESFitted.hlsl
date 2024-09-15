@@ -24,9 +24,9 @@ static const float3x3 ACESInputMat =
 // ODT_SAT => XYZ => D60_2_D65 => sRGB
 static const float3x3 ACESOutputMat =
 {
-    { 1.60475, -0.53108, -0.07367},
-    {-0.10208,  1.10813, -0.00605},
-    {-0.00327, -0.07276,  1.07602}
+    {1.60475, -0.53108, -0.07367},
+    {-0.10208, 1.10813, -0.00605},
+    {-0.00327, -0.07276, 1.07602}
 };
 
 float3 RRTAndODTFit(float3 v)

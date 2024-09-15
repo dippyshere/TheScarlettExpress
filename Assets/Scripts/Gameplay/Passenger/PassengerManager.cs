@@ -1,24 +1,32 @@
+#region
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Newtonsoft.Json;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+#endregion
 
 public class PassengerManager : MonoBehaviour
 {
-    [HideInInspector, Tooltip("Singleton instance of the passenger manager")] public static PassengerManager instance;
-    [Tooltip("A list of all currently boarded passengers")] public List<PassengerController> passengers = new List<PassengerController>();
-    [SerializeField] private GameObject[] passengerPrefabs;
-    [SerializeField, Tooltip("A list of passener spawn points")] private List<Transform> spawnPoints = new List<Transform>();
-    [SerializeField] private bool spawnPassengers = true;
+    [HideInInspector, Tooltip("Singleton instance of the passenger manager")]
+    public static PassengerManager Instance;
 
-    private Dictionary<string, Dictionary<string, object>> passengerData = new Dictionary<string, Dictionary<string, object>>();
+    Dictionary<string, Dictionary<string, object>> _passengerData = new();
+    [SerializeField] GameObject[] passengerPrefabs;
 
-    //StationSettings sSettings;
+    [Tooltip("A list of all currently boarded passengers")]
+    public List<PassengerController> passengers = new();
 
-    private void Awake()
+    [SerializeField] bool spawnPassengers = true;
+
+    [SerializeField, Tooltip("A list of passener spawn points")]
+    List<Transform> spawnPoints = new();
+
+    void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     public void Start()
@@ -26,7 +34,7 @@ public class PassengerManager : MonoBehaviour
         LoadPassengerData();
         if (spawnPassengers)
         {
-            int random = UnityEngine.Random.Range(4, 7);
+            int random = Random.Range(4, 7);
             for (int i = 0; i < random; i++)
             {
                 SpawnPassenger();
@@ -40,23 +48,31 @@ public class PassengerManager : MonoBehaviour
         {
             if (spawnPoint.gameObject.activeSelf)
             {
-                int passengerType = UnityEngine.Random.Range(0, passengerPrefabs.Length);
+                int passengerType = Random.Range(0, passengerPrefabs.Length);
                 GameObject passengerPrefab = passengerPrefabs[passengerType];
                 GameObject newPassenger = Instantiate(passengerPrefab, spawnPoint.position, spawnPoint.rotation);
                 passengers.Add(newPassenger.GetComponent<PassengerController>());
                 spawnPoint.gameObject.SetActive(false);
-                passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))] = new Dictionary<string, object>();
-                passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["foodType"] = (int)newPassenger.GetComponent<PassengerController>().foodType;
-                passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["hungerLevel"] = newPassenger.GetComponent<PassengerController>().hungerLevel;
-                passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["comfortLevel"] = newPassenger.GetComponent<PassengerController>().comfortLevel;
-                passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["entertainmentLevel"] = newPassenger.GetComponent<PassengerController>().entertainmentLevel;
-                passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["destinationId"] = newPassenger.GetComponent<PassengerController>().destinationId;
-                passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["species"] = newPassenger.GetComponent<PassengerController>().species;
-                passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["passengerName"] = newPassenger.GetComponent<PassengerController>().passengerName;
-                passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["passengerType"] = passengerType;
+                _passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))] = new Dictionary<string, object>();
+                _passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["foodType"] =
+                    (int)newPassenger.GetComponent<PassengerController>().foodType;
+                _passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["hungerLevel"] =
+                    newPassenger.GetComponent<PassengerController>().hungerLevel;
+                _passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["comfortLevel"] =
+                    newPassenger.GetComponent<PassengerController>().comfortLevel;
+                _passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["entertainmentLevel"] =
+                    newPassenger.GetComponent<PassengerController>().entertainmentLevel;
+                _passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["destinationId"] =
+                    newPassenger.GetComponent<PassengerController>().destinationId;
+                _passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["species"] =
+                    newPassenger.GetComponent<PassengerController>().species;
+                _passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["passengerName"] =
+                    newPassenger.GetComponent<PassengerController>().passengerName;
+                _passengerData[Convert.ToString(spawnPoints.IndexOf(spawnPoint))]["passengerType"] = passengerType;
                 break;
             }
         }
+
         SavePassengerData();
     }
 
@@ -75,23 +91,25 @@ public class PassengerManager : MonoBehaviour
                 closestDistance = distance;
             }
         }
+
         closestSeat.gameObject.SetActive(true);
-        passengerData.Remove(Convert.ToString(spawnPoints.IndexOf(closestSeat)));
+        _passengerData.Remove(Convert.ToString(spawnPoints.IndexOf(closestSeat)));
         Destroy(passenger.gameObject);
     }
 
     public void DayAdvanceCleanup()
     {
-        foreach (var passenger in passengers)
+        foreach (PassengerController passenger in passengers)
         {
             passenger.CleanPlate();
         }
+
         SavePassengerData();
     }
 
     public void ArriveAtStation(int stationId)
     {
-        List<PassengerController> passengersToRemove = new List<PassengerController>();
+        List<PassengerController> passengersToRemove = new();
         foreach (PassengerController passenger in passengers)
         {
             if (passenger.destinationId == stationId)
@@ -100,6 +118,7 @@ public class PassengerManager : MonoBehaviour
                 passengersToRemove.Add(passenger);
             }
         }
+
         foreach (PassengerController passenger in passengersToRemove)
         {
             passengers.Remove(passenger);
@@ -108,30 +127,37 @@ public class PassengerManager : MonoBehaviour
 
     public void SavePassengerData()
     {
-        string json = JsonConvert.SerializeObject(passengerData);
-        Debug.Log(json);
+        string json = JsonConvert.SerializeObject(_passengerData);
         ProfileSystem.Set(ProfileSystem.Variable.PassengerStorage, json);
     }
 
-    private void LoadPassengerData()
+    void LoadPassengerData()
     {
-        passengerData = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(ProfileSystem.Get<string>(ProfileSystem.Variable.PassengerStorage));
-        foreach (string key in passengerData.Keys)
+        _passengerData =
+            JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(
+                ProfileSystem.Get<string>(ProfileSystem.Variable.PassengerStorage));
+        foreach (string key in _passengerData.Keys)
         {
             foreach (Transform spawnPoint in spawnPoints)
             {
                 if (spawnPoints.IndexOf(spawnPoint) == Convert.ToInt32(key))
                 {
-                    GameObject passengerPrefab = passengerPrefabs[Convert.ToInt32(passengerData[key]["passengerType"])];
+                    GameObject passengerPrefab = passengerPrefabs[Convert.ToInt32(_passengerData[key]["passengerType"])];
                     GameObject newPassenger = Instantiate(passengerPrefab, spawnPoint.position, spawnPoint.rotation);
                     passengers.Add(newPassenger.GetComponent<PassengerController>());
-                    newPassenger.GetComponent<PassengerController>().foodType = (FoodManager.FoodType)Convert.ToInt32(passengerData[key]["foodType"]);
-                    newPassenger.GetComponent<PassengerController>().hungerLevel = Convert.ToSingle(passengerData[key]["hungerLevel"]);
-                    newPassenger.GetComponent<PassengerController>().comfortLevel = Convert.ToSingle(passengerData[key]["comfortLevel"]);
-                    newPassenger.GetComponent<PassengerController>().entertainmentLevel = Convert.ToSingle(passengerData[key]["entertainmentLevel"]);
-                    newPassenger.GetComponent<PassengerController>().destinationId = Convert.ToInt32(passengerData[key]["destinationId"]);
-                    newPassenger.GetComponent<PassengerController>().species = (string)passengerData[key]["species"];
-                    newPassenger.GetComponent<PassengerController>().passengerName = (string)passengerData[key]["passengerName"];
+                    newPassenger.GetComponent<PassengerController>().foodType =
+                        (FoodManager.FoodType)Convert.ToInt32(_passengerData[key]["foodType"]);
+                    newPassenger.GetComponent<PassengerController>().hungerLevel =
+                        Convert.ToSingle(_passengerData[key]["hungerLevel"]);
+                    newPassenger.GetComponent<PassengerController>().comfortLevel =
+                        Convert.ToSingle(_passengerData[key]["comfortLevel"]);
+                    newPassenger.GetComponent<PassengerController>().entertainmentLevel =
+                        Convert.ToSingle(_passengerData[key]["entertainmentLevel"]);
+                    newPassenger.GetComponent<PassengerController>().destinationId =
+                        Convert.ToInt32(_passengerData[key]["destinationId"]);
+                    newPassenger.GetComponent<PassengerController>().species = (string)_passengerData[key]["species"];
+                    newPassenger.GetComponent<PassengerController>().passengerName =
+                        (string)_passengerData[key]["passengerName"];
                     spawnPoint.gameObject.SetActive(false);
                     break;
                 }

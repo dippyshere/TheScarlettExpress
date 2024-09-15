@@ -1,16 +1,14 @@
-﻿using System.Collections;
+﻿#region
+
 using System.Collections.Generic;
+
+#endregion
 
 namespace DialogueEditor
 {
     public abstract class Connection
     {
-        public enum eConnectionType
-        {
-            None,
-            Speech,
-            Option
-        }
+        public List<Condition> Conditions;
 
         public Connection()
         {
@@ -19,30 +17,41 @@ namespace DialogueEditor
 
         public abstract eConnectionType ConnectionType { get; }
 
-        public List<Condition> Conditions;
+        public enum eConnectionType
+        {
+            None,
+            Speech,
+            Option
+        }
     }
 
     public class SpeechConnection : Connection
     {
+        public SpeechNode SpeechNode;
+
         public SpeechConnection(SpeechNode node)
         {
             SpeechNode = node;
         }
 
-        public override eConnectionType ConnectionType { get { return eConnectionType.Speech; } }
-
-        public SpeechNode SpeechNode;
+        public override eConnectionType ConnectionType
+        {
+            get { return eConnectionType.Speech; }
+        }
     }
 
     public class OptionConnection : Connection
     {
+        public OptionNode OptionNode;
+
         public OptionConnection(OptionNode node)
         {
             OptionNode = node;
         }
 
-        public override eConnectionType ConnectionType { get { return eConnectionType.Option; } }
-
-        public OptionNode OptionNode;
+        public override eConnectionType ConnectionType
+        {
+            get { return eConnectionType.Option; }
+        }
     }
 }

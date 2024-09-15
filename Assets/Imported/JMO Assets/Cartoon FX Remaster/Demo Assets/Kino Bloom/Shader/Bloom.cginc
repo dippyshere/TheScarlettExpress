@@ -1,27 +1,3 @@
-//
-// Kino/Bloom v2 - Bloom filter for Unity
-//
-// Copyright (C) 2015, 2016 Keijiro Takahashi
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-//
-
 #include "UnityCG.cginc"
 
 // Mobile: use RGBM instead of float/half RGB
@@ -59,23 +35,23 @@ half4 SafeHDR(half4 c) { return min(c, 65000); }
 // RGBM encoding/decoding
 half4 EncodeHDR(float3 rgb)
 {
-#if USE_RGBM
+    #if USE_RGBM
     rgb *= 1.0 / 8;
     float m = max(max(rgb.r, rgb.g), max(rgb.b, 1e-6));
     m = ceil(m * 255) / 255;
     return half4(rgb / m, m);
-#else
+    #else
     return half4(rgb, 0);
-#endif
+    #endif
 }
 
 float3 DecodeHDR(half4 rgba)
 {
-#if USE_RGBM
+    #if USE_RGBM
     return rgba.rgb * rgba.a * 8;
-#else
+    #else
     return rgba.rgb;
-#endif
+    #endif
 }
 
 // Downsample with a 4x4 box filter
@@ -83,8 +59,7 @@ half3 DownsampleFilter(float2 uv)
 {
     float4 d = _MainTex_TexelSize.xyxy * float4(-1, -1, +1, +1);
 
-    half3 s;
-    s  = DecodeHDR(tex2D(_MainTex, uv + d.xy));
+    half3 s = DecodeHDR(tex2D(_MainTex, uv + d.xy));
     s += DecodeHDR(tex2D(_MainTex, uv + d.zy));
     s += DecodeHDR(tex2D(_MainTex, uv + d.xw));
     s += DecodeHDR(tex2D(_MainTex, uv + d.zw));
@@ -114,7 +89,7 @@ half3 DownsampleAntiFlickerFilter(float2 uv)
 
 half3 UpsampleFilter(float2 uv)
 {
-#if HIGH_QUALITY
+    #if HIGH_QUALITY
     // 9-tap bilinear upsampler (tent filter)
     float4 d = _MainTex_TexelSize.xyxy * float4(1, 1, -1, 0) * _SampleScale;
 
@@ -132,18 +107,17 @@ half3 UpsampleFilter(float2 uv)
     s += DecodeHDR(tex2D(_MainTex, uv + d.xy));
 
     return s * (1.0 / 16);
-#else
+    #else
     // 4-tap bilinear upsampler
     float4 d = _MainTex_TexelSize.xyxy * float4(-1, -1, +1, +1) * (_SampleScale * 0.5);
 
-    half3 s;
-    s  = DecodeHDR(tex2D(_MainTex, uv + d.xy));
+    half3 s = DecodeHDR(tex2D(_MainTex, uv + d.xy));
     s += DecodeHDR(tex2D(_MainTex, uv + d.zy));
     s += DecodeHDR(tex2D(_MainTex, uv + d.xw));
     s += DecodeHDR(tex2D(_MainTex, uv + d.zw));
 
     return s * (1.0 / 4);
-#endif
+    #endif
 }
 
 //
@@ -171,10 +145,10 @@ v2f_multitex vert_multitex(appdata_img v)
     o.pos = UnityObjectToClipPos(v.vertex);
     o.uvMain = UnityStereoScreenSpaceUVAdjust(v.texcoord, _MainTex_ST);
     o.uvBase = UnityStereoScreenSpaceUVAdjust(v.texcoord, _BaseTex_ST);
-#if UNITY_UV_STARTS_AT_TOP
+    #if UNITY_UV_STARTS_AT_TOP
     if (_BaseTex_TexelSize.y < 0.0)
         o.uvBase.y = 1.0 - v.texcoord.y;
-#endif
+    #endif
     return o;
 }
 
@@ -186,7 +160,7 @@ half4 frag_prefilter(v2f_img i) : SV_Target
 {
     float2 uv = i.uv + _MainTex_TexelSize.xy * _PrefilterOffs;
 
-#if ANTI_FLICKER
+    #if ANTI_FLICKER
     float3 d = _MainTex_TexelSize.xyx * float3(1, 1, 0);
     half4 s0 = SafeHDR(tex2D(_MainTex, uv));
     half3 s1 = SafeHDR(tex2D(_MainTex, uv - d.xz).rgb);
@@ -194,14 +168,14 @@ half4 frag_prefilter(v2f_img i) : SV_Target
     half3 s3 = SafeHDR(tex2D(_MainTex, uv - d.zy).rgb);
     half3 s4 = SafeHDR(tex2D(_MainTex, uv + d.zy).rgb);
     half3 m = Median(Median(s0.rgb, s1, s2), s3, s4);
-#else
+    #else
     half4 s0 = SafeHDR(tex2D(_MainTex, uv));
     half3 m = s0.rgb;
-#endif
+    #endif
 
-#if UNITY_COLORSPACE_GAMMA
+    #if UNITY_COLORSPACE_GAMMA
     m = GammaToLinearSpace(m);
-#endif
+    #endif
     // Pixel brightness
     half br = Brightness(m);
 
@@ -217,11 +191,11 @@ half4 frag_prefilter(v2f_img i) : SV_Target
 
 half4 frag_downsample1(v2f_img i) : SV_Target
 {
-#if ANTI_FLICKER
+    #if ANTI_FLICKER
     return EncodeHDR(DownsampleAntiFlickerFilter(i.uv));
-#else
+    #else
     return EncodeHDR(DownsampleFilter(i.uv));
-#endif
+    #endif
 }
 
 half4 frag_downsample2(v2f_img i) : SV_Target
@@ -240,12 +214,12 @@ half4 frag_upsample_final(v2f_multitex i) : SV_Target
 {
     half4 base = tex2D(_BaseTex, i.uvBase);
     half3 blur = UpsampleFilter(i.uvMain);
-#if UNITY_COLORSPACE_GAMMA
+    #if UNITY_COLORSPACE_GAMMA
     base.rgb = GammaToLinearSpace(base.rgb);
-#endif
+    #endif
     half3 cout = base.rgb + blur * _Intensity;
-#if UNITY_COLORSPACE_GAMMA
+    #if UNITY_COLORSPACE_GAMMA
     cout = LinearToGammaSpace(cout);
-#endif
+    #endif
     return half4(cout, base.a);
 }

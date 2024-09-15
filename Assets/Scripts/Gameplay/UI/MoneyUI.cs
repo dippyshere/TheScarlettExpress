@@ -1,26 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+#region
+
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine;
+
+#endregion
 
 public class MoneyUI : MonoBehaviour
 {
+    Economy _economy;
     public TextMeshProUGUI moneyText;
 
-    public GameObject player;
-    Economy economy;
-
     public float nomini;
-
-    private void Start()
-    {
-        
-        
-
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         nomini = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);

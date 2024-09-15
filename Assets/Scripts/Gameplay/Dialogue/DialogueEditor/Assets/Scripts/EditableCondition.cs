@@ -1,16 +1,15 @@
-﻿using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
+﻿#region
+
+using System.Runtime.Serialization;
+
+#endregion
 
 namespace DialogueEditor
 {
     [DataContract]
     public abstract class EditableCondition
     {
-        public enum eConditionType
-        {
-            IntCondition,
-            BoolCondition
-        }
+        [DataMember] public string ParameterName;
 
         public EditableCondition(string name)
         {
@@ -19,41 +18,55 @@ namespace DialogueEditor
 
         public abstract eConditionType ConditionType { get; }
 
-        [DataMember] public string ParameterName;
+        public enum eConditionType
+        {
+            IntCondition,
+            BoolCondition
+        }
     }
 
     [DataContract]
     public class EditableIntCondition : EditableCondition
     {
+        [DataMember] public eCheckType CheckType;
+        [DataMember] public int RequiredValue;
+
+        public EditableIntCondition(string name) : base(name)
+        {
+        }
+
+        public override eConditionType ConditionType
+        {
+            get { return eConditionType.IntCondition; }
+        }
+
         public enum eCheckType
         {
             equal,
             lessThan,
             greaterThan
         }
-
-        public EditableIntCondition(string name) : base(name) { }
-
-        public override eConditionType ConditionType { get { return eConditionType.IntCondition; } }
-
-        [DataMember] public eCheckType CheckType;
-        [DataMember] public int RequiredValue;
     }
 
     [DataContract]
     public class EditableBoolCondition : EditableCondition
     {
+        [DataMember] public eCheckType CheckType;
+        [DataMember] public bool RequiredValue;
+
+        public EditableBoolCondition(string name) : base(name)
+        {
+        }
+
+        public override eConditionType ConditionType
+        {
+            get { return eConditionType.BoolCondition; }
+        }
+
         public enum eCheckType
         {
             equal,
             notEqual
         }
-
-        public EditableBoolCondition(string name) : base(name) { }
-
-        public override eConditionType ConditionType { get { return eConditionType.BoolCondition; } }
-
-        [DataMember] public eCheckType CheckType;
-        [DataMember] public bool RequiredValue;
     }
 }
