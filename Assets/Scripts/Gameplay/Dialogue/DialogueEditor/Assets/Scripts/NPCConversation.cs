@@ -289,15 +289,20 @@ namespace DialogueEditor
                     // For each node..  Reconstruct the connections
                     for (int j = 0; j < allNodes[i].Connections.Count; j++)
                     {
-                        if (allNodes[i].Connections[j] is EditableSpeechConnection)
+                        switch (allNodes[i].Connections[j])
                         {
-                            EditableSpeechNode speech = conversation.GetSpeechByUID(allNodes[i].Connections[j].NodeUID);
-                            (allNodes[i].Connections[j] as EditableSpeechConnection).Speech = speech;
-                        }
-                        else if (allNodes[i].Connections[j] is EditableOptionConnection)
-                        {
-                            EditableOptionNode option = conversation.GetOptionByUID(allNodes[i].Connections[j].NodeUID);
-                            (allNodes[i].Connections[j] as EditableOptionConnection).Option = option;
+                            case EditableSpeechConnection:
+                            {
+                                EditableSpeechNode speech = conversation.GetSpeechByUID(allNodes[i].Connections[j].NodeUID);
+                                (allNodes[i].Connections[j] as EditableSpeechConnection).Speech = speech;
+                                break;
+                            }
+                            case EditableOptionConnection:
+                            {
+                                EditableOptionNode option = conversation.GetOptionByUID(allNodes[i].Connections[j].NodeUID);
+                                (allNodes[i].Connections[j] as EditableOptionConnection).Option = option;
+                                break;
+                            }
                         }
                     }
                 }
@@ -311,13 +316,14 @@ namespace DialogueEditor
 
                 for (int j = 0; j < thisNode.Connections.Count; j++)
                 {
-                    if (thisNode.Connections[j].ConnectionType == EditableConnection.eConnectiontype.Speech)
+                    switch (thisNode.Connections[j].ConnectionType)
                     {
-                        (thisNode.Connections[j] as EditableSpeechConnection).Speech.parents.Add(thisNode);
-                    }
-                    else if (thisNode.Connections[j].ConnectionType == EditableConnection.eConnectiontype.Option)
-                    {
-                        (thisNode.Connections[j] as EditableOptionConnection).Option.parents.Add(thisNode);
+                        case EditableConnection.eConnectiontype.Speech:
+                            (thisNode.Connections[j] as EditableSpeechConnection).Speech.parents.Add(thisNode);
+                            break;
+                        case EditableConnection.eConnectiontype.Option:
+                            (thisNode.Connections[j] as EditableOptionConnection).Option.parents.Add(thisNode);
+                            break;
                     }
                 }
             }
@@ -403,17 +409,22 @@ namespace DialogueEditor
         {
             for (int i = 0; i < ec.Parameters.Count; i++)
             {
-                if (ec.Parameters[i].ParameterType == EditableParameter.eParamType.Bool)
+                switch (ec.Parameters[i].ParameterType)
                 {
-                    EditableBoolParameter editableParam = ec.Parameters[i] as EditableBoolParameter;
-                    BoolParameter boolParam = new(editableParam.ParameterName, editableParam.BoolValue);
-                    conversation.Parameters.Add(boolParam);
-                }
-                else if (ec.Parameters[i].ParameterType == EditableParameter.eParamType.Int)
-                {
-                    EditableIntParameter editableParam = ec.Parameters[i] as EditableIntParameter;
-                    IntParameter intParam = new(editableParam.ParameterName, editableParam.IntValue);
-                    conversation.Parameters.Add(intParam);
+                    case EditableParameter.eParamType.Bool:
+                    {
+                        EditableBoolParameter editableParam = ec.Parameters[i] as EditableBoolParameter;
+                        BoolParameter boolParam = new(editableParam.ParameterName, editableParam.BoolValue);
+                        conversation.Parameters.Add(boolParam);
+                        break;
+                    }
+                    case EditableParameter.eParamType.Int:
+                    {
+                        EditableIntParameter editableParam = ec.Parameters[i] as EditableIntParameter;
+                        IntParameter intParam = new(editableParam.ParameterName, editableParam.IntValue);
+                        conversation.Parameters.Add(intParam);
+                        break;
+                    }
                 }
             }
         }
@@ -465,23 +476,28 @@ namespace DialogueEditor
 
             for (int i = 0; i < editable.ParamActions.Count; i++)
             {
-                if (editable.ParamActions[i].ParamActionType == EditableSetParamAction.eParamActionType.Int)
+                switch (editable.ParamActions[i].ParamActionType)
                 {
-                    EditableSetIntParamAction setIntEditable = editable.ParamActions[i] as EditableSetIntParamAction;
+                    case EditableSetParamAction.eParamActionType.Int:
+                    {
+                        EditableSetIntParamAction setIntEditable = editable.ParamActions[i] as EditableSetIntParamAction;
 
-                    SetIntParamAction setInt = new();
-                    setInt.ParameterName = setIntEditable.ParameterName;
-                    setInt.Value = setIntEditable.Value;
-                    node.ParamActions.Add(setInt);
-                }
-                else if (editable.ParamActions[i].ParamActionType == EditableSetParamAction.eParamActionType.Bool)
-                {
-                    EditableSetBoolParamAction setBoolEditable = editable.ParamActions[i] as EditableSetBoolParamAction;
+                        SetIntParamAction setInt = new();
+                        setInt.ParameterName = setIntEditable.ParameterName;
+                        setInt.Value = setIntEditable.Value;
+                        node.ParamActions.Add(setInt);
+                        break;
+                    }
+                    case EditableSetParamAction.eParamActionType.Bool:
+                    {
+                        EditableSetBoolParamAction setBoolEditable = editable.ParamActions[i] as EditableSetBoolParamAction;
 
-                    SetBoolParamAction setBool = new();
-                    setBool.ParameterName = setBoolEditable.ParameterName;
-                    setBool.Value = setBoolEditable.Value;
-                    node.ParamActions.Add(setBool);
+                        SetBoolParamAction setBool = new();
+                        setBool.ParameterName = setBoolEditable.ParameterName;
+                        setBool.Value = setBoolEditable.Value;
+                        node.ParamActions.Add(setBool);
+                        break;
+                    }
                 }
             }
         }
@@ -502,19 +518,24 @@ namespace DialogueEditor
                 {
                     int childID = editableConnections[j].NodeUID;
 
-                    // Construct node->Speech
-                    if (editableConnections[j].ConnectionType == EditableConnection.eConnectiontype.Speech)
+                    switch (editableConnections[j].ConnectionType)
                     {
-                        SpeechConnection connection = new SpeechConnection(dialogues[childID]);
-                        CopyConnectionConditions(editableConnections[j], connection);
-                        speechNode.Connections.Add(connection);
-                    }
-                    // Construct node->Option
-                    else if (editableConnections[j].ConnectionType == EditableConnection.eConnectiontype.Option)
-                    {
-                        OptionConnection connection = new OptionConnection(options[childID]);
-                        CopyConnectionConditions(editableConnections[j], connection);
-                        speechNode.Connections.Add(connection);
+                        // Construct node->Speech
+                        case EditableConnection.eConnectiontype.Speech:
+                        {
+                            SpeechConnection connection = new SpeechConnection(dialogues[childID]);
+                            CopyConnectionConditions(editableConnections[j], connection);
+                            speechNode.Connections.Add(connection);
+                            break;
+                        }
+                        // Construct node->Option
+                        case EditableConnection.eConnectiontype.Option:
+                        {
+                            OptionConnection connection = new OptionConnection(options[childID]);
+                            CopyConnectionConditions(editableConnections[j], connection);
+                            speechNode.Connections.Add(connection);
+                            break;
+                        }
                     }
                 }
 
@@ -555,48 +576,53 @@ namespace DialogueEditor
             List<EditableCondition> editableConditions = editableConnection.Conditions;
             for (int i = 0; i < editableConditions.Count; i++)
             {
-                if (editableConditions[i].ConditionType == EditableCondition.eConditionType.BoolCondition)
+                switch (editableConditions[i].ConditionType)
                 {
-                    EditableBoolCondition ebc = editableConditions[i] as EditableBoolCondition;
-
-                    BoolCondition bc = new();
-                    bc.ParameterName = ebc.ParameterName;
-                    switch (ebc.CheckType)
+                    case EditableCondition.eConditionType.BoolCondition:
                     {
-                        case EditableBoolCondition.eCheckType.equal:
-                            bc.CheckType = BoolCondition.eCheckType.equal;
-                            break;
-                        case EditableBoolCondition.eCheckType.notEqual:
-                            bc.CheckType = BoolCondition.eCheckType.notEqual;
-                            break;
+                        EditableBoolCondition ebc = editableConditions[i] as EditableBoolCondition;
+
+                        BoolCondition bc = new();
+                        bc.ParameterName = ebc.ParameterName;
+                        switch (ebc.CheckType)
+                        {
+                            case EditableBoolCondition.eCheckType.equal:
+                                bc.CheckType = BoolCondition.eCheckType.equal;
+                                break;
+                            case EditableBoolCondition.eCheckType.notEqual:
+                                bc.CheckType = BoolCondition.eCheckType.notEqual;
+                                break;
+                        }
+
+                        bc.RequiredValue = ebc.RequiredValue;
+
+                        connection.Conditions.Add(bc);
+                        break;
                     }
-
-                    bc.RequiredValue = ebc.RequiredValue;
-
-                    connection.Conditions.Add(bc);
-                }
-                else if (editableConditions[i].ConditionType == EditableCondition.eConditionType.IntCondition)
-                {
-                    EditableIntCondition eic = editableConditions[i] as EditableIntCondition;
-
-                    IntCondition ic = new();
-                    ic.ParameterName = eic.ParameterName;
-                    switch (eic.CheckType)
+                    case EditableCondition.eConditionType.IntCondition:
                     {
-                        case EditableIntCondition.eCheckType.equal:
-                            ic.CheckType = IntCondition.eCheckType.equal;
-                            break;
-                        case EditableIntCondition.eCheckType.greaterThan:
-                            ic.CheckType = IntCondition.eCheckType.greaterThan;
-                            break;
-                        case EditableIntCondition.eCheckType.lessThan:
-                            ic.CheckType = IntCondition.eCheckType.lessThan;
-                            break;
+                        EditableIntCondition eic = editableConditions[i] as EditableIntCondition;
+
+                        IntCondition ic = new();
+                        ic.ParameterName = eic.ParameterName;
+                        switch (eic.CheckType)
+                        {
+                            case EditableIntCondition.eCheckType.equal:
+                                ic.CheckType = IntCondition.eCheckType.equal;
+                                break;
+                            case EditableIntCondition.eCheckType.greaterThan:
+                                ic.CheckType = IntCondition.eCheckType.greaterThan;
+                                break;
+                            case EditableIntCondition.eCheckType.lessThan:
+                                ic.CheckType = IntCondition.eCheckType.lessThan;
+                                break;
+                        }
+
+                        ic.RequiredValue = eic.RequiredValue;
+
+                        connection.Conditions.Add(ic);
+                        break;
                     }
-
-                    ic.RequiredValue = eic.RequiredValue;
-
-                    connection.Conditions.Add(ic);
                 }
             }
         }

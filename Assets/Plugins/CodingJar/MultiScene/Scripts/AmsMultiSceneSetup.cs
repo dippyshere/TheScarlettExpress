@@ -297,17 +297,16 @@ namespace CodingJar.MultiScene
                 return;
             }
 
-            if (entry.loadMethod == LoadMethod.AdditiveAsync)
+            switch (entry.loadMethod)
             {
-                AmsDebug.Log(this, "Loading {0} Asynchronously from {1}", entry.scene.name, gameObject.scene.name);
-                entry.asyncOp = SceneManager.LoadSceneAsync(entry.scene.runtimePath, LoadSceneMode.Additive);
-                return;
-            }
-
-            if (entry.loadMethod == LoadMethod.Additive)
-            {
-                AmsDebug.Log(this, "Loading {0} from {1}", entry.scene.name, gameObject.scene.name);
-                SceneManager.LoadScene(entry.scene.runtimePath, LoadSceneMode.Additive);
+                case LoadMethod.AdditiveAsync:
+                    AmsDebug.Log(this, "Loading {0} Asynchronously from {1}", entry.scene.name, gameObject.scene.name);
+                    entry.asyncOp = SceneManager.LoadSceneAsync(entry.scene.runtimePath, LoadSceneMode.Additive);
+                    return;
+                case LoadMethod.Additive:
+                    AmsDebug.Log(this, "Loading {0} from {1}", entry.scene.name, gameObject.scene.name);
+                    SceneManager.LoadScene(entry.scene.runtimePath, LoadSceneMode.Additive);
+                    break;
             }
         }
 

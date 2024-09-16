@@ -16,7 +16,6 @@ public class MapStats : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("WOAH, STATION STATS!");
         stationStats.SetActive(true);
     }
 

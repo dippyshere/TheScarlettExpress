@@ -53,7 +53,7 @@ public class PassengerController : MonoBehaviour
         }
     }
 
-    public void SetRandomStats()
+    void SetRandomStats()
     {
         hungerLevel = Random.Range(0, 3);
         comfortLevel = Random.Range(0, 3);
@@ -81,7 +81,7 @@ public class PassengerController : MonoBehaviour
         passengerName = name;
     }
 
-    public float CalculateHappinessValue()
+    float CalculateHappinessValue()
     {
         if (entertainmentLevel == 0)
         {
@@ -106,7 +106,10 @@ public class PassengerController : MonoBehaviour
         happyPS.Play();
         eat.Play();
 
-        uiPrompt.SetActive(false);
+        if (uiPrompt)
+        {
+            uiPrompt.SetActive(false);
+        }
         if (food == foodType)
         {
             hungerLevel += 2;
@@ -149,7 +152,10 @@ public class PassengerController : MonoBehaviour
         {
             if (other.GetComponent<Pickup>().hasItem)
             {
-                uiPrompt.SetActive(true);
+                if (uiPrompt != null)
+                {
+                    uiPrompt.SetActive(true);
+                }
             }
         }
     }
@@ -158,7 +164,10 @@ public class PassengerController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            uiPrompt.SetActive(false);
+            if (uiPrompt != null)
+            {
+                uiPrompt.SetActive(false);
+            }
         }
     }
 }

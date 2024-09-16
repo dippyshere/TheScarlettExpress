@@ -151,13 +151,14 @@ namespace CartoonFX
                             bool isCorrectURP = CompareWithOperator(URP_VERSION, compVersion, compOp);
                             excludeCurrentLines.Push(excludeThisLine || !isCorrectURP);
                         }
-                        else if (excludeThisLine && line.StartsWith("/*** END"))
+                        else switch (excludeThisLine)
                         {
-                            excludeCurrentLines.Pop();
-                        }
-                        else if (!excludeThisLine && line.StartsWith("/*** #define URP_VERSION ***/"))
-                        {
-                            shaderSource.WriteLine("\t\t\t#define URP_VERSION " + URP_VERSION);
+                            case true when line.StartsWith("/*** END"):
+                                excludeCurrentLines.Pop();
+                                break;
+                            case false when line.StartsWith("/*** #define URP_VERSION ***/"):
+                                shaderSource.WriteLine("\t\t\t#define URP_VERSION " + URP_VERSION);
+                                break;
                         }
                     }
                     else

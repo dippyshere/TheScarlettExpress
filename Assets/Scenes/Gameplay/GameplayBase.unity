@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: 43887e4d9de05214199e8228ac604c68
-  m_OcclusionCullingData: {fileID: 36300000, guid: c118068703d373048b09144e941aa118,
+  m_OcclusionCullingData: {fileID: 36300000, guid: 25ff177ee4dc41f48a63ce9095251418,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000012, guid: d96cb14d30e66b044a80f22ba7f8555a,
+  m_LightingDataAsset: {fileID: 112000012, guid: f506460c8ac86cc47aa0627abe7b31b3,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: b85415656ae8ac049b18dabf6db9063b,
     type: 2}
@@ -512,8 +512,8 @@ MonoBehaviour:
     Wrap: 1
     Recentering:
       Enabled: 0
-      Wait: 1
-      Time: 2
+      Wait: 0
+      Time: 0.01
     Restrictions: 0
   VerticalAxis:
     Value: 45
@@ -522,8 +522,8 @@ MonoBehaviour:
     Wrap: 0
     Recentering:
       Enabled: 0
-      Wait: 1
-      Time: 2
+      Wait: 0
+      Time: 0.01
     Restrictions: 0
   RadialAxis:
     Value: 1
@@ -586,7 +586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608384528}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22258596, y: -0.00004532277, z: 0.000010347804, w: 0.9749131}
+  m_LocalRotation: {x: 0.22249876, y: -0.000000021914996, z: 0.00000001734071, w: 0.974933}
   m_LocalPosition: {x: 0, y: 3.5355341, z: -3.5355337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -846,7 +846,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641390819}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22258596, y: -0.00004532275, z: 0.000010347804, w: 0.97491306}
+  m_LocalRotation: {x: 0.22249879, y: -0.000000018944204, z: 0.000000004323438, w: 0.97493297}
   m_LocalPosition: {x: 0, y: 3.5355341, z: -3.5355334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

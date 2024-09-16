@@ -160,15 +160,14 @@ namespace CodingJar
             string[] paths = absolutePath.Split('/');
             int numPaths = paths.Length;
 
-            // Fail-safe
-            if (numPaths < 1)
+            switch (numPaths)
             {
-                return null;
-            }
-
-            if (numPaths < 2)
-            {
-                paths = new string[2] { "/", paths[0] };
+                // Fail-safe
+                case < 1:
+                    return null;
+                case < 2:
+                    paths = new string[2] { "/", paths[0] };
+                    break;
             }
 
             foreach (GameObject gameObject in scene.GetRootObjectsEvenIfNotLoaded())

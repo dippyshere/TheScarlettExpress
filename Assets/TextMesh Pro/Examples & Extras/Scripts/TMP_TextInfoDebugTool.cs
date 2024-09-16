@@ -375,38 +375,39 @@ namespace TMPro.Examples
                         }
                     }
 
-                    // Last Character of Word
-                    if (isBeginRegion && j == wInfo.characterCount - 1)
+                    switch (isBeginRegion)
                     {
-                        isBeginRegion = false;
+                        // Last Character of Word
+                        case true when j == wInfo.characterCount - 1:
+                            isBeginRegion = false;
 
-                        topLeft = m_Transform.TransformPoint(new Vector3(topLeft.x, maxAscender, 0));
-                        bottomLeft = m_Transform.TransformPoint(new Vector3(bottomLeft.x, minDescender, 0));
-                        bottomRight =
-                            m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, minDescender, 0));
-                        topRight = m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, maxAscender, 0));
+                            topLeft = m_Transform.TransformPoint(new Vector3(topLeft.x, maxAscender, 0));
+                            bottomLeft = m_Transform.TransformPoint(new Vector3(bottomLeft.x, minDescender, 0));
+                            bottomRight =
+                                m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, minDescender, 0));
+                            topRight = m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, maxAscender, 0));
 
-                        // Draw Region
-                        DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
+                            // Draw Region
+                            DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
 
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
-                    }
-                    // If Word is split on more than one line.
-                    else if (isBeginRegion && currentLine != m_TextInfo.characterInfo[characterIndex + 1].lineNumber)
-                    {
-                        isBeginRegion = false;
+                            //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                            break;
+                        // If Word is split on more than one line.
+                        case true when currentLine != m_TextInfo.characterInfo[characterIndex + 1].lineNumber:
+                            isBeginRegion = false;
 
-                        topLeft = m_Transform.TransformPoint(new Vector3(topLeft.x, maxAscender, 0));
-                        bottomLeft = m_Transform.TransformPoint(new Vector3(bottomLeft.x, minDescender, 0));
-                        bottomRight =
-                            m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, minDescender, 0));
-                        topRight = m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, maxAscender, 0));
+                            topLeft = m_Transform.TransformPoint(new Vector3(topLeft.x, maxAscender, 0));
+                            bottomLeft = m_Transform.TransformPoint(new Vector3(bottomLeft.x, minDescender, 0));
+                            bottomRight =
+                                m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, minDescender, 0));
+                            topRight = m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, maxAscender, 0));
 
-                        // Draw Region
-                        DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
-                        maxAscender = -Mathf.Infinity;
-                        minDescender = Mathf.Infinity;
+                            // Draw Region
+                            DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
+                            //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                            maxAscender = -Mathf.Infinity;
+                            minDescender = Mathf.Infinity;
+                            break;
                     }
                 }
 
@@ -485,39 +486,40 @@ namespace TMPro.Examples
                         }
                     }
 
-                    // Last Character of Link
-                    if (isBeginRegion && j == linkInfo.linkTextLength - 1)
+                    switch (isBeginRegion)
                     {
-                        isBeginRegion = false;
+                        // Last Character of Link
+                        case true when j == linkInfo.linkTextLength - 1:
+                            isBeginRegion = false;
 
-                        topLeft = m_Transform.TransformPoint(new Vector3(topLeft.x, maxAscender, 0));
-                        bottomLeft = m_Transform.TransformPoint(new Vector3(bottomLeft.x, minDescender, 0));
-                        bottomRight =
-                            m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, minDescender, 0));
-                        topRight = m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, maxAscender, 0));
+                            topLeft = m_Transform.TransformPoint(new Vector3(topLeft.x, maxAscender, 0));
+                            bottomLeft = m_Transform.TransformPoint(new Vector3(bottomLeft.x, minDescender, 0));
+                            bottomRight =
+                                m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, minDescender, 0));
+                            topRight = m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, maxAscender, 0));
 
-                        // Draw Region
-                        DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, linkColor);
+                            // Draw Region
+                            DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, linkColor);
 
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
-                    }
-                    // If Link is split on more than one line.
-                    else if (isBeginRegion && currentLine != textInfo.characterInfo[characterIndex + 1].lineNumber)
-                    {
-                        isBeginRegion = false;
+                            //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                            break;
+                        // If Link is split on more than one line.
+                        case true when currentLine != textInfo.characterInfo[characterIndex + 1].lineNumber:
+                            isBeginRegion = false;
 
-                        topLeft = m_Transform.TransformPoint(new Vector3(topLeft.x, maxAscender, 0));
-                        bottomLeft = m_Transform.TransformPoint(new Vector3(bottomLeft.x, minDescender, 0));
-                        bottomRight =
-                            m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, minDescender, 0));
-                        topRight = m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, maxAscender, 0));
+                            topLeft = m_Transform.TransformPoint(new Vector3(topLeft.x, maxAscender, 0));
+                            bottomLeft = m_Transform.TransformPoint(new Vector3(bottomLeft.x, minDescender, 0));
+                            bottomRight =
+                                m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, minDescender, 0));
+                            topRight = m_Transform.TransformPoint(new Vector3(currentCharInfo.topRight.x, maxAscender, 0));
 
-                        // Draw Region
-                        DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, linkColor);
+                            // Draw Region
+                            DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, linkColor);
 
-                        maxAscender = -Mathf.Infinity;
-                        minDescender = Mathf.Infinity;
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                            maxAscender = -Mathf.Infinity;
+                            minDescender = Mathf.Infinity;
+                            //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                            break;
                     }
                 }
 

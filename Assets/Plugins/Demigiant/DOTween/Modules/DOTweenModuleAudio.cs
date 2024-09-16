@@ -29,13 +29,14 @@ namespace DG.Tweening
         public static TweenerCore<float, float, FloatOptions> DOFade(this AudioSource target, float endValue,
             float duration)
         {
-            if (endValue < 0)
+            switch (endValue)
             {
-                endValue = 0;
-            }
-            else if (endValue > 1)
-            {
-                endValue = 1;
+                case < 0:
+                    endValue = 0;
+                    break;
+                case > 1:
+                    endValue = 1;
+                    break;
             }
 
             TweenerCore<float, float, FloatOptions> t = DOTween.To(() => target.volume, x => target.volume = x,

@@ -10,23 +10,29 @@ using UnityEngine.Serialization;
 
 public class MapTest : MonoBehaviour
 {
+    [HideInInspector, Tooltip("Singleton instance of the MapTest.")]
+    public static MapTest Instance;
     [SerializeField] GameObject canvas;
     public NPCConversation eveReminder;
 
     bool _hasTalkedToEve;
 
-    public bool isEve;
-    public bool isMap;
+    [HideInInspector] public bool isEve;
+    [HideInInspector] public bool isMap;
 
     public AudioSource music;
     [SerializeField] GameObject shopUI;
 
+    void Awake()
+    {
+        Instance = this;
+    }
+    
     void Start()
     {
         canvas.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isEve && Input.GetKeyDown(KeyCode.E))
@@ -35,18 +41,17 @@ public class MapTest : MonoBehaviour
             CameraManager.Instance.SetInputModeUI();
         }
 
-        if (isMap && Input.GetKeyDown(KeyCode.E) && _hasTalkedToEve)
+        if (isMap && Input.GetKeyDown(KeyCode.E))
         {
-            music.Play();
-            canvas.SetActive(true);
-            CameraManager.Instance.SetInputModeUI();
-        }
-
-        if (isMap && Input.GetKeyDown(KeyCode.E) && !_hasTalkedToEve)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            ConversationManager.Instance.StartConversation(eveReminder);
+            if ((_hasTalkedToEve && eveReminder) || !eveReminder)
+            {
+                canvas.SetActive(true);
+                CameraManager.Instance.SetInputModeUI();
+            }
+            else
+            {
+                ConversationManager.Instance.StartConversation(eveReminder);
+            }
         }
 
         _hasTalkedToEve = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveTutorialDone);

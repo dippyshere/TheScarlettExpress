@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Economy : MonoBehaviour
 {
-    public AddedMoneyUI addedMoneyUI;
     public float money;
 
     void Awake()
@@ -17,7 +16,10 @@ public class Economy : MonoBehaviour
 
     public void AddMoney(float money)
     {
-        addedMoneyUI.MoneyAnimation(money);
+        if (AddedMoneyUI.Instance != null)
+        {
+            AddedMoneyUI.Instance.MoneyAnimation(money);
+        }
         this.money += money;
         ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, this.money);
         if (TrainGameAnalytics.instance != null)

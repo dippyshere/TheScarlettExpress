@@ -121,23 +121,28 @@ namespace DialogueEditor
             {
                 bool connectingToOption = false;
 
-                if (Info.Connections[i].ConnectionType == EditableConnection.eConnectiontype.Speech)
+                switch (Info.Connections[i].ConnectionType)
                 {
-                    EditableSpeechConnection connection = Info.Connections[i] as EditableSpeechConnection;
+                    case EditableConnection.eConnectiontype.Speech:
+                    {
+                        EditableSpeechConnection connection = Info.Connections[i] as EditableSpeechConnection;
 
-                    DialogueEditorUtil.GetConnectionDrawInfo(rect, connection.Speech, out start, out end);
-                    xPos = connection.Speech.EditorInfo.xPos;
-                    yPos = connection.Speech.EditorInfo.yPos;
-                }
-                else if (Info.Connections[i].ConnectionType == EditableConnection.eConnectiontype.Option)
-                {
-                    EditableOptionConnection connection = Info.Connections[i] as EditableOptionConnection;
+                        DialogueEditorUtil.GetConnectionDrawInfo(rect, connection.Speech, out start, out end);
+                        xPos = connection.Speech.EditorInfo.xPos;
+                        yPos = connection.Speech.EditorInfo.yPos;
+                        break;
+                    }
+                    case EditableConnection.eConnectiontype.Option:
+                    {
+                        EditableOptionConnection connection = Info.Connections[i] as EditableOptionConnection;
 
-                    DialogueEditorUtil.GetConnectionDrawInfo(rect, connection.Option, out start, out end);
-                    xPos = connection.Option.EditorInfo.xPos;
-                    yPos = connection.Option.EditorInfo.yPos;
+                        DialogueEditorUtil.GetConnectionDrawInfo(rect, connection.Option, out start, out end);
+                        xPos = connection.Option.EditorInfo.xPos;
+                        yPos = connection.Option.EditorInfo.yPos;
 
-                    connectingToOption = true;
+                        connectingToOption = true;
+                        break;
+                    }
                 }
 
                 bool selected = currentlySelected != null && currentlySelected == Info.Connections[i];
@@ -201,23 +206,26 @@ namespace DialogueEditor
             switch (e.type)
             {
                 case EventType.MouseDown:
-                    if (e.button == 0)
+                    switch (e.button)
                     {
-                        if (rect.Contains(e.mousePosition) && !inPanel)
+                        case 0:
                         {
+                            if (rect.Contains(e.mousePosition) && !inPanel)
+                            {
 #if UNITY_EDITOR
-                            DialogueEditorWindow.SelectableClickedOnThisUpdate = true;
+                                DialogueEditorWindow.SelectableClickedOnThisUpdate = true;
 #endif
-                            OnUINodeSelected?.Invoke(this, true);
-                            e.Use();
-                        }
+                                OnUINodeSelected?.Invoke(this, true);
+                                e.Use();
+                            }
 
-                        GUI.changed = true;
-                    }
-                    else if (e.button == 1 && rect.Contains(e.mousePosition))
-                    {
-                        ProcessContextMenu();
-                        e.Use();
+                            GUI.changed = true;
+                            break;
+                        }
+                        case 1 when rect.Contains(e.mousePosition):
+                            ProcessContextMenu();
+                            e.Use();
+                            break;
                     }
 
                     break;

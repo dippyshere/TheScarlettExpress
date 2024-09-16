@@ -282,13 +282,14 @@ namespace Beautify.Universal
                 return;
             }
 
-            if (!beautify.active && (wasBuildOptActive || force))
+            switch (beautify.active)
             {
-                StripBeautifyKeywords();
-            }
-            else if (beautify.active && (!wasBuildOptActive || force))
-            {
-                SetStripShaderKeywords(beautify);
+                case false when (wasBuildOptActive || force):
+                    StripBeautifyKeywords();
+                    break;
+                case true when (!wasBuildOptActive || force):
+                    SetStripShaderKeywords(beautify);
+                    break;
             }
 
             wasBuildOptActive = beautify.active;

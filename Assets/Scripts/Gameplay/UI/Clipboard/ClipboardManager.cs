@@ -1,6 +1,7 @@
 #region
 
 using System.Collections.Generic;
+using System.Globalization;
 using Dypsloom.DypThePenguin.Scripts.Character;
 using TMPro;
 using Unity.Cinemachine;
@@ -101,8 +102,8 @@ public class ClipboardManager : MonoBehaviour
             GameObject newPassengerUI = Instantiate(passengerUIPrefab, passengerUI.transform);
             PassengerEntry passengerEntry = newPassengerUI.GetComponent<PassengerEntry>();
             passengerEntry.SetPassengerInfo(passenger.portrait, passenger.passengerName, passenger.species,
-                passenger.CalculateSimpleFoodValue().ToString(), passenger.hungerLevel.ToString(),
-                passenger.comfortLevel.ToString());
+                Mathf.Clamp(passenger.CalculateSimpleFoodValue(), 0, 5).ToString(), passenger.hungerLevel.ToString(CultureInfo.InvariantCulture),
+                passenger.comfortLevel.ToString(CultureInfo.InvariantCulture));
         }
 
         RectTransform rectTransform = passengerUI.GetComponent<RectTransform>();

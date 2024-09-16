@@ -24,7 +24,7 @@ public class StoveSelect : MonoBehaviour
 
     [FormerlySerializedAs("Select9"),SerializeField] GameObject select9;
 
-    public void Select1Go()
+    public void Select1GO()
     {
         select1.SetActive(true);
         select2.SetActive(false);
@@ -32,7 +32,7 @@ public class StoveSelect : MonoBehaviour
         select4.SetActive(false);
     }
 
-    public void Select2Go()
+    public void Select2GO()
     {
         select1.SetActive(false);
         select2.SetActive(true);
@@ -40,7 +40,7 @@ public class StoveSelect : MonoBehaviour
         select4.SetActive(false);
     }
 
-    public void Select3Go()
+    public void Select3GO()
     {
         select1.SetActive(false);
         select2.SetActive(false);
@@ -48,7 +48,7 @@ public class StoveSelect : MonoBehaviour
         select4.SetActive(false);
     }
 
-    public void Select4Go()
+    public void Select4GO()
     {
         select1.SetActive(false);
         select2.SetActive(false);
@@ -56,7 +56,7 @@ public class StoveSelect : MonoBehaviour
         select4.SetActive(true);
     }
 
-    public void Select5Go()
+    public void Select5GO()
     {
         select5.SetActive(true);
         select6.SetActive(false);
@@ -64,7 +64,7 @@ public class StoveSelect : MonoBehaviour
         select8.SetActive(false);
     }
 
-    public void Select6Go()
+    public void Select6GO()
     {
         select5.SetActive(false);
         select6.SetActive(true);
@@ -72,7 +72,7 @@ public class StoveSelect : MonoBehaviour
         select8.SetActive(false);
     }
 
-    public void Select7Go()
+    public void Select7GO()
     {
         select5.SetActive(false);
         select6.SetActive(false);
@@ -80,7 +80,7 @@ public class StoveSelect : MonoBehaviour
         select8.SetActive(false);
     }
 
-    public void Select8Go()
+    public void Select8GO()
     {
         select5.SetActive(false);
         select6.SetActive(false);
@@ -88,7 +88,7 @@ public class StoveSelect : MonoBehaviour
         select8.SetActive(true);
     }
 
-    public void Select9Go()
+    public void Select9GO()
     {
         select9.SetActive(true);
         select10.SetActive(false);
@@ -96,7 +96,7 @@ public class StoveSelect : MonoBehaviour
         select12.SetActive(false);
     }
 
-    public void Select10Go()
+    public void Select10GO()
     {
         select9.SetActive(false);
         select10.SetActive(true);
@@ -104,7 +104,7 @@ public class StoveSelect : MonoBehaviour
         select12.SetActive(false);
     }
 
-    public void Select11Go()
+    public void Select11GO()
     {
         select9.SetActive(false);
         select10.SetActive(false);
@@ -112,7 +112,7 @@ public class StoveSelect : MonoBehaviour
         select12.SetActive(false);
     }
 
-    public void Select12Go()
+    public void Select12GO()
     {
         select9.SetActive(false);
         select10.SetActive(false);
@@ -120,7 +120,7 @@ public class StoveSelect : MonoBehaviour
         select12.SetActive(true);
     }
 
-    public void Select13Go()
+    public void Select13GO()
     {
         select13.SetActive(true);
     }

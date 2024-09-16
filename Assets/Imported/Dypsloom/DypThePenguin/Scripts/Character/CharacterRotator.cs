@@ -40,18 +40,19 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
             float targetRotation = 0;
 
-            if (m_Character.m_MovementMode == MovementMode.RailZ || m_Character.m_MovementMode == MovementMode.RailX)
+            switch (m_Character.m_MovementMode)
             {
-                targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg;
-            }
-            else if (m_Character.m_MovementMode == MovementMode.Free)
-            {
-                targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg +
-                                 m_Character.CharacterCamera.transform.eulerAngles.y;
-            }
-            else
-            {
-                targetRotation = m_Character.transform.eulerAngles.y;
+                case MovementMode.RailZ:
+                case MovementMode.RailX:
+                    targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg;
+                    break;
+                case MovementMode.Free:
+                    targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg +
+                                     m_Character.CharacterCamera.transform.eulerAngles.y;
+                    break;
+                default:
+                    targetRotation = m_Character.transform.eulerAngles.y;
+                    break;
             }
 
             float rotation = Mathf.SmoothDampAngle(m_Character.transform.eulerAngles.y, targetRotation,

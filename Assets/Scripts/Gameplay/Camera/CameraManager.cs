@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Dypsloom.DypThePenguin.Scripts.Character;
 using UnityEngine;
 using Unity.Cinemachine;
+using Unity.Cinemachine.TargetTracking;
 
 public class CameraManager : MonoBehaviour
 {
@@ -40,5 +41,23 @@ public class CameraManager : MonoBehaviour
             Character.Instance.m_MovementMode = MovementMode.Free;
         if (ClipboardManager.Instance != null)
             ClipboardManager.Instance.canClipboard = true;
+    }
+
+    public void ResetCameraPosition()
+    {
+        cinemachineInputAxisController.GetComponent<CinemachineOrbitalFollow>().HorizontalAxis.Value = 0;
+        cinemachineInputAxisController.GetComponent<CinemachineOrbitalFollow>().HorizontalAxis.Reset();
+        cinemachineInputAxisController.GetComponent<CinemachineOrbitalFollow>().HorizontalAxis.TriggerRecentering();
+        cinemachineInputAxisController.GetComponent<CinemachineOrbitalFollow>().VerticalAxis.Value = 45;
+        cinemachineInputAxisController.GetComponent<CinemachineOrbitalFollow>().VerticalAxis.Reset();
+        cinemachineInputAxisController.GetComponent<CinemachineOrbitalFollow>().VerticalAxis.TriggerRecentering();
+        StartCoroutine(ResetCameraPositionCoroutine());
+    }
+    
+    IEnumerator ResetCameraPositionCoroutine()
+    {
+        cinemachineInputAxisController.GetComponent<CinemachineOrbitalFollow>().TrackerSettings.BindingMode = BindingMode.LockToTargetOnAssign;
+        yield return null;
+        cinemachineInputAxisController.GetComponent<CinemachineOrbitalFollow>().TrackerSettings.BindingMode = BindingMode.LazyFollow;
     }
 }

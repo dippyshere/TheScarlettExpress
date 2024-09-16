@@ -26,5 +26,6 @@ public class Eve : MonoBehaviour
         shopEve.SetActive(true);
         panelDialogue.SetActive(false);
         panelOptions.SetActive(false);
+        MapTest.Instance.AbleToLeaveStation();
     }
 }

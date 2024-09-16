@@ -51,49 +51,49 @@ namespace TMPro.Examples
 
         void Start()
         {
-            if (SpawnType == 0)
+            switch (SpawnType)
             {
-                // TextMesh Pro Implementation
-                m_textMeshPro = m_floatingText.AddComponent<TextMeshPro>();
-                m_textMeshPro.rectTransform.sizeDelta = new Vector2(3, 3);
+                case 0:
+                    // TextMesh Pro Implementation
+                    m_textMeshPro = m_floatingText.AddComponent<TextMeshPro>();
+                    m_textMeshPro.rectTransform.sizeDelta = new Vector2(3, 3);
 
-                m_floatingText_Transform = m_floatingText.transform;
-                m_floatingText_Transform.position = m_transform.position + new Vector3(0, 15f, 0);
+                    m_floatingText_Transform = m_floatingText.transform;
+                    m_floatingText_Transform.position = m_transform.position + new Vector3(0, 15f, 0);
 
-                //m_textMeshPro.fontAsset = Resources.Load("Fonts & Materials/JOKERMAN SDF", typeof(TextMeshProFont)) as TextMeshProFont; // User should only provide a string to the resource.
-                //m_textMeshPro.fontSharedMaterial = Resources.Load("Fonts & Materials/LiberationSans SDF", typeof(Material)) as Material;
+                    //m_textMeshPro.fontAsset = Resources.Load("Fonts & Materials/JOKERMAN SDF", typeof(TextMeshProFont)) as TextMeshProFont; // User should only provide a string to the resource.
+                    //m_textMeshPro.fontSharedMaterial = Resources.Load("Fonts & Materials/LiberationSans SDF", typeof(Material)) as Material;
 
-                m_textMeshPro.alignment = TextAlignmentOptions.Center;
-                m_textMeshPro.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255),
-                    (byte)Random.Range(0, 255), 255);
-                m_textMeshPro.fontSize = 24;
-                //m_textMeshPro.enableExtraPadding = true;
-                //m_textMeshPro.enableShadows = false;
-                m_textMeshPro.fontFeatures.Clear();
-                m_textMeshPro.text = string.Empty;
-                m_textMeshPro.isTextObjectScaleStatic = IsTextObjectScaleStatic;
+                    m_textMeshPro.alignment = TextAlignmentOptions.Center;
+                    m_textMeshPro.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255),
+                        (byte)Random.Range(0, 255), 255);
+                    m_textMeshPro.fontSize = 24;
+                    //m_textMeshPro.enableExtraPadding = true;
+                    //m_textMeshPro.enableShadows = false;
+                    m_textMeshPro.fontFeatures.Clear();
+                    m_textMeshPro.text = string.Empty;
+                    m_textMeshPro.isTextObjectScaleStatic = IsTextObjectScaleStatic;
 
-                StartCoroutine(DisplayTextMeshProFloatingText());
-            }
-            else if (SpawnType == 1)
-            {
-                //Debug.Log("Spawning TextMesh Objects.");
+                    StartCoroutine(DisplayTextMeshProFloatingText());
+                    break;
+                case 1:
+                    //Debug.Log("Spawning TextMesh Objects.");
 
-                m_floatingText_Transform = m_floatingText.transform;
-                m_floatingText_Transform.position = m_transform.position + new Vector3(0, 15f, 0);
+                    m_floatingText_Transform = m_floatingText.transform;
+                    m_floatingText_Transform.position = m_transform.position + new Vector3(0, 15f, 0);
 
-                m_textMesh = m_floatingText.AddComponent<TextMesh>();
-                m_textMesh.font = Resources.Load<Font>("Fonts/ARIAL");
-                m_textMesh.GetComponent<Renderer>().sharedMaterial = m_textMesh.font.material;
-                m_textMesh.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255),
-                    (byte)Random.Range(0, 255), 255);
-                m_textMesh.anchor = TextAnchor.LowerCenter;
-                m_textMesh.fontSize = 24;
+                    m_textMesh = m_floatingText.AddComponent<TextMesh>();
+                    m_textMesh.font = Resources.Load<Font>("Fonts/ARIAL");
+                    m_textMesh.GetComponent<Renderer>().sharedMaterial = m_textMesh.font.material;
+                    m_textMesh.color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255),
+                        (byte)Random.Range(0, 255), 255);
+                    m_textMesh.anchor = TextAnchor.LowerCenter;
+                    m_textMesh.fontSize = 24;
 
-                StartCoroutine(DisplayTextMeshFloatingText());
-            }
-            else if (SpawnType == 2)
-            {
+                    StartCoroutine(DisplayTextMeshFloatingText());
+                    break;
+                case 2:
+                    break;
             }
         }
 

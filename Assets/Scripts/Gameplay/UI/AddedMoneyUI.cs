@@ -8,10 +8,17 @@ using UnityEngine;
 
 public class AddedMoneyUI : MonoBehaviour
 {
+    [HideInInspector, Tooltip("Singleton instance of the AddedMoneyUI.")]
+    public static AddedMoneyUI Instance;
     public GameObject moneys;
     public TextMeshProUGUI moneyTxt;
 
     public float moneyy;
+    
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {

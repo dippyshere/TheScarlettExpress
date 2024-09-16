@@ -17,13 +17,14 @@ namespace Beautify.Universal
 
         void FixedUpdate()
         {
-            if (transform.position.z < 2.5f)
+            switch (transform.position.z)
             {
-                rb.AddForce(Vector3.forward * 200f * Time.fixedDeltaTime);
-            }
-            else if (transform.position.z > 8f)
-            {
-                rb.AddForce(Vector3.back * 200f * Time.fixedDeltaTime);
+                case < 2.5f:
+                    rb.AddForce(Vector3.forward * 200f * Time.fixedDeltaTime);
+                    break;
+                case > 8f:
+                    rb.AddForce(Vector3.back * 200f * Time.fixedDeltaTime);
+                    break;
             }
         }
     }

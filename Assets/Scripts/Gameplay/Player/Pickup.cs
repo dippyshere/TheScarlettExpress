@@ -119,11 +119,19 @@ public class Pickup : MonoBehaviour
         if (other.gameObject.CompareTag("Eve"))
         {
             pickupPrompt.SetActive(true);
+            if (MapTest.Instance != null)
+            {
+                MapTest.Instance.isEve = true;
+            }
         }
 
         if (other.gameObject.CompareTag("Map"))
         {
             pickupPrompt.SetActive(true);
+            if (MapTest.Instance != null)
+            {
+                MapTest.Instance.isMap = true;
+            }
         }
     }
 
@@ -143,11 +151,19 @@ public class Pickup : MonoBehaviour
         if (other.gameObject.CompareTag("Eve"))
         {
             pickupPrompt.SetActive(false);
+            if (MapTest.Instance != null)
+            {
+                MapTest.Instance.isEve = false;
+            }
         }
 
         if (other.gameObject.CompareTag("Map"))
         {
             pickupPrompt.SetActive(false);
+            if (MapTest.Instance != null)
+            {
+                MapTest.Instance.isMap = false;
+            }
         }
     }
 }

@@ -619,19 +619,22 @@ namespace DialogueEditor
 
         bool IsAutoAdvance()
         {
-            if (m_currentSpeech.ConnectionType == Connection.eConnectionType.Speech)
+            switch (m_currentSpeech.ConnectionType)
             {
-                SpeechNode next = GetValidSpeechOfNode(m_currentSpeech);
-                if (next != null)
+                case Connection.eConnectionType.Speech:
                 {
-                    SetupSpeech(next);
-                    return true;
+                    SpeechNode next = GetValidSpeechOfNode(m_currentSpeech);
+                    if (next != null)
+                    {
+                        SetupSpeech(next);
+                        return true;
+                    }
+
+                    break;
                 }
-            }
-            else if (m_currentSpeech.ConnectionType == Connection.eConnectionType.None)
-            {
-                EndConversation();
-                return true;
+                case Connection.eConnectionType.None:
+                    EndConversation();
+                    return true;
             }
 
             return false;
@@ -721,29 +724,35 @@ namespace DialogueEditor
 
                 if (notAutoAdvance || allowVisibleOptionWithAuto)
                 {
-                    if (m_currentSpeech.ConnectionType == Connection.eConnectionType.Speech)
+                    switch (m_currentSpeech.ConnectionType)
                     {
-                        UIConversationButton uiOption = CreateButton();
-                        SpeechNode next = GetValidSpeechOfNode(m_currentSpeech);
-
-                        // If there was no valid speech node (due to no conditions being met) this becomes a None button type
-                        if (next == null)
+                        case Connection.eConnectionType.Speech:
                         {
+                            UIConversationButton uiOption = CreateButton();
+                            SpeechNode next = GetValidSpeechOfNode(m_currentSpeech);
+
+                            // If there was no valid speech node (due to no conditions being met) this becomes a None button type
+                            if (next == null)
+                            {
+                                uiOption.SetupButton(UIConversationButton.eButtonType.End, null,
+                                    endFont: m_conversation.EndConversationFont);
+                            }
+                            // Else, valid speech node found
+                            else
+                            {
+                                uiOption.SetupButton(UIConversationButton.eButtonType.Speech, next,
+                                    continueFont: m_conversation.ContinueFont);
+                            }
+
+                            break;
+                        }
+                        case Connection.eConnectionType.None:
+                        {
+                            UIConversationButton uiOption = CreateButton();
                             uiOption.SetupButton(UIConversationButton.eButtonType.End, null,
                                 endFont: m_conversation.EndConversationFont);
+                            break;
                         }
-                        // Else, valid speech node found
-                        else
-                        {
-                            uiOption.SetupButton(UIConversationButton.eButtonType.Speech, next,
-                                continueFont: m_conversation.ContinueFont);
-                        }
-                    }
-                    else if (m_currentSpeech.ConnectionType == Connection.eConnectionType.None)
-                    {
-                        UIConversationButton uiOption = CreateButton();
-                        uiOption.SetupButton(UIConversationButton.eButtonType.End, null,
-                            endFont: m_conversation.EndConversationFont);
                     }
                 }
             }
@@ -894,15 +903,20 @@ namespace DialogueEditor
             {
                 string name = node.ParamActions[i].ParameterName;
 
-                if (node.ParamActions[i].ParamActionType == SetParamAction.eParamActionType.Int)
+                switch (node.ParamActions[i].ParamActionType)
                 {
-                    int val = (node.ParamActions[i] as SetIntParamAction).Value;
-                    SetInt(name, val);
-                }
-                else if (node.ParamActions[i].ParamActionType == SetParamAction.eParamActionType.Bool)
-                {
-                    bool val = (node.ParamActions[i] as SetBoolParamAction).Value;
-                    SetBool(name, val);
+                    case SetParamAction.eParamActionType.Int:
+                    {
+                        int val = (node.ParamActions[i] as SetIntParamAction).Value;
+                        SetInt(name, val);
+                        break;
+                    }
+                    case SetParamAction.eParamActionType.Bool:
+                    {
+                        bool val = (node.ParamActions[i] as SetBoolParamAction).Value;
+                        SetBool(name, val);
+                        break;
+                    }
                 }
             }
         }

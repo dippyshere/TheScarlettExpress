@@ -114,35 +114,26 @@ public class StationSettings : MonoBehaviour
         PassengerManager.Instance.ArriveAtStation(destin);
         // check if the StationDestination is 1,2 or 3 to go to the station
 
-        if (destin == 0)
+        switch (destin)
         {
-            SceneManager.LoadScene("StationTutorial");
-        }
-
-        if (destin == 1)
-        {
-            Debug.Log("Load Station1");
-            SceneManager.LoadScene("Station1");
-        }
-
-        if (destin == 2)
-        {
-            SceneManager.LoadScene("Station2");
-        }
-
-        if (destin == 3)
-        {
-            SceneManager.LoadScene("Station3");
-        }
-
-        if (destin == 4)
-        {
-            SceneManager.LoadScene("Station4");
-        }
-
-        if (destin == 5)
-        {
-            SceneManager.LoadScene("Station5");
+            case 0:
+                SceneManager.LoadScene("_StationTutorial");
+                break;
+            case 1:
+                SceneManager.LoadScene("_RiversideStation");
+                break;
+            case 2:
+                SceneManager.LoadScene("_FurrowoodStation");
+                break;
+            case 3:
+                SceneManager.LoadScene("_ThampStation");
+                break;
+            case 4:
+                SceneManager.LoadScene("_BranchviewStation");
+                break;
+            case 5:
+                SceneManager.LoadScene("_FernValleyStation");
+                break;
         }
 
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 1);
@@ -159,6 +150,6 @@ public class StationSettings : MonoBehaviour
 
     public void LoadTarin()
     {
-        SceneManager.LoadScene("PlayerTesting");
+        SceneManager.LoadScene("_TrainInterior");
     }
 }

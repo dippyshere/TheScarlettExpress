@@ -137,13 +137,14 @@ namespace DG.Tweening
         public static TweenerCore<float, float, FloatOptions> DOFillAmount(this Image target, float endValue,
             float duration)
         {
-            if (endValue > 1)
+            switch (endValue)
             {
-                endValue = 1;
-            }
-            else if (endValue < 0)
-            {
-                endValue = 0;
+                case > 1:
+                    endValue = 1;
+                    break;
+                case < 0:
+                    endValue = 0;
+                    break;
             }
 
             TweenerCore<float, float, FloatOptions> t = DOTween.To(() => target.fillAmount, x => target.fillAmount = x,

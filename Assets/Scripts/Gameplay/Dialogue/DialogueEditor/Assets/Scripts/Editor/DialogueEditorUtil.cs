@@ -32,30 +32,37 @@ namespace DialogueEditor
 
                 for (int j = 0; j < connections.Count; j++)
                 {
-                    if (connections[j] is EditableSpeechConnection)
+                    switch (connections[j])
                     {
-                        EditableSpeechConnection speechCon = connections[j] as EditableSpeechConnection;
-                        GetConnectionDrawInfo(uiNodes[i].rect, speechCon.Speech, out start, out end);
-
-                        float distance = MinimumDistanceBetweenPointAndLine(start, end, mousePos);
-                        if (distance < minDistance)
+                        case EditableSpeechConnection:
                         {
-                            minDistance = distance;
-                            par = uiNodes[i].Info;
-                            child = speechCon.Speech;
+                            EditableSpeechConnection speechCon = connections[j] as EditableSpeechConnection;
+                            GetConnectionDrawInfo(uiNodes[i].rect, speechCon.Speech, out start, out end);
+
+                            float distance = MinimumDistanceBetweenPointAndLine(start, end, mousePos);
+                            if (distance < minDistance)
+                            {
+                                minDistance = distance;
+                                par = uiNodes[i].Info;
+                                child = speechCon.Speech;
+                            }
+
+                            break;
                         }
-                    }
-                    else if (connections[j] is EditableOptionConnection)
-                    {
-                        EditableOptionConnection optionCon = connections[j] as EditableOptionConnection;
-                        GetConnectionDrawInfo(uiNodes[i].rect, optionCon.Option, out start, out end);
-
-                        float distance = MinimumDistanceBetweenPointAndLine(start, end, mousePos);
-                        if (distance < minDistance)
+                        case EditableOptionConnection:
                         {
-                            minDistance = distance;
-                            par = uiNodes[i].Info;
-                            child = optionCon.Option;
+                            EditableOptionConnection optionCon = connections[j] as EditableOptionConnection;
+                            GetConnectionDrawInfo(uiNodes[i].rect, optionCon.Option, out start, out end);
+
+                            float distance = MinimumDistanceBetweenPointAndLine(start, end, mousePos);
+                            if (distance < minDistance)
+                            {
+                                minDistance = distance;
+                                par = uiNodes[i].Info;
+                                child = optionCon.Option;
+                            }
+
+                            break;
                         }
                     }
                 }
@@ -82,22 +89,29 @@ namespace DialogueEditor
                 EditableConversationNode.eNodeType type = child.NodeType;
                 for (int i = 0; i < parent.Connections.Count; i++)
                 {
-                    if (type == EditableConversationNode.eNodeType.Speech)
+                    switch (type)
                     {
-                        EditableSpeechConnection con = parent.Connections[i] as EditableSpeechConnection;
-                        if (con.Speech == child)
+                        case EditableConversationNode.eNodeType.Speech:
                         {
-                            connection = parent.Connections[i];
-                            return true;
+                            EditableSpeechConnection con = parent.Connections[i] as EditableSpeechConnection;
+                            if (con.Speech == child)
+                            {
+                                connection = parent.Connections[i];
+                                return true;
+                            }
+
+                            break;
                         }
-                    }
-                    else if (type == EditableConversationNode.eNodeType.Option)
-                    {
-                        EditableOptionConnection con = parent.Connections[i] as EditableOptionConnection;
-                        if (con.Option == child)
+                        case EditableConversationNode.eNodeType.Option:
                         {
-                            connection = parent.Connections[i];
-                            return true;
+                            EditableOptionConnection con = parent.Connections[i] as EditableOptionConnection;
+                            if (con.Option == child)
+                            {
+                                connection = parent.Connections[i];
+                                return true;
+                            }
+
+                            break;
                         }
                     }
                 }
@@ -130,27 +144,27 @@ namespace DialogueEditor
             Vector2 origin = new(originRect.x + originRect.width / 2, originRect.y + originRect.height / 2);
             Vector2 target;
 
-            if (connectionTarget.NodeType == EditableConversationNode.eNodeType.Speech)
+            switch (connectionTarget.NodeType)
             {
-                target = new Vector2(
-                    connectionTarget.EditorInfo.xPos + UISpeechNode.Width / 2,
-                    connectionTarget.EditorInfo.yPos + UISpeechNode.Height / 2);
+                case EditableConversationNode.eNodeType.Speech:
+                    target = new Vector2(
+                        connectionTarget.EditorInfo.xPos + UISpeechNode.Width / 2,
+                        connectionTarget.EditorInfo.yPos + UISpeechNode.Height / 2);
 
-                origin.x -= offset;
-                target.x -= offset;
-            }
-            else if (connectionTarget.NodeType == EditableConversationNode.eNodeType.Option)
-            {
-                target = new Vector2(
-                    connectionTarget.EditorInfo.xPos + UIOptionNode.Width / 2,
-                    connectionTarget.EditorInfo.yPos + UIOptionNode.Height / 2);
+                    origin.x -= offset;
+                    target.x -= offset;
+                    break;
+                case EditableConversationNode.eNodeType.Option:
+                    target = new Vector2(
+                        connectionTarget.EditorInfo.xPos + UIOptionNode.Width / 2,
+                        connectionTarget.EditorInfo.yPos + UIOptionNode.Height / 2);
 
-                origin.x += offset;
-                target.x += offset;
-            }
-            else
-            {
-                target = Vector2.zero;
+                    origin.x += offset;
+                    target.x += offset;
+                    break;
+                default:
+                    target = Vector2.zero;
+                    break;
             }
 
             start = origin;

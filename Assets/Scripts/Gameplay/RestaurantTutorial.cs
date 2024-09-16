@@ -53,14 +53,14 @@ public class RestaurantTutorial : MonoBehaviour
 
         _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
 
-        if (!_hasCompletedRTutorial)
+        switch (_hasCompletedRTutorial)
         {
-            tutorialChihuahua.SetActive(true);
-        }
-
-        if (_hasCompletedRTutorial)
-        {
-            tutorialChihuahua.SetActive(false);
+            case false:
+                tutorialChihuahua.SetActive(true);
+                break;
+            case true:
+                tutorialChihuahua.SetActive(false);
+                break;
         }
 
         if (canStoveTutorial)

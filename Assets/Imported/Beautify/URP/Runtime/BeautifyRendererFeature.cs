@@ -675,113 +675,131 @@ namespace Beautify.Universal
 
                 if (beautify.directWrite.value)
                 {
-                    // direct output to camera
-                    if (beautify.debugOutput.value == DebugOutput.DepthOfFieldCoC)
+                    switch (beautify.debugOutput.value)
                     {
-                        if (beautify.depthOfField.value)
+                        // direct output to camera
+                        case DebugOutput.DepthOfFieldCoC:
                         {
-                            // we ignore input contents
-                            FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
-                                (int)Pass.DoFCoCDebug);
-                        }
-                    }
-                    else if (beautify.debugOutput.value == DebugOutput.BloomAndFlares)
-                    {
-                        if (beautify.bloomIntensity.value > 0 || beautify.anamorphicFlaresIntensity.value > 0 ||
-                            beautify.sunFlaresIntensity.value > 0 || beautify.lensDirtIntensity.value > 0)
-                        {
-                            // we ignore input contents
-                            FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
-                                (int)Pass.BloomDebug);
-                        }
-                    }
-                    else if (beautify.debugOutput.value == DebugOutput.BloomExclusionPass)
-                    {
-                        if (beautify.bloomIntensity.value > 0 && beautify.bloomExcludeLayers.value)
-                        {
-                            // we ignore input contents
-                            FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
-                                (int)Pass.BloomExclusionLayerDebug);
-                        }
-                    }
-                    else if (beautify.debugOutput.value == DebugOutput.AnamorphicFlaresExclusionPass)
-                    {
-                        if (beautify.anamorphicFlaresIntensity.value > 0 &&
-                            beautify.anamorphicFlaresExcludeLayers.value)
-                        {
-                            // we ignore input contents
-                            FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
-                                (int)Pass.AnamorphicFlaresExclusionLayerDebug);
-                        }
-                    }
-                    else if (beautify.debugOutput.value == DebugOutput.DepthOfFieldTransparentPass)
-                    {
-                        if (beautify.depthOfField.value && (beautify.depthOfFieldTransparentSupport.value ||
-                                                            beautify.depthOfFieldAlphaTestSupport.value))
-                        {
-                            // we ignore input contents
-                            FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
-                                (int)Pass.DoFDebugTransparent);
-                        }
-                    }
-                    else if (beautify.compareMode.value)
-                    {
-                        cmd.GetTemporaryRT(ShaderParams.compareTex, sourceDesc, FilterMode.Point);
-                        RenderTargetIdentifier dest = ShaderParams.compareTex;
-                        if (usesChromaticAberrationAsPost)
-                        {
-                            // chromatic aberration added as a post-pass due to depth of field
-                            cmd.GetTemporaryRT(ShaderParams.chromaticTempTex, sourceDesc, FilterMode.Point);
-                            FullScreenBlit(cmd, source, ShaderParams.chromaticTempTex, bMat, (int)Pass.Beautify);
-                            FullScreenBlit(cmd, ShaderParams.chromaticTempTex, ShaderParams.compareTex, bMat,
-                                (int)Pass.ChromaticAberration);
-                            cmd.ReleaseTemporaryRT(ShaderParams.chromaticTempTex);
-                        }
-                        else
-                        {
-                            FullScreenBlit(cmd, source, ShaderParams.compareTex, bMat, (int)Pass.Beautify);
-                        }
+                            if (beautify.depthOfField.value)
+                            {
+                                // we ignore input contents
+                                FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
+                                    (int)Pass.DoFCoCDebug);
+                            }
 
-                        if (usesFinalBlur)
-                        {
-                            // final blur
-                            int blurSource = ApplyFinalBlur(cmd, ShaderParams.compareTex);
-                            FullScreenBlit(cmd, blurSource, ShaderParams.compareTex, bMat, blurComposePass);
+                            break;
                         }
+                        case DebugOutput.BloomAndFlares:
+                        {
+                            if (beautify.bloomIntensity.value > 0 || beautify.anamorphicFlaresIntensity.value > 0 ||
+                                beautify.sunFlaresIntensity.value > 0 || beautify.lensDirtIntensity.value > 0)
+                            {
+                                // we ignore input contents
+                                FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
+                                    (int)Pass.BloomDebug);
+                            }
 
-                        FullScreenBlit(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat, (int)Pass.Compare);
-                        cmd.ReleaseTemporaryRT(ShaderParams.compareTex);
-                    }
-                    else
-                    {
-                        RenderTargetIdentifier preBlurDest = BuiltinRenderTextureType.CameraTarget;
-                        if (usesFinalBlur)
-                        {
-                            cmd.GetTemporaryRT(ShaderParams.inputTex, sourceDesc, FilterMode.Point);
-                            preBlurDest = ShaderParams.inputTex;
+                            break;
                         }
+                        case DebugOutput.BloomExclusionPass:
+                        {
+                            if (beautify.bloomIntensity.value > 0 && beautify.bloomExcludeLayers.value)
+                            {
+                                // we ignore input contents
+                                FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
+                                    (int)Pass.BloomExclusionLayerDebug);
+                            }
 
-                        if (usesChromaticAberrationAsPost)
-                        {
-                            // chromatic aberration added as a post-pass due to depth of field
-                            cmd.GetTemporaryRT(ShaderParams.chromaticTempTex, sourceDesc, FilterMode.Point);
-                            FullScreenBlit(cmd, source, ShaderParams.chromaticTempTex, bMat, (int)Pass.Beautify);
-                            FullScreenBlitToCamera(cmd, ShaderParams.chromaticTempTex, preBlurDest, bMat,
-                                (int)Pass.ChromaticAberration);
-                            cmd.ReleaseTemporaryRT(ShaderParams.chromaticTempTex);
+                            break;
                         }
-                        else
+                        case DebugOutput.AnamorphicFlaresExclusionPass:
                         {
-                            FullScreenBlitToCamera(cmd, source, preBlurDest, bMat, (int)Pass.Beautify);
-                        }
+                            if (beautify.anamorphicFlaresIntensity.value > 0 &&
+                                beautify.anamorphicFlaresExcludeLayers.value)
+                            {
+                                // we ignore input contents
+                                FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
+                                    (int)Pass.AnamorphicFlaresExclusionLayerDebug);
+                            }
 
-                        if (usesFinalBlur)
+                            break;
+                        }
+                        case DebugOutput.DepthOfFieldTransparentPass:
                         {
-                            // final blur
-                            int blurSource = ApplyFinalBlur(cmd, preBlurDest);
-                            FullScreenBlitToCamera(cmd, blurSource, BuiltinRenderTextureType.CameraTarget, bMat,
-                                blurComposePass);
-                            cmd.ReleaseTemporaryRT(ShaderParams.inputTex);
+                            if (beautify.depthOfField.value && (beautify.depthOfFieldTransparentSupport.value ||
+                                                                beautify.depthOfFieldAlphaTestSupport.value))
+                            {
+                                // we ignore input contents
+                                FullScreenBlitToCamera(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat,
+                                    (int)Pass.DoFDebugTransparent);
+                            }
+
+                            break;
+                        }
+                        default:
+                        {
+                            if (beautify.compareMode.value)
+                            {
+                                cmd.GetTemporaryRT(ShaderParams.compareTex, sourceDesc, FilterMode.Point);
+                                RenderTargetIdentifier dest = ShaderParams.compareTex;
+                                if (usesChromaticAberrationAsPost)
+                                {
+                                    // chromatic aberration added as a post-pass due to depth of field
+                                    cmd.GetTemporaryRT(ShaderParams.chromaticTempTex, sourceDesc, FilterMode.Point);
+                                    FullScreenBlit(cmd, source, ShaderParams.chromaticTempTex, bMat, (int)Pass.Beautify);
+                                    FullScreenBlit(cmd, ShaderParams.chromaticTempTex, ShaderParams.compareTex, bMat,
+                                        (int)Pass.ChromaticAberration);
+                                    cmd.ReleaseTemporaryRT(ShaderParams.chromaticTempTex);
+                                }
+                                else
+                                {
+                                    FullScreenBlit(cmd, source, ShaderParams.compareTex, bMat, (int)Pass.Beautify);
+                                }
+
+                                if (usesFinalBlur)
+                                {
+                                    // final blur
+                                    int blurSource = ApplyFinalBlur(cmd, ShaderParams.compareTex);
+                                    FullScreenBlit(cmd, blurSource, ShaderParams.compareTex, bMat, blurComposePass);
+                                }
+
+                                FullScreenBlit(cmd, source, BuiltinRenderTextureType.CameraTarget, bMat, (int)Pass.Compare);
+                                cmd.ReleaseTemporaryRT(ShaderParams.compareTex);
+                            }
+                            else
+                            {
+                                RenderTargetIdentifier preBlurDest = BuiltinRenderTextureType.CameraTarget;
+                                if (usesFinalBlur)
+                                {
+                                    cmd.GetTemporaryRT(ShaderParams.inputTex, sourceDesc, FilterMode.Point);
+                                    preBlurDest = ShaderParams.inputTex;
+                                }
+
+                                if (usesChromaticAberrationAsPost)
+                                {
+                                    // chromatic aberration added as a post-pass due to depth of field
+                                    cmd.GetTemporaryRT(ShaderParams.chromaticTempTex, sourceDesc, FilterMode.Point);
+                                    FullScreenBlit(cmd, source, ShaderParams.chromaticTempTex, bMat, (int)Pass.Beautify);
+                                    FullScreenBlitToCamera(cmd, ShaderParams.chromaticTempTex, preBlurDest, bMat,
+                                        (int)Pass.ChromaticAberration);
+                                    cmd.ReleaseTemporaryRT(ShaderParams.chromaticTempTex);
+                                }
+                                else
+                                {
+                                    FullScreenBlitToCamera(cmd, source, preBlurDest, bMat, (int)Pass.Beautify);
+                                }
+
+                                if (usesFinalBlur)
+                                {
+                                    // final blur
+                                    int blurSource = ApplyFinalBlur(cmd, preBlurDest);
+                                    FullScreenBlitToCamera(cmd, blurSource, BuiltinRenderTextureType.CameraTarget, bMat,
+                                        blurComposePass);
+                                    cmd.ReleaseTemporaryRT(ShaderParams.inputTex);
+                                }
+                            }
+
+                            break;
                         }
                     }
                 }
@@ -800,100 +818,118 @@ namespace Beautify.Universal
                             ? FilterMode.Point
                             : FilterMode.Bilinear);
 
-                    if (beautify.debugOutput.value == DebugOutput.DepthOfFieldCoC)
+                    switch (beautify.debugOutput.value)
                     {
-                        if (beautify.depthOfField.value)
+                        case DebugOutput.DepthOfFieldCoC:
                         {
-                            // we ignore input contents
-                            FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.DoFCoCDebug);
-                        }
-                    }
-                    else if (beautify.debugOutput.value == DebugOutput.BloomAndFlares)
-                    {
-                        if (beautify.bloomIntensity.value > 0 || beautify.anamorphicFlaresIntensity.value > 0 ||
-                            beautify.sunFlaresIntensity.value > 0 || beautify.lensDirtIntensity.value > 0)
-                        {
-                            // we ignore input contents
-                            FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.BloomDebug);
-                        }
-                    }
-                    else if (beautify.debugOutput.value == DebugOutput.BloomExclusionPass)
-                    {
-                        if (beautify.bloomIntensity.value > 0 && beautify.bloomExcludeLayers.value)
-                        {
-                            // we ignore input contents
-                            FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat,
-                                (int)Pass.BloomExclusionLayerDebug);
-                        }
-                    }
-                    else if (beautify.debugOutput.value == DebugOutput.AnamorphicFlaresExclusionPass)
-                    {
-                        if (beautify.anamorphicFlaresIntensity.value > 0 &&
-                            beautify.anamorphicFlaresExcludeLayers.value)
-                        {
-                            // we ignore input contents
-                            FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat,
-                                (int)Pass.AnamorphicFlaresExclusionLayerDebug);
-                        }
-                    }
-                    else if (beautify.debugOutput.value == DebugOutput.DepthOfFieldTransparentPass)
-                    {
-                        if (beautify.depthOfField.value && (beautify.depthOfFieldTransparentSupport.value ||
-                                                            beautify.depthOfFieldAlphaTestSupport.value))
-                        {
-                            // we ignore input contents
-                            FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.DoFDebugTransparent);
-                        }
-                    }
-                    else if (beautify.compareMode.value)
-                    {
-                        cmd.GetTemporaryRT(ShaderParams.compareTex, sourceDesc, FilterMode.Point);
-                        RenderTargetIdentifier dest = ShaderParams.compareTex;
-                        if (usesChromaticAberrationAsPost)
-                        {
-                            // chromatic aberration added as a post-pass due to depth of field
-                            FullScreenBlit(cmd, source, ShaderParams.inputTex, bMat, (int)Pass.Beautify);
-                            FullScreenBlit(cmd, ShaderParams.inputTex, ShaderParams.compareTex, bMat,
-                                (int)Pass.ChromaticAberration);
-                        }
-                        else
-                        {
-                            FullScreenBlit(cmd, source, ShaderParams.compareTex, bMat, (int)Pass.Beautify);
-                        }
+                            if (beautify.depthOfField.value)
+                            {
+                                // we ignore input contents
+                                FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.DoFCoCDebug);
+                            }
 
-                        if (usesFinalBlur)
-                        {
-                            // final blur
-                            int blurSource = ApplyFinalBlur(cmd, ShaderParams.compareTex);
-                            FullScreenBlit(cmd, blurSource, ShaderParams.compareTex, bMat, blurComposePass);
+                            break;
                         }
+                        case DebugOutput.BloomAndFlares:
+                        {
+                            if (beautify.bloomIntensity.value > 0 || beautify.anamorphicFlaresIntensity.value > 0 ||
+                                beautify.sunFlaresIntensity.value > 0 || beautify.lensDirtIntensity.value > 0)
+                            {
+                                // we ignore input contents
+                                FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.BloomDebug);
+                            }
 
-                        FullScreenBlit(cmd, source, ShaderParams.inputTex, bMat, copyPass);
-                        FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.Compare);
-                        cmd.ReleaseTemporaryRT(ShaderParams.compareTex);
-                    }
-                    else
-                    {
-                        if (usesChromaticAberrationAsPost)
-                        {
-                            // chromatic aberration added as a post-pass due to depth of field
-                            FullScreenBlit(cmd, source, ShaderParams.inputTex, bMat, (int)Pass.Beautify);
-                            FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.ChromaticAberration);
+                            break;
                         }
-                        else
+                        case DebugOutput.BloomExclusionPass:
                         {
-                            FullScreenBlit(cmd, source, ShaderParams.inputTex, bMat, copyPass);
-                            FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.Beautify);
-                        }
+                            if (beautify.bloomIntensity.value > 0 && beautify.bloomExcludeLayers.value)
+                            {
+                                // we ignore input contents
+                                FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat,
+                                    (int)Pass.BloomExclusionLayerDebug);
+                            }
 
-                        if (usesFinalBlur)
-                        {
-                            // final blur
-                            int blurSource = ApplyFinalBlur(cmd, source);
-                            FullScreenBlit(cmd, blurSource, source, bMat, blurComposePass);
+                            break;
                         }
+                        case DebugOutput.AnamorphicFlaresExclusionPass:
+                        {
+                            if (beautify.anamorphicFlaresIntensity.value > 0 &&
+                                beautify.anamorphicFlaresExcludeLayers.value)
+                            {
+                                // we ignore input contents
+                                FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat,
+                                    (int)Pass.AnamorphicFlaresExclusionLayerDebug);
+                            }
 
-                        cmd.ReleaseTemporaryRT(ShaderParams.miniViewTex);
+                            break;
+                        }
+                        case DebugOutput.DepthOfFieldTransparentPass:
+                        {
+                            if (beautify.depthOfField.value && (beautify.depthOfFieldTransparentSupport.value ||
+                                                                beautify.depthOfFieldAlphaTestSupport.value))
+                            {
+                                // we ignore input contents
+                                FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.DoFDebugTransparent);
+                            }
+
+                            break;
+                        }
+                        default:
+                        {
+                            if (beautify.compareMode.value)
+                            {
+                                cmd.GetTemporaryRT(ShaderParams.compareTex, sourceDesc, FilterMode.Point);
+                                RenderTargetIdentifier dest = ShaderParams.compareTex;
+                                if (usesChromaticAberrationAsPost)
+                                {
+                                    // chromatic aberration added as a post-pass due to depth of field
+                                    FullScreenBlit(cmd, source, ShaderParams.inputTex, bMat, (int)Pass.Beautify);
+                                    FullScreenBlit(cmd, ShaderParams.inputTex, ShaderParams.compareTex, bMat,
+                                        (int)Pass.ChromaticAberration);
+                                }
+                                else
+                                {
+                                    FullScreenBlit(cmd, source, ShaderParams.compareTex, bMat, (int)Pass.Beautify);
+                                }
+
+                                if (usesFinalBlur)
+                                {
+                                    // final blur
+                                    int blurSource = ApplyFinalBlur(cmd, ShaderParams.compareTex);
+                                    FullScreenBlit(cmd, blurSource, ShaderParams.compareTex, bMat, blurComposePass);
+                                }
+
+                                FullScreenBlit(cmd, source, ShaderParams.inputTex, bMat, copyPass);
+                                FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.Compare);
+                                cmd.ReleaseTemporaryRT(ShaderParams.compareTex);
+                            }
+                            else
+                            {
+                                if (usesChromaticAberrationAsPost)
+                                {
+                                    // chromatic aberration added as a post-pass due to depth of field
+                                    FullScreenBlit(cmd, source, ShaderParams.inputTex, bMat, (int)Pass.Beautify);
+                                    FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.ChromaticAberration);
+                                }
+                                else
+                                {
+                                    FullScreenBlit(cmd, source, ShaderParams.inputTex, bMat, copyPass);
+                                    FullScreenBlit(cmd, ShaderParams.inputTex, source, bMat, (int)Pass.Beautify);
+                                }
+
+                                if (usesFinalBlur)
+                                {
+                                    // final blur
+                                    int blurSource = ApplyFinalBlur(cmd, source);
+                                    FullScreenBlit(cmd, blurSource, source, bMat, blurComposePass);
+                                }
+
+                                cmd.ReleaseTemporaryRT(ShaderParams.miniViewTex);
+                            }
+
+                            break;
+                        }
                     }
 
                     cmd.ReleaseTemporaryRT(ShaderParams.inputTex);
@@ -1951,15 +1987,16 @@ namespace Beautify.Universal
                                 Mathf.Max(beautify.sunFlaresCoronaRays2Spread.value, 0.0001f),
                                 beautify.sunFlaresCoronaRays2AngleOffset.value));
                         SunFlaresDepthOcclusionMode occlusionMode = beautify.sunFlaresDepthOcclusionMode.value;
-                        if (occlusionMode == SunFlaresDepthOcclusionMode.Simple)
+                        switch (occlusionMode)
                         {
-                            keywords.Add(SKW_SUN_FLARES_OCCLUSION_SIMPLE);
-                        }
-                        else if (occlusionMode == SunFlaresDepthOcclusionMode.Smooth)
-                        {
-                            keywords.Add(SKW_SUN_FLARES_OCCLUSION_SMOOTH);
-                            bMat.SetFloat(ShaderParams.sfOcclusionThreshold,
-                                beautify.sunFlaresDepthOcclusionThreshold.value);
+                            case SunFlaresDepthOcclusionMode.Simple:
+                                keywords.Add(SKW_SUN_FLARES_OCCLUSION_SIMPLE);
+                                break;
+                            case SunFlaresDepthOcclusionMode.Smooth:
+                                keywords.Add(SKW_SUN_FLARES_OCCLUSION_SMOOTH);
+                                bMat.SetFloat(ShaderParams.sfOcclusionThreshold,
+                                    beautify.sunFlaresDepthOcclusionThreshold.value);
+                                break;
                         }
 #if UNITY_2020_3_OR_NEWER
 

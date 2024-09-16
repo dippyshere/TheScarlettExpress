@@ -86,25 +86,23 @@ public static class ProfileSystem
     public static void Set<T>(Variable variable, T value)
     {
         string key = GetSaveSlotKey(variable.ToString());
-        if (value is int intValue)
+        switch (value)
         {
-            PlayerPrefs.SetInt(key, intValue);
-        }
-        else if (value is float floatValue)
-        {
-            PlayerPrefs.SetFloat(key, floatValue);
-        }
-        else if (value is string stringValue)
-        {
-            PlayerPrefs.SetString(key, stringValue);
-        }
-        else if (value is bool boolValue)
-        {
-            PlayerPrefs.SetInt(key, boolValue ? 1 : 0);
-        }
-        else
-        {
-            Debug.LogError("Unsupported type");
+            case int intValue:
+                PlayerPrefs.SetInt(key, intValue);
+                break;
+            case float floatValue:
+                PlayerPrefs.SetFloat(key, floatValue);
+                break;
+            case string stringValue:
+                PlayerPrefs.SetString(key, stringValue);
+                break;
+            case bool boolValue:
+                PlayerPrefs.SetInt(key, boolValue ? 1 : 0);
+                break;
+            default:
+                Debug.LogError("Unsupported type");
+                break;
         }
     }
 
@@ -153,25 +151,23 @@ public static class ProfileSystem
     public static void SetGlobal<T>(Variable variable, T value)
     {
         string key = GetGlobalKey(variable.ToString());
-        if (value is int intValue)
+        switch (value)
         {
-            PlayerPrefs.SetInt(key, intValue);
-        }
-        else if (value is float floatValue)
-        {
-            PlayerPrefs.SetFloat(key, floatValue);
-        }
-        else if (value is string stringValue)
-        {
-            PlayerPrefs.SetString(key, stringValue);
-        }
-        else if (value is bool boolValue)
-        {
-            PlayerPrefs.SetInt(key, boolValue ? 1 : 0);
-        }
-        else
-        {
-            Debug.LogError("Unsupported type");
+            case int intValue:
+                PlayerPrefs.SetInt(key, intValue);
+                break;
+            case float floatValue:
+                PlayerPrefs.SetFloat(key, floatValue);
+                break;
+            case string stringValue:
+                PlayerPrefs.SetString(key, stringValue);
+                break;
+            case bool boolValue:
+                PlayerPrefs.SetInt(key, boolValue ? 1 : 0);
+                break;
+            default:
+                Debug.LogError("Unsupported type");
+                break;
         }
     }
 

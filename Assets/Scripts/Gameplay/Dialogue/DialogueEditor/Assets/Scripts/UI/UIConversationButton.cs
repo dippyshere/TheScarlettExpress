@@ -125,23 +125,17 @@ namespace DialogueEditor
 
         public void SetHovering(bool selected)
         {
-            if (selected && (m_hoverState == eHoverState.animatingOn || m_hoverState == eHoverState.idleOn))
+            switch (selected)
             {
-                return;
-            }
-
-            if (!selected && (m_hoverState == eHoverState.animatingOff || m_hoverState == eHoverState.idleOff))
-            {
-                return;
-            }
-
-            if (selected)
-            {
-                m_hoverState = eHoverState.animatingOn;
-            }
-            else
-            {
-                m_hoverState = eHoverState.animatingOff;
+                case true when (m_hoverState == eHoverState.animatingOn || m_hoverState == eHoverState.idleOn):
+                case false when (m_hoverState == eHoverState.animatingOff || m_hoverState == eHoverState.idleOff):
+                    return;
+                case true:
+                    m_hoverState = eHoverState.animatingOn;
+                    break;
+                default:
+                    m_hoverState = eHoverState.animatingOff;
+                    break;
             }
 
             m_hoverT = 0f;

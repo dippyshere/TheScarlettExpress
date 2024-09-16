@@ -58,6 +58,6 @@ public class ActivateDialogue : MonoBehaviour
 
     public void EnterFirstDay()
     {
-        SceneManager.LoadScene("RestaurantTutorial");
+        SceneManager.LoadScene("_RestaurantTutorial");
     }
 }

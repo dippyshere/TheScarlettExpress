@@ -69,15 +69,20 @@ namespace DialogueEditor
             // This speech is no longer the parent of any children
             for (int i = 0; i < Connections.Count; i++)
             {
-                if (Connections[i] is EditableSpeechConnection)
+                switch (Connections[i])
                 {
-                    EditableSpeechConnection speechCon = Connections[i] as EditableSpeechConnection;
-                    speechCon.Speech.parents.Remove(this);
-                }
-                else if (Connections[i] is EditableOptionConnection)
-                {
-                    EditableOptionConnection optionCon = Connections[i] as EditableOptionConnection;
-                    optionCon.Option.parents.Remove(this);
+                    case EditableSpeechConnection:
+                    {
+                        EditableSpeechConnection speechCon = Connections[i] as EditableSpeechConnection;
+                        speechCon.Speech.parents.Remove(this);
+                        break;
+                    }
+                    case EditableOptionConnection:
+                    {
+                        EditableOptionConnection optionCon = Connections[i] as EditableOptionConnection;
+                        optionCon.Option.parents.Remove(this);
+                        break;
+                    }
                 }
             }
 

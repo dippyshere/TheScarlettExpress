@@ -1188,13 +1188,14 @@ namespace DG.Tweening
                 return;
             }
 
-            if (animationType == AnimationType.Move)
+            switch (animationType)
             {
-                ((Tweener)tween).ChangeEndValue(tweenGO.transform.position + endValueV3, true);
-            }
-            else if (animationType == AnimationType.LocalMove)
-            {
-                ((Tweener)tween).ChangeEndValue(tweenGO.transform.localPosition + endValueV3, true);
+                case AnimationType.Move:
+                    ((Tweener)tween).ChangeEndValue(tweenGO.transform.position + endValueV3, true);
+                    break;
+                case AnimationType.LocalMove:
+                    ((Tweener)tween).ChangeEndValue(tweenGO.transform.localPosition + endValueV3, true);
+                    break;
             }
         }
 
