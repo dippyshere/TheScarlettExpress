@@ -1,11 +1,11 @@
 #region
 
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditorInternal;
 #endif
 
 // Needed for UWP

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Dypsloom.DypThePenguin.Scripts.Character;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class SpawnPosition : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class SpawnPosition : MonoBehaviour
             }
         }
     }
-    
+#if UNITY_EDITOR
     void OnDrawGizmos()
     {
         // icon
@@ -45,4 +47,5 @@ public class SpawnPosition : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position + Vector3.up * 1.3f, transform.forward * 0.5f);
     }
+#endif
 }

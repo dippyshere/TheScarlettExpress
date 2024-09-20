@@ -1,9 +1,7 @@
 ﻿#region
 
 using System.Collections.Generic;
-using Dypsloom.DypThePenguin.Scripts.Character;
 using TMPro;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -142,33 +140,19 @@ namespace DialogueEditor
 
         public void StartConversation(NPCConversation conversation)
         {
-            if (ClipboardManager.Instance)
-            {
-                ClipboardManager.Instance.canClipboard = false;
-            }
-
             m_conversation = conversation.Deserialize();
             OnConversationStarted?.Invoke();
 
             TurnOnUI();
             m_currentSpeech = m_conversation.Root;
             SetState(eState.TransitioningDialogueBoxOn);
-
-            CameraManager.Instance.SetInputModeUI();
         }
 
         public void EndConversation()
         {
-            if (ClipboardManager.Instance)
-            {
-                ClipboardManager.Instance.canClipboard = true;
-            }
-
             SetState(eState.TransitioningDialogueOff);
 
             OnConversationEnded?.Invoke();
-
-            CameraManager.Instance.SetInputModeGameplay();
         }
 
         public void SelectNextOption()

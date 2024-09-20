@@ -25,11 +25,8 @@ namespace DialogueEditor
 
         SerializedProperty BackgroundImageProperty;
         SerializedProperty BackgroundImageSlicedProperty;
-        SerializedProperty CameraReference;
-        SerializedProperty ClipboardReference;
         SerializedProperty OptionImageProperty;
         SerializedProperty OptionImageSlicedProperty;
-        SerializedProperty PlayerReference;
         SerializedProperty ScrollTextProperty;
         SerializedProperty ScrollTextSpeedProperty;
 
@@ -42,9 +39,6 @@ namespace DialogueEditor
             ScrollTextProperty = serializedObject.FindProperty("ScrollText");
             ScrollTextSpeedProperty = serializedObject.FindProperty("ScrollSpeed");
             AllowMouseInteractionProperty = serializedObject.FindProperty("AllowMouseInteraction");
-            PlayerReference = serializedObject.FindProperty("m_Player");
-            CameraReference = serializedObject.FindProperty("m_CinemachineInputAxisController");
-            ClipboardReference = serializedObject.FindProperty("m_Clipboard");
         }
 
         public override void OnInspectorGUI()
@@ -85,12 +79,6 @@ namespace DialogueEditor
             // Interaction options
             GUILayout.Label("Interaction options", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(AllowMouseInteractionProperty);
-
-            EditorGUILayout.Space();
-            GUILayout.Label("TrainGameOptions", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(PlayerReference);
-            EditorGUILayout.PropertyField(CameraReference);
-            EditorGUILayout.PropertyField(ClipboardReference);
 
             // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
             serializedObject.ApplyModifiedProperties();

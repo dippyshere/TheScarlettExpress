@@ -2,8 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;

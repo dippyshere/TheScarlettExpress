@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Frontend/_TitleScreen.unity
+    guid: 728c5546dff2cf948a87fdd299a6be1a
+  - enabled: 1
     path: Assets/Scenes/Gameplay/Stations/Woodlands/Station4Branchview/_BranchviewStation.unity
     guid: 23714008047b34340b108afb5e143c7f
   - enabled: 1
@@ -29,9 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay/Stations/Woodlands/Station3Thamp/_ThampStation.unity
     guid: 7024794b44c73d94f9b51632f708287f
-  - enabled: 1
-    path: Assets/Scenes/Frontend/_TitleScreen.unity
-    guid: 728c5546dff2cf948a87fdd299a6be1a
   - enabled: 1
     path: Assets/Scenes/Gameplay/Train/_TrainInterior.unity
     guid: 479979f514fdcc84d8223c4dc504650e
