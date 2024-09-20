@@ -13,7 +13,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Items
     public class ConsumableItem : Item
     {
         [Tooltip("The amount of health to restore."), SerializeField]
-        
         protected int m_HealthRestore = 1;
 
         /// <summary>

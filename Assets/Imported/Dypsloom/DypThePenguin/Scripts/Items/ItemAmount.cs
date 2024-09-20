@@ -14,15 +14,11 @@ namespace Dypsloom.DypThePenguin.Scripts.Items
     public struct ItemAmount
     {
         [Tooltip("The item definition."), SerializeField]
-        
         ItemDefinition m_ItemDefinition;
 
-        [Tooltip("The item."), SerializeField]
-        
-        Item m_ItemComponent;
+        [Tooltip("The item."), SerializeField] Item m_ItemComponent;
 
         [Tooltip("The amount."), SerializeField]
-        
         int m_Amount;
 
         IItem m_Item;

@@ -8,6 +8,13 @@ namespace DialogueEditor
 {
     public abstract class Connection
     {
+        public enum eConnectionType
+        {
+            None,
+            Speech,
+            Option
+        }
+
         public List<Condition> Conditions;
 
         public Connection()
@@ -16,13 +23,6 @@ namespace DialogueEditor
         }
 
         public abstract eConnectionType ConnectionType { get; }
-
-        public enum eConnectionType
-        {
-            None,
-            Speech,
-            Option
-        }
     }
 
     public class SpeechConnection : Connection

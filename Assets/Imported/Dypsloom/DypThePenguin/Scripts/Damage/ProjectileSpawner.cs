@@ -16,19 +16,15 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
         static readonly int s_Throw = Animator.StringToHash("Throw");
 
         [Tooltip("The projectile prefab."), SerializeField]
-        
         protected GameObject m_ProjectilePrefab;
 
         [Tooltip("The projectile spawn point."), SerializeField]
-        
         protected Transform m_ProjectileSpawnPoint;
 
         [Tooltip("Animator when Shooting Projectile."), SerializeField]
-        
         protected Animator m_Animator;
 
         [Tooltip("The delay between calling shot and the projectile spawning."), SerializeField]
-        
         protected float m_ShotDelay;
 
         /// <summary>

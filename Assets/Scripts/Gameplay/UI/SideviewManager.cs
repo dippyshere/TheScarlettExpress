@@ -287,7 +287,7 @@ public class SideviewManager : MonoBehaviour
 
     public void Go0()
     {
-        StartCoroutine(LateTeleport(kitchenCarriageGo));
+        StartCoroutine(Character.Instance.LateTeleport(kitchenCarriageGo));
 
         sideviewCamera.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
@@ -317,7 +317,7 @@ public class SideviewManager : MonoBehaviour
 
     public void Go1()
     {
-        StartCoroutine(LateTeleport(carriage1Go));
+        StartCoroutine(Character.Instance.LateTeleport(carriage1Go));
 
         sideviewCamera.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
@@ -347,7 +347,7 @@ public class SideviewManager : MonoBehaviour
 
     public void Go2()
     {
-        StartCoroutine(LateTeleport(carriage2Go));
+        StartCoroutine(Character.Instance.LateTeleport(carriage2Go));
 
         sideviewCamera.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
@@ -377,7 +377,7 @@ public class SideviewManager : MonoBehaviour
 
     public void Go3()
     {
-        StartCoroutine(LateTeleport(carriage3Go));
+        StartCoroutine(Character.Instance.LateTeleport(carriage3Go));
 
         sideviewCamera.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
@@ -403,15 +403,6 @@ public class SideviewManager : MonoBehaviour
         }
 
         CameraManager.Instance.SetInputModeGameplay();
-    }
-
-    IEnumerator LateTeleport(Transform transform)
-    {
-        CharacterController characterController = Character.Instance.GetComponent<CharacterController>();
-        characterController.enabled = false;
-        characterController.transform.SetPositionAndRotation(transform.position, transform.rotation);
-        yield return new WaitForEndOfFrame();
-        characterController.enabled = true;
     }
 
     public void RenovateCarriage()

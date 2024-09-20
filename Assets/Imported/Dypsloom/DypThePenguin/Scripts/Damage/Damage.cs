@@ -14,19 +14,15 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
     public struct Damage
     {
         [Tooltip("The damage amount."), SerializeField]
-        
         int m_Amount;
 
         [Tooltip("The force in the the damager hit the damageable."), SerializeField]
-        
         Vector3 m_Force;
 
         [Tooltip("The damageable being hit."), SerializeField]
-        
         IDamageable m_Damageable;
 
         [Tooltip("The damager hitting the damageable."), SerializeField]
-        
         IDamager m_Damager;
 
         /// <summary>

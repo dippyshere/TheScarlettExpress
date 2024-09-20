@@ -11,19 +11,14 @@ namespace Dypsloom.DypThePenguin.Scripts.Items
     public class ItemPickup : InteractableBehavior
     {
         [Tooltip("Respawn the pickup after x seconds (-1 won't respawn the pickup)"), SerializeField]
-        
         protected float m_RespawnTimer = -1;
 
         [Tooltip("The item definition."), SerializeField]
-        
         protected ItemDefinition m_ItemDefinition;
 
-        [Tooltip("The item."), SerializeField]
-        
-        protected Item m_Item;
+        [Tooltip("The item."), SerializeField] protected Item m_Item;
 
         [Tooltip("The amount"), SerializeField]
-        
         protected int m_Amount = 1;
 
         /// <summary>

@@ -14,10 +14,10 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _CFXR_GLOW_POW_P4
-  - _CFXR_HDR_BOOST
   - _FADING_ON
   m_InvalidKeywords:
   - _CFXR_DITHERED_SHADOWS_OFF
+  - _CFXR_HDR_BOOST
   - _SUBGLOW_ON
   - __CFXRGLOW_POW_P4
   - __CFXRGLOW_POW_P6
@@ -47,7 +47,6 @@ Material:
     - _DstBlend: 1
     - _GlowMax: 1.5
     - _GlowMin: 0
-    - _HdrBoost: 1
     - _HdrMultiply: 10
     - _InvertDissolveTex: 0
     - _MaxValue: 2

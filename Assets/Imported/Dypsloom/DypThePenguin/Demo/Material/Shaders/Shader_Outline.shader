@@ -30,7 +30,7 @@ Shader "Dypsloom/Outline"
 
         void outlineVertexDataFunc(inout appdata_full v, out Input o)
         {
-                UNITY_INITIALIZE_OUTPUT(Input, o);
+            UNITY_INITIALIZE_OUTPUT(Input, o);
             v.vertex.xyz += (v.normal * _ASEOutlineWidth);
         }
 

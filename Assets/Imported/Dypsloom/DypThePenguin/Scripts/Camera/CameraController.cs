@@ -12,7 +12,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Camera
     public class CameraController : MonoBehaviour
     {
         [Tooltip("The transform that the camera will follow."), SerializeField]
-        
         protected Transform m_Follow;
 
         protected Vector3 m_StartOffset;

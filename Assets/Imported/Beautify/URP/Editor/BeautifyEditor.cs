@@ -10,7 +10,6 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.XR;
 
 #endregion
 
@@ -190,6 +189,11 @@ namespace Beautify.Universal
                     }
                 }
 
+                if (GUILayout.Button("Help & Tips"))
+                {
+                    Application.OpenURL("https://kronnect.com/guides/beautify-urp-performance-tips");
+                }
+
                 if (GUILayout.Button("Contact Us", EditorStyles.miniButton))
                 {
                     Application.OpenURL("https://kronnect.com");
@@ -249,11 +253,10 @@ namespace Beautify.Universal
                 }
                 else if (beautify.RequiresDepthTexture())
                 {
+#if !UNITY_2021_3_OR_NEWER
                     if (!pipe.supportsCameraDepthTexture)
                     {
-                        EditorGUILayout.HelpBox(
-                            "Depth Texture option may be required for certain effects. Check Universal Rendering Pipeline asset!",
-                            MessageType.Warning);
+                        EditorGUILayout.HelpBox("Depth Texture option may be required for certain effects. Check Universal Rendering Pipeline asset!", MessageType.Warning);
                         if (GUILayout.Button("Go to Universal Rendering Pipeline Asset"))
                         {
                             Selection.activeObject = pipe;
@@ -261,6 +264,7 @@ namespace Beautify.Universal
 
                         EditorGUILayout.Separator();
                     }
+#endif
                 }
 
                 bool usesHDREffect = beautify.tonemap.value != Beautify.TonemapOperator.Linear;
@@ -272,10 +276,14 @@ namespace Beautify.Universal
                         MessageType.Warning);
                 }
 
-                if (XRSettings.enabled && (bool)beautify.directWrite)
+                if ((bool)beautify.directWrite)
                 {
-                    EditorGUILayout.HelpBox("Direct Write To Camera option is not compatible with VR.",
-                        MessageType.Warning);
+#if !UNITY_2022_3_OR_NEWER
+                    if (UnityEngine.XR.XRSettings.enabled)
+                    {
+                        EditorGUILayout.HelpBox("Direct Write To Camera option is not compatible with VR.", MessageType.Warning);
+                    }
+#endif
                 }
 
                 // sections
@@ -308,7 +316,7 @@ namespace Beautify.Universal
                                 EditorGUILayout.BeginHorizontal();
                                 GUI.enabled = false;
                                 DrawPropertyField(parameter, field, indent);
-                                GUILayout.Label("(Disabled by Stripping Option above)");
+                                GUILayout.Label("(Not available - Check General Options)");
                                 GUI.enabled = true;
                                 EditorGUILayout.EndHorizontal();
                             }
@@ -369,9 +377,10 @@ namespace Beautify.Universal
                                         GUI.enabled = false;
                                         EditorGUILayout.Foldout(false, groupName, true, foldoutStyle);
                                         GUILayout.FlexibleSpace();
-                                        GUILayout.Label("(Disabled by Stripping Option above)");
+                                        GUILayout.Label("(Not available - Check General Options)");
                                         GUI.enabled = true;
                                         EditorGUILayout.EndHorizontal();
+                                        GUILayout.Space(6.0f);
                                     }
 
                                     break;
@@ -454,14 +463,15 @@ namespace Beautify.Universal
 
                 if (beautify.directWrite.value != prevDirectWrite ||
                     beautify.bloomExclusionLayerMask != prevBloomExclusionLayerMask ||
-                    beautify.anamorphicFlaresExclusionLayerMask != prevAnamorphicFlaresExclusionLayerMask)
+                    beautify.anamorphicFlaresExclusionLayerMask != prevAnamorphicFlaresExclusionLayerMask ||
+                    beautify.outline.value)
                 {
                     EditorApplication.delayCall += () =>
                         InternalEditorUtility.RepaintAllViews();
                 }
             }
 
-            if (prevTonemap != beautify.tonemap.value && beautify.tonemap.value == Beautify.TonemapOperator.ACES)
+            if (prevTonemap != beautify.tonemap.value && beautify.tonemap.value != Beautify.TonemapOperator.Linear)
             {
                 beautify.saturate.value = 0;
                 beautify.saturate.overrideState = true;

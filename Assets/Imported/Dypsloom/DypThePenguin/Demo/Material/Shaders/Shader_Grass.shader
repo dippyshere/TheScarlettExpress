@@ -76,7 +76,7 @@ Shader "Dypsloom/Grass"
 
         void vertexDataFunc(inout appdata_full v, out Input o)
         {
-                UNITY_INITIALIZE_OUTPUT(Input, o);
+            UNITY_INITIALIZE_OUTPUT(Input, o);
             float3 ase_vertex3Pos = v.vertex.xyz;
             float simplePerlin2D15 = snoise(
                 (ase_vertex3Pos * 1.0 + float3((_Time.y * _TimeOffset), 0.0)).xy * _NoiseSize);

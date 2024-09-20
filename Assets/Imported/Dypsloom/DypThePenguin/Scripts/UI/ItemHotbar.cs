@@ -19,15 +19,12 @@ namespace Dypsloom.DypThePenguin.Scripts.UI
     public class ItemHotbar : MonoBehaviour
     {
         [Tooltip("The hot item box prefab"), SerializeField]
-        
         protected GameObject m_ItemBoxPrefab;
 
         [Tooltip("The inventory to monitor."), SerializeField]
-        
         protected Inventory m_Inventory;
 
         [Tooltip("The character."), SerializeField]
-        
         protected Character m_Character;
 
         protected ItemHotbarSlotBox[] m_ItemBoxes;

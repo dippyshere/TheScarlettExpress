@@ -16,19 +16,15 @@ namespace Dypsloom.DypThePenguin.Scripts.Game
         static readonly int s_Free = Animator.StringToHash("Free");
 
         [Tooltip("The animator."), SerializeField]
-        
         protected Animator m_Animator;
 
         [Tooltip("The damageables."), SerializeField]
-        
         protected Damageable[] m_Damageables;
 
         [Tooltip("The text box."), SerializeField]
-        
         protected GameObject m_TextBox;
 
         [Tooltip("The dialog text."), SerializeField]
-        
         protected TextMeshProUGUI m_DialogText;
 
         protected int m_BrokenChainCount;

@@ -46,8 +46,7 @@ Material:
     - _DstBlend: 1
     - _GlowMax: 1.5
     - _GlowMin: 0
-    - _HdrBoost: 0
-    - _HdrMultiply: 10
+    - _HdrMultiply: 0
     - _InvertDissolveTex: 0
     - _MaxValue: 2
     - _ShadowStrength: 1

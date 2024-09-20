@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 #endregion
@@ -30,9 +31,9 @@ namespace CartoonFX
 
         public Text labelIndex;
 
-        [Space] public GameObject ground;
+        [Space] public GameObject groundURP;
 
-        public Collider groundCollider;
+        public GameObject groundBIRP;
         public Transform demoCamera;
         public MonoBehaviour bloom;
         public float rotationSpeed = 10f;
@@ -45,6 +46,7 @@ namespace CartoonFX
 
         [NonSerialized] public GameObject currentEffect;
         GameObject[] effectsList;
+        GameObject ground;
         int index;
         bool rotateCamera;
         bool showGround = true;
@@ -73,6 +75,11 @@ namespace CartoonFX
 
             PlayAtIndex();
             UpdateLabels();
+
+            bool isURP = GraphicsSettings.currentRenderPipeline != null;
+            ground = isURP ? groundURP : groundBIRP;
+            groundURP.SetActive(isURP);
+            groundBIRP.SetActive(!isURP);
         }
 
         void Update()

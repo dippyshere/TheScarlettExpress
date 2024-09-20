@@ -11,7 +11,7 @@
         ZTest Always
         ZWrite Off
         Cull Off
-
+        
         Pass
         {
             CGPROGRAM
@@ -35,7 +35,7 @@
             sampler2D _MainTex, _LUT2;
             float _Phase;
 
-            v2f vert(appdata v)
+            v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
@@ -43,7 +43,7 @@
                 return o;
             }
 
-            fixed4 frag(v2f i) : SV_Target
+            fixed4 frag (v2f i) : SV_Target
             {
                 half4 lut1 = tex2D(_MainTex, i.uv);
                 half4 lut2 = tex2D(_LUT2, i.uv);

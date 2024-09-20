@@ -105,9 +105,8 @@ namespace FullscreenEditor
                 try
                 {
                     GUIContent currentContent = stylesClass.GetFieldValue<GUIContent>("maximizeOnPlayContent");
-                    GUIContent newContent =
-                        new GUIContent("Fullscreen on Play", FullscreenUtility.FullscreenOnPlayIcon);
-                    GUIContent originalContent = new GUIContent(currentContent);
+                    GUIContent newContent = new("Fullscreen on Play", FullscreenUtility.FullscreenOnPlayIcon);
+                    GUIContent originalContent = new(currentContent);
 
                     PrefItem<bool> overrideEnabled = FullscreenPreferences.FullscreenOnPlayEnabled;
 

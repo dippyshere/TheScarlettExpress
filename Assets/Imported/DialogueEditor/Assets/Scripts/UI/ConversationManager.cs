@@ -11,6 +11,10 @@ namespace DialogueEditor
 {
     public class ConversationManager : MonoBehaviour
     {
+        public delegate void ConversationEndEvent();
+
+        public delegate void ConversationStartEvent();
+
         const float TRANSITION_TIME = 0.2f; // Transition time for fades
 
         public static ConversationStartEvent OnConversationStarted;
@@ -40,6 +44,17 @@ namespace DialogueEditor
         // Base panels
         public RectTransform DialoguePanel;
         public TextMeshProUGUI DialogueText;
+        public int m_targetScrollTextCount;
+        public TextMeshProUGUI NameText;
+        public Image NpcIcon;
+        public Sprite OptionImage;
+        public bool OptionImageSliced;
+        public RectTransform OptionsPanel;
+        public float ScrollSpeed = 1;
+
+        // User-Facing options
+        // Drawn by custom inspector
+        public bool ScrollText;
 
         Conversation m_conversation;
         int m_currentSelectedIndex;
@@ -52,20 +67,13 @@ namespace DialogueEditor
         OptionNode m_selectedOption;
         eState m_state;
         float m_stateTime;
-        public int m_targetScrollTextCount;
+        
+        public Sprite ChihuahuaImage;
+        public Sprite EveImage;
+        public Sprite SterlingImage;
 
         // Selection options
         List<UIConversationButton> m_uiOptions;
-        public TextMeshProUGUI NameText;
-        public Image NpcIcon;
-        public Sprite OptionImage;
-        public bool OptionImageSliced;
-        public RectTransform OptionsPanel;
-        public float ScrollSpeed = 1;
-
-        // User-Facing options
-        // Drawn by custom inspector
-        public bool ScrollText;
 
         public static ConversationManager Instance { get; private set; }
 
@@ -98,11 +106,6 @@ namespace DialogueEditor
             TurnOffUI();
         }
 
-        void OnDestroy()
-        {
-            Instance = null;
-        }
-
         void Update()
         {
             switch (m_state)
@@ -131,6 +134,11 @@ namespace DialogueEditor
                     TransitioningDialogueBoxOff_Update();
                     break;
             }
+        }
+
+        void OnDestroy()
+        {
+            Instance = null;
         }
 
 
@@ -302,7 +310,25 @@ namespace DialogueEditor
 
                     DialogueText.text = "";
                     NameText.text = m_currentSpeech.Name;
-                    NpcIcon.sprite = m_currentSpeech.Icon != null ? m_currentSpeech.Icon : BlankSprite;
+                    if (!m_currentSpeech.Icon)
+                    {
+                        switch (m_currentSpeech.CharacterImage)
+                        {
+                            case SpeechNode.eCharacter.Chihuahua:
+                                NpcIcon.sprite = ChihuahuaImage;
+                                break;
+                            case SpeechNode.eCharacter.Eve:
+                                NpcIcon.sprite = EveImage;
+                                break;
+                            case SpeechNode.eCharacter.Sterling:
+                                NpcIcon.sprite = SterlingImage;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        NpcIcon.sprite = m_currentSpeech.Icon;
+                    }
                 }
                     break;
 
@@ -488,7 +514,18 @@ namespace DialogueEditor
             // Set sprite
             if (speech.Icon == null)
             {
-                NpcIcon.sprite = BlankSprite;
+                switch (speech.CharacterImage)
+                {
+                    case SpeechNode.eCharacter.Chihuahua:
+                        NpcIcon.sprite = ChihuahuaImage;
+                        break;
+                    case SpeechNode.eCharacter.Eve:
+                        NpcIcon.sprite = EveImage;
+                        break;
+                    case SpeechNode.eCharacter.Sterling:
+                        NpcIcon.sprite = SterlingImage;
+                        break;
+                }
             }
             else
             {
@@ -725,7 +762,7 @@ namespace DialogueEditor
                             else
                             {
                                 uiOption.SetupButton(UIConversationButton.eButtonType.Speech, next,
-                                    continueFont: m_conversation.ContinueFont);
+                                    m_conversation.ContinueFont);
                             }
 
                             break;
@@ -807,7 +844,7 @@ namespace DialogueEditor
 
         UIConversationButton CreateButton()
         {
-            UIConversationButton button = GameObject.Instantiate(ButtonPrefab, OptionsPanel);
+            UIConversationButton button = Instantiate(ButtonPrefab, OptionsPanel);
             m_uiOptions.Add(button);
             return button;
         }
@@ -924,9 +961,5 @@ namespace DialogueEditor
             Off,
             NONE
         }
-
-        public delegate void ConversationStartEvent();
-
-        public delegate void ConversationEndEvent();
     }
 }

@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using Dypsloom.DypThePenguin.Scripts.Damage;
 using Dypsloom.DypThePenguin.Scripts.Items;
@@ -24,52 +25,41 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
     {
         [HideInInspector, Tooltip("Singleton instance of the character controller.")]
         public static Character Instance;
-            
+
         [SerializeField, Tooltip("Reference to the prompt UI.")]
         public GameObject promptUI;
-        
+
         [Tooltip("The character speed in units/second."), SerializeField]
-        
         protected float m_Speed = 1f;
 
         [Tooltip("The gravity."), SerializeField]
-        
         protected float m_Gravity = 1f;
 
         [Tooltip("Grounded error correction time."), SerializeField]
-        
         protected float m_AdditionalGroundedTime = 0.5f;
 
         [Tooltip("Grounded Raycast length."), SerializeField]
-        
         protected float m_GroundRaycastLength = 0.3f;
 
         [Tooltip("The character jump force."), SerializeField]
-        
         protected float m_JumpForce = 1f;
 
         [Tooltip("The gravity modifier while pressing the jump button."), SerializeField]
-        
         protected float m_JumpFallOff = 1f;
 
         [Tooltip("The character speed in units/second."), SerializeField]
-        
         protected Transform m_SpawnTransform;
 
         [Tooltip("The delay between death and respawn."), SerializeField]
-        
         protected float m_RespawnDelay = 3f;
 
         [Tooltip("The character speed in units/second."), SerializeField]
-        
         protected float m_PushPower = 2.0f;
 
         [Tooltip("The transform where the projectiles thrown will spawn From."), SerializeField]
-        
         protected Transform m_ProjectilesSpawnPoint;
 
         [Tooltip("Death Effect."), SerializeField]
-        
         protected GameObject m_DeathEffects;
 
         public MovementMode m_MovementMode = MovementMode.Free;
@@ -303,6 +293,14 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
             transform.position = m_SpawnTransform != null ? m_SpawnTransform.position : new Vector3(0, 1, 0);
             gameObject.SetActive(true);
             m_IsDead = false;
+        }
+        
+        public IEnumerator LateTeleport(Transform position)
+        {
+            m_CharacterController.enabled = false;
+            m_CharacterController.transform.SetPositionAndRotation(position.position, position.rotation);
+            yield return new WaitForEndOfFrame();
+            m_CharacterController.enabled = true;
         }
     }
 

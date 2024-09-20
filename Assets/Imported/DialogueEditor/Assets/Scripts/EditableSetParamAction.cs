@@ -9,6 +9,12 @@ namespace DialogueEditor
     [DataContract]
     public abstract class EditableSetParamAction
     {
+        public enum eParamActionType
+        {
+            Int,
+            Bool
+        }
+
         [DataMember] public string ParameterName;
 
         public EditableSetParamAction(string paramName)
@@ -17,12 +23,6 @@ namespace DialogueEditor
         }
 
         public abstract eParamActionType ParamActionType { get; }
-
-        public enum eParamActionType
-        {
-            Int,
-            Bool
-        }
     }
 
     [DataContract]

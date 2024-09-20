@@ -32,7 +32,6 @@ namespace DialogueEditor
         /// <summary> Version 1.10 </summary>
         public const int CurrentVersion = (int)eSaveVersion.V1_10;
 
-        readonly string CHILD_NAME = "ConversationEventInfo";
         [SerializeField] public TMP_FontAsset ContinueFont;
 
         // Serialized data
@@ -47,11 +46,13 @@ namespace DialogueEditor
         [SerializeField] string json;
 
         [FormerlySerializedAs("Events"), SerializeField]
-        
         List<NodeEventHolder> NodeSerializedDataList;
 
-        public List<EditableParameter> ParameterList; // Serialized into the json string
         [SerializeField] int saveVersion;
+
+        readonly string CHILD_NAME = "ConversationEventInfo";
+
+        public List<EditableParameter> ParameterList; // Serialized into the json string
 
         // Getters
         public int Version
@@ -293,13 +294,15 @@ namespace DialogueEditor
                         {
                             case EditableSpeechConnection:
                             {
-                                EditableSpeechNode speech = conversation.GetSpeechByUID(allNodes[i].Connections[j].NodeUID);
+                                EditableSpeechNode speech =
+                                    conversation.GetSpeechByUID(allNodes[i].Connections[j].NodeUID);
                                 (allNodes[i].Connections[j] as EditableSpeechConnection).Speech = speech;
                                 break;
                             }
                             case EditableOptionConnection:
                             {
-                                EditableOptionNode option = conversation.GetOptionByUID(allNodes[i].Connections[j].NodeUID);
+                                EditableOptionNode option =
+                                    conversation.GetOptionByUID(allNodes[i].Connections[j].NodeUID);
                                 (allNodes[i].Connections[j] as EditableOptionConnection).Option = option;
                                 break;
                             }
@@ -371,7 +374,7 @@ namespace DialogueEditor
         Conversation ConstructConversationObject(EditableConversation ec)
         {
             // Create a conversation object
-            Conversation conversation = new Conversation();
+            Conversation conversation = new();
 
             // Construct the parameters
             CreateParameters(ec, conversation);
@@ -439,6 +442,7 @@ namespace DialogueEditor
             speech.TimeUntilAdvance = editableNode.TimeUntilAdvance;
             speech.TMPFont = editableNode.TMPFont;
             speech.Icon = editableNode.Icon;
+            speech.CharacterImage = editableNode.CharacterIcon;
             speech.Audio = editableNode.Audio;
             speech.Volume = editableNode.Volume;
 
@@ -480,7 +484,8 @@ namespace DialogueEditor
                 {
                     case EditableSetParamAction.eParamActionType.Int:
                     {
-                        EditableSetIntParamAction setIntEditable = editable.ParamActions[i] as EditableSetIntParamAction;
+                        EditableSetIntParamAction setIntEditable =
+                            editable.ParamActions[i] as EditableSetIntParamAction;
 
                         SetIntParamAction setInt = new();
                         setInt.ParameterName = setIntEditable.ParameterName;
@@ -490,7 +495,8 @@ namespace DialogueEditor
                     }
                     case EditableSetParamAction.eParamActionType.Bool:
                     {
-                        EditableSetBoolParamAction setBoolEditable = editable.ParamActions[i] as EditableSetBoolParamAction;
+                        EditableSetBoolParamAction setBoolEditable =
+                            editable.ParamActions[i] as EditableSetBoolParamAction;
 
                         SetBoolParamAction setBool = new();
                         setBool.ParameterName = setBoolEditable.ParameterName;
@@ -523,7 +529,7 @@ namespace DialogueEditor
                         // Construct node->Speech
                         case EditableConnection.eConnectiontype.Speech:
                         {
-                            SpeechConnection connection = new SpeechConnection(dialogues[childID]);
+                            SpeechConnection connection = new(dialogues[childID]);
                             CopyConnectionConditions(editableConnections[j], connection);
                             speechNode.Connections.Add(connection);
                             break;
@@ -531,7 +537,7 @@ namespace DialogueEditor
                         // Construct node->Option
                         case EditableConnection.eConnectiontype.Option:
                         {
-                            OptionConnection connection = new OptionConnection(options[childID]);
+                            OptionConnection connection = new(options[childID]);
                             CopyConnectionConditions(editableConnections[j], connection);
                             speechNode.Connections.Add(connection);
                             break;
@@ -563,7 +569,7 @@ namespace DialogueEditor
                     // Construct node->Speech
                     if (editableConnections[j].ConnectionType == EditableConnection.eConnectiontype.Speech)
                     {
-                        SpeechConnection connection = new SpeechConnection(dialogues[childID]);
+                        SpeechConnection connection = new(dialogues[childID]);
                         CopyConnectionConditions(editableConnections[j], connection);
                         optionNode.Connections.Add(connection);
                     }

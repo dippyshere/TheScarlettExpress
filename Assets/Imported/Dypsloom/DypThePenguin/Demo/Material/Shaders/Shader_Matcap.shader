@@ -157,7 +157,7 @@ Shader "Dypsloom/Matcap"
             {
                 UNITY_SETUP_INSTANCE_ID(IN);
                 Input surfIN;
-                    UNITY_INITIALIZE_OUTPUT(Input, surfIN);
+                UNITY_INITIALIZE_OUTPUT(Input, surfIN);
                 surfIN.uv_texcoord = IN.customPack1.xy;
                 float3 worldPos = float3(IN.tSpace0.w, IN.tSpace1.w, IN.tSpace2.w);
                 half3 worldViewDir = normalize(UnityWorldSpaceViewDir(worldPos));

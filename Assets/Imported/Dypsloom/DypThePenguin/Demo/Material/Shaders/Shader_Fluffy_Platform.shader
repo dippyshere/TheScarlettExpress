@@ -101,7 +101,7 @@ Shader "Custom/Shader_Fluffy_Platform"
 
         void vertexDataFunc(inout appdata_full v, out Input o)
         {
-                UNITY_INITIALIZE_OUTPUT(Input, o);
+            UNITY_INITIALIZE_OUTPUT(Input, o);
             float3 ase_vertex3Pos = v.vertex.xyz;
             float simplePerlin2D23 = snoise(
                 (mul(float4(ase_vertex3Pos, 0.0), unity_WorldToObject).xyz * 1.0 + (_Time.y * _TimeOffset)).xy *
@@ -110,10 +110,10 @@ Shader "Custom/Shader_Fluffy_Platform"
             float temp_output_17_0 = (simplePerlin2D23 * _DeformationNoiseValue);
             float3 ase_vertexNormal = v.normal.xyz;
             float4 appendResult13 = (float4((temp_output_17_0 + ase_vertexNormal.x), ase_vertexNormal.y,
-                                               (temp_output_17_0 + ase_vertexNormal.z), 0.0));
+                                        (temp_output_17_0 + ase_vertexNormal.z), 0.0));
             float4 lerpResult27 = lerp(appendResult13, float4(0, 0, 0, 0),
-                                                   (mul(float4(ase_vertex3Pos, 0.0), unity_WorldToObject).xyz.y +
-                                                       _YLerpConstant));
+                            (mul(float4(ase_vertex3Pos, 0.0), unity_WorldToObject).xyz.y +
+                                _YLerpConstant));
             float4 break37 = lerpResult27;
             float4 appendResult11 = (float4(break37.x, (break37.y * _YDeformation), break37.z, 0.0));
             v.vertex.xyz += (appendResult11 * _DeformationScale).xyz;
@@ -130,7 +130,7 @@ Shader "Custom/Shader_Fluffy_Platform"
             float4 lerpResult101 = lerp(_BlendColor, _BlendColor2, float4(0, 0, 0, 0));
             float3 ase_vertex3Pos = mul(unity_WorldToObject, float4(i.worldPos, 1));
             float clampResult147 = clamp(((ase_vertex3Pos.y + _BlendTransitionOffset) * _BlendTransitionRatio), 0.0,
-                                          1.0);
+                                                                     1.0);
             float4 lerpResult119 = lerp(lerpResult101, _TopColor, clampResult147);
             float simplePerlin2D70 = snoise(
                 (ase_worldPos * 1.0 + (_Time.y * float3(0.3, 0.3, 0.3))).xy * _ColorNoiseScale);
@@ -182,7 +182,7 @@ Shader "Custom/Shader_Fluffy_Platform"
             {
                 v2f o;
                 UNITY_SETUP_INSTANCE_ID(v);
-                    UNITY_INITIALIZE_OUTPUT(v2f, o);
+                UNITY_INITIALIZE_OUTPUT(v2f, o);
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
                 UNITY_TRANSFER_INSTANCE_ID(v, o);
                 Input customInputData;

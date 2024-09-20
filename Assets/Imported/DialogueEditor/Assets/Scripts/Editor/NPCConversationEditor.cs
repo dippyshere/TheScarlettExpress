@@ -35,17 +35,17 @@ namespace DialogueEditor
             }
         }
 
-        public override void OnInspectorGUI()
-        {
-            serializedObject.Update();
-            EditorGUILayout.Space();
-            EditorGUILayout.Space();
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PrefixLabel("Conversation: ", boldStyle);
-            EditorGUILayout.TextField(serializedObject.targetObject.name, regularStyle);
-            EditorGUILayout.EndHorizontal();
-            serializedObject.ApplyModifiedProperties();
-        }
+//        public override void OnInspectorGUI()
+//        {
+//            serializedObject.Update();
+//            EditorGUILayout.Space();
+//            EditorGUILayout.Space();
+//            EditorGUILayout.BeginHorizontal();
+//            EditorGUILayout.PrefixLabel("Conversation: ", boldStyle);
+//            EditorGUILayout.TextField(serializedObject.targetObject.name, regularStyle);
+//            EditorGUILayout.EndHorizontal();
+//            serializedObject.ApplyModifiedProperties();
+//        }
     }
 
     [CustomEditor(typeof(NodeEventHolder))]
@@ -58,15 +58,15 @@ namespace DialogueEditor
             n = target as NodeEventHolder;
         }
 
-        public override void OnInspectorGUI()
-        {
-            serializedObject.Update();
-            EditorGUILayout.Space();
-            EditorGUILayout.BeginVertical();
-            EditorGUILayout.LabelField("Node " + n.NodeID + " event and data information holder.");
-            EditorGUILayout.EndVertical();
-            serializedObject.ApplyModifiedProperties();
-        }
+//        public override void OnInspectorGUI()
+//        {
+//            serializedObject.Update();
+//            EditorGUILayout.Space();
+//            EditorGUILayout.BeginVertical();
+//            EditorGUILayout.LabelField("Node " + n.NodeID + " event and data information holder.");
+//            EditorGUILayout.EndVertical();
+//            serializedObject.ApplyModifiedProperties();
+//        }
     }
 #endif
 }

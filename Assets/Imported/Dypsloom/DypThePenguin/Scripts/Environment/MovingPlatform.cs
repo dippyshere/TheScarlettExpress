@@ -23,7 +23,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Environment
         [SerializeField] protected LayerMask m_AffectedLayers;
 
         [Tooltip("If the target index is -1 the platform will continue moving."), SerializeField]
-        
         protected int m_TargetIndex = -1;
 
         [SerializeField] protected int m_MoveIndex;

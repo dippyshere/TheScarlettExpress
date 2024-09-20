@@ -15,29 +15,23 @@ namespace Dypsloom.DypThePenguin.Scripts.Items
     public class SwingAttack : ItemActionComponent, IDamager
     {
         [Tooltip("The cooldown between each hits."), SerializeField]
-        
         protected float m_Cooldown;
 
         [Tooltip("The damage dealt by the attack."), SerializeField]
-        
         protected int m_Damage;
 
         [Tooltip(
              "The knock back dealt to the object being hit. (KnockBack works on RigidBodies or Damageables with Movers)."),
          SerializeField]
-        
         protected int m_KnockBack = 10;
 
         [Tooltip("The delay before the attack starts taking effect."), SerializeField]
-        
         protected float m_HitStartTime = 0.1f;
 
         [Tooltip("The dealy where the attack stops taking effect."), SerializeField]
-        
         protected float m_HitEndTime = 0.6f;
 
         [Tooltip("The damage type index to differentiate it with from other attack types."), SerializeField]
-        
         protected int m_DamageTypeIndex = 1;
 
         protected bool m_IsAttacking;

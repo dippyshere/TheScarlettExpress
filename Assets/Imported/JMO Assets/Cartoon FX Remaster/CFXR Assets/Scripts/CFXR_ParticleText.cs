@@ -114,16 +114,17 @@ namespace CartoonFX
                 return;
             }
 
-            switch (Application.isPlaying)
+            if (!Application.isPlaying)
             {
-                case false:
-                    InitializeFirstParticle();
-                    break;
-                case true when !isDynamic:
-                    throw new Exception(
-                        "[CFXR_ParticleText] You cannot update the text at runtime if it's not marked as dynamic.");
+                InitializeFirstParticle();
             }
 #endif
+
+            if (Application.isPlaying && !isDynamic)
+            {
+                throw new Exception(
+                    "[CFXR_ParticleText] You cannot update the text at runtime if it's not marked as dynamic.");
+            }
 
             if (newText != null)
             {

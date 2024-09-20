@@ -13,7 +13,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
     public class MultiStateDamageable : Damageable
     {
         [Tooltip("The object states."), SerializeField]
-        
         protected State[] m_States;
 
         /// <summary>

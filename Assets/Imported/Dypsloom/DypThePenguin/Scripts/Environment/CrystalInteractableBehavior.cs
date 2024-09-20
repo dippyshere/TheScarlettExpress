@@ -11,31 +11,24 @@ namespace Dypsloom.DypThePenguin.Scripts.Environment
     public class CrystalInteractableBehavior : InteractableBehavior
     {
         [Tooltip("Offset translation."), SerializeField]
-        
         protected Vector3 m_Offset = new(0, 1, 0);
 
         [Tooltip("The object to translate."), SerializeField]
-        
         protected Transform m_ObjectTransform;
 
         [Tooltip("How smoothly to move the object."), SerializeField]
-        
         protected float m_SmoothFactor;
 
         [Tooltip("Rotation speed at idle."), SerializeField]
-        
         protected Vector3 m_RotationSpeedIdle = new(0, 1, 0);
 
         [Tooltip("Rotation speed when selected."), SerializeField]
-        
         protected Vector3 m_RotationSpeedSelected = new(0, 1, 0);
 
         [Tooltip("Rotation speed at interact."), SerializeField]
-        
         protected Vector3 m_RotationSpeedInteract = new(0, 1, 0);
 
         [Tooltip("Interact period for rotation speed change."), SerializeField]
-        
         protected float m_InteractPeriod = 0.5f;
 
         protected bool m_Interacting;

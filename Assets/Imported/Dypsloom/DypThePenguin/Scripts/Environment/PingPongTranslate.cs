@@ -12,11 +12,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Environment
     public class PingPongTranslate : MonoBehaviour
     {
         [Tooltip("Offset translation."), SerializeField]
-        
         protected Vector3 m_Offset = new(0, 1, 0);
 
         [Tooltip("The object to translate."), SerializeField]
-        
         protected Transform m_ObjectTransform;
 
         protected Vector3 m_StarPosition;

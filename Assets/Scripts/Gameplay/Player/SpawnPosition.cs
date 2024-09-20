@@ -12,13 +12,14 @@ public class SpawnPosition : MonoBehaviour
     {
         if (Character.Instance != null)
         {
-            Character.Instance.transform.position = transform.position;
+            StartCoroutine(Character.Instance.LateTeleport(transform));
             if (CameraManager.Instance != null)
             {
                 CameraManager.Instance.ResetCameraPosition();
             }
         }
     }
+
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {

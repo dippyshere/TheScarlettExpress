@@ -2,15 +2,15 @@
 {
     public abstract class SetParamAction
     {
-        public string ParameterName;
-
-        public abstract eParamActionType ParamActionType { get; }
-
         public enum eParamActionType
         {
             Int,
             Bool
         }
+
+        public string ParameterName;
+
+        public abstract eParamActionType ParamActionType { get; }
     }
 
     public class SetIntParamAction : SetParamAction

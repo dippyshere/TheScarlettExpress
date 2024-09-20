@@ -13,11 +13,12 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _CFXR_HDR_BOOST
-  - _CFXR_SINGLE_CHANNEL
   - _FADING_ON
   m_InvalidKeywords:
   - _CFXR_DITHERED_SHADOWS_OFF
+  - _CFXR_HDR_BOOST
+  - _CFXR_SINGLE_CHANNEL
+  - _SINGLECHANNEL_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -45,7 +46,6 @@ Material:
     - _CFXR_DITHERED_SHADOWS: 0
     - _DissolveSmooth: 0.1
     - _DstBlend: 10
-    - _HdrBoost: 1
     - _HdrMultiply: 6
     - _InvertDissolveTex: 0
     - _RingTopOffset: 0.07

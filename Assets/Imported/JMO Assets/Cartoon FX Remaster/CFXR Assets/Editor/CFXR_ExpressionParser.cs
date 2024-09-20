@@ -67,31 +67,30 @@ namespace CartoonFX
                 return lit;
             }
 
-            switch (polishNotationTokensEnumerator.Current.value)
+            if (polishNotationTokensEnumerator.Current.value == "NOT")
             {
-                case "NOT":
-                {
-                    polishNotationTokensEnumerator.MoveNext();
-                    Expression operand = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
-                    return new ExpressionNot(operand);
-                }
-                case "AND":
-                {
-                    polishNotationTokensEnumerator.MoveNext();
-                    Expression left = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
-                    Expression right = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
-                    return new ExpressionAnd(left, right);
-                }
-                case "OR":
-                {
-                    polishNotationTokensEnumerator.MoveNext();
-                    Expression left = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
-                    Expression right = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
-                    return new ExpressionOr(left, right);
-                }
-                default:
-                    return null;
+                polishNotationTokensEnumerator.MoveNext();
+                Expression operand = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
+                return new ExpressionNot(operand);
             }
+
+            if (polishNotationTokensEnumerator.Current.value == "AND")
+            {
+                polishNotationTokensEnumerator.MoveNext();
+                Expression left = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
+                Expression right = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
+                return new ExpressionAnd(left, right);
+            }
+
+            if (polishNotationTokensEnumerator.Current.value == "OR")
+            {
+                polishNotationTokensEnumerator.MoveNext();
+                Expression left = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
+                Expression right = MakeExpression(ref polishNotationTokensEnumerator, _evalFunction);
+                return new ExpressionOr(left, right);
+            }
+
+            return null;
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------

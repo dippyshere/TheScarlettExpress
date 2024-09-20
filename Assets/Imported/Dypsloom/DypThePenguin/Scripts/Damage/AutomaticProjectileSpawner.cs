@@ -13,11 +13,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
     public class AutomaticProjectileSpawner : ProjectileSpawner, IAutoAttack
     {
         [Tooltip("Start auto firing at the start of the game."), SerializeField]
-        
         bool m_AutoFireOnStart = true;
 
         [Tooltip("The time elapsed between each shot."), SerializeField]
-        
         float m_FirePeriod = 1;
 
         protected Coroutine m_FireCoroutine;

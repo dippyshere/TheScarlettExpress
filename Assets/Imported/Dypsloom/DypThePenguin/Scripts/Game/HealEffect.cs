@@ -7,23 +7,20 @@ using UnityEngine;
 
 namespace Dypsloom.DypThePenguin.Scripts.Game
 {
-   /// <summary>
-   ///     Heal effect when the damageable heals.
-   /// </summary>
-   public class HealEffect : MonoBehaviour
+    /// <summary>
+    ///     Heal effect when the damageable heals.
+    /// </summary>
+    public class HealEffect : MonoBehaviour
     {
         static readonly int s_Heal = Animator.StringToHash("Heal");
 
         [Tooltip("The damageable."), SerializeField]
-      
         protected Damageable m_Damageable;
 
         [Tooltip("The animator."), SerializeField]
-      
         protected Animator m_Animator;
 
         [Tooltip("The effect.."), SerializeField]
-      
         protected ParticleSystem m_Effect;
 
         /// <summary>

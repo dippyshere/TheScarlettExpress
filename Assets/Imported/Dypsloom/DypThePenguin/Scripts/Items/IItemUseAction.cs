@@ -23,15 +23,12 @@ namespace Dypsloom.DypThePenguin.Scripts.Items
     public class ItemUseAction : IItemUseAction
     {
         [Tooltip("The keycode to use the action."), SerializeField]
-        
         protected KeyCode m_KeyCode;
 
         [Tooltip("The button to sue the action."), SerializeField]
-        
         protected string m_Button;
 
         [Tooltip("The action component."), SerializeField]
-        
         protected ItemActionComponent m_ItemActionComponent;
 
         public bool UseInput

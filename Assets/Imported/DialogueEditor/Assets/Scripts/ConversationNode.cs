@@ -15,6 +15,12 @@ namespace DialogueEditor
 {
     public abstract class ConversationNode
     {
+        public enum eNodeType
+        {
+            Speech,
+            Option
+        }
+
         /// <summary> The child connections this node has. </summary>
         public List<Connection> Connections;
 
@@ -47,17 +53,19 @@ namespace DialogueEditor
                 return Connection.eConnectionType.None;
             }
         }
-
-        public enum eNodeType
-        {
-            Speech,
-            Option
-        }
     }
 
 
     public class SpeechNode : ConversationNode
     {
+
+        public enum eCharacter
+        {
+            Chihuahua,
+            Eve,
+            Sterling
+        }
+        
         public AudioClip Audio;
 
         /// <summary>
@@ -74,6 +82,11 @@ namespace DialogueEditor
 
         /// <summary> The Icon of the speaking NPC </summary>
         public Sprite Icon;
+        
+        /// <summary>
+        /// Bug workaround because the character sprite doesnt save in builds apparently i guess
+        /// </summary>
+        public eCharacter CharacterImage;
 
         /// <summary> The name of the NPC who is speaking. </summary>
         public string Name;

@@ -10,6 +10,26 @@ namespace DialogueEditor
 {
     public class UIConversationButton : MonoBehaviour
     {
+        public enum eButtonType
+        {
+            Option,
+            Speech,
+            End
+        }
+
+        public enum eHoverState
+        {
+            idleOff,
+            animatingOn,
+            idleOn,
+            animatingOff
+        }
+
+        [SerializeField] Image OptionBackgroundImage;
+
+        // UI Elements
+        [SerializeField] TextMeshProUGUI TextMesh;
+
         // Node data
         eHoverState m_hoverState;
 
@@ -17,10 +37,6 @@ namespace DialogueEditor
         float m_hoverT;
         ConversationNode m_node;
         RectTransform m_rect;
-        [SerializeField] Image OptionBackgroundImage;
-
-        // UI Elements
-        [SerializeField] TextMeshProUGUI TextMesh;
 
         // Getters
         public eButtonType ButtonType { get; private set; }
@@ -127,8 +143,8 @@ namespace DialogueEditor
         {
             switch (selected)
             {
-                case true when (m_hoverState == eHoverState.animatingOn || m_hoverState == eHoverState.idleOn):
-                case false when (m_hoverState == eHoverState.animatingOff || m_hoverState == eHoverState.idleOff):
+                case true when m_hoverState == eHoverState.animatingOn || m_hoverState == eHoverState.idleOn:
+                case false when m_hoverState == eHoverState.animatingOff || m_hoverState == eHoverState.idleOff:
                     return;
                 case true:
                     m_hoverState = eHoverState.animatingOn;
@@ -243,21 +259,6 @@ namespace DialogueEditor
         static float EaseOutQuart(float normalized)
         {
             return 1 - Mathf.Pow(1 - normalized, 4);
-        }
-
-        public enum eHoverState
-        {
-            idleOff,
-            animatingOn,
-            idleOn,
-            animatingOff
-        }
-
-        public enum eButtonType
-        {
-            Option,
-            Speech,
-            End
         }
     }
 }

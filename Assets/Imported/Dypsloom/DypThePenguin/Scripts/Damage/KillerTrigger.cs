@@ -14,7 +14,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
     public class KillerTrigger : MonoBehaviour
     {
         [Tooltip("The layers affected by the trigger."), SerializeField]
-        
         protected LayerMask m_LayerMask;
 
         /// <summary>

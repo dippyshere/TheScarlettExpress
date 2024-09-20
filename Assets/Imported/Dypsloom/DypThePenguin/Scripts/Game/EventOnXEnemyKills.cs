@@ -13,11 +13,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Game
     public class EventOnXEnemyKills : MonoBehaviour
     {
         [Tooltip("The enemy kill count threshold."), SerializeField]
-        
         protected int m_EnemyKillCount;
 
         [Tooltip("The event to call when the kill count reaches that amount."), SerializeField]
-        
         protected UnityEvent m_Event;
 
         /// <summary>

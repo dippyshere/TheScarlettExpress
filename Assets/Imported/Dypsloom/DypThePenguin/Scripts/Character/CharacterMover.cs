@@ -95,7 +95,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
                 if (m_Movement.y > c_NoVerticalMovementOffset)
                 {
-                    m_GravityMovement = new Vector3(0, 0f, 0);
+                    m_GravityMovement = Vector3.zero;
                 }
                 else
                 {

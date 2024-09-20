@@ -34,9 +34,9 @@ namespace FullscreenEditor
 
         public static int Run(string command, bool asAdmin, out string stdout, out string stderr)
         {
-            Process proc = new Process();
-            StringBuilder stdoutBuilder = new StringBuilder();
-            StringBuilder stderrBuilder = new StringBuilder();
+            Process proc = new();
+            StringBuilder stdoutBuilder = new();
+            StringBuilder stderrBuilder = new();
 
             proc.EnableRaisingEvents = true;
 

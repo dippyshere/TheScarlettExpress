@@ -16,10 +16,10 @@ Material:
   - _ALPHABLEND_ON
   - _CFXR_DISSOLVE
   - _CFXR_DITHERED_SHADOWS_ON
-  - _CFXR_HDR_BOOST
   - _FADING_ON
   m_InvalidKeywords:
   - _
+  - _CFXR_HDR_BOOST
   - _CFXR_OVERLAYBLEND_RGBA
   - _CFXR_OVERLAYTEX_OFF
   m_LightmapFlags: 0
@@ -71,14 +71,13 @@ Material:
     - _Cutoff: 0.1
     - _DirLightScreenAtten: 1
     - _DirectLightingRamp: 1
-    - _DissolveSmooth: 0.2
+    - _DissolveSmooth: 0.15
     - _Distort: 0.1
     - _DoubleDissolve: 0
     - _DstBlend: 10
     - _EdgeFadePow: 1
     - _FadeAlongU: 0
-    - _HdrBoost: 1
-    - _HdrMultiply: 6
+    - _HdrMultiply: 4
     - _IndirectLightingMix: 0.5
     - _InvertDissolveTex: 0
     - _LightingWorldPosStrength: 0.2

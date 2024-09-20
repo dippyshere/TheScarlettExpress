@@ -167,25 +167,23 @@ namespace CartoonFX
                                     string[] cmd = command
                                         .Substring(command.LastIndexOf(kGC_HelpBox) + kGC_HelpBox.Length + 1)
                                         .Split(new[] { "::" }, StringSplitOptions.RemoveEmptyEntries);
-                                    switch (cmd.Length)
+                                    if (cmd.Length == 1)
                                     {
-                                        case 1:
-                                            message = cmd[0];
-                                            messageType = MessageType.None;
-                                            break;
-                                        case 2:
-                                            try
-                                            {
-                                                MessageType msgType =
-                                                    (MessageType)Enum.Parse(typeof(MessageType), cmd[0], true);
-                                                message = cmd[1].Replace("  ", "\n");
-                                                messageType = msgType;
-                                            }
-                                            catch
-                                            {
-                                            }
-
-                                            break;
+                                        message = cmd[0];
+                                        messageType = MessageType.None;
+                                    }
+                                    else if (cmd.Length == 2)
+                                    {
+                                        try
+                                        {
+                                            MessageType msgType =
+                                                (MessageType)Enum.Parse(typeof(MessageType), cmd[0], true);
+                                            message = cmd[1].Replace("  ", "\n");
+                                            messageType = msgType;
+                                        }
+                                        catch
+                                        {
+                                        }
                                     }
 
                                     AddGUICommand(propertyCount, new GC_HelpBox

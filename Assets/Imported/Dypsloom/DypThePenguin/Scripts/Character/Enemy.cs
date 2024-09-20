@@ -14,23 +14,18 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         static readonly int s_DeadAnimHash = Animator.StringToHash("Dead");
 
         [Tooltip("Look at the player when in view range."), SerializeField]
-        
         protected bool m_LookAtThePlayer = true;
 
         [Tooltip("The distance at which the enemy will start seeing the character."), SerializeField]
-        
         protected float m_ViewDistance = 15;
 
         [Tooltip("The distance at which the enemy will start attacking the player."), SerializeField]
-        
         protected float m_AttackDistance = 8;
 
         [Tooltip("The Animator."), SerializeField]
-        
         protected Animator m_Animator;
 
         [Tooltip("Death Effect."), SerializeField]
-        
         protected GameObject m_DeathEffects;
 
         protected IAutoAttack m_AutoAttack;
@@ -95,7 +90,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                 return;
             }
 
-            Vector3 playerXZPosition = new Vector3(m_PlayerCharacter.transform.position.x, transform.position.y,
+            Vector3 playerXZPosition = new(m_PlayerCharacter.transform.position.x, transform.position.y,
                 m_PlayerCharacter.transform.position.z);
 
             transform.LookAt(playerXZPosition);

@@ -15,29 +15,23 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
     public class Projectile : MonoBehaviour
     {
         [Tooltip("The projectiles speed in unit per second."), SerializeField]
-        
         protected float m_Speed = 1;
 
         [Tooltip("The damage dealt by the projectile."), SerializeField]
-        
         protected int m_Damage = 10;
 
         [Tooltip(
              "The knock back dealt to the object being hit. (KnockBack works on RigidBodies or Damageables with Movers)."),
          SerializeField]
-        
         protected int m_KnockBack = 10;
 
         [Tooltip("The life time of the projectile before it is returned to the pool."), SerializeField]
-        
         protected int m_LifeTime = 5;
 
         [Tooltip("The layers affected by the projectile."), SerializeField]
-        
         protected LayerMask m_LayerMask;
 
         [Tooltip("The effect that gets spawned on impact."), SerializeField]
-        
         protected GameObject m_ImpactPrefab;
 
         protected IItemUser m_ItemUser;

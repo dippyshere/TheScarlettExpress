@@ -415,14 +415,13 @@ namespace CartoonFX
                             int val = EditorGUI.Popup(rect, IntensityModeLabel, perlinIntensity.boolValue ? 1 : 0,
                                 ModePopupLabels);
                             rect.y += propSpace;
-                            switch (val)
+                            if (val == 1 && !perlinIntensity.boolValue)
                             {
-                                case 1 when !perlinIntensity.boolValue:
-                                    perlinIntensity.boolValue = true;
-                                    break;
-                                case 0 when perlinIntensity.boolValue:
-                                    perlinIntensity.boolValue = false;
-                                    break;
+                                perlinIntensity.boolValue = true;
+                            }
+                            else if (val == 0 && perlinIntensity.boolValue)
+                            {
+                                perlinIntensity.boolValue = false;
                             }
 
                             startIndent(ref rect);
@@ -479,14 +478,13 @@ namespace CartoonFX
                             int val = EditorGUI.Popup(rect, RangeModeLabel, perlinRange.boolValue ? 1 : 0,
                                 ModePopupLabels);
                             rect.y += propSpace;
-                            switch (val)
+                            if (val == 1 && !perlinRange.boolValue)
                             {
-                                case 1 when !perlinRange.boolValue:
-                                    perlinRange.boolValue = true;
-                                    break;
-                                case 0 when perlinRange.boolValue:
-                                    perlinRange.boolValue = false;
-                                    break;
+                                perlinRange.boolValue = true;
+                            }
+                            else if (val == 0 && perlinRange.boolValue)
+                            {
+                                perlinRange.boolValue = false;
                             }
 
                             startIndent(ref rect);
@@ -521,14 +519,13 @@ namespace CartoonFX
                             int val = EditorGUI.Popup(rect, ColorModeLabel, perlinColor.boolValue ? 1 : 0,
                                 ModePopupLabels);
                             rect.y += propSpace;
-                            switch (val)
+                            if (val == 1 && !perlinColor.boolValue)
                             {
-                                case 1 when !perlinColor.boolValue:
-                                    perlinColor.boolValue = true;
-                                    break;
-                                case 0 when perlinColor.boolValue:
-                                    perlinColor.boolValue = false;
-                                    break;
+                                perlinColor.boolValue = true;
+                            }
+                            else if (val == 0 && perlinColor.boolValue)
+                            {
+                                perlinColor.boolValue = false;
                             }
 
                             startIndent(ref rect);

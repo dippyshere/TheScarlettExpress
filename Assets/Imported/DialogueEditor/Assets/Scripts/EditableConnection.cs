@@ -10,6 +10,12 @@ namespace DialogueEditor
     [DataContract, KnownType(typeof(EditableIntCondition)), KnownType(typeof(EditableBoolCondition))]
     public abstract class EditableConnection
     {
+        public enum eConnectiontype
+        {
+            Speech,
+            Option
+        }
+
         [DataMember] public List<EditableCondition> Conditions;
         [DataMember] public int NodeUID;
 
@@ -23,12 +29,6 @@ namespace DialogueEditor
         public void AddCondition(EditableCondition condition)
         {
             Conditions.Add(condition);
-        }
-
-        public enum eConnectiontype
-        {
-            Speech,
-            Option
         }
     }
 

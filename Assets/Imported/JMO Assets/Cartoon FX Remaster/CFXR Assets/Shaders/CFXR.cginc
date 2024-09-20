@@ -16,16 +16,19 @@
 	{
 		float sceneZ = SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(projection)).r;
 
-#if defined(SOFT_PARTICLES_ORTHOGRAPHIC)
-// orthographic camera
+		if (unity_OrthoParams.w == 1)
+		{
+			// orthographic camera
 #if defined(UNITY_REVERSED_Z)
-			sceneZ = 1.0f - sceneZ;
+				sceneZ = 1.0f - sceneZ;
 #endif
-		sceneZ = (sceneZ * _ProjectionParams.z) + _ProjectionParams.y;
-#else
-		// perspective camera
-		sceneZ = LinearEyeDepthURP(sceneZ, _ZBufferParams);
-#endif
+			sceneZ = (sceneZ * _ProjectionParams.z) + _ProjectionParams.y;
+		}
+		else
+		{
+			// perspective camera
+			sceneZ = LinearEyeDepthURP(sceneZ, _ZBufferParams);
+		}
 
 		float fade = saturate (far * ((sceneZ - near) - projection.z));
 		return fade;
@@ -34,16 +37,19 @@
 float SoftParticles(float near, float far, float4 projection)
 {
     float sceneZ = SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(projection));
-    #if defined(SOFT_PARTICLES_ORTHOGRAPHIC)
-    // orthographic camera
-    #if defined(UNITY_REVERSED_Z)
-			sceneZ = 1.0f - sceneZ;
-    #endif
-		sceneZ = (sceneZ * _ProjectionParams.z) + _ProjectionParams.y;
-    #else
-    // perspective camera
-    sceneZ = LinearEyeDepth(sceneZ);
-    #endif
+    if (unity_OrthoParams.w == 1)
+    {
+        // orthographic camera
+        #if defined(UNITY_REVERSED_Z)
+				sceneZ = 1.0f - sceneZ;
+        #endif
+        sceneZ = sceneZ * _ProjectionParams.z + _ProjectionParams.y;
+    }
+    else
+    {
+        // perspective camera
+        sceneZ = LinearEyeDepth(sceneZ);
+    }
 
     float fade = saturate(far * (sceneZ - near - projection.z));
     return fade;
@@ -300,7 +306,7 @@ half4 GetParticleColor(half4 color)
     return color;
 }
 
-void GetParticleTexcoords(out float2 outputTexcoord, out float2 outputTexcoord2, out float outputBlend,
+void GetParticleTexcoords(out float2 outputTexcoord, out float2 outputTexcoord2, inout float outputBlend,
                           in float4 inputTexcoords, in float inputBlend)
 {
     #if defined(UNITY_PARTICLE_INSTANCING_ENABLED)
@@ -345,7 +351,7 @@ void GetParticleTexcoords(out float2 outputTexcoord, out float2 outputTexcoord2,
 
     #ifndef _FLIPBOOKBLENDING_ON
     outputTexcoord2.xy = inputTexcoords.xy;
-    outputBlend = 0.5;
+    //outputBlend = 0.5;
     #endif
 }
 

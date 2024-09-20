@@ -14,6 +14,12 @@ namespace DialogueEditor
      KnownType(typeof(EditableSetIntParamAction)), KnownType(typeof(EditableSetBoolParamAction))]
     public abstract class EditableConversationNode
     {
+        public enum eNodeType
+        {
+            Speech,
+            Option
+        }
+
         [DataMember] public List<EditableConnection> Connections;
 
         // ----
@@ -155,12 +161,6 @@ namespace DialogueEditor
 #endif
         }
 
-        public enum eNodeType
-        {
-            Speech,
-            Option
-        }
-
         /// <summary> Info used internally by the editor window. </summary>
         [DataContract]
         public class EditorArgs
@@ -195,6 +195,8 @@ namespace DialogueEditor
 
         /// <summary> The NPC Icon </summary>
         public Sprite Icon;
+
+        [DataMember] public SpeechNode.eCharacter CharacterIcon;
 
         /// <summary> Deprecated as of V1.03 </summary>
         [DataMember] public string IconGUID;

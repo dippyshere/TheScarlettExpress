@@ -11,6 +11,15 @@ namespace DialogueEditor
 {
     public abstract class UINode
     {
+        public delegate void ConnectToNodeEvent(UINode node);
+
+        public delegate void CreateSpeechEvent(UINode node);
+
+        public delegate void UINodeDeletedEvent(UINode node);
+
+        // Events
+        public delegate void UINodeSelectedEvent(UINode node, bool selected);
+
         // Consts
         protected const int TEXT_BORDER = 5;
         protected const int TITLE_HEIGHT = 18;
@@ -276,15 +285,6 @@ namespace DialogueEditor
         protected abstract void ProcessContextMenu();
 
         protected abstract void OnSetSelected(bool selected);
-
-        // Events
-        public delegate void UINodeSelectedEvent(UINode node, bool selected);
-
-        public delegate void UINodeDeletedEvent(UINode node);
-
-        public delegate void CreateSpeechEvent(UINode node);
-
-        public delegate void ConnectToNodeEvent(UINode node);
     }
 
 
@@ -294,6 +294,9 @@ namespace DialogueEditor
 
     public class UISpeechNode : UINode
     {
+        // Events
+        public delegate void CreateOptionEvent(UISpeechNode node);
+
         protected const float SPRITE_SZ = 40;
         protected const int NAME_HEIGHT = 12;
         public static CreateOptionEvent OnCreateOption;
@@ -438,9 +441,6 @@ namespace DialogueEditor
         {
             OnCreateOption?.Invoke(this);
         }
-
-        // Events
-        public delegate void CreateOptionEvent(UISpeechNode node);
     }
 
 

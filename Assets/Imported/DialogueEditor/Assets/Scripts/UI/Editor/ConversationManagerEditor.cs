@@ -29,6 +29,9 @@ namespace DialogueEditor
         SerializedProperty OptionImageSlicedProperty;
         SerializedProperty ScrollTextProperty;
         SerializedProperty ScrollTextSpeedProperty;
+        SerializedProperty ChihuahuaImageProperty;
+        SerializedProperty EveImageProperty;
+        SerializedProperty SterlingImageProperty;
 
         void OnEnable()
         {
@@ -39,6 +42,9 @@ namespace DialogueEditor
             ScrollTextProperty = serializedObject.FindProperty("ScrollText");
             ScrollTextSpeedProperty = serializedObject.FindProperty("ScrollSpeed");
             AllowMouseInteractionProperty = serializedObject.FindProperty("AllowMouseInteraction");
+            ChihuahuaImageProperty = serializedObject.FindProperty("ChihuahuaImage");
+            EveImageProperty = serializedObject.FindProperty("EveImage");
+            SterlingImageProperty = serializedObject.FindProperty("SterlingImage");
         }
 
         public override void OnInspectorGUI()
@@ -79,6 +85,14 @@ namespace DialogueEditor
             // Interaction options
             GUILayout.Label("Interaction options", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(AllowMouseInteractionProperty);
+            
+            EditorGUILayout.Space();
+            
+            // Character images
+            GUILayout.Label("Character images", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(ChihuahuaImageProperty);
+            EditorGUILayout.PropertyField(EveImageProperty);
+            EditorGUILayout.PropertyField(SterlingImageProperty);
 
             // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
             serializedObject.ApplyModifiedProperties();

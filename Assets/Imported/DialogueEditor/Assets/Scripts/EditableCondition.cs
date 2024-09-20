@@ -9,6 +9,12 @@ namespace DialogueEditor
     [DataContract]
     public abstract class EditableCondition
     {
+        public enum eConditionType
+        {
+            IntCondition,
+            BoolCondition
+        }
+
         [DataMember] public string ParameterName;
 
         public EditableCondition(string name)
@@ -17,17 +23,18 @@ namespace DialogueEditor
         }
 
         public abstract eConditionType ConditionType { get; }
-
-        public enum eConditionType
-        {
-            IntCondition,
-            BoolCondition
-        }
     }
 
     [DataContract]
     public class EditableIntCondition : EditableCondition
     {
+        public enum eCheckType
+        {
+            equal,
+            lessThan,
+            greaterThan
+        }
+
         [DataMember] public eCheckType CheckType;
         [DataMember] public int RequiredValue;
 
@@ -39,18 +46,17 @@ namespace DialogueEditor
         {
             get { return eConditionType.IntCondition; }
         }
-
-        public enum eCheckType
-        {
-            equal,
-            lessThan,
-            greaterThan
-        }
     }
 
     [DataContract]
     public class EditableBoolCondition : EditableCondition
     {
+        public enum eCheckType
+        {
+            equal,
+            notEqual
+        }
+
         [DataMember] public eCheckType CheckType;
         [DataMember] public bool RequiredValue;
 
@@ -61,12 +67,6 @@ namespace DialogueEditor
         public override eConditionType ConditionType
         {
             get { return eConditionType.BoolCondition; }
-        }
-
-        public enum eCheckType
-        {
-            equal,
-            notEqual
         }
     }
 }

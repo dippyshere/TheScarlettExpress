@@ -745,7 +745,8 @@ namespace DialogueEditor
                                         node.AdvanceDialogueAutomatically);
                                     if (node.AdvanceDialogueAutomatically)
                                     {
-                                        node.AutoAdvanceShouldDisplayOption = EditorGUILayout.Toggle("Display continue option",
+                                        node.AutoAdvanceShouldDisplayOption = EditorGUILayout.Toggle(
+                                            "Display continue option",
                                             node.AutoAdvanceShouldDisplayOption);
                                         node.TimeUntilAdvance =
                                             EditorGUILayout.FloatField("Dialogue Time", node.TimeUntilAdvance);
@@ -762,10 +763,15 @@ namespace DialogueEditor
                                 node.Icon = (Sprite)EditorGUILayout.ObjectField(node.Icon, typeof(Sprite), false,
                                     GUILayout.ExpandWidth(true));
                                 EditorGUILayout.Space();
+                                
+                                GUILayout.Label("Character Image", EditorStyles.boldLabel);
+                                node.CharacterIcon = (SpeechNode.eCharacter)EditorGUILayout.EnumPopup(node.CharacterIcon);
+                                EditorGUILayout.Space();
 
                                 GUILayout.Label("Audio Options", EditorStyles.boldLabel);
                                 GUILayout.Label("Audio");
-                                node.Audio = (AudioClip)EditorGUILayout.ObjectField(node.Audio, typeof(AudioClip), false);
+                                node.Audio =
+                                    (AudioClip)EditorGUILayout.ObjectField(node.Audio, typeof(AudioClip), false);
 
                                 GUILayout.Label("Audio Volume");
                                 node.Volume = EditorGUILayout.Slider(node.Volume, 0, 1);
@@ -773,7 +779,8 @@ namespace DialogueEditor
 
                                 GUILayout.Label("TMP Font", EditorStyles.boldLabel);
                                 node.TMPFont =
-                                    (TMP_FontAsset)EditorGUILayout.ObjectField(node.TMPFont, typeof(TMP_FontAsset), false);
+                                    (TMP_FontAsset)EditorGUILayout.ObjectField(node.TMPFont, typeof(TMP_FontAsset),
+                                        false);
                                 EditorGUILayout.Space();
 
                                 // Event
@@ -822,7 +829,8 @@ namespace DialogueEditor
 
                                 GUILayout.Label("TMP Font", EditorStyles.boldLabel);
                                 node.TMPFont =
-                                    (TMP_FontAsset)EditorGUILayout.ObjectField(node.TMPFont, typeof(TMP_FontAsset), false);
+                                    (TMP_FontAsset)EditorGUILayout.ObjectField(node.TMPFont, typeof(TMP_FontAsset),
+                                        false);
                                 EditorGUILayout.Space();
 
 
@@ -907,7 +915,8 @@ namespace DialogueEditor
                                             rightClickMenu.AddItem(new GUIContent(intParam.ParameterName), false,
                                                 delegate
                                                 {
-                                                    connection.AddCondition(new EditableIntCondition(intParam.ParameterName));
+                                                    connection.AddCondition(
+                                                        new EditableIntCondition(intParam.ParameterName));
                                                 });
                                             break;
                                         }
@@ -918,7 +927,8 @@ namespace DialogueEditor
                                             rightClickMenu.AddItem(new GUIContent(boolParam.ParameterName), false,
                                                 delegate
                                                 {
-                                                    connection.AddCondition(new EditableBoolCondition(boolParam.ParameterName));
+                                                    connection.AddCondition(
+                                                        new EditableBoolCondition(boolParam.ParameterName));
                                                 });
                                             break;
                                         }
@@ -1020,11 +1030,13 @@ namespace DialogueEditor
                             {
                                 case EditableParameter.eParamType.Int:
                                 {
-                                    EditableIntParameter intParam = CurrentAsset.ParameterList[i] as EditableIntParameter;
+                                    EditableIntParameter intParam =
+                                        CurrentAsset.ParameterList[i] as EditableIntParameter;
                                     rightClickMenu.AddItem(new GUIContent(intParam.ParameterName), false,
                                         delegate
                                         {
-                                            node.ParamActions.Add(new EditableSetIntParamAction(intParam.ParameterName));
+                                            node.ParamActions.Add(
+                                                new EditableSetIntParamAction(intParam.ParameterName));
                                         });
                                     break;
                                 }
@@ -1035,7 +1047,8 @@ namespace DialogueEditor
                                     rightClickMenu.AddItem(new GUIContent(boolParam.ParameterName), false,
                                         delegate
                                         {
-                                            node.ParamActions.Add(new EditableSetBoolParamAction(boolParam.ParameterName));
+                                            node.ParamActions.Add(
+                                                new EditableSetBoolParamAction(boolParam.ParameterName));
                                         });
                                     break;
                                 }

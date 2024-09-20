@@ -15,13 +15,15 @@ Material:
   m_ValidKeywords:
   - _ALPHABLEND_ON
   - _CFXR_DISSOLVE
-  - _CFXR_DISSOLVE_ALONG_UV_X
-  - _CFXR_OVERLAYBLEND_RGB
-  - _CFXR_SINGLE_CHANNEL
   m_InvalidKeywords:
   - _
+  - _CFXR_DISSOLVE_ALONG_UV_X
   - _CFXR_DITHERED_SHADOWS_OFF
+  - _CFXR_OVERLAYBLEND_RGB
   - _CFXR_OVERLAYTEX_OFF
+  - _CFXR_SINGLE_CHANNEL
+  - _SINGLECHANNEL_ON
+  - _USEDISSOLVEOFFSETUV_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -77,8 +79,7 @@ Material:
     - _DstBlend: 10
     - _EdgeFadePow: 1
     - _FadeAlongU: 0
-    - _HdrBoost: 0
-    - _HdrMultiply: 4
+    - _HdrMultiply: 0
     - _IndirectLightingMix: 0.5
     - _InvertDissolveTex: 0
     - _LightingWorldPosStrength: 0.2

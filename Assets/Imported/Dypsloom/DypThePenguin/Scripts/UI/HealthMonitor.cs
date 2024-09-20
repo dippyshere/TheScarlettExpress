@@ -15,15 +15,12 @@ namespace Dypsloom.DypThePenguin.Scripts.UI
     public class HealthMonitor : MonoBehaviour
     {
         [Tooltip("The health slider."), SerializeField]
-        
         protected Slider m_Slider;
 
         [Tooltip("The health text."), SerializeField]
-        
         protected TextMeshProUGUI m_Text;
 
         [Tooltip("The damageable to monitor."), SerializeField]
-        
         protected Damageable m_StartDamageable;
 
         protected IDamageable m_Damageable;

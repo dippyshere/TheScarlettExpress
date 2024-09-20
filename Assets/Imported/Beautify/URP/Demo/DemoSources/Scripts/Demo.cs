@@ -105,6 +105,13 @@ namespace Beautify.Demos
                 // disables LUT
                 BeautifySettings.settings.lut.Override(false);
             }
+
+            if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                // toggles anamorphic flares on/off
+                float intensity = BeautifySettings.settings.anamorphicFlaresIntensity.value;
+                BeautifySettings.settings.anamorphicFlaresIntensity.Override(intensity > 0 ? 0f : 1f);
+            }
         }
 
         void UpdateText()

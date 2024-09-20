@@ -14,7 +14,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
     public class CharacterDamageable : Damageable, IDamageable
     {
         [Tooltip("The character for this damageable component."), SerializeField]
-        
         protected Character m_Character;
 
         /// <summary>

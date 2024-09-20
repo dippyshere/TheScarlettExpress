@@ -12,15 +12,12 @@ namespace Dypsloom.DypThePenguin.Scripts.Environment
     public class PingPongScale : MonoBehaviour
     {
         [Tooltip("Offset translation."), SerializeField]
-        
         protected Vector3 m_Offset = new(0, 1, 0);
 
         [Tooltip("Offset translation."), SerializeField]
-        
         protected float m_Speed = 1;
 
         [Tooltip("The object to translate."), SerializeField]
-        
         protected Transform m_ObjectTransform;
 
         protected Vector3 m_StarScale;

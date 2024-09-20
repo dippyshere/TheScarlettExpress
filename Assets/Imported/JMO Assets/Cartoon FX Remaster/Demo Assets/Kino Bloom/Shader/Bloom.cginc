@@ -93,13 +93,12 @@ half3 UpsampleFilter(float2 uv)
     // 9-tap bilinear upsampler (tent filter)
     float4 d = _MainTex_TexelSize.xyxy * float4(1, 1, -1, 0) * _SampleScale;
 
-    half3 s;
-    s  = DecodeHDR(tex2D(_MainTex, uv - d.xy));
+    half3 s = DecodeHDR(tex2D(_MainTex, uv - d.xy));
     s += DecodeHDR(tex2D(_MainTex, uv - d.wy)) * 2;
     s += DecodeHDR(tex2D(_MainTex, uv - d.zy));
 
     s += DecodeHDR(tex2D(_MainTex, uv + d.zw)) * 2;
-    s += DecodeHDR(tex2D(_MainTex, uv       )) * 4;
+    s += DecodeHDR(tex2D(_MainTex, uv)) * 4;
     s += DecodeHDR(tex2D(_MainTex, uv + d.xw)) * 2;
 
     s += DecodeHDR(tex2D(_MainTex, uv + d.zy));
@@ -111,7 +110,8 @@ half3 UpsampleFilter(float2 uv)
     // 4-tap bilinear upsampler
     float4 d = _MainTex_TexelSize.xyxy * float4(-1, -1, +1, +1) * (_SampleScale * 0.5);
 
-    half3 s = DecodeHDR(tex2D(_MainTex, uv + d.xy));
+    half3 s;
+    s  = DecodeHDR(tex2D(_MainTex, uv + d.xy));
     s += DecodeHDR(tex2D(_MainTex, uv + d.zy));
     s += DecodeHDR(tex2D(_MainTex, uv + d.xw));
     s += DecodeHDR(tex2D(_MainTex, uv + d.zw));

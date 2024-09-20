@@ -343,6 +343,9 @@ MonoBehaviour:
   OptionsPanel: {fileID: 3852935656990629450}
   ScrollSpeed: 1
   ScrollText: 1
+  ChihuahuaImage: {fileID: 21300000, guid: 10ad821a2b0ada241b07873ef20a70bd, type: 3}
+  EveImage: {fileID: 21300000, guid: e1b2138bbe0489b4f92a57f918551d4f, type: 3}
+  SterlingImage: {fileID: 21300000, guid: 6189c988ca7d1804ba9bb4e4c50dc2f9, type: 3}
 --- !u!114 &2006477199462396331
 MonoBehaviour:
   m_ObjectHideFlags: 0

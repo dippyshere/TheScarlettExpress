@@ -14,16 +14,18 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _CFXR_ADDITIVE
-  - _CFXR_HDR_BOOST
   - _CFXR_OVERLAYTEX_1X
-  - _CFXR_SINGLE_CHANNEL
   - _CFXR_UV_DISTORTION
-  - _CFXR_UV_DISTORTION_ADD
   - _FADING_ON
   m_InvalidKeywords:
   - _
   - _CFXR_DITHERED_SHADOWS_OFF
+  - _CFXR_HDR_BOOST
   - _CFXR_OVERLAYBLEND_RGBA
+  - _CFXR_SINGLE_CHANNEL
+  - _CFXR_UV_DISTORTION_ADD
+  - _SINGLECHANNEL_ON
+  - _UVDISTORTIONADD_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -79,7 +81,6 @@ Material:
     - _DstBlend: 1
     - _EdgeFadePow: 1
     - _FadeAlongU: 0
-    - _HdrBoost: 1
     - _HdrMultiply: 4
     - _IndirectLightingMix: 0.5
     - _InvertDissolveTex: 0

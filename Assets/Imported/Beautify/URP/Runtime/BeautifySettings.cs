@@ -1,10 +1,10 @@
 #region
 
-using System;
 using System.Collections;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 #endregion
 
@@ -16,23 +16,32 @@ namespace Beautify.Universal
     [ExecuteInEditMode]
     public class BeautifySettings : MonoBehaviour
     {
-        [NonSerialized] public static float depthOfFieldCurrentFocalPointDistance;
+        public static float depthOfFieldCurrentFocalPointDistance;
 
-        [NonSerialized] public static int bloomExcludeMask;
+        public static int bloomExcludeMask;
 
-        [NonSerialized] public static int anamorphicFlaresExcludeMask;
+        public static int anamorphicFlaresExcludeMask;
 
-        [NonSerialized] public static bool dofTransparentSupport;
+        public static bool dofTransparentSupport;
 
-        [NonSerialized] public static int dofTransparentLayerMask;
+        public static int dofTransparentLayerMask;
 
-        [NonSerialized] public static bool dofTransparentDoubleSided;
+        public static bool dofTransparentDoubleSided;
 
-        [NonSerialized] public static bool dofAlphaTestSupport;
+        public static bool dofAlphaTestSupport;
 
-        [NonSerialized] public static int dofAlphaTestLayerMask;
+        public static int dofAlphaTestLayerMask;
 
-        [NonSerialized] public static bool dofAlphaTestDoubleSided;
+        public static bool dofAlphaTestDoubleSided;
+
+        public static bool outlineDepthPrepass;
+        public static bool outlineUseObjectId;
+        public static int outlineLayerMask;
+        public static float outlineLayerCutOff;
+
+        public static bool outlineDepthPrepassUseOptimizedShader;
+
+        internal static bool _refreshAlphaClipRenderers;
 
         static BeautifySettings _instance;
         static Volume _beautifyVolume;
@@ -175,8 +184,13 @@ namespace Beautify.Universal
 #if UNITY_EDITOR
             ManageBuildOptimizationStatus(true);
 #endif
+            SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         }
 
+        void OnDisable()
+        {
+            SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
+        }
 
         /// <summary>
         ///     Forces a reset of the internal cached settings of Beautify. Call this method if Beautify settings are not resetted
@@ -270,6 +284,20 @@ namespace Beautify.Universal
             beautify.vignettingBlink.overrideState = false;
         }
 
+        void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
+            UnloadBeautify();
+        }
+
+
+        /// <summary>
+        ///     Updates the list of alpha clip renderers
+        /// </summary>
+        public static void UpdateAlphaClipRenderers()
+        {
+            _refreshAlphaClipRenderers = true;
+        }
+
 
 #if UNITY_EDITOR
         static bool wasBuildOptActive;
@@ -282,14 +310,13 @@ namespace Beautify.Universal
                 return;
             }
 
-            switch (beautify.active)
+            if (!beautify.active && (wasBuildOptActive || force))
             {
-                case false when (wasBuildOptActive || force):
-                    StripBeautifyKeywords();
-                    break;
-                case true when (!wasBuildOptActive || force):
-                    SetStripShaderKeywords(beautify);
-                    break;
+                StripBeautifyKeywords();
+            }
+            else if (beautify.active && (!wasBuildOptActive || force))
+            {
+                SetStripShaderKeywords(beautify);
             }
 
             wasBuildOptActive = beautify.active;
@@ -312,6 +339,8 @@ namespace Beautify.Universal
             sb.Append(BeautifyRendererFeature.SKW_NIGHT_VISION);
             sb.Append(BeautifyRendererFeature.SKW_PURKINJE);
             sb.Append(BeautifyRendererFeature.SKW_TONEMAP_ACES);
+            sb.Append(BeautifyRendererFeature.SKW_TONEMAP_ACES_FITTED);
+            sb.Append(BeautifyRendererFeature.SKW_TONEMAP_AGX);
             sb.Append(BeautifyRendererFeature.SKW_VIGNETTING);
             sb.Append(BeautifyRendererFeature.SKW_VIGNETTING_MASK);
             sb.Append(BeautifyRendererFeature.SKW_COLOR_TWEAKS);
@@ -341,6 +370,8 @@ namespace Beautify.Universal
                 beautify.stripBeautifyColorTweaks.value = false;
                 beautify.stripBeautifyPurkinje.value = false;
                 beautify.stripBeautifyTonemapping.value = false;
+                beautify.stripBeautifyTonemappingACESFitted.value = false;
+                beautify.stripBeautifyTonemappingAGX.value = false;
                 beautify.stripBeautifyDithering.value = false;
                 beautify.stripBeautifySharpen.value = false;
                 beautify.stripBeautifyEyeAdaptation.value = false;
@@ -417,6 +448,18 @@ namespace Beautify.Universal
                 (auto && beautify.tonemap.value != Beautify.TonemapOperator.ACES))
             {
                 sb.Append(BeautifyRendererFeature.SKW_TONEMAP_ACES);
+            }
+
+            if (beautify.stripBeautifyTonemappingACESFitted.value ||
+                (auto && beautify.tonemap.value != Beautify.TonemapOperator.ACESFitted))
+            {
+                sb.Append(BeautifyRendererFeature.SKW_TONEMAP_ACES_FITTED);
+            }
+
+            if (beautify.stripBeautifyTonemappingAGX.value ||
+                (auto && beautify.tonemap.value != Beautify.TonemapOperator.AGX))
+            {
+                sb.Append(BeautifyRendererFeature.SKW_TONEMAP_AGX);
             }
 
             if (beautify.stripBeautifyDithering.value || (auto && beautify.ditherIntensity.value <= 0))

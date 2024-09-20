@@ -14,20 +14,16 @@ namespace Dypsloom.DypThePenguin.Scripts.Items
     public class ItemDefinition : ScriptableObject
     {
         [Tooltip("The item icon."), SerializeField]
-        
         protected Sprite m_Icon;
 
         [Tooltip("Is the item unique ot can it be stacked?"), SerializeField]
-        
         protected bool m_Unique;
 
         [Tooltip("The item prefab (must have an Item component that reference this scriptable object)."),
          SerializeField]
-        
         protected GameObject m_ItemPrefab;
 
         [Tooltip("The item description."), TextArea, SerializeField]
-        
         protected string m_Description;
 
         [NonSerialized] protected Item m_DefaultItem;

@@ -1380,32 +1380,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29062cb40802f84fb9e924b1f762420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopUI: {fileID: 1449594078078640097}
-  money: 0
-  m_Player: {fileID: 0}
-  m_CinemachineInputAxisController: {fileID: 0}
-  deco1Lock: {fileID: 8971686087029845355}
-  deco2Lock: {fileID: 1233987397419982677}
-  deco3Lock: {fileID: 7301737567606676936}
-  deco4Lock: {fileID: 747156366487183455}
-  deco5Lock: {fileID: 3684625707394725669}
-  deco6Lock: {fileID: 2139952566198651612}
-  deco7Lock: {fileID: 1987765436444663912}
-  deco8Lock: {fileID: 1069147666914476727}
-  deco9Lock: {fileID: 3129897274184497933}
   deco10Lock: {fileID: 7984060044992738248}
-  deco1Lock2: {fileID: 8616166897489470897}
-  deco2Lock2: {fileID: 3469918275006425835}
-  deco3Lock2: {fileID: 8491897016293697843}
-  deco4Lock2: {fileID: 6029385536317602396}
-  deco5Lock2: {fileID: 5667329749279971532}
-  deco6Lock2: {fileID: 8390393361891014715}
-  deco7Lock2: {fileID: 7251357542481888910}
-  deco8Lock2: {fileID: 3877657100472116573}
-  deco9Lock2: {fileID: 667725042447699867}
   deco10Lock2: {fileID: 6404766714016886820}
-  music: {fileID: 0}
+  deco1Lock: {fileID: 8971686087029845355}
+  deco1Lock2: {fileID: 8616166897489470897}
+  deco2Lock: {fileID: 1233987397419982677}
+  deco2Lock2: {fileID: 3469918275006425835}
+  deco3Lock: {fileID: 7301737567606676936}
+  deco3Lock2: {fileID: 8491897016293697843}
+  deco4Lock: {fileID: 747156366487183455}
+  deco4Lock2: {fileID: 6029385536317602396}
+  deco5Lock: {fileID: 3684625707394725669}
+  deco5Lock2: {fileID: 5667329749279971532}
+  deco6Lock: {fileID: 2139952566198651612}
+  deco6Lock2: {fileID: 8390393361891014715}
+  deco7Lock: {fileID: 1987765436444663912}
+  deco7Lock2: {fileID: 7251357542481888910}
+  deco8Lock: {fileID: 1069147666914476727}
+  deco8Lock2: {fileID: 3877657100472116573}
+  deco9Lock: {fileID: 3129897274184497933}
+  deco9Lock2: {fileID: 667725042447699867}
+  money: 0
   moneyText: {fileID: 141932783904654408}
+  music: {fileID: 0}
+  shopUI: {fileID: 1449594078078640097}
 --- !u!1 &1582553321726207794
 GameObject:
   m_ObjectHideFlags: 0
@@ -8372,6 +8370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deco1: {fileID: 6654596059317432588}
+  deco10: {fileID: 1164001147139032734}
   deco2: {fileID: 6201671140194008429}
   deco3: {fileID: 8897163561083563979}
   deco4: {fileID: 9117822362429472382}
@@ -8380,7 +8379,6 @@ MonoBehaviour:
   deco7: {fileID: 7694903974085092087}
   deco8: {fileID: 6156969676771817361}
   deco9: {fileID: 7397993181117110087}
-  deco10: {fileID: 1164001147139032734}
 --- !u!1 &7669655611685209606
 GameObject:
   m_ObjectHideFlags: 0
@@ -11425,6 +11423,11 @@ PrefabInstance:
     - target: {fileID: 7354440028502877693, guid: c8ae35c37805db4498ad187eec8ec269,
         type: 3}
       propertyPath: UIPrompt
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354440028502877693, guid: c8ae35c37805db4498ad187eec8ec269,
+        type: 3}
+      propertyPath: uiPrompt
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7354440028502877693, guid: c8ae35c37805db4498ad187eec8ec269,

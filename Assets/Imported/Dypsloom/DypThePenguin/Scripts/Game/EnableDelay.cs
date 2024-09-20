@@ -13,19 +13,15 @@ namespace Dypsloom.DypThePenguin.Scripts.Game
     public class EnableDelay : MonoBehaviour
     {
         [Tooltip("Time after awake to start the enable action."), SerializeField]
-        
         protected float m_TimeAfterAwake = -1;
 
         [Tooltip("Toggle the enable disable on and off?"), SerializeField]
-        
         protected bool m_Toggle;
 
         [Tooltip("Enable of Disable?."), SerializeField]
-        
         protected bool m_Enable;
 
         [Tooltip("The target to disable/enable."), SerializeField]
-        
         protected GameObject m_Target;
 
         /// <summary>

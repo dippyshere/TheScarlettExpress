@@ -20,10 +20,10 @@ namespace FullscreenEditor
     {
         readonly byte[] backup = new byte[25];
         readonly MethodBase method;
+        readonly MethodInfo replacement;
 
         IntPtr pBody;
         IntPtr pBorrowed;
-        readonly MethodInfo replacement;
 
         bool swapped;
 

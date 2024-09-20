@@ -14,12 +14,10 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
     public class CharacterInteractor : MonoBehaviour, ICharacterInteractor
     {
         [Tooltip("The character that will be set as an interactor."), SerializeField]
-        
         protected Character m_Character;
 
         [Tooltip("The interactable indicator is enable when the character can interact with something."),
          SerializeField]
-        
         protected GameObject m_InteractableIndicator;
 
         protected ICharacterInput m_CharacterInput;

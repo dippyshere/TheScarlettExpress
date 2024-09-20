@@ -15,23 +15,18 @@ namespace Dypsloom.DypThePenguin.Scripts.Interactions
     public class Interactable : MonoBehaviour, IInteractable
     {
         [Tooltip("The layers that can interact with the interactable."), SerializeField]
-        
         protected LayerMask m_InteractorLayerMask = -1;
 
         [Tooltip("Is the interactable interactable?"), SerializeField]
-        
         protected bool m_IsInteractable = true;
 
         [Tooltip("The event called on interact."), SerializeField]
-        
         protected UnityEvent m_OnInteract;
 
         [Tooltip("The event called on select."), SerializeField]
-        
         protected UnityEvent m_OnSelect;
 
         [Tooltip("The event called on unselect."), SerializeField]
-        
         protected UnityEvent m_OnUnselect;
 
         /// <summary>

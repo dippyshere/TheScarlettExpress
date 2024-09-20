@@ -677,12 +677,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79a60c6a7271dc4db9e50c0206705e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portrait: {fileID: 7101934273821386979}
-  passengerName: {fileID: 8506715079955254081}
-  species: {fileID: 6350486333152043701}
+  comfortRating: {fileID: 4874351092144975509}
   happinessRating: {fileID: 5544769971331071872}
   hungerRating: {fileID: 2139981489411402577}
-  comfortRating: {fileID: 4874351092144975509}
+  passengerName: {fileID: 8506715079955254081}
+  portrait: {fileID: 7101934273821386979}
+  species: {fileID: 6350486333152043701}
 --- !u!1 &8511874512209449949
 GameObject:
   m_ObjectHideFlags: 0

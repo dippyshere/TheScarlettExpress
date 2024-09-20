@@ -15,11 +15,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Items
     public class ThrowAttack : ItemActionComponent
     {
         [Tooltip("Cooldown between each throw."), SerializeField]
-        
         protected float m_Cooldown;
 
         [Tooltip("The projectile prefab."), SerializeField]
-        
         protected GameObject m_ProjectilePrefab;
 
         /// <summary>

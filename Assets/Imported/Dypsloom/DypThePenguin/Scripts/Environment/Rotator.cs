@@ -12,11 +12,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Environment
     public class Rotator : MonoBehaviour
     {
         [Tooltip("If the target index is -1 the platform will continue moving."), SerializeField]
-        
         protected Vector3 m_RotationSpeed = new(0, 1, 0);
 
         [Tooltip("The object to rotate."), SerializeField]
-        
         protected Transform m_ObjectTransform;
 
         /// <summary>

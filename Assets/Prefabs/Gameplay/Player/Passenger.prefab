@@ -5138,7 +5138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6719542569f0481db10096096ff13fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
+  cameraToFace: {fileID: 0}
+  faceUp: 0
 --- !u!1 &4989568868283488134
 GameObject:
   m_ObjectHideFlags: 0
@@ -5328,20 +5329,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3852f72cb453448bccbe5a9c393b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodType: 0
-  hungerLevel: 3
   comfortLevel: 3
-  entertainmentLevel: 0
   destinationId: 2
-  species: brown
-  passengerName: name
-  portrait: {fileID: 21300000, guid: adfda98780b9019428065279f2425360, type: 3}
-  UIPrompt: {fileID: 4117285209409724629}
-  plateTransform: {fileID: 8522054765896830923}
-  randomiseStats: 1
-  hasBeenFed: 0
   eat: {fileID: -2594166960975759600}
+  entertainmentLevel: 0
+  foodType: 0
   happyPS: {fileID: 7928106458110340018}
+  hasBeenFed: 0
+  hungerLevel: 3
+  passengerName: name
+  plateTransform: {fileID: 8522054765896830923}
+  portrait: {fileID: 21300000, guid: adfda98780b9019428065279f2425360, type: 3}
+  randomiseStats: 1
+  species: brown
+  uiPrompt: {fileID: 4117285209409724629}
 --- !u!135 &5655884932359224398
 SphereCollider:
   m_ObjectHideFlags: 0

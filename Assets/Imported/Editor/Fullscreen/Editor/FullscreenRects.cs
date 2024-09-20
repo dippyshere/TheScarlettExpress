@@ -56,7 +56,7 @@ namespace FullscreenEditor
 
             if (CustomRectCallback != null)
             {
-                Rect rect = new Rect();
+                Rect rect = new();
                 bool shouldUse = CustomRectCallback(mode, out rect);
 
                 if (shouldUse)
@@ -76,7 +76,7 @@ namespace FullscreenEditor
                         return GetMainDisplayRect();
                     }
 
-                    ViewPyramid views = new ViewPyramid(targetWindow);
+                    ViewPyramid views = new(targetWindow);
                     Rect rect = views.Container.GetPropertyValue<Rect>("position");
 
                     return GetDisplayBoundsAtPoint(rect.center);

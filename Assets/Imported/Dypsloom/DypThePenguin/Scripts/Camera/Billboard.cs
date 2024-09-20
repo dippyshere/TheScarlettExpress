@@ -12,7 +12,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Camera
     public class Billboard : MonoBehaviour
     {
         [Tooltip("Use the lookAt function or make the object face the same way as the camera?"), SerializeField]
-        
         protected bool m_LookAt;
 
         protected Transform m_CameraTransform;

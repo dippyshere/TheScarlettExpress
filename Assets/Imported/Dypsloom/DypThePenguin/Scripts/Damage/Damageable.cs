@@ -13,19 +13,15 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
     public class Damageable : MonoBehaviour, IDamageable
     {
         [Tooltip("The Max amount of Hp."), SerializeField]
-        
         protected int m_MaxHp = 100;
 
         [Tooltip("The starting HP amount."), SerializeField]
-        
         protected int m_CurrentHp = 50;
 
         [Tooltip("The time in the which the damageable is invincible after getting hit."), SerializeField]
-        
         protected float m_InvincibilityTime;
 
         [Tooltip("Disable the object on death?."), SerializeField]
-        
         protected bool m_DisableOnDeath;
 
         protected double m_LastHitTime;

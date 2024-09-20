@@ -14,15 +14,12 @@ namespace Dypsloom.DypThePenguin.Scripts.Items
     public class Inventory : MonoBehaviour
     {
         [Tooltip("The max number of stacks."), SerializeField]
-        
         protected int m_MaxSize = 9;
 
         [Tooltip("The max size per stack."), SerializeField]
-        
         protected int m_MaxStackSize = 99;
 
         [Tooltip("The items."), SerializeField]
-        
         protected List<ItemAmount> m_Items;
 
         public IReadOnlyList<ItemAmount> Items
