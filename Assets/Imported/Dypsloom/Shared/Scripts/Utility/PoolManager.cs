@@ -1,37 +1,39 @@
-﻿/// ---------------------------------------------
-/// Dypsloom Shared Utilities
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
+﻿#region
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+#endregion
 
 namespace Dypsloom.Shared.Utility
 {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.SceneManagement;
-    
     /// <summary>
-    /// The pool manager allows you to easily create pools of any game object prefab.
+    ///     The pool manager allows you to easily create pools of any game object prefab.
     /// </summary>
     public class PoolManager : MonoBehaviour
     {
-    #region Singleton Setup
+        #region Singleton Setup
 
-        private Dictionary<int, Stack<GameObject>> m_GameObjectPool = new Dictionary<int, Stack<GameObject>>();
-        private Dictionary<int, int> m_InstantiatedGameObjects = new Dictionary<int, int>();
-        
-        private static PoolManager s_Instance;
+        readonly Dictionary<int, Stack<GameObject>> m_GameObjectPool = new();
+        readonly Dictionary<int, int> m_InstantiatedGameObjects = new();
+
+        static PoolManager s_Instance;
 
         public static PoolManager Instance
         {
             get
             {
-                if (s_Instance != null) { return s_Instance; }
+                if (s_Instance != null)
+                {
+                    return s_Instance;
+                }
 
                 s_Instance = FindObjectOfType<PoolManager>();
-                if (s_Instance == null) {
-                    s_Instance = s_Instance = new GameObject("Pool Manager").AddComponent<PoolManager>(); 
+                if (s_Instance == null)
+                {
+                    s_Instance = s_Instance = new GameObject("Pool Manager").AddComponent<PoolManager>();
                 }
 
                 return s_Instance;
@@ -39,39 +41,40 @@ namespace Dypsloom.Shared.Utility
         }
 
         /// <summary>
-        /// Set up the static instance.
+        ///     Set up the static instance.
         /// </summary>
         protected void OnEnable()
         {
-            if (s_Instance == null) {
+            if (s_Instance == null)
+            {
                 s_Instance = this;
                 SceneManager.sceneUnloaded -= SceneUnloaded;
             }
         }
 
         /// <summary>
-        /// Remove the static instance when unloaded.
+        ///     Remove the static instance when unloaded.
         /// </summary>
-        private void SceneUnloaded(Scene scene)
+        void SceneUnloaded(Scene scene)
         {
             s_Instance = null;
             SceneManager.sceneUnloaded -= SceneUnloaded;
         }
 
         /// <summary>
-        /// Check for scene unload. 
+        ///     Check for scene unload.
         /// </summary>
-        private void OnDisable()
+        void OnDisable()
         {
             SceneManager.sceneUnloaded += SceneUnloaded;
         }
 
-    #endregion
+        #endregion
 
-    #region Instantiate
+        #region Instantiate
 
         /// <summary>
-        /// Instantiate the game object using the pool.
+        ///     Instantiate the game object using the pool.
         /// </summary>
         /// <param name="original">The original game object.</param>
         /// <returns>The instantiated game object.</returns>
@@ -81,7 +84,7 @@ namespace Dypsloom.Shared.Utility
         }
 
         /// <summary>
-        /// Instantiate the game object using the pool.
+        ///     Instantiate the game object using the pool.
         /// </summary>
         /// <param name="original">The original game object.</param>
         /// <param name="parent">The parent of the instantiated game object.</param>
@@ -92,7 +95,7 @@ namespace Dypsloom.Shared.Utility
         }
 
         /// <summary>
-        /// Instantiate the game object using the pool.
+        ///     Instantiate the game object using the pool.
         /// </summary>
         /// <param name="original">The original game object.</param>
         /// <param name="position">The position to spawn the object at.</param>
@@ -104,7 +107,7 @@ namespace Dypsloom.Shared.Utility
         }
 
         /// <summary>
-        /// Instantiate the game object using the pool.
+        ///     Instantiate the game object using the pool.
         /// </summary>
         /// <param name="original">The original game object.</param>
         /// <param name="position">The position to spawn the object at.</param>
@@ -118,7 +121,7 @@ namespace Dypsloom.Shared.Utility
         }
 
         /// <summary>
-        /// Instantiate the game object using the pool.
+        ///     Instantiate the game object using the pool.
         /// </summary>
         /// <param name="original">The original game object.</param>
         /// <param name="position">The position to spawn the object at.</param>
@@ -128,13 +131,16 @@ namespace Dypsloom.Shared.Utility
         protected virtual GameObject InstantiateInternal(GameObject original, Vector3 position, Quaternion rotation,
             Transform parent)
         {
-            var originalInstanceID = original.GetInstanceID();
-            var instantiatedObject = ObjectFromPool(originalInstanceID, position, rotation, parent);
-            if (instantiatedObject == null) {
+            int originalInstanceID = original.GetInstanceID();
+            GameObject instantiatedObject = ObjectFromPool(originalInstanceID, position, rotation, parent);
+            if (instantiatedObject == null)
+            {
                 instantiatedObject = GameObject.Instantiate(original, position, rotation, parent);
                 // Map the newly instantiated instance ID to the original instance ID so when the object is returned it knows what pool to go to.
                 m_InstantiatedGameObjects.Add(instantiatedObject.GetInstanceID(), originalInstanceID);
-            } else {
+            }
+            else
+            {
                 instantiatedObject.transform.position = position;
                 instantiatedObject.transform.rotation = rotation;
                 instantiatedObject.transform.parent = parent;
@@ -144,7 +150,7 @@ namespace Dypsloom.Shared.Utility
         }
 
         /// <summary>
-        /// Get an existing object from the pool the game object using the pool.
+        ///     Get an existing object from the pool the game object using the pool.
         /// </summary>
         /// <param name="originalInstanceID">The original game object id.</param>
         /// <param name="position">The position to spawn the object at.</param>
@@ -155,11 +161,16 @@ namespace Dypsloom.Shared.Utility
             Transform parent)
         {
             Stack<GameObject> pool;
-            if (m_GameObjectPool.TryGetValue(originalInstanceID, out pool)) {
-                while (pool.Count > 0) {
-                    var instantiatedObject = pool.Pop();
+            if (m_GameObjectPool.TryGetValue(originalInstanceID, out pool))
+            {
+                while (pool.Count > 0)
+                {
+                    GameObject instantiatedObject = pool.Pop();
                     // The object may be null if it was removed from an additive scene. Keep popping from the pool until the pool has a valid object or is empty.
-                    if (instantiatedObject == null) { continue; }
+                    if (instantiatedObject == null)
+                    {
+                        continue;
+                    }
 
                     instantiatedObject.transform.position = position;
                     instantiatedObject.transform.rotation = rotation;
@@ -174,12 +185,12 @@ namespace Dypsloom.Shared.Utility
             return null;
         }
 
-    #endregion
+        #endregion
 
-    #region Getter
+        #region Getter
 
         /// <summary>
-        /// Checks if the object exists in the pool.
+        ///     Checks if the object exists in the pool.
         /// </summary>
         /// <param name="instantiatedObject">The object potentially in the pool</param>
         /// <returns>True if the object is part of the pool</returns>
@@ -189,30 +200,30 @@ namespace Dypsloom.Shared.Utility
         }
 
         /// <summary>
-        /// Checks if the object exists in the pool.
+        ///     Checks if the object exists in the pool.
         /// </summary>
         /// <param name="instantiatedObject">The object potentially in the pool</param>
         /// <returns>True if the object is part of the pool</returns>
-        private bool HasObjectInternal(GameObject instantiatedObject)
+        bool HasObjectInternal(GameObject instantiatedObject)
         {
-            var instantiatedInstanceID = instantiatedObject.GetInstanceID();
+            int instantiatedInstanceID = instantiatedObject.GetInstanceID();
             return m_InstantiatedGameObjects.ContainsKey(instantiatedInstanceID);
         }
 
         /// <summary>
-        /// Get multiple objects from the pool.
+        ///     Get multiple objects from the pool.
         /// </summary>
         /// <param name="original">The original game object.</param>
         /// <param name="objects">The array where the objects will be stored.</param>
         /// <returns>The amount of items in the array.</returns>
         public static int GetObjectsFromPool(GameObject original, ref GameObject[] objects)
         {
-            var originalInstanceID = original.GetInstanceID();
+            int originalInstanceID = original.GetInstanceID();
             return Instance.GetObjectsFromPoolInternal(originalInstanceID, ref objects);
         }
 
         /// <summary>
-        /// Get multiple objects from the pool.
+        ///     Get multiple objects from the pool.
         /// </summary>
         /// <param name="original">The original game object.</param>
         /// <param name="objects">The array where the objects will be stored.</param>
@@ -220,21 +231,27 @@ namespace Dypsloom.Shared.Utility
         /// <returns>The amount of items in the array.</returns>
         public static int GetObjectsFromPool(GameObject original, ref GameObject[] objects, ref bool[] active)
         {
-            var originalInstanceID = original.GetInstanceID();
+            int originalInstanceID = original.GetInstanceID();
             return Instance.GetObjectsFromPoolInternal(originalInstanceID, ref objects, ref active);
         }
 
         /// <summary>
-        /// Get multiple objects from the pool.
+        ///     Get multiple objects from the pool.
         /// </summary>
         /// <param name="original">The original game object.</param>
         /// <param name="objects">The array where the objects will be stored.</param>
         /// <returns>The amount of items in the array.</returns>
         protected virtual int GetObjectsFromPoolInternal(int originalInstanceID, ref GameObject[] objects)
         {
-            if (!m_GameObjectPool.TryGetValue(originalInstanceID, out var pool)) { return 0; }
+            if (!m_GameObjectPool.TryGetValue(originalInstanceID, out Stack<GameObject> pool))
+            {
+                return 0;
+            }
 
-            if (pool.Count > objects.Length) { Array.Resize(ref objects, pool.Count); }
+            if (pool.Count > objects.Length)
+            {
+                Array.Resize(ref objects, pool.Count);
+            }
 
             pool.CopyTo(objects, 0);
 
@@ -242,7 +259,7 @@ namespace Dypsloom.Shared.Utility
         }
 
         /// <summary>
-        /// Get multiple objects from the pool.
+        ///     Get multiple objects from the pool.
         /// </summary>
         /// <param name="original">The original game object.</param>
         /// <param name="objects">The array where the objects will be stored.</param>
@@ -251,14 +268,21 @@ namespace Dypsloom.Shared.Utility
         protected virtual int GetObjectsFromPoolInternal(int originalInstanceID, ref GameObject[] objects,
             ref bool[] active)
         {
-            var count = GetObjectsFromPoolInternal(originalInstanceID, ref objects);
+            int count = GetObjectsFromPoolInternal(originalInstanceID, ref objects);
 
-            if (count == 0) { return 0; }
+            if (count == 0)
+            {
+                return 0;
+            }
 
-            if (count > active.Length) { Array.Resize(ref active, count); }
+            if (count > active.Length)
+            {
+                Array.Resize(ref active, count);
+            }
 
-            for (int i = 0; i < count; i++) {
-                var instantiatedObject = objects[i];
+            for (int i = 0; i < count; i++)
+            {
+                GameObject instantiatedObject = objects[i];
 
                 active[i] = m_InstantiatedGameObjects.ContainsKey(instantiatedObject.GetInstanceID());
             }
@@ -266,46 +290,51 @@ namespace Dypsloom.Shared.Utility
             return count;
         }
 
-    #endregion
+        #endregion
 
 
-    #region Destroy
+        #region Destroy
 
         /// <summary>
-        /// Remove the object from the pool
+        ///     Remove the object from the pool
         /// </summary>
         /// <param name="instantiatedObject">The object to return to the pool.</param>
         /// <param name="force">Force destroy even if the object is not part of a the pool.</param>
         public static void Destroy(GameObject instantiatedObject, bool force)
         {
-            if (Instance == null) { return; }
+            if (Instance == null)
+            {
+                return;
+            }
 
-            if (force && !HasObject(instantiatedObject)) {
+            if (force && !HasObject(instantiatedObject))
+            {
                 GameObject.Destroy(instantiatedObject);
                 return;
             }
-            
+
             Instance.DestroyInternal(instantiatedObject);
         }
-        
+
         /// <summary>
-        /// Remove the object from the pool
+        ///     Remove the object from the pool
         /// </summary>
         /// <param name="instantiatedObject">The object to return to the pool.</param>
         public static void Destroy(GameObject instantiatedObject)
         {
-            PoolManager.Destroy(instantiatedObject,false);
+            Destroy(instantiatedObject, false);
         }
 
         /// <summary>
-        /// Remove the object from the pool
+        ///     Remove the object from the pool
         /// </summary>
         /// <param name="instantiatedObject">The object to return to the pool.</param>
-        private void DestroyInternal(GameObject instantiatedObject)
+        void DestroyInternal(GameObject instantiatedObject)
         {
-            var instantiatedInstanceID = instantiatedObject.GetInstanceID();
-            var originalInstanceID = -1;
-            if (!m_InstantiatedGameObjects.TryGetValue(instantiatedInstanceID, out originalInstanceID)) {
+            int instantiatedInstanceID = instantiatedObject.GetInstanceID();
+            int originalInstanceID = -1;
+            if (!m_InstantiatedGameObjects.TryGetValue(instantiatedInstanceID, out originalInstanceID))
+            {
                 Debug.LogErrorFormat("Can't find the object {0} with instance ID {1}", instantiatedObject.name,
                     instantiatedInstanceID);
                 return;
@@ -315,26 +344,30 @@ namespace Dypsloom.Shared.Utility
 
             DestroyLocal(instantiatedObject, originalInstanceID);
         }
+
         /// <summary>
-        /// Remove the object from the pool
+        ///     Remove the object from the pool
         /// </summary>
         /// <param name="instantiatedObject">The object to return to the pool.</param>
         /// <param name="originalInstanceID">The id of the original object.</param>
-        private void DestroyLocal(GameObject instantiatedObject, int originalInstanceID)
-            {
-                instantiatedObject.SetActive(false);
-                instantiatedObject.transform.parent = transform;
+        void DestroyLocal(GameObject instantiatedObject, int originalInstanceID)
+        {
+            instantiatedObject.SetActive(false);
+            instantiatedObject.transform.parent = transform;
 
-                Stack<GameObject> pool;
-                if (m_GameObjectPool.TryGetValue(originalInstanceID, out pool)) {
-                    pool.Push(instantiatedObject);
-                } else {
-                    pool = new Stack<GameObject>();
-                    pool.Push(instantiatedObject);
-                    m_GameObjectPool.Add(originalInstanceID, pool);
-                }
+            Stack<GameObject> pool;
+            if (m_GameObjectPool.TryGetValue(originalInstanceID, out pool))
+            {
+                pool.Push(instantiatedObject);
             }
+            else
+            {
+                pool = new Stack<GameObject>();
+                pool.Push(instantiatedObject);
+                m_GameObjectPool.Add(originalInstanceID, pool);
+            }
+        }
 
         #endregion
-        }
+    }
 }

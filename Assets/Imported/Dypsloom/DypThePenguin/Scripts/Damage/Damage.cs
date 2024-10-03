@@ -1,31 +1,32 @@
-﻿/// ---------------------------------------------
-/// Dyp Penguin Character | Dypsloom
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
+﻿#region
+
+using System;
+using UnityEngine;
+
+#endregion
 
 namespace Dypsloom.DypThePenguin.Scripts.Damage
 {
-    using System;
-    using UnityEngine;
-
     /// <summary>
-    /// The damage object contains information about the damager, damageable, etc...
+    ///     The damage object contains information about the damager, damageable, etc...
     /// </summary>
     [Serializable]
     public struct Damage
     {
-        [Tooltip("The damage amount.")]
-        [SerializeField] private int m_Amount;
-        [Tooltip("The force in the the damager hit the damageable.")]
-        [SerializeField] private Vector3 m_Force;
-        [Tooltip("The damageable being hit.")]
-        [SerializeField] private IDamageable m_Damageable;
-        [Tooltip("The damager hitting the damageable.")]
-        [SerializeField] private IDamager m_Damager;
+        [Tooltip("The damage amount."), SerializeField]
+        int m_Amount;
+
+        [Tooltip("The force in the the damager hit the damageable."), SerializeField]
+        Vector3 m_Force;
+
+        [Tooltip("The damageable being hit."), SerializeField]
+        IDamageable m_Damageable;
+
+        [Tooltip("The damager hitting the damageable."), SerializeField]
+        IDamager m_Damager;
 
         /// <summary>
-        /// The damage constructor.
+        ///     The damage constructor.
         /// </summary>
         /// <param name="amount">The damage amount.</param>
         /// <param name="force">The damage force.</param>
@@ -38,9 +39,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
             m_Damageable = damageable;
             m_Damager = damager;
         }
-        
+
         /// <summary>
-        /// The damage constructor.
+        ///     The damage constructor.
         /// </summary>
         /// <param name="amount">The damage amount.</param>
         /// <param name="force">The damage force.</param>
@@ -51,9 +52,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
             m_Damageable = null;
             m_Damager = null;
         }
-        
+
         /// <summary>
-        /// The damage constructor.
+        ///     The damage constructor.
         /// </summary>
         /// <param name="amount">The damage amount.</param>
         /// <param name="force">The damage force.</param>
@@ -65,9 +66,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
             m_Damageable = null;
             m_Damager = damager;
         }
-        
+
         /// <summary>
-        /// Copy the damage information and change the damage amount.
+        ///     Copy the damage information and change the damage amount.
         /// </summary>
         /// <param name="amount">The damage amount.</param>
         /// <param name="damage">The damage information.</param>
@@ -79,21 +80,39 @@ namespace Dypsloom.DypThePenguin.Scripts.Damage
             m_Damager = damage.Damager;
         }
 
-        public IDamager Damager => m_Damager;
+        public IDamager Damager
+        {
+            get { return m_Damager; }
+        }
 
-        public IDamageable Damageable => m_Damageable;
+        public IDamageable Damageable
+        {
+            get { return m_Damageable; }
+        }
 
-        public Vector3 Force => m_Force;
+        public Vector3 Force
+        {
+            get { return m_Force; }
+        }
 
-        public int Amount => m_Amount;
+        public int Amount
+        {
+            get { return m_Amount; }
+        }
 
-        public static implicit operator Damage((int,Vector3) x) 
-            => new Damage(x.Item1,x.Item2);
-        
-        public static implicit operator Damage((int,Vector3,IDamager) x) 
-            => new Damage(x.Item1,x.Item2,x.Item3);
-        
-        public static implicit operator Damage((int,Damage) x) 
-            => new Damage(x.Item1,x.Item2);
+        public static implicit operator Damage((int, Vector3) x)
+        {
+            return new Damage(x.Item1, x.Item2);
+        }
+
+        public static implicit operator Damage((int, Vector3, IDamager) x)
+        {
+            return new Damage(x.Item1, x.Item2, x.Item3);
+        }
+
+        public static implicit operator Damage((int, Damage) x)
+        {
+            return new Damage(x.Item1, x.Item2);
+        }
     }
 }

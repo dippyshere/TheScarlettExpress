@@ -1,74 +1,22 @@
-﻿/// ---------------------------------------------
-/// Dypsloom Shared Utilities
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
+﻿#region
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+#endregion
 
 namespace Dypsloom.Shared.Utility
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.SceneManagement;
-
     /// <summary>
-    /// Schedule Manager allows you to make delayed calls using coroutines.
+    ///     Schedule Manager allows you to make delayed calls using coroutines.
     /// </summary>
     public class SchedulerManager : MonoBehaviour
     {
-    #region Singleton Setup
-
-        private Dictionary<int, Stack<GameObject>> m_GameObjectPool = new Dictionary<int, Stack<GameObject>>();
-        private Dictionary<int, int> m_InstantiatedGameObjects = new Dictionary<int, int>();
-
-        private static SchedulerManager s_Instance;
-
-        public static SchedulerManager Instance
-        {
-            get
-            {
-                if (s_Instance == null) {
-                    s_Instance = new GameObject("Schedule Manager").AddComponent<SchedulerManager>();
-                }
-
-                return s_Instance;
-            }
-        }
-
         /// <summary>
-        /// Set up the static instance.
-        /// </summary>
-        protected void OnEnable()
-        {
-            if (s_Instance == null) {
-                s_Instance = this;
-                SceneManager.sceneUnloaded -= SceneUnloaded;
-            }
-        }
-
-        /// <summary>
-        /// Remove the static instance when unloaded.
-        /// </summary>
-        private void SceneUnloaded(Scene scene)
-        {
-            s_Instance = null;
-            SceneManager.sceneUnloaded -= SceneUnloaded;
-        }
-
-        /// <summary>
-        /// Check for scene unload. 
-        /// </summary>
-        private void OnDisable()
-        {
-            SceneManager.sceneUnloaded += SceneUnloaded;
-        }
-
-    #endregion
-
-
-        /// <summary>
-        /// Schedule an action delayed by 'delay' seconds.
+        ///     Schedule an action delayed by 'delay' seconds.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
         /// <param name="delay">The delay before the invoke.</param>
@@ -76,9 +24,9 @@ namespace Dypsloom.Shared.Utility
         {
             Instance.StartCoroutine(Instance.ScheduleIE(action, delay));
         }
-        
+
         /// <summary>
-        /// The Coroutine to execute the action.
+        ///     The Coroutine to execute the action.
         /// </summary>
         /// <param name="action">The action.</param>
         /// <param name="delay">The delay before the action is invoked.</param>
@@ -88,5 +36,56 @@ namespace Dypsloom.Shared.Utility
             yield return new WaitForSeconds(delay);
             action?.Invoke();
         }
+
+        #region Singleton Setup
+
+        Dictionary<int, Stack<GameObject>> m_GameObjectPool = new();
+        Dictionary<int, int> m_InstantiatedGameObjects = new();
+
+        static SchedulerManager s_Instance;
+
+        public static SchedulerManager Instance
+        {
+            get
+            {
+                if (s_Instance == null)
+                {
+                    s_Instance = new GameObject("Schedule Manager").AddComponent<SchedulerManager>();
+                }
+
+                return s_Instance;
+            }
+        }
+
+        /// <summary>
+        ///     Set up the static instance.
+        /// </summary>
+        protected void OnEnable()
+        {
+            if (s_Instance == null)
+            {
+                s_Instance = this;
+                SceneManager.sceneUnloaded -= SceneUnloaded;
+            }
+        }
+
+        /// <summary>
+        ///     Remove the static instance when unloaded.
+        /// </summary>
+        void SceneUnloaded(Scene scene)
+        {
+            s_Instance = null;
+            SceneManager.sceneUnloaded -= SceneUnloaded;
+        }
+
+        /// <summary>
+        ///     Check for scene unload.
+        /// </summary>
+        void OnDisable()
+        {
+            SceneManager.sceneUnloaded += SceneUnloaded;
+        }
+
+        #endregion
     }
 }

@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
+
+#endregion
 
 public class UpgradeSystem : MonoBehaviour
 {
     public GameObject bed1;
     public GameObject bed2;
 
-    public GameObject upgradeUI;
-    public GameObject hammer;
+    [SerializeField] ProfileSystem.Variable bedSaveKey = ProfileSystem.Variable.Bed1Upgrade;
 
     public GameObject exitButton;
+    public GameObject hammer;
 
-    private void Update()
+    public GameObject upgradeUI;
+
+    void Start()
+    {
+        int bedUpgrade = ProfileSystem.Get<int>(bedSaveKey);
+        switch (bedUpgrade)
+        {
+            case 1:
+                Upgrade();
+                break;
+        }
+    }
+
+    void Update()
     {
         if (bed2.activeSelf)
         {
@@ -29,6 +44,7 @@ public class UpgradeSystem : MonoBehaviour
 
     public void Upgrade()
     {
+        ProfileSystem.Set(bedSaveKey, 1);
         bed1.SetActive(false);
         bed2.SetActive(true);
     }
