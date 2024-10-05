@@ -58,7 +58,7 @@ public class PassengerController : MonoBehaviour
         hungerLevel = Random.Range(0, 3);
         comfortLevel = Random.Range(0, 3);
         //entertainmentLevel = Random.Range(0, 4);
-        destinationId = Random.Range(0, 4);
+        destinationId = Random.Range(1, 6);
         string[] speciesList = { "Rabbit", "Beaver", "Deer", "Wolf", "Bear" };
         species = speciesList[Random.Range(0, speciesList.Length)];
         string[] names =

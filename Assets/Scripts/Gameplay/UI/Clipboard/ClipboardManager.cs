@@ -103,7 +103,7 @@ public class ClipboardManager : MonoBehaviour
             PassengerEntry passengerEntry = newPassengerUI.GetComponent<PassengerEntry>();
             passengerEntry.SetPassengerInfo(passenger.portrait, passenger.passengerName, passenger.species,
                 Mathf.Clamp(passenger.CalculateSimpleFoodValue(), 0, 5).ToString(), passenger.hungerLevel.ToString(CultureInfo.InvariantCulture),
-                passenger.comfortLevel.ToString(CultureInfo.InvariantCulture));
+                passenger.comfortLevel.ToString(CultureInfo.InvariantCulture), passenger.destinationId);
         }
 
         RectTransform rectTransform = passengerUI.GetComponent<RectTransform>();
