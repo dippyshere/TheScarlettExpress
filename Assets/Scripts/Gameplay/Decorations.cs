@@ -10,11 +10,8 @@ using UnityEngine.Serialization;
 
 public class Decorations : MonoBehaviour
 {
-    public GameObject deco10Lock;
-    public GameObject deco10Lock2;
 
     public GameObject deco1Lock;
-
     public GameObject deco1Lock2;
     public GameObject deco2Lock;
     public GameObject deco2Lock2;
@@ -24,16 +21,8 @@ public class Decorations : MonoBehaviour
     public GameObject deco4Lock2;
     public GameObject deco5Lock;
     public GameObject deco5Lock2;
-
     public GameObject deco6Lock;
-
     public GameObject deco6Lock2;
-    public GameObject deco7Lock;
-    public GameObject deco7Lock2;
-    public GameObject deco8Lock;
-    public GameObject deco8Lock2;
-    public GameObject deco9Lock;
-    public GameObject deco9Lock2;
 
     public float money;
 
@@ -89,33 +78,9 @@ public class Decorations : MonoBehaviour
             deco6Lock2.SetActive(true);
         }
 
-        int deco7 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco7);
-        if (deco7 == 1)
-        {
-            deco7Lock.SetActive(true);
-            deco7Lock2.SetActive(true);
-        }
+       
 
-        int deco8 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco8);
-        if (deco8 == 1)
-        {
-            deco8Lock.SetActive(true);
-            deco8Lock2.SetActive(true);
-        }
-
-        int deco9 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco9);
-        if (deco9 == 1)
-        {
-            deco9Lock.SetActive(true);
-            deco9Lock2.SetActive(true);
-        }
-
-        int deco10 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco10);
-        if (deco10 == 1)
-        {
-            deco10Lock.SetActive(true);
-            deco10Lock2.SetActive(true);
-        }
+       
     }
 
 
@@ -215,63 +180,10 @@ public class Decorations : MonoBehaviour
         }
     }
 
-    public void BuyDeco7()
-    {
-        if (money >= 10)
-        {
-            money -= 10;
-            moneyText.text = "$ " + money;
-            music.Play();
+   
 
-            ProfileSystem.Set(ProfileSystem.Variable.Deco7, 1);
-            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
-            deco7Lock.SetActive(true);
-            deco7Lock2.SetActive(true);
-        }
-    }
+   
 
-    public void BuyDeco8()
-    {
-        if (money >= 10)
-        {
-            money -= 10;
-            moneyText.text = "$ " + money;
-            music.Play();
+   
 
-            ProfileSystem.Set(ProfileSystem.Variable.Deco8, 1);
-            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
-            deco8Lock.SetActive(true);
-            deco8Lock2.SetActive(true);
-        }
-    }
-
-    public void BuyDeco9()
-    {
-        if (money >= 10)
-        {
-            money -= 10;
-            moneyText.text = "$ " + money;
-            music.Play();
-
-            ProfileSystem.Set(ProfileSystem.Variable.Deco9, 1);
-            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
-            deco9Lock.SetActive(true);
-            deco9Lock2.SetActive(true);
-        }
-    }
-
-    public void BuyDeco10()
-    {
-        if (money >= 10)
-        {
-            money -= 10;
-            moneyText.text = "$ " + money;
-            music.Play();
-
-            ProfileSystem.Set(ProfileSystem.Variable.Deco10, 1);
-            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
-            deco10Lock.SetActive(true);
-            deco10Lock2.SetActive(true);
-        }
-    }
 }
