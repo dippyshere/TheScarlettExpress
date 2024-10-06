@@ -11223,6 +11223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 499023854}
   - component: {fileID: 499023853}
+  - component: {fileID: 499023855}
   m_Layer: 0
   m_Name: '! AmsMultiSceneSetup'
   m_TagString: Untagged
@@ -11292,6 +11293,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &499023855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499023852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15cc1e8a133b04c4ba5d1c4801149eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _version: 2
+  _crossSceneReferences: []
+  _realSceneRootsForPostBuild: []
+  _mergedScenes: []
 --- !u!1 &505914844
 GameObject:
   m_ObjectHideFlags: 0
@@ -53668,7 +53685,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1d20089ab75b06944af512d967c47f04, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e099b0ef9f67d6b4e83e07761093ec91, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
