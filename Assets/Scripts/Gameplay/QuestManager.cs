@@ -1,22 +1,24 @@
+#region
+
 using DialogueEditor;
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+#endregion
 
 public class QuestManager : MonoBehaviour
 {
-    public float money;
+    public NPCConversation beginTutorial;
     public NPCConversation earnedConversation;
-    public NPCConversation renovatedConversation;
-    public GameObject sideviewCamera;
-    public GameObject carriage2Camera;
-    bool hasCheckedMoney = false;
+    bool _hasCheckedMoney;
 
-    // Start is called before the first frame update
+    bool _hasRenovated;
+    public float money;
+    public NPCConversation renovatedConversation;
+
     void Start()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+        BeginTutorial();
     }
 
     // Update is called once per frame
@@ -24,30 +26,37 @@ public class QuestManager : MonoBehaviour
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
 
-        if (money >= 100f && !hasCheckedMoney)
+        if (money >= 100f && !_hasCheckedMoney)
         {
-            hasCheckedMoney = true;
+            _hasCheckedMoney = true;
             BeginEarnedConversation();
-            Debug.Log("ahhhhhhh");
         }
+
+        if (money <= 0f && !_hasRenovated)
+        {
+            InitiateConversation();
+        }
+    }
+
+    void BeginTutorial()
+    {
+        ConversationManager.Instance.StartConversation(beginTutorial);
     }
 
     public void InitiateConversation()
     {
         Invoke(nameof(BeginRenovatedConversation), 4f);
+        _hasRenovated = true;
     }
 
-    private void BeginEarnedConversation()
+    void BeginEarnedConversation()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         ConversationManager.Instance.StartConversation(earnedConversation);
     }
 
-    private void BeginRenovatedConversation()
+    public void BeginRenovatedConversation()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        _hasRenovated = true;
         ConversationManager.Instance.StartConversation(renovatedConversation);
     }
 }

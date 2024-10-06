@@ -1970,8 +1970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b96c79f4d9be8b48a0f3e66761db51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  cinemachineInputAxisController: {fileID: 0}
   uiFoodPicker: {fileID: 178942499810404237}
   uiFoodTimer: {fileID: 8492218625897531921}
   foodTimerFill: {fileID: 4347626535206610066}
@@ -1981,7 +1979,11 @@ MonoBehaviour:
   - {fileID: 2282606953392396713, guid: 09548c79fc868ea4d8e61461e5ac3393, type: 3}
   - {fileID: 3565260441531833399, guid: a262010541da55046a505efe294a6c63, type: 3}
   - {fileID: 1830098587752392990, guid: 7bafab9701ccaa1439ae918dc0c3e75e, type: 3}
+  stoveFoodType: 
   foodCookTime: 5
+  musicC: {fileID: 0}
+  musicD: {fileID: 0}
+  clipboard: {fileID: 0}
 --- !u!1 &4391688452895596557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,7 +2552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6719542569f0481db10096096ff13fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
+  cameraToFace: {fileID: 0}
+  faceUp: 0
 --- !u!1 &8563948481806880591
 GameObject:
   m_ObjectHideFlags: 0

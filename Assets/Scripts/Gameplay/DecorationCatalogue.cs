@@ -1,9 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
+
+#endregion
 
 public class DecorationCatalogue : MonoBehaviour
 {
+    public GameObject deco10Lock;
     public GameObject deco1Lock;
     public GameObject deco2Lock;
     public GameObject deco3Lock;
@@ -14,7 +17,6 @@ public class DecorationCatalogue : MonoBehaviour
     public GameObject deco7Lock;
     public GameObject deco8Lock;
     public GameObject deco9Lock;
-    public GameObject deco10Lock;
 
 
     // Start is called before the first frame update
@@ -79,11 +81,5 @@ public class DecorationCatalogue : MonoBehaviour
         {
             deco10Lock.SetActive(false);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

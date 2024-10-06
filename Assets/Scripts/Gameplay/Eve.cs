@@ -1,22 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
+
+#endregion
 
 public class Eve : MonoBehaviour
 {
     public GameObject eveDrawing;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject panelDialogue;
+    public GameObject panelOptions;
+    public GameObject shopEve;
 
     public void ShowPainting()
     {
@@ -26,5 +19,13 @@ public class Eve : MonoBehaviour
     public void HidePainting()
     {
         eveDrawing.SetActive(false);
+    }
+
+    public void ActivateShopEve()
+    {
+        shopEve.SetActive(true);
+        panelDialogue.SetActive(false);
+        panelOptions.SetActive(false);
+        MapTest.Instance.AbleToLeaveStation();
     }
 }

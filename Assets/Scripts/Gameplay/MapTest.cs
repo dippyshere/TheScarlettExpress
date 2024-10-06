@@ -1,63 +1,63 @@
+#region
+
+using DialogueEditor;
 using Dypsloom.DypThePenguin.Scripts.Character;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Unity.Cinemachine;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+#endregion
 
 public class MapTest : MonoBehaviour
 {
-
+    [HideInInspector, Tooltip("Singleton instance of the MapTest.")]
+    public static MapTest Instance;
     [SerializeField] GameObject canvas;
-    [SerializeField] GameObject shopUI;
+    public NPCConversation eveReminder;
 
-    [SerializeField, Tooltip("Reference to the player script.")]
-    private Character m_Player;
-    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
-    private CinemachineInputAxisController m_CinemachineInputAxisController;
+    bool _hasTalkedToEve;
 
-    public bool isEve;
-    public bool isMap;
+    [HideInInspector] public bool isEve;
+    [HideInInspector] public bool isMap;
 
     public AudioSource music;
+    [SerializeField] GameObject shopUI;
 
-    bool hasTalkedToEve;
-
-    private void Start()
+    void Awake()
+    {
+        Instance = this;
+    }
+    
+    void Start()
     {
         canvas.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_CinemachineInputAxisController.enabled = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-       if (isEve && Input.GetKeyDown(KeyCode.E))
+        if (isEve && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("EVE! ACCTIVATE!");
             shopUI.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            m_Player.m_MovementMode = MovementMode.Decorating;
-            m_CinemachineInputAxisController.enabled = false;
+            CameraManager.Instance.SetInputModeUI();
         }
 
-       if (isMap && Input.GetKeyDown(KeyCode.E) && hasTalkedToEve)
+        if (isMap && Input.GetKeyDown(KeyCode.E))
         {
-            music.Play();
-            Debug.Log("MAP! ACTIVATE!");
-            canvas.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            m_Player.m_MovementMode = MovementMode.Decorating;
-            m_CinemachineInputAxisController.enabled = false;
+            if ((_hasTalkedToEve && eveReminder) || !eveReminder)
+            {
+                canvas.SetActive(true);
+                CameraManager.Instance.SetInputModeUI();
+            }
+            else
+            {
+                ConversationManager.Instance.StartConversation(eveReminder);
+            }
         }
 
-        hasTalkedToEve = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveTutorialDone);
+        _hasTalkedToEve = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveTutorialDone);
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Map"))
         {
@@ -70,7 +70,7 @@ public class MapTest : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Eve"))
         {
@@ -82,6 +82,7 @@ public class MapTest : MonoBehaviour
             isMap = false;
         }
     }
+
     public void AbleToLeaveStation()
     {
         ProfileSystem.Set(ProfileSystem.Variable.EveTutorialDone, true);

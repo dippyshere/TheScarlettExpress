@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
 using UnityEngine.UI;
 
+#endregion
+
 public class DecorationSelection : MonoBehaviour
 {
+    //public GameObject dottedLine;
+
+    public Image decoration;
     public GameObject decorationOption1;
     public GameObject decorationOption2;
     public GameObject decorationOption3;
     public GameObject decorationOption4;
     public GameObject decorationOption5;
 
-    //public GameObject dottedLine;
+    [SerializeField] ProfileSystem.Variable decorationSaveKey = ProfileSystem.Variable.Bed1Painting1;
 
-    public Image decoration;
-
-    [SerializeField] private ProfileSystem.Variable decorationSaveKey = ProfileSystem.Variable.Bed1Painting1;
-
-    private void Start()
+    void Start()
     {
         int decorationSelection = ProfileSystem.Get<int>(decorationSaveKey);
         switch (decorationSelection)
@@ -26,16 +27,16 @@ public class DecorationSelection : MonoBehaviour
                 paintingOptionOne();
                 break;
             case 2:
-                paintingOptionTwo();
+                PaintingOptionTwo();
                 break;
             case 3:
-                paintingOptionThree();
+                PaintingOptionThree();
                 break;
             case 4:
-                paintingOptionFour();
+                PaintingOptionFour();
                 break;
             case 5:
-                paintingOptionFive();
+                PaintingOptionFive();
                 break;
         }
     }
@@ -51,10 +52,10 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 1);
+        ProfileSystem.Set(decorationSaveKey, 1);
     }
 
-    public void paintingOptionTwo()
+    public void PaintingOptionTwo()
     {
         decorationOption1.SetActive(false);
         decorationOption2.SetActive(true);
@@ -65,10 +66,10 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 2);
+        ProfileSystem.Set(decorationSaveKey, 2);
     }
 
-    public void paintingOptionThree()
+    public void PaintingOptionThree()
     {
         decorationOption1.SetActive(false);
         decorationOption2.SetActive(false);
@@ -79,10 +80,10 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 3);
+        ProfileSystem.Set(decorationSaveKey, 3);
     }
 
-    public void paintingOptionFour()
+    public void PaintingOptionFour()
     {
         decorationOption1.SetActive(false);
         decorationOption2.SetActive(false);
@@ -93,10 +94,10 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 4);
+        ProfileSystem.Set(decorationSaveKey, 4);
     }
 
-    public void paintingOptionFive()
+    public void PaintingOptionFive()
     {
         decorationOption1.SetActive(false);
         decorationOption2.SetActive(false);
@@ -107,6 +108,6 @@ public class DecorationSelection : MonoBehaviour
 
         decoration.color = new Color(1, 1, 1, 0);
 
-        ProfileSystem.Set(ProfileSystem.Variable.Bed1Painting1, 5);
+        ProfileSystem.Set(decorationSaveKey, 5);
     }
 }

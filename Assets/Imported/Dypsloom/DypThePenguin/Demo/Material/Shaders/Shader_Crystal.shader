@@ -2,206 +2,217 @@
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "Custom/crystal"
 {
-	Properties
-	{
-		[HDR]_AlbedoColor("Albedo Color", Color) = (0.5333334,0.5176471,0.5529412,1)
-		[HDR]_EmissiveColor("Emissive Color", Color) = (0.4937457,0.257921,0.8679245,1)
-		[HDR]_RimColor("Rim Color", Color) = (0.9811321,0.3100747,0.3100747,1)
-		_RimScale("Rim Scale", Float) = 2.28
-		[HDR]_RimPower("Rim Power", Float) = 5.18
-		[HDR]_CurvatureColor("Curvature Color", Color) = (0.735849,0.735849,0.735849,1)
-		_CurvatureTexture("Curvature Texture", 2D) = "white" {}
-		_OpacityScale("Opacity Scale", Float) = 0
-		_OpacityOffset("Opacity Offset", Float) = 0
-		_OpacityMax("Opacity Max", Float) = 0
-		_OpacityMin("Opacity Min", Float) = 0
-		_Refraction("Refraction", Float) = 0
-		[Header(Refraction)]
-		_ChromaticAberration("Chromatic Aberration", Range( 0 , 0.3)) = 0.1
-		[HideInInspector] _texcoord( "", 2D ) = "white" {}
-		[HideInInspector] __dirty( "", Int ) = 1
-	}
+    Properties
+    {
+        [HDR]_AlbedoColor("Albedo Color", Color) = (0.5333334,0.5176471,0.5529412,1)
+        [HDR]_EmissiveColor("Emissive Color", Color) = (0.4937457,0.257921,0.8679245,1)
+        [HDR]_RimColor("Rim Color", Color) = (0.9811321,0.3100747,0.3100747,1)
+        _RimScale("Rim Scale", Float) = 2.28
+        [HDR]_RimPower("Rim Power", Float) = 5.18
+        [HDR]_CurvatureColor("Curvature Color", Color) = (0.735849,0.735849,0.735849,1)
+        _CurvatureTexture("Curvature Texture", 2D) = "white" {}
+        _OpacityScale("Opacity Scale", Float) = 0
+        _OpacityOffset("Opacity Offset", Float) = 0
+        _OpacityMax("Opacity Max", Float) = 0
+        _OpacityMin("Opacity Min", Float) = 0
+        _Refraction("Refraction", Float) = 0
+        [Header(Refraction)]
+        _ChromaticAberration("Chromatic Aberration", Range( 0 , 0.3)) = 0.1
+        [HideInInspector] _texcoord( "", 2D ) = "white" {}
+        [HideInInspector] __dirty( "", Int ) = 1
+    }
 
-	SubShader
-	{
-		Tags{ "RenderType" = "Transparent"  "Queue" = "Transparent+0" "IgnoreProjector" = "True" "IsEmissive" = "true"  }
-		Cull Back
-		GrabPass{ }
-		CGINCLUDE
-		#include "UnityPBSLighting.cginc"
-		#include "Lighting.cginc"
-		#pragma target 3.0
-		#pragma multi_compile _ALPHAPREMULTIPLY_ON
-		#ifdef UNITY_PASS_SHADOWCASTER
-			#undef INTERNAL_DATA
-			#undef WorldReflectionVector
-			#undef WorldNormalVector
-			#define INTERNAL_DATA half3 internalSurfaceTtoW0; half3 internalSurfaceTtoW1; half3 internalSurfaceTtoW2;
-			#define WorldReflectionVector(data,normal) reflect (data.worldRefl, half3(dot(data.internalSurfaceTtoW0,normal), dot(data.internalSurfaceTtoW1,normal), dot(data.internalSurfaceTtoW2,normal)))
-			#define WorldNormalVector(data,normal) half3(dot(data.internalSurfaceTtoW0,normal), dot(data.internalSurfaceTtoW1,normal), dot(data.internalSurfaceTtoW2,normal))
-		#endif
-		struct Input
-		{
-			float2 uv_texcoord;
-			float3 worldPos;
-			float3 worldNormal;
-			INTERNAL_DATA
-			float4 screenPos;
-		};
+    SubShader
+    {
+        Tags
+        {
+            "RenderType" = "Transparent" "Queue" = "Transparent+0" "IgnoreProjector" = "True" "IsEmissive" = "true"
+        }
+        Cull Back
+        GrabPass {}
+        CGINCLUDE
+        #include "UnityPBSLighting.cginc"
+        #include "Lighting.cginc"
+        #pragma target 3.0
+        #pragma multi_compile _ALPHAPREMULTIPLY_ON
+        #ifdef UNITY_PASS_SHADOWCASTER
+        #undef INTERNAL_DATA
+        #undef WorldReflectionVector
+        #undef WorldNormalVector
+        #define INTERNAL_DATA half3 internalSurfaceTtoW0; half3 internalSurfaceTtoW1; half3 internalSurfaceTtoW2;
+        #define WorldReflectionVector(data,normal) reflect (data.worldRefl, half3(dot(data.internalSurfaceTtoW0,normal), dot(data.internalSurfaceTtoW1,normal), dot(data.internalSurfaceTtoW2,normal)))
+        #define WorldNormalVector(data,normal) half3(dot(data.internalSurfaceTtoW0,normal), dot(data.internalSurfaceTtoW1,normal), dot(data.internalSurfaceTtoW2,normal))
+        #endif
+        struct Input
+        {
+            float2 uv_texcoord;
+            float3 worldPos;
+            float3 worldNormal;
+            INTERNAL_DATA
+            float4 screenPos;
+        };
 
-		uniform float4 _AlbedoColor;
-		uniform sampler2D _CurvatureTexture;
-		uniform float4 _CurvatureColor;
-		uniform float4 _EmissiveColor;
-		uniform float _RimScale;
-		uniform float _RimPower;
-		uniform float4 _RimColor;
-		uniform float _OpacityScale;
-		uniform float _OpacityOffset;
-		uniform float _OpacityMin;
-		uniform float _OpacityMax;
-		uniform sampler2D _GrabTexture;
-		uniform float _ChromaticAberration;
-		uniform float _Refraction;
+        uniform float4 _AlbedoColor;
+        uniform sampler2D _CurvatureTexture;
+        uniform float4 _CurvatureColor;
+        uniform float4 _EmissiveColor;
+        uniform float _RimScale;
+        uniform float _RimPower;
+        uniform float4 _RimColor;
+        uniform float _OpacityScale;
+        uniform float _OpacityOffset;
+        uniform float _OpacityMin;
+        uniform float _OpacityMax;
+        uniform sampler2D _GrabTexture;
+        uniform float _ChromaticAberration;
+        uniform float _Refraction;
 
-		inline float4 Refraction( Input i, SurfaceOutputStandard o, float indexOfRefraction, float chomaticAberration ) {
-			float3 worldNormal = o.Normal;
-			float4 screenPos = i.screenPos;
-			#if UNITY_UV_STARTS_AT_TOP
-				float scale = -1.0;
-			#else
+        inline float4 Refraction(Input i, SurfaceOutputStandard o, float indexOfRefraction, float chomaticAberration)
+        {
+            float3 worldNormal = o.Normal;
+            float4 screenPos = i.screenPos;
+            #if UNITY_UV_STARTS_AT_TOP
+            float scale = -1.0;
+            #else
 				float scale = 1.0;
-			#endif
-			float halfPosW = screenPos.w * 0.5;
-			screenPos.y = ( screenPos.y - halfPosW ) * _ProjectionParams.x * scale + halfPosW;
-			#if SHADER_API_D3D9 || SHADER_API_D3D11
-				screenPos.w += 0.00000000001;
-			#endif
-			float2 projScreenPos = ( screenPos / screenPos.w ).xy;
-			float3 worldViewDir = normalize( UnityWorldSpaceViewDir( i.worldPos ) );
-			float3 refractionOffset = ( ( ( ( indexOfRefraction - 1.0 ) * mul( UNITY_MATRIX_V, float4( worldNormal, 0.0 ) ) ) * ( 1.0 / ( screenPos.z + 1.0 ) ) ) * ( 1.0 - dot( worldNormal, worldViewDir ) ) );
-			float2 cameraRefraction = float2( refractionOffset.x, -( refractionOffset.y * _ProjectionParams.x ) );
-			float4 redAlpha = tex2D( _GrabTexture, ( projScreenPos + cameraRefraction ) );
-			float green = tex2D( _GrabTexture, ( projScreenPos + ( cameraRefraction * ( 1.0 - chomaticAberration ) ) ) ).g;
-			float blue = tex2D( _GrabTexture, ( projScreenPos + ( cameraRefraction * ( 1.0 + chomaticAberration ) ) ) ).b;
-			return float4( redAlpha.r, green, blue, redAlpha.a );
-		}
+            #endif
+            float halfPosW = screenPos.w * 0.5;
+            screenPos.y = (screenPos.y - halfPosW) * _ProjectionParams.x * scale + halfPosW;
+            #if SHADER_API_D3D9 || SHADER_API_D3D11
+            screenPos.w += 0.00000000001;
+            #endif
+            float2 projScreenPos = (screenPos / screenPos.w).xy;
+            float3 worldViewDir = normalize(UnityWorldSpaceViewDir(i.worldPos));
+            float3 refractionOffset = ((((indexOfRefraction - 1.0) * mul(UNITY_MATRIX_V, float4(worldNormal, 0.0))) * (
+                1.0 / (screenPos.z + 1.0))) * (1.0 - dot(worldNormal, worldViewDir)));
+            float2 cameraRefraction = float2(refractionOffset.x, -(refractionOffset.y * _ProjectionParams.x));
+            float4 redAlpha = tex2D(_GrabTexture, (projScreenPos + cameraRefraction));
+            float green = tex2D(_GrabTexture, (projScreenPos + (cameraRefraction * (1.0 - chomaticAberration)))).g;
+            float blue = tex2D(_GrabTexture, (projScreenPos + (cameraRefraction * (1.0 + chomaticAberration)))).b;
+            return float4(redAlpha.r, green, blue, redAlpha.a);
+        }
 
-		void RefractionF( Input i, SurfaceOutputStandard o, inout half4 color )
-		{
-			#ifdef UNITY_PASS_FORWARDBASE
+        void RefractionF(Input i, SurfaceOutputStandard o, inout half4 color)
+        {
+            #ifdef UNITY_PASS_FORWARDBASE
 			color.rgb = color.rgb + Refraction( i, o, _Refraction, _ChromaticAberration ) * ( 1 - color.a );
 			color.a = 1;
-			#endif
-		}
+            #endif
+        }
 
-		void surf( Input i , inout SurfaceOutputStandard o )
-		{
-			o.Normal = float3(0,0,1);
-			o.Albedo = _AlbedoColor.rgb;
-			float4 tex2DNode65 = tex2D( _CurvatureTexture, i.uv_texcoord );
-			float3 ase_worldPos = i.worldPos;
-			float3 ase_worldViewDir = normalize( UnityWorldSpaceViewDir( ase_worldPos ) );
-			float3 ase_worldNormal = WorldNormalVector( i, float3( 0, 0, 1 ) );
-			float fresnelNdotV4 = dot( ase_worldNormal, ase_worldViewDir );
-			float fresnelNode4 = ( 0.0 + _RimScale * pow( 1.0 - fresnelNdotV4, _RimPower ) );
-			o.Emission = ( ( tex2DNode65 * _CurvatureColor ) + ( ( 1.0 - tex2DNode65 ) * ( ( _EmissiveColor * ( 1.0 - fresnelNode4 ) ) + ( _RimColor * fresnelNode4 ) ) ) ).rgb;
-			float4 transform41 = mul(unity_WorldToObject,float4( ase_worldPos , 0.0 ));
-			float clampResult46 = clamp( ( ( ( 1.0 - transform41.y ) * _OpacityScale * 0.01 ) + ( _OpacityOffset * 0.1 ) ) , _OpacityMin , _OpacityMax );
-			o.Alpha = clampResult46;
-			o.Normal = o.Normal + 0.00001 * i.screenPos * i.worldPos;
-		}
+        void surf(Input i, inout SurfaceOutputStandard o)
+        {
+            o.Normal = float3(0, 0, 1);
+            o.Albedo = _AlbedoColor.rgb;
+            float4 tex2DNode65 = tex2D(_CurvatureTexture, i.uv_texcoord);
+            float3 ase_worldPos = i.worldPos;
+            float3 ase_worldViewDir = normalize(UnityWorldSpaceViewDir(ase_worldPos));
+            float3 ase_worldNormal = WorldNormalVector(i, float3( 0, 0, 1 ));
+            float fresnelNdotV4 = dot(ase_worldNormal, ase_worldViewDir);
+            float fresnelNode4 = (0.0 + _RimScale * pow(1.0 - fresnelNdotV4, _RimPower));
+            o.Emission = ((tex2DNode65 * _CurvatureColor) + ((1.0 - tex2DNode65) * ((_EmissiveColor * (1.0 -
+                fresnelNode4)) + (_RimColor * fresnelNode4)))).rgb;
+            float4 transform41 = mul(unity_WorldToObject, float4(ase_worldPos, 0.0));
+            float clampResult46 = clamp((((1.0 - transform41.y) * _OpacityScale * 0.01) + (_OpacityOffset * 0.1)),
+                                        _OpacityMin, _OpacityMax);
+            o.Alpha = clampResult46;
+            o.Normal = o.Normal + 0.00001 * i.screenPos * i.worldPos;
+        }
+        ENDCG
+        CGPROGRAM
+        #pragma surface surf Standard alpha:fade keepalpha finalcolor:RefractionF fullforwardshadows exclude_path:deferred
+        ENDCG
+        Pass
+        {
+            Name "ShadowCaster"
+            Tags
+            {
+                "LightMode" = "ShadowCaster"
+            }
+            ZWrite On
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma target 3.0
+            #pragma multi_compile_shadowcaster
+            #pragma multi_compile UNITY_PASS_SHADOWCASTER
+            #pragma skip_variants FOG_LINEAR FOG_EXP FOG_EXP2
+            #include "HLSLSupport.cginc"
+            #if ( SHADER_API_D3D11 || SHADER_API_GLCORE || SHADER_API_GLES || SHADER_API_GLES3 || SHADER_API_METAL || SHADER_API_VULKAN )
+            #define CAN_SKIP_VPOS
+            #endif
+            #include "UnityCG.cginc"
+            #include "Lighting.cginc"
+            #include "UnityPBSLighting.cginc"
+            sampler3D _DitherMaskLOD;
 
-		ENDCG
-		CGPROGRAM
-		#pragma surface surf Standard alpha:fade keepalpha finalcolor:RefractionF fullforwardshadows exclude_path:deferred 
+            struct v2f
+            {
+                V2F_SHADOW_CASTER;
+                float2 customPack1 : TEXCOORD1;
+                float4 screenPos : TEXCOORD2;
+                float4 tSpace0 : TEXCOORD3;
+                float4 tSpace1 : TEXCOORD4;
+                float4 tSpace2 : TEXCOORD5;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+                UNITY_VERTEX_OUTPUT_STEREO
+            };
 
-		ENDCG
-		Pass
-		{
-			Name "ShadowCaster"
-			Tags{ "LightMode" = "ShadowCaster" }
-			ZWrite On
-			CGPROGRAM
-			#pragma vertex vert
-			#pragma fragment frag
-			#pragma target 3.0
-			#pragma multi_compile_shadowcaster
-			#pragma multi_compile UNITY_PASS_SHADOWCASTER
-			#pragma skip_variants FOG_LINEAR FOG_EXP FOG_EXP2
-			#include "HLSLSupport.cginc"
-			#if ( SHADER_API_D3D11 || SHADER_API_GLCORE || SHADER_API_GLES || SHADER_API_GLES3 || SHADER_API_METAL || SHADER_API_VULKAN )
-				#define CAN_SKIP_VPOS
-			#endif
-			#include "UnityCG.cginc"
-			#include "Lighting.cginc"
-			#include "UnityPBSLighting.cginc"
-			sampler3D _DitherMaskLOD;
-			struct v2f
-			{
-				V2F_SHADOW_CASTER;
-				float2 customPack1 : TEXCOORD1;
-				float4 screenPos : TEXCOORD2;
-				float4 tSpace0 : TEXCOORD3;
-				float4 tSpace1 : TEXCOORD4;
-				float4 tSpace2 : TEXCOORD5;
-				UNITY_VERTEX_INPUT_INSTANCE_ID
-				UNITY_VERTEX_OUTPUT_STEREO
-			};
-			v2f vert( appdata_full v )
-			{
-				v2f o;
-				UNITY_SETUP_INSTANCE_ID( v );
-				UNITY_INITIALIZE_OUTPUT( v2f, o );
-				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
-				UNITY_TRANSFER_INSTANCE_ID( v, o );
-				Input customInputData;
-				float3 worldPos = mul( unity_ObjectToWorld, v.vertex ).xyz;
-				half3 worldNormal = UnityObjectToWorldNormal( v.normal );
-				half3 worldTangent = UnityObjectToWorldDir( v.tangent.xyz );
-				half tangentSign = v.tangent.w * unity_WorldTransformParams.w;
-				half3 worldBinormal = cross( worldNormal, worldTangent ) * tangentSign;
-				o.tSpace0 = float4( worldTangent.x, worldBinormal.x, worldNormal.x, worldPos.x );
-				o.tSpace1 = float4( worldTangent.y, worldBinormal.y, worldNormal.y, worldPos.y );
-				o.tSpace2 = float4( worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z );
-				o.customPack1.xy = customInputData.uv_texcoord;
-				o.customPack1.xy = v.texcoord;
-				TRANSFER_SHADOW_CASTER_NORMALOFFSET( o )
-				o.screenPos = ComputeScreenPos( o.pos );
-				return o;
-			}
-			half4 frag( v2f IN
-			#if !defined( CAN_SKIP_VPOS )
+            v2f vert(appdata_full v)
+            {
+                v2f o;
+                UNITY_SETUP_INSTANCE_ID(v);
+                UNITY_INITIALIZE_OUTPUT(v2f, o);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+                UNITY_TRANSFER_INSTANCE_ID(v, o);
+                Input customInputData;
+                float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+                half3 worldNormal = UnityObjectToWorldNormal(v.normal);
+                half3 worldTangent = UnityObjectToWorldDir(v.tangent.xyz);
+                half tangentSign = v.tangent.w * unity_WorldTransformParams.w;
+                half3 worldBinormal = cross(worldNormal, worldTangent) * tangentSign;
+                o.tSpace0 = float4(worldTangent.x, worldBinormal.x, worldNormal.x, worldPos.x);
+                o.tSpace1 = float4(worldTangent.y, worldBinormal.y, worldNormal.y, worldPos.y);
+                o.tSpace2 = float4(worldTangent.z, worldBinormal.z, worldNormal.z, worldPos.z);
+                o.customPack1.xy = customInputData.uv_texcoord;
+                o.customPack1.xy = v.texcoord;
+                TRANSFER_SHADOW_CASTER_NORMALOFFSET(o)
+                o.screenPos = ComputeScreenPos(o.pos);
+                return o;
+            }
+
+            half4 frag(v2f IN
+                #if !defined( CAN_SKIP_VPOS )
 			, UNITY_VPOS_TYPE vpos : VPOS
-			#endif
-			) : SV_Target
-			{
-				UNITY_SETUP_INSTANCE_ID( IN );
-				Input surfIN;
-				UNITY_INITIALIZE_OUTPUT( Input, surfIN );
-				surfIN.uv_texcoord = IN.customPack1.xy;
-				float3 worldPos = float3( IN.tSpace0.w, IN.tSpace1.w, IN.tSpace2.w );
-				half3 worldViewDir = normalize( UnityWorldSpaceViewDir( worldPos ) );
-				surfIN.worldPos = worldPos;
-				surfIN.worldNormal = float3( IN.tSpace0.z, IN.tSpace1.z, IN.tSpace2.z );
-				surfIN.internalSurfaceTtoW0 = IN.tSpace0.xyz;
-				surfIN.internalSurfaceTtoW1 = IN.tSpace1.xyz;
-				surfIN.internalSurfaceTtoW2 = IN.tSpace2.xyz;
-				surfIN.screenPos = IN.screenPos;
-				SurfaceOutputStandard o;
-				UNITY_INITIALIZE_OUTPUT( SurfaceOutputStandard, o )
-				surf( surfIN, o );
-				#if defined( CAN_SKIP_VPOS )
-				float2 vpos = IN.pos;
-				#endif
-				half alphaRef = tex3D( _DitherMaskLOD, float3( vpos.xy * 0.25, o.Alpha * 0.9375 ) ).a;
-				clip( alphaRef - 0.01 );
-				SHADOW_CASTER_FRAGMENT( IN )
-			}
-			ENDCG
-		}
-	}
-	Fallback "Diffuse"
+                #endif
+            ) : SV_Target
+            {
+                UNITY_SETUP_INSTANCE_ID(IN);
+                Input surfIN;
+                UNITY_INITIALIZE_OUTPUT(Input, surfIN);
+                surfIN.uv_texcoord = IN.customPack1.xy;
+                float3 worldPos = float3(IN.tSpace0.w, IN.tSpace1.w, IN.tSpace2.w);
+                half3 worldViewDir = normalize(UnityWorldSpaceViewDir(worldPos));
+                surfIN.worldPos = worldPos;
+                surfIN.worldNormal = float3(IN.tSpace0.z, IN.tSpace1.z, IN.tSpace2.z);
+                surfIN.internalSurfaceTtoW0 = IN.tSpace0.xyz;
+                surfIN.internalSurfaceTtoW1 = IN.tSpace1.xyz;
+                surfIN.internalSurfaceTtoW2 = IN.tSpace2.xyz;
+                surfIN.screenPos = IN.screenPos;
+                SurfaceOutputStandard o;
+                UNITY_INITIALIZE_OUTPUT(SurfaceOutputStandard, o)
+                surf(surfIN, o);
+                #if defined( CAN_SKIP_VPOS )
+                float2 vpos = IN.pos;
+                #endif
+                half alphaRef = tex3D(_DitherMaskLOD, float3(vpos.xy * 0.25, o.Alpha * 0.9375)).a;
+                clip(alphaRef - 0.01);
+                SHADOW_CASTER_FRAGMENT(IN)
+            }
+            ENDCG
+        }
+    }
+    Fallback "Diffuse"
 }
 /*ASEBEGIN
 Version=17800

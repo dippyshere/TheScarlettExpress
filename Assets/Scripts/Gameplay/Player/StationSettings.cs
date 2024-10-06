@@ -1,40 +1,52 @@
+#region
+
 using Dypsloom.DypThePenguin.Scripts.Character;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Unity.Cinemachine;
+using UnityEngine.Serialization;
+
+#endregion
 
 public class StationSettings : MonoBehaviour
 {
+    [FormerlySerializedAs("BranchConfirm"),SerializeField] GameObject branchConfirm;
+    [FormerlySerializedAs("FernConfirm"),SerializeField] GameObject fernConfirm;
+    [FormerlySerializedAs("FurroConfirm"),SerializeField] GameObject furroConfirm;
+    [FormerlySerializedAs("RiverConfirm"),SerializeField] GameObject riverConfirm;
+    [FormerlySerializedAs("ThampConfirm"),SerializeField] GameObject thampConfirm;
     [SerializeField] GameObject mapCanvas;
 
-    public int StationDistanceA;
-
-    public int stationDestinationA;
-
-    [SerializeField, Tooltip("Reference to the player script.")]
-    private Character m_Player;
-
-    [SerializeField, Tooltip("Reference to the cinemachine input manager.")]
-    private CinemachineInputAxisController m_CinemachineInputAxisController;
-
-    [SerializeField] private GameObject ThampConfirm;
-    [SerializeField] private GameObject RiverConfirm;
-    [SerializeField] private GameObject FurroConfirm;
-
     public AudioSource music;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
-        ThampConfirm.SetActive(false);
-        RiverConfirm.SetActive(false);
-        FurroConfirm.SetActive(false);
+        if (thampConfirm != null)
+        {
+            thampConfirm.SetActive(false);
+        }
 
+        if (riverConfirm != null)
+        {
+            riverConfirm.SetActive(false);
+        }
 
+        if (furroConfirm != null)
+        {
+            furroConfirm.SetActive(false);
+        }
+
+        if (branchConfirm != null)
+        {
+            branchConfirm.SetActive(false);
+        }
+
+        if (fernConfirm != null)
+        {
+            fernConfirm.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -51,67 +63,77 @@ public class StationSettings : MonoBehaviour
         {
             Debug.Log("Go To Station!");
             TravelToStation();
-            StationDistanceA = 3;
         }
-
-        
-        int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
     }
 
-    public void back()
+    public void Back()
     {
         music.Play();
         mapCanvas.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        m_CinemachineInputAxisController.enabled = true;
-
-        m_Player.m_MovementMode = MovementMode.Free;
+        CameraManager.Instance.SetInputModeGameplay();
     }
 
     public void SetStation1()
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 1);
-        RiverConfirm.SetActive(true);
+        riverConfirm.SetActive(true);
     }
 
     public void SetStation2()
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 2);
-        FurroConfirm.SetActive(true);
+        furroConfirm.SetActive(true);
     }
 
     public void SetStation3()
     {
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
         ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 3);
-        ThampConfirm.SetActive(true);
+        thampConfirm.SetActive(true);
+    }
+
+    public void SetStation4()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
+        ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 4);
+        branchConfirm.SetActive(true);
+    }
+
+    public void SetStation5()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 3);
+        ProfileSystem.Set(ProfileSystem.Variable.StationDestination, 5);
+        fernConfirm.SetActive(true);
     }
 
     public void TravelToStation()
     {
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
-        PassengerManager.instance.ArriveAtStation(destin);
+        PassengerManager.Instance.ArriveAtStation(destin);
         // check if the StationDestination is 1,2 or 3 to go to the station
-        if (destin <= 1)
-        {
-            Debug.Log("Load Station1");
-            SceneManager.LoadScene("Station1");
-        }
-        if (destin == 2)
-        {
-            SceneManager.LoadScene("Station2");
-        }
-        if (destin == 3)
-        {
-            SceneManager.LoadScene("Station3");
-        }
 
-        if (destin == 0)
+        switch (destin)
         {
-            SceneManager.LoadScene("StationTutorial");
+            case 0:
+                SceneManager.LoadScene("_StationTutorial");
+                break;
+            case 1:
+                SceneManager.LoadScene("_RiversideStation");
+                break;
+            case 2:
+                SceneManager.LoadScene("_FurrowoodStation");
+                break;
+            case 3:
+                SceneManager.LoadScene("_ThampStation");
+                break;
+            case 4:
+                SceneManager.LoadScene("_BranchviewStation");
+                break;
+            case 5:
+                SceneManager.LoadScene("_FernValleyStation");
+                break;
         }
 
         ProfileSystem.Set(ProfileSystem.Variable.StationDistance, 1);
@@ -119,14 +141,15 @@ public class StationSettings : MonoBehaviour
 
     public void NotLoadTrain()
     {
-        ThampConfirm.SetActive(false);
-        RiverConfirm.SetActive(false);
-        FurroConfirm.SetActive(false);
+        thampConfirm.SetActive(false);
+        riverConfirm.SetActive(false);
+        furroConfirm.SetActive(false);
+        branchConfirm.SetActive(false);
+        fernConfirm.SetActive(false);
     }
 
     public void LoadTarin()
     {
-        SceneManager.LoadScene("PlayerTesting");
+        SceneManager.LoadScene("_TrainInterior");
     }
-
 }
