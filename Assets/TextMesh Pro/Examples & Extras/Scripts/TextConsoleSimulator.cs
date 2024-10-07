@@ -1,13 +1,16 @@
-using UnityEngine;
-using System.Collections;
+#region
 
+using System.Collections;
+using UnityEngine;
+
+#endregion
 
 namespace TMPro.Examples
 {
     public class TextConsoleSimulator : MonoBehaviour
     {
-        private TMP_Text m_TextComponent;
-        private bool hasTextChanged;
+        bool hasTextChanged;
+        TMP_Text m_TextComponent;
 
         void Awake()
         {
@@ -42,7 +45,7 @@ namespace TMPro.Examples
 
 
         /// <summary>
-        /// Method revealing the text one character at a time.
+        ///     Method revealing the text one character at a time.
         /// </summary>
         /// <returns></returns>
         IEnumerator RevealCharacters(TMP_Text textComponent)
@@ -59,7 +62,7 @@ namespace TMPro.Examples
                 if (hasTextChanged)
                 {
                     totalVisibleCharacters = textInfo.characterCount; // Update visible character count.
-                    hasTextChanged = false; 
+                    hasTextChanged = false;
                 }
 
                 if (visibleCount > totalVisibleCharacters)
@@ -78,7 +81,7 @@ namespace TMPro.Examples
 
 
         /// <summary>
-        /// Method revealing the text one word at a time.
+        ///     Method revealing the text one word at a time.
         /// </summary>
         /// <returns></returns>
         IEnumerator RevealWords(TMP_Text textComponent)
@@ -86,7 +89,8 @@ namespace TMPro.Examples
             textComponent.ForceMeshUpdate();
 
             int totalWordCount = textComponent.textInfo.wordCount;
-            int totalVisibleCharacters = textComponent.textInfo.characterCount; // Get # of Visible Character in text object
+            int totalVisibleCharacters =
+                textComponent.textInfo.characterCount; // Get # of Visible Character in text object
             int counter = 0;
             int currentWord = 0;
             int visibleCount = 0;
@@ -97,11 +101,17 @@ namespace TMPro.Examples
 
                 // Get last character index for the current word.
                 if (currentWord == 0) // Display no words.
+                {
                     visibleCount = 0;
+                }
                 else if (currentWord < totalWordCount) // Display all other words with the exception of the last one.
+                {
                     visibleCount = textComponent.textInfo.wordInfo[currentWord - 1].lastCharacterIndex + 1;
+                }
                 else if (currentWord == totalWordCount) // Display last word and all remaining characters.
+                {
                     visibleCount = totalVisibleCharacters;
+                }
 
                 textComponent.maxVisibleCharacters = visibleCount; // How many characters should TextMeshPro display?
 
@@ -116,6 +126,5 @@ namespace TMPro.Examples
                 yield return new WaitForSeconds(0.1f);
             }
         }
-
     }
 }

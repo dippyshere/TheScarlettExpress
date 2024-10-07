@@ -1,53 +1,63 @@
-﻿/// ---------------------------------------------
-/// Dyp Penguin Character | Dypsloom
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
+﻿#region
+
+using UnityEngine;
+
+#endregion
 
 namespace Dypsloom.DypThePenguin.Scripts.Character
 {
-    using UnityEngine;
-
     /// <summary>
-    /// script used to rotate a character.
+    ///     script used to rotate a character.
     /// </summary>
     public class CharacterRotator
     {
         protected readonly Character m_Character;
-        private float previousRotation;
+        float previousRotation;
 
         /// <summary>
-        /// Constructor.
+        ///     Constructor.
         /// </summary>
         /// <param name="character">The character.</param>
         public CharacterRotator(Character character)
         {
             m_Character = character;
         }
-        
+
         /// <summary>
-        /// Rotate the character in respect to the camera.
+        ///     Rotate the character in respect to the camera.
         /// </summary>
         public virtual void Tick()
         {
-            var charVelocity = m_Character.IsDead
+            Vector2 charVelocity = m_Character.IsDead
                 ? Vector2.zero
-                : new Vector2( m_Character.CharacterInput.Horizontal, m_Character.CharacterInput.Vertical);
-            
+                : new Vector2(m_Character.CharacterInput.Horizontal, m_Character.CharacterInput.Vertical);
+
             if (Mathf.Abs(charVelocity.x) < 0.1f &&
-                Mathf.Abs(charVelocity.y) < 0.1f) {
+                Mathf.Abs(charVelocity.y) < 0.1f)
+            {
                 return;
             }
+
             float targetRotation = 0;
 
-            if (m_Character.m_MovementMode == MovementMode.RailZ || m_Character.m_MovementMode == MovementMode.RailX) {
-                targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg;
-            } else {
-                targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg + m_Character.CharacterCamera.transform.eulerAngles.y;
+            switch (m_Character.m_MovementMode)
+            {
+                case MovementMode.RailZ:
+                case MovementMode.RailX:
+                    targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg;
+                    break;
+                case MovementMode.Free:
+                    targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg +
+                                     m_Character.CharacterCamera.transform.eulerAngles.y;
+                    break;
+                default:
+                    targetRotation = m_Character.transform.eulerAngles.y;
+                    break;
             }
 
-            float rotation = Mathf.SmoothDampAngle(m_Character.transform.eulerAngles.y, targetRotation, ref previousRotation, 0.025f);
-            
+            float rotation = Mathf.SmoothDampAngle(m_Character.transform.eulerAngles.y, targetRotation,
+                ref previousRotation, 0.025f);
+
             Quaternion lookAt = Quaternion.Slerp(m_Character.transform.rotation,
                 Quaternion.Euler(0, rotation, 0),
                 0.5f);

@@ -60,6 +60,9 @@ MonoBehaviour:
   directWrite:
     m_OverrideState: 1
     m_Value: 1
+  ignoreDepthTexture:
+    m_OverrideState: 1
+    m_Value: 0
   downsampling:
     m_OverrideState: 1
     m_Value: 0
@@ -76,6 +79,12 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   stripBeautifyTonemapping:
+    m_OverrideState: 1
+    m_Value: 0
+  stripBeautifyTonemappingACESFitted:
+    m_OverrideState: 1
+    m_Value: 0
+  stripBeautifyTonemappingAGX:
     m_OverrideState: 1
     m_Value: 0
   stripBeautifySharpen:
@@ -197,6 +206,9 @@ MonoBehaviour:
   tonemap:
     m_OverrideState: 0
     m_Value: 0
+  tonemapAGXGamma:
+    m_OverrideState: 0
+    m_Value: 2.5
   tonemapMaxInputBrightness:
     m_OverrideState: 0
     m_Value: 1000
@@ -267,6 +279,9 @@ MonoBehaviour:
   bloomExcludeLayers:
     m_OverrideState: 0
     m_Value: 0
+  bloomLayersFilterMethod:
+    m_OverrideState: 0
+    m_Value: 1
   bloomExclusionLayerMask:
     m_OverrideState: 0
     m_Value:
@@ -368,6 +383,9 @@ MonoBehaviour:
   anamorphicFlaresExcludeLayers:
     m_OverrideState: 0
     m_Value: 0
+  anamorphicFlaresLayersFilterMethod:
+    m_OverrideState: 0
+    m_Value: 1
   anamorphicFlaresExclusionLayerMask:
     m_OverrideState: 0
     m_Value:
@@ -628,6 +646,12 @@ MonoBehaviour:
   depthOfFieldMaxBrightness:
     m_OverrideState: 0
     m_Value: 1000
+  depthOfFieldMaxBlurRadius:
+    m_OverrideState: 0
+    m_Value: 1000
+  depthOfFieldResolutionInvariant:
+    m_OverrideState: 0
+    m_Value: 0
   depthOfFieldMaxDistance:
     m_OverrideState: 0
     m_Value: 1
@@ -698,12 +722,29 @@ MonoBehaviour:
   outlineColor:
     m_OverrideState: 0
     m_Value: {r: 0, g: 0, b: 0, a: 0.8}
+  outlineTechnique:
+    m_OverrideState: 0
+    m_Value: 0
+  outlineMinSeparation:
+    m_OverrideState: 0
+    m_Value: 1
   outlineThreshold:
     m_OverrideState: 0
     m_Value: 0.2
+  outlineMinDepthThreshold:
+    m_OverrideState: 0
+    m_Value: 0.0005
+  outlineSaturationDiffThreshold:
+    m_OverrideState: 0
+    m_Value: 0.015
   outlineCustomize:
     m_OverrideState: 0
     m_Value: 0
+  outlineLayerMask:
+    m_OverrideState: 0
+    m_Value:
+      serializedVersion: 2
+      m_Bits: 4294967295
   outlineStageParameter:
     m_OverrideState: 0
     m_Value: 0
@@ -720,6 +761,12 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   outlineDistanceFade:
+    m_OverrideState: 0
+    m_Value: 0
+  outlineUsesOptimizedShader:
+    m_OverrideState: 0
+    m_Value: 0
+  outlineLayerCutOff:
     m_OverrideState: 0
     m_Value: 0
   nightVision:
