@@ -11,8 +11,10 @@ using UnityEngine.Serialization;
 public class ActivateDialogue : MonoBehaviour
 {
     public NPCConversation conversation;
+    public NPCConversation[] conversations;
     [FormerlySerializedAs("DialoguePanel")] public GameObject dialoguePanel;
     public bool isConversing;
+    public bool deactivateOnBegin = true;
 
     // Update is called once per frame
     void Update()
@@ -43,12 +45,32 @@ public class ActivateDialogue : MonoBehaviour
 
     void BeginConversation()
     {
-        ConversationManager.Instance.StartConversation(conversation);
+        if (conversation == null)
+        {
+            ConversationManager.Instance.StartConversation(conversations[Random.Range(0, conversations.Length)]);
+        }
+        else
+        {
+            ConversationManager.Instance.StartConversation(conversation);
+        }
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        gameObject.SetActive(false);
+        if (deactivateOnBegin)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            ConversationManager.OnConversationEnded += ReEnablePromptOnEnd;
+        }
         Character.Instance.promptUI.SetActive(false);
+    }
+
+    public void ReEnablePromptOnEnd()
+    {
+        Character.Instance.promptUI.SetActive(true);
+        ConversationManager.OnConversationEnded -= ReEnablePromptOnEnd;
     }
 
     public void EnterTutorial()

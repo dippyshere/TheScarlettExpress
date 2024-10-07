@@ -43,6 +43,8 @@ public class PassengerController : MonoBehaviour
     [SerializeField, Tooltip("The species of the passenger")]
     public string species = "species";
 
+    public bool isSpecialPassenger;
+
     [FormerlySerializedAs("UIPrompt"),SerializeField] GameObject uiPrompt;
 
     void Start()
@@ -148,7 +150,7 @@ public class PassengerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasBeenFed)
+        if (other.CompareTag("Player") && !hasBeenFed && !isSpecialPassenger)
         {
             if (other.GetComponent<Pickup>().hasItem)
             {
@@ -162,7 +164,7 @@ public class PassengerController : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isSpecialPassenger)
         {
             if (uiPrompt != null)
             {
