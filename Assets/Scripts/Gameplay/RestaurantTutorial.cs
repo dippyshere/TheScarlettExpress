@@ -13,6 +13,7 @@ public class RestaurantTutorial : MonoBehaviour
     public GameObject cookingStoveSelection;
     public GameObject drinkStoveSelection;
     public GameObject exclamation;
+    public GameObject exclamation2;
     bool _hasCompletedRTutorial;
     public GameObject jellyStoveSelection;
 
@@ -125,6 +126,12 @@ public class RestaurantTutorial : MonoBehaviour
     {
         exclamation.SetActive(false);
         ConversationManager.Instance.StartConversation(nowWeWait);
+        exclamation2.SetActive(true);
+    }
+
+    public void TalkingToEve()
+    {
+        exclamation2.SetActive(false);
     }
 
     //private void BeginEveConversation()
