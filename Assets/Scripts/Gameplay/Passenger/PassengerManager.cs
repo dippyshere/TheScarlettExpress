@@ -76,10 +76,9 @@ public class PassengerManager : MonoBehaviour
         SavePassengerData();
     }
 
-    public void RemovePassenger(PassengerController passenger)
+    public int RemovePassenger(PassengerController passenger)
     {
         int owed = passenger.CalculateTripValue();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(owed);
         Transform closestSeat = spawnPoints[0];
         float closestDistance = Vector3.Distance(passenger.transform.position, spawnPoints[0].position);
         foreach (Transform spawnPoint in spawnPoints)
@@ -95,6 +94,7 @@ public class PassengerManager : MonoBehaviour
         closestSeat.gameObject.SetActive(true);
         _passengerData.Remove(Convert.ToString(spawnPoints.IndexOf(closestSeat)));
         Destroy(passenger.gameObject);
+        return owed;
     }
 
     public void DayAdvanceCleanup()
@@ -105,16 +105,30 @@ public class PassengerManager : MonoBehaviour
         }
 
         SavePassengerData();
+
+        SpecialPassengerRent();
+    }
+    
+    void SpecialPassengerRent()
+    {
+        foreach (PassengerController passenger in passengers)
+        {
+            if (passenger.isSpecialPassenger)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(5);
+            }
+        }
     }
 
     public void ArriveAtStation(int stationId)
     {
+        int owedMoney = 0;
         List<PassengerController> passengersToRemove = new();
         foreach (PassengerController passenger in passengers)
         {
-            if (passenger.destinationId == stationId)
+            if (passenger.destinationId == stationId && !passenger.isSpecialPassenger)
             {
-                RemovePassenger(passenger);
+                owedMoney += RemovePassenger(passenger);
                 passengersToRemove.Add(passenger);
             }
         }
@@ -123,6 +137,7 @@ public class PassengerManager : MonoBehaviour
         {
             passengers.Remove(passenger);
         }
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(owedMoney);
     }
 
     public void SavePassengerData()

@@ -15,6 +15,7 @@ public class DecorationSelection : MonoBehaviour
     public GameObject decorationOption3;
     public GameObject decorationOption4;
     public GameObject decorationOption5;
+    public GameObject decorationOption6;
 
     [SerializeField] ProfileSystem.Variable decorationSaveKey = ProfileSystem.Variable.Bed1Painting1;
 
@@ -38,6 +39,9 @@ public class DecorationSelection : MonoBehaviour
             case 5:
                 PaintingOptionFive();
                 break;
+            case 6:
+                PaintingOptionSix();
+                break;
         }
     }
 
@@ -48,6 +52,10 @@ public class DecorationSelection : MonoBehaviour
         decorationOption3.SetActive(false);
         decorationOption4.SetActive(false);
         decorationOption5.SetActive(false);
+        if (decorationOption6 != null)
+        {
+            decorationOption6.SetActive(false);
+        }
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
@@ -62,6 +70,10 @@ public class DecorationSelection : MonoBehaviour
         decorationOption3.SetActive(false);
         decorationOption4.SetActive(false);
         decorationOption5.SetActive(false);
+        if (decorationOption6 != null)
+        {
+            decorationOption6.SetActive(false);
+        }
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
@@ -76,6 +88,10 @@ public class DecorationSelection : MonoBehaviour
         decorationOption3.SetActive(true);
         decorationOption4.SetActive(false);
         decorationOption5.SetActive(false);
+        if (decorationOption6 != null)
+        {
+            decorationOption6.SetActive(false);
+        }
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
@@ -90,6 +106,10 @@ public class DecorationSelection : MonoBehaviour
         decorationOption3.SetActive(false);
         decorationOption4.SetActive(true);
         decorationOption5.SetActive(false);
+        if (decorationOption6 != null)
+        {
+            decorationOption6.SetActive(false);
+        }
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
@@ -104,10 +124,30 @@ public class DecorationSelection : MonoBehaviour
         decorationOption3.SetActive(false);
         decorationOption4.SetActive(false);
         decorationOption5.SetActive(true);
+        if (decorationOption6 != null)
+        {
+            decorationOption6.SetActive(false);
+        }
         //dottedLine.SetActive(false);
 
         decoration.color = new Color(1, 1, 1, 0);
 
         ProfileSystem.Set(decorationSaveKey, 5);
+    }
+
+    public void PaintingOptionSix()
+    {
+        decorationOption1.SetActive(false);
+        decorationOption2.SetActive(false);
+        decorationOption3.SetActive(false);
+        decorationOption4.SetActive(false);
+        decorationOption5.SetActive(false);
+        if (decorationOption6 != null)
+        {
+            decorationOption6.SetActive(true);
+        }
+
+        decoration.color = new Color(1, 1, 1, 0);
+        ProfileSystem.Set(decorationSaveKey, 6);
     }
 }
