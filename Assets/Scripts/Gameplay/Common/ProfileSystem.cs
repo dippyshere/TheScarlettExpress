@@ -79,7 +79,12 @@ public static class ProfileSystem
         { Variable.Restraunt2Table5, 0 },
         { Variable.Restraunt2Table6, 0 },
 
-        { Variable.PassengerStorage, "{}" }
+        { Variable.PassengerStorage, "{}" },
+
+        //Eve Quest
+        { Variable.EveQuestStarted, false },
+        { Variable.RetrievedBroccoliSoup, false },
+        { Variable.EveQuestFinished, false }
     };
 
     static ProfileSystem()
@@ -317,6 +322,11 @@ public static class ProfileSystem
         Restraunt2Table4,
         Restraunt2Table5,
         Restraunt2Table6,
-        PassengerStorage
+        PassengerStorage,
+
+        //Eve Quest
+        EveQuestStarted,
+        RetrievedBroccoliSoup,
+        EveQuestFinished
     }
 }
