@@ -44,6 +44,7 @@ public static class ProfileSystem
         { Variable.Deco13, 0 },
         { Variable.Deco14, 0 },
         { Variable.Deco15, 0 },
+
         { Variable.Deco16, 0 },
         { Variable.Deco17, 0 },
         { Variable.Deco18, 0 },
