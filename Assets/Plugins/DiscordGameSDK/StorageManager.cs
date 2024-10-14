@@ -1,6 +1,8 @@
-using System;
+#region
+
 using System.Collections.Generic;
-using System.Text;
+
+#endregion
 
 namespace Discord
 {
@@ -8,12 +10,13 @@ namespace Discord
     {
         public IEnumerable<FileStat> Files()
         {
-            var fileCount = Count();
-            var files = new List<FileStat>();
-            for (var i = 0; i < fileCount; i++)
+            int fileCount = Count();
+            List<FileStat> files = new List<FileStat>();
+            for (int i = 0; i < fileCount; i++)
             {
                 files.Add(StatAt(i));
             }
+
             return files;
         }
     }

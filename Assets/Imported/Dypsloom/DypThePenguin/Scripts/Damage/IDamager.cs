@@ -1,15 +1,13 @@
-﻿/// ---------------------------------------------
-/// Dyp Penguin Character | Dypsloom
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
+﻿#region
+
+using UnityEngine;
+
+#endregion
 
 namespace Dypsloom.DypThePenguin.Scripts.Damage
 {
-    using UnityEngine;
-
     /// <summary>
-    /// The damager interface.
+    ///     The damager interface.
     /// </summary>
     public interface IDamager
     {

@@ -1,13 +1,7 @@
-﻿/// ---------------------------------------------
-/// Dyp Penguin Character | Dypsloom
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
-
-namespace Dypsloom.DypThePenguin.Scripts.Items
+﻿namespace Dypsloom.DypThePenguin.Scripts.Items
 {
     /// <summary>
-    /// Interface for a usable Item object input.
+    ///     Interface for a usable Item object input.
     /// </summary>
     public interface IItemInput
     {
