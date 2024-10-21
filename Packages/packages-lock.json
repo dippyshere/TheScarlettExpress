@@ -38,6 +38,13 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.naelstrof.jigglephysics": {
+      "version": "https://github.com/naelstrof/UnityJigglePhysics.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "7ba45cc1603eb95a0d1f4f31fdcbe6b787cf3e7b"
+    },
     "com.starasgames.tmpro-dynamic-data-cleaner": {
       "version": "https://github.com/STARasGAMES/tmpro-dynamic-data-cleaner.git#upm",
       "depth": 0,
