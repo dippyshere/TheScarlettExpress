@@ -106,7 +106,7 @@ public class DecorationSelection : MonoBehaviour
         }
         //dottedLine.SetActive(false);
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
 
         ProfileSystem.Set(decorationSaveKey, 1);
     }
@@ -134,7 +134,7 @@ public class DecorationSelection : MonoBehaviour
         }
         //dottedLine.SetActive(false);
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
 
         ProfileSystem.Set(decorationSaveKey, 2);
     }
@@ -162,7 +162,7 @@ public class DecorationSelection : MonoBehaviour
         }
         //dottedLine.SetActive(false);
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
 
         ProfileSystem.Set(decorationSaveKey, 3);
     }
@@ -190,7 +190,7 @@ public class DecorationSelection : MonoBehaviour
         }
         //dottedLine.SetActive(false);
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
 
         ProfileSystem.Set(decorationSaveKey, 4);
     }
@@ -218,7 +218,7 @@ public class DecorationSelection : MonoBehaviour
         }
         //dottedLine.SetActive(false);
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
 
         ProfileSystem.Set(decorationSaveKey, 5);
     }
@@ -245,7 +245,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(false);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 6);
     }
 
@@ -271,7 +271,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(false);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 7);
     }
 
@@ -297,7 +297,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(false);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 8);
     }
 
@@ -323,7 +323,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(false);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 9);
     }
 
@@ -349,7 +349,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(false);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 10);
     }
 
@@ -375,7 +375,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(false);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 11);
     }
 
@@ -401,7 +401,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(false);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 12);
     }
 
@@ -427,7 +427,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(false);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 13);
     }
 
@@ -453,7 +453,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(false);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 14);
     }
 
@@ -479,7 +479,7 @@ public class DecorationSelection : MonoBehaviour
             decorationOption6.SetActive(true);
         }
 
-        decoration.color = new Color(1, 1, 1, 0);
+        // decoration.color = new Color(1, 1, 1, 0);
         ProfileSystem.Set(decorationSaveKey, 15);
     }
 

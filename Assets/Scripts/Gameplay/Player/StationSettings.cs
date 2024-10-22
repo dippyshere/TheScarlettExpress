@@ -111,7 +111,14 @@ public class StationSettings : MonoBehaviour
     public void TravelToStation()
     {
         int destin = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination);
-        PassengerManager.Instance.ArriveAtStation(destin);
+        if (destin == 0)
+        {
+            PassengerManager.Instance.ArriveAtStation(1);
+        }
+        else
+        {
+            PassengerManager.Instance.ArriveAtStation(destin);
+        }
         // check if the StationDestination is 1,2 or 3 to go to the station
 
         switch (destin)
