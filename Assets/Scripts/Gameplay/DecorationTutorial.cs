@@ -8,6 +8,7 @@ public class DecorationTutorial : MonoBehaviour
     public NPCConversation beginDecoratingTutorial;
     public NPCConversation choosingDecorationTutorial;
     public NPCConversation endDecoratingTutorial;
+    public NPCConversation suggestionDialogue;
 
     bool hasCompletedDTutorial;
 
@@ -41,6 +42,14 @@ public class DecorationTutorial : MonoBehaviour
         if (!hasCompletedDTutorial)
         {
             ConversationManager.Instance.StartConversation(endDecoratingTutorial);
+        }
+    }
+
+    public void Suggestion()
+    {
+        if (!hasCompletedDTutorial)
+        {
+            ConversationManager.Instance.StartConversation(suggestionDialogue);
         }
     }
 
