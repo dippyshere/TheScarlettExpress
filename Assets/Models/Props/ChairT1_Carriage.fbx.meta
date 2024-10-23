@@ -3,7 +3,27 @@ guid: 75c466edffb3aa6408126655377b1d9c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Back_Cushion
+    second: {fileID: 2100000, guid: bce97a0ceaca0b844b71f975363f71e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottom_Cushion
+    second: {fileID: 2100000, guid: bce97a0ceaca0b844b71f975363f71e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chair_Framing
+    second: {fileID: 2100000, guid: bce97a0ceaca0b844b71f975363f71e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chair_Support
+    second: {fileID: 2100000, guid: bce97a0ceaca0b844b71f975363f71e8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

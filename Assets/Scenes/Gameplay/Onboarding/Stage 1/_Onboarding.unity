@@ -10512,7 +10512,7 @@ PrefabInstance:
     - target: {fileID: 8589749762818712636, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4369965
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8589749762818712636, guid: 5157d3b36cb75dd45b0bbc246c198196,
         type: 3}
@@ -41077,8 +41077,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversation: {fileID: 2041975830}
+  conversations: []
   dialoguePanel: {fileID: 1775912669}
   isConversing: 0
+  deactivateOnBegin: 1
 --- !u!135 &2052253791
 SphereCollider:
   m_ObjectHideFlags: 0
