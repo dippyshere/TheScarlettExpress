@@ -157,6 +157,12 @@ MonoBehaviour:
   _sceneSetupMode: 0
   _sceneSetup:
   - scene:
+      editorAssetGUID: cfb1514084427df4291d2f4c634ac752
+      name: MenuUI
+      _path: Assets/Scenes/Frontend/MenuUI.unity
+    loadInEditor: 1
+    loadMethod: 1
+  - scene:
       editorAssetGUID: 19988bd008e7cf44daa2e5283e13f8c3
       name: TitleBackground
       _path: Assets/Scenes/Frontend/TitleBackground.unity
@@ -376,8 +382,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4279052926
+  m_fontColor: {r: 0.4943396, g: 0.1664898, b: 0.051299337, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -692,7 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8722484, b: 0.688, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0

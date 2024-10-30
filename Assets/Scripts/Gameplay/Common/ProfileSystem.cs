@@ -1,6 +1,7 @@
 #region
 
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 #endregion
@@ -19,6 +20,8 @@ public static class ProfileSystem
         { Variable.PlayerName, "Name" },
         { Variable.PlayerPronoun1, "They" },
         { Variable.PlayerPronoun2, "Them" },
+        { Variable.LastPlayed, "" },
+        { Variable.LastScene, "_Onboarding" },
         { Variable.CurrentStation, "None" },
         { Variable.StationDestination, 0 },
         { Variable.StationDistance, 1 },
@@ -109,8 +112,16 @@ public static class ProfileSystem
         }
     }
 
-    public static void Set<T>(Variable variable, T value)
+    public static void Set<T>(Variable variable, T value, bool updateLastScene = true)
     {
+        string lastPlayedKey = GetSaveSlotKey(Variable.LastPlayed.ToString());
+        // set last played time using datetime with the day, month, year format of the current system locale, then followed by a " - " and the time in the current system locale
+        PlayerPrefs.SetString(lastPlayedKey, System.DateTime.Now.ToString("d", System.Globalization.CultureInfo.CurrentCulture) + " - " + System.DateTime.Now.ToString("t", System.Globalization.CultureInfo.CurrentCulture));
+        if (updateLastScene)
+        {
+            string lastSceneKey = GetSaveSlotKey(Variable.LastScene.ToString());
+            PlayerPrefs.SetString(lastSceneKey, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        }
         string key = GetSaveSlotKey(variable.ToString());
         switch (value)
         {
@@ -132,9 +143,18 @@ public static class ProfileSystem
         }
     }
 
-    public static T Get<T>(Variable variable)
+    public static T Get<T>(Variable variable, int slot = -1)
     {
+        int currentSlot = _currentSaveSlot;
+        if (slot >= 0)
+        {
+            _currentSaveSlot = slot;
+        }
         string key = GetSaveSlotKey(variable.ToString());
+        if (slot >= 0)
+        {
+            _currentSaveSlot = currentSlot;
+        }
         if (typeof(T) == typeof(int))
         {
             return (T)(object)PlayerPrefs.GetInt(key, (int)DefaultValues[variable]);
@@ -249,11 +269,28 @@ public static class ProfileSystem
         return $"{GlobalPrefix}{key}";
     }
 
-    public static void ClearProfile()
+    public static void ClearProfile(int slot = -1)
     {
-        foreach (Variable variable in DefaultValues.Keys)
+        if (slot == -1)
         {
-            Set(variable, DefaultValues[variable]);
+            for (int i = 0; i < NumSaveSlots; i++)
+            {
+                foreach (Variable variable in DefaultValues.Keys)
+                {
+                    string key = GetSaveSlotKey(variable.ToString());
+                    PlayerPrefs.DeleteKey(key);
+                }
+            }
+        }
+        else
+        {
+            int currentSlot = _currentSaveSlot;
+            _currentSaveSlot = slot;
+            foreach (string key in DefaultValues.Keys.Select(variable => GetSaveSlotKey(variable.ToString())))
+            {
+                PlayerPrefs.DeleteKey(key);
+            }
+            _currentSaveSlot = currentSlot;
         }
     }
 
@@ -263,6 +300,8 @@ public static class ProfileSystem
         PlayerName,
         PlayerPronoun1,
         PlayerPronoun2,
+        LastPlayed,
+        LastScene,
         CurrentStation,
         StationDestination,
         StationDistance,

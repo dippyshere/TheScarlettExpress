@@ -7,10 +7,32 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance;
+    Canvas _titleCanvas;
+    
+    void Awake()
+    {
+        Instance = this;
+    }
+    
+    void Start()
+    {
+        _titleCanvas = GetComponent<Canvas>();
+    }
+    
     public void OnPlayButtonClicked()
     {
-        // clear profile for playtesting
-        ProfileSystem.ClearProfile();
-        SceneManager.LoadSceneAsync("_Onboarding");
+        SaveSlotsManager.Instance.ShowSaveSlots();
+        _titleCanvas.enabled = false;
+    }
+    
+    public void OnQuitButtonClicked()
+    {
+        Application.Quit();
+    }
+    
+    public void ShowTitle()
+    {
+        _titleCanvas.enabled = true;
     }
 }
