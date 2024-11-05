@@ -24,6 +24,8 @@ public class Pickup : MonoBehaviour
     [Header("feeding temporary awawawawa")]
     public GameObject pendingPassenger;
 
+    public bool pendingEve;
+
     public GameObject pickupPrompt;
 
     bool eveQuestStarted;
@@ -73,6 +75,11 @@ public class Pickup : MonoBehaviour
             else
             {
                 objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
+            }
+
+            if (pendingEve)
+            {
+                Destroy(objectIWantToPickup);
             }
 
             if (TrainGameAnalytics.instance != null)
@@ -134,6 +141,11 @@ public class Pickup : MonoBehaviour
                 pendingPassenger = other.gameObject;
             }
         }
+                
+        if (other.gameObject.GetComponent<SpecialPassengerQuests>())
+        {
+            pendingEve = true;
+        }
 
         if (other.gameObject.CompareTag("Eve"))
         {
@@ -165,6 +177,11 @@ public class Pickup : MonoBehaviour
         if (other.gameObject.CompareTag("Passenger") && pendingPassenger == other.gameObject)
         {
             pendingPassenger = null;
+        }
+        
+        if (other.gameObject.GetComponent<SpecialPassengerQuests>())
+        {
+            pendingEve = false;
         }
 
         if (other.gameObject.CompareTag("Eve"))

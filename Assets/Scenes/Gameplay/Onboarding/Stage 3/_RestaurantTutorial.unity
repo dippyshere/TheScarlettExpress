@@ -9460,6 +9460,24 @@ PrefabInstance:
       propertyPath: foodCookTime
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2282606953392396713, guid: 09548c79fc868ea4d8e61461e5ac3393,
+        type: 3}
+    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3565260441531833399, guid: a262010541da55046a505efe294a6c63,
+        type: 3}
+    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1830098587752392990, guid: 7bafab9701ccaa1439ae918dc0c3e75e,
+        type: 3}
     - target: {fileID: 3833532521198004585, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -25135,6 +25153,24 @@ PrefabInstance:
       propertyPath: foodCookTime
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2282606953392396713, guid: 09548c79fc868ea4d8e61461e5ac3393,
+        type: 3}
+    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3565260441531833399, guid: a262010541da55046a505efe294a6c63,
+        type: 3}
+    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1830098587752392990, guid: 7bafab9701ccaa1439ae918dc0c3e75e,
+        type: 3}
     - target: {fileID: 3833532521198004585, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -61239,6 +61275,24 @@ PrefabInstance:
       propertyPath: foodCookTime
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2282606953392396713, guid: 09548c79fc868ea4d8e61461e5ac3393,
+        type: 3}
+    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3565260441531833399, guid: a262010541da55046a505efe294a6c63,
+        type: 3}
+    - target: {fileID: 3392807349767021121, guid: 2b904fda158137743bb1f242e3e65b23,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1830098587752392990, guid: 7bafab9701ccaa1439ae918dc0c3e75e,
+        type: 3}
     - target: {fileID: 3788977015005412740, guid: 2b904fda158137743bb1f242e3e65b23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
