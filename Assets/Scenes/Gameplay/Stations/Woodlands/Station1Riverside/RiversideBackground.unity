@@ -28010,6 +28010,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5491614485000716121, guid: edc3284eac2e1194e9ff150180f4421c,
+        type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6284454658038881932, guid: edc3284eac2e1194e9ff150180f4421c,
         type: 3}
       propertyPath: m_Name
