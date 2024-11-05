@@ -10,28 +10,19 @@ public class DecorationTutorial : MonoBehaviour
     public NPCConversation endDecoratingTutorial;
     public NPCConversation suggestionDialogue;
 
-    bool hasCompletedDTutorial;
-
     // Start is called before the first frame update
     void Start()
     {
-        hasCompletedDTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone);
-
-        if (!hasCompletedDTutorial)
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialStarted))
         {
             ConversationManager.Instance.StartConversation(beginDecoratingTutorial);
+            ProfileSystem.Set(ProfileSystem.Variable.DecoratingTutorialStarted, true);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        hasCompletedDTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone);
     }
 
     public void ChooseDecorationDialogue()
     {
-        if (!hasCompletedDTutorial)
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone))
         {
             ConversationManager.Instance.StartConversation(choosingDecorationTutorial);
         }
@@ -39,7 +30,7 @@ public class DecorationTutorial : MonoBehaviour
 
     public void EndDecoratingTutorial()
     {
-        if (!hasCompletedDTutorial)
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone))
         {
             ConversationManager.Instance.StartConversation(endDecoratingTutorial);
         }
@@ -47,7 +38,7 @@ public class DecorationTutorial : MonoBehaviour
 
     public void Suggestion()
     {
-        if (!hasCompletedDTutorial)
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone))
         {
             ConversationManager.Instance.StartConversation(suggestionDialogue);
         }
@@ -67,6 +58,5 @@ public class DecorationTutorial : MonoBehaviour
     public void DecoratingTutorialCompleted()
     {
         ProfileSystem.Set(ProfileSystem.Variable.DecoratingTutorialDone, true);
-        //hasCompletedDTutorial = true;
     }
 }

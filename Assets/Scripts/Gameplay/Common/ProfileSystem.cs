@@ -29,6 +29,7 @@ public static class ProfileSystem
         { Variable.GameVolume, 1.0f },
         { Variable.EveTutorialDone, false },
         { Variable.RestaurantTutorialDone, false },
+        { Variable.DecoratingTutorialStarted, false },
         { Variable.DecoratingTutorialDone, false },
 
         //Decorations
@@ -311,6 +312,7 @@ public static class ProfileSystem
         //tutorials
         EveTutorialDone,
         RestaurantTutorialDone,
+        DecoratingTutorialStarted,
         DecoratingTutorialDone,
 
         //decorations
