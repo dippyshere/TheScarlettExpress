@@ -76,7 +76,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                     m_IsJumping = false;
                 }
 
-                if (m_Character.CharacterInput.Jump)
+                if (m_Character.CharacterInput.Jump && !m_Character.m_MovementMode.Equals(MovementMode.Decorating))
                 {
                     m_Character.IsGrounded = false;
                     m_IsJumping = true;
