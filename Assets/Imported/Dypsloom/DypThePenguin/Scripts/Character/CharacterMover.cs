@@ -140,8 +140,10 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                     break;
             }
 
+            float speed = m_Character.Speed * (m_Character.CharacterInput.Sprint ? m_Character.SprintSpeed : 1);
+            
             m_CharacterInputMovement = Vector3.SmoothDamp(m_CharacterInputMovement,
-                m_Character.Speed * movementRelativeCamera, ref previousSpeed, 0.1f);
+                movementRelativeCamera * speed, ref previousSpeed, 0.1f);
 
             Vector3 externalMovement = Vector3.zero;
             for (int i = m_ExternalMovers.Count - 1; i >= 0; i--)
