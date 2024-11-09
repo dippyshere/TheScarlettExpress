@@ -8,22 +8,20 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TestGlow 1
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 3dfe6b928fac3a045b8aa93822a16325,
+    type: 3}
   m_Parent: {fileID: 2100000, guid: 7e5a30945e1ee9d42936e42e3a01eb9f, type: 2}
-  m_ModifiedSerializedProperties: 24
-  m_ValidKeywords:
+  m_ModifiedSerializedProperties: 16
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _ALPHAPREMULTIPLY_ON
   - _SURFACE_TYPE_TRANSPARENT
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
-  disabledShaderPasses:
-  - DepthOnly
-  - SHADOWCASTER
+  m_CustomRenderQueue: 2450
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -36,6 +34,7 @@ Material:
     - _SrcBlendAlpha: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0.7882353}
+    - _BaseColour: {r: 1, g: 1, b: 1, a: 0.7490196}
     - _Color: {r: 1, g: 1, b: 1, a: 0.7882353}
   m_BuildTextureStacks: []
 --- !u!114 &3880138740731048326
