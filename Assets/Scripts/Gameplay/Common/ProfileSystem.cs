@@ -31,6 +31,7 @@ public static class ProfileSystem
         { Variable.RestaurantTutorialDone, false },
         { Variable.DecoratingTutorialStarted, false },
         { Variable.DecoratingTutorialDone, false },
+        { Variable.UpgradeTutorialDone, false },
 
         //Decorations
         { Variable.Deco1, 0 },
@@ -314,6 +315,7 @@ public static class ProfileSystem
         RestaurantTutorialDone,
         DecoratingTutorialStarted,
         DecoratingTutorialDone,
+        UpgradeTutorialDone,
 
         //decorations
         Deco1,
