@@ -17,7 +17,7 @@ public class RestaurantTutorial : MonoBehaviour
     bool _hasCompletedRTutorial;
     public GameObject jellyStoveSelection;
 
-    public NPCConversation nowWeWait;
+    //public NPCConversation nowWeWait;
     //[SerializeField] private bool talkToEve = false;
     //[SerializeField] private bool waitingTime;
 
@@ -29,7 +29,13 @@ public class RestaurantTutorial : MonoBehaviour
     [SerializeField] bool stoveTime;
     public NPCConversation stoveTutorial;
     public GameObject tutorialChihuahua;
-    
+    public GameObject stoveBlocks;
+
+    public GameObject brownPassenger;
+    public GameObject greenPassenger;
+    public GameObject redPassenger;
+    public GameObject pinkPassenger;
+
     void Start()
     {
         _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
@@ -125,13 +131,36 @@ public class RestaurantTutorial : MonoBehaviour
     public void WaitConversation()
     {
         exclamation.SetActive(false);
-        ConversationManager.Instance.StartConversation(nowWeWait);
+        //ConversationManager.Instance.StartConversation(nowWeWait);
         exclamation2.SetActive(true);
     }
 
     public void TalkingToEve()
     {
         exclamation2.SetActive(false);
+        stoveBlocks.SetActive(false);
+        brownPassenger.tag = "Passenger";
+        greenPassenger.tag = "Passenger";
+        redPassenger.tag = "Passenger";
+        pinkPassenger.tag = "Passenger";
+
+        brownPassenger.GetComponent<ActivateDialogue>().enabled = false;
+        greenPassenger.GetComponent<ActivateDialogue>().enabled = false;
+        redPassenger.GetComponent<ActivateDialogue>().enabled = false;
+        pinkPassenger.GetComponent<ActivateDialogue>().enabled = false;
+        tutorialChihuahua.GetComponent<ActivateDialogue>().enabled = false;
+    }
+
+    public void InvokeActivateDialogue()
+    {
+        if (!_hasCompletedRTutorial)
+        {
+            brownPassenger.GetComponent<ActivateDialogue>().enabled = true;
+            greenPassenger.GetComponent<ActivateDialogue>().enabled = true;
+            redPassenger.GetComponent<ActivateDialogue>().enabled = true;
+            pinkPassenger.GetComponent<ActivateDialogue>().enabled = true;
+            tutorialChihuahua.GetComponent<ActivateDialogue>().enabled = true;
+        }
     }
 
     //private void BeginEveConversation()
