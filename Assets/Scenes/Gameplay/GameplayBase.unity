@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: 43887e4d9de05214199e8228ac604c68
-  m_OcclusionCullingData: {fileID: 36300000, guid: 4f0245aebcfee1740b8a39c0b47e17f5,
+  m_OcclusionCullingData: {fileID: 36300000, guid: f9a593bd9ad4807468ab2c29a89ebb90,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000010, guid: d5f5c2a8e102d4543aeb4ddb921c4d4f,
+  m_LightingDataAsset: {fileID: 112000012, guid: f506460c8ac86cc47aa0627abe7b31b3,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: b85415656ae8ac049b18dabf6db9063b,
     type: 2}
@@ -582,7 +582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608384528}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10636405, y: -0.000000015694058, z: 0.000000001678807, w: 0.99432725}
+  m_LocalRotation: {x: 0.106364116, y: 0.00000008100447, z: -0.000000007700421, w: 0.99432725}
   m_LocalPosition: {x: 0, y: 3.9046702, z: -4.5053363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -842,7 +842,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641390819}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10636406, y: -0.00000001569406, z: 0.0000000016788072, w: 0.99432725}
+  m_LocalRotation: {x: 0.106364116, y: 0.000000081108865, z: -0.000000008676291, w: 0.99432725}
   m_LocalPosition: {x: 0, y: 3.9046702, z: -4.5053363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
