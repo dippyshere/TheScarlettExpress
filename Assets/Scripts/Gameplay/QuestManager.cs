@@ -2,6 +2,8 @@
 
 using DialogueEditor;
 using UnityEngine;
+using Dypsloom.DypThePenguin.Scripts.Character;
+using UnityEngine.SceneManagement;
 
 #endregion
 
@@ -15,8 +17,16 @@ public class QuestManager : MonoBehaviour
     public float money;
     public NPCConversation renovatedConversation;
 
+    bool isConversing;
+    public bool deactivateOnBegin = true;
+
+    public NPCConversation hintConversation;
+    public NPCConversation hint2Conversation;
+    public NPCConversation hint3Conversation;
+
     void Start()
     {
+        //ProfileSystem.ClearProfile();
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
         BeginTutorial();
     }
@@ -35,6 +45,11 @@ public class QuestManager : MonoBehaviour
         if (money <= 0f && !_hasRenovated)
         {
             InitiateConversation();
+        }
+
+        if (isConversing && Input.GetKeyDown(KeyCode.E))
+        {
+            CheckMoney();
         }
     }
 
@@ -58,5 +73,56 @@ public class QuestManager : MonoBehaviour
     {
         _hasRenovated = true;
         ConversationManager.Instance.StartConversation(renovatedConversation);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isConversing = true;
+            Character.Instance.promptUI.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isConversing = false;
+            Character.Instance.promptUI.SetActive(false);
+        }
+    }
+
+    void CheckMoney()
+    {
+        if (money <= 75)
+        {
+            ConversationManager.Instance.StartConversation(hintConversation);
+            isConversing = false;
+            Character.Instance.promptUI.SetActive(false);
+        }
+
+        if (money >= 76)
+        {
+            if (money <= 99)
+            {
+                ConversationManager.Instance.StartConversation(hint2Conversation);
+                isConversing = false;
+                Character.Instance.promptUI.SetActive(false);
+            }
+            //ConversationManager.Instance.StartConversation(hint2Conversation);
+        }
+
+        if (money >= 100 && !_hasRenovated)
+        {
+            ConversationManager.Instance.StartConversation(hint3Conversation);
+            isConversing = false;
+            Character.Instance.promptUI.SetActive(false);
+        }
+    }
+
+    public void EnterFirstDay()
+    {
+        SceneManager.LoadScene("_RestaurantTutorial");
     }
 }
