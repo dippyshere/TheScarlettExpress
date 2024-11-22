@@ -36,7 +36,7 @@ public class Decorations : MonoBehaviour
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
         moneyText.text = "$ " + money;
 
-        int deco1 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco1);
+        int deco1 = ProfileSystem.Get<int>(ProfileSystem.Variable.FreeDeco);
         if (deco1 == 1)
         {
             deco1Lock.SetActive(true);

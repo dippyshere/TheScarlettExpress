@@ -102,7 +102,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
         //dottedLine.SetActive(false);
 
@@ -130,7 +130,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
         //dottedLine.SetActive(false);
 
@@ -158,7 +158,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
         //dottedLine.SetActive(false);
 
@@ -186,7 +186,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
         //dottedLine.SetActive(false);
 
@@ -214,7 +214,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
         //dottedLine.SetActive(false);
 
@@ -242,7 +242,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
@@ -268,7 +268,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
@@ -294,7 +294,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
@@ -320,7 +320,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
@@ -346,7 +346,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
@@ -372,7 +372,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
@@ -398,7 +398,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
@@ -424,7 +424,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
@@ -450,7 +450,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(false);
+            decorationOption15.SetActive(false);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
@@ -476,7 +476,7 @@ public class DecorationSelection : MonoBehaviour
 
         if (decorationOption15 != null)
         {
-            decorationOption6.SetActive(true);
+            decorationOption15.SetActive(true);
         }
 
         // decoration.color = new Color(1, 1, 1, 0);
