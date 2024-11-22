@@ -1308,6 +1308,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55581659}
   m_CullTransparentMesh: 1
+--- !u!1 &61689730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 61689731}
+  m_Layer: 0
+  m_Name: 1test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &61689731
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61689730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1673797163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &63298698
 GameObject:
   m_ObjectHideFlags: 0
@@ -21905,6 +21940,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5662bef6ef9c647b5acb1be378a8c6, type: 3}
+--- !u!224 &1673797163 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4912600881153771348, guid: 7be832bfe6de93842a2c21f53677d15a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5020628691968643270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1673892435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ff5662bef6ef9c647b5acb1be378a8c6,
@@ -64310,6 +64351,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 744302325849961245, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Rug $25
+      objectReference: {fileID: 0}
     - target: {fileID: 873694020125484976, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -64372,6 +64418,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7f063e1087f09274a83fd292a5092610,
         type: 3}
+    - target: {fileID: 1187425670684821184, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Painting $15
+      objectReference: {fileID: 0}
     - target: {fileID: 1320208264012443153, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_IsActive
@@ -64388,6 +64439,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1885044376717973020, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9b7cf7d928852324ca9305b8fb6dd3d4,
+        type: 3}
     - target: {fileID: 2236041993380777328, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -64437,7 +64494,7 @@ PrefabInstance:
         type: 3}
       propertyPath: deco1Lock
       value: 
-      objectReference: {fileID: 5020628691968643281}
+      objectReference: {fileID: 61689730}
     - target: {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: deco2Lock
@@ -64458,6 +64515,11 @@ PrefabInstance:
       propertyPath: deco5Lock
       value: 
       objectReference: {fileID: 5020628691968643274}
+    - target: {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: deco1Lock2
+      value: 
+      objectReference: {fileID: 61689730}
     - target: {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: deco2Lock2
@@ -64488,11 +64550,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bought
       objectReference: {fileID: 0}
+    - target: {fileID: 2619879086331273659, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2624307512900906992, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Rug $10
+      objectReference: {fileID: 0}
     - target: {fileID: 2720698715029824346, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8fb40103afb78af4a996033c51b8c821,
+      objectReference: {fileID: 21300000, guid: f3afa785ef7a4a7419c4e21623589c5b,
         type: 3}
     - target: {fileID: 3178151099761287054, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
@@ -64647,6 +64719,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -237.6925
       objectReference: {fileID: 0}
+    - target: {fileID: 7203542777788051088, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Painting Free
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311423311780085672, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Painting $20
+      objectReference: {fileID: 0}
     - target: {fileID: 7529572837016238264, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_IsActive
@@ -64697,8 +64779,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 695bc4627ce06eb41b8c2ac569f4060d,
+      objectReference: {fileID: 21300000, guid: 7dc9f60af0c900147ba62d04b690436e,
         type: 3}
+    - target: {fileID: 8616166897489470897, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780002980726273384, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8897163561083563979, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_IsActive
@@ -64715,6 +64807,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9155274407462250043, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Painting $30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7398554454207209996, guid: 7be832bfe6de93842a2c21f53677d15a, type: 3}
@@ -64723,6 +64820,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 238932942}
+    - targetCorrespondingSourceObject: {fileID: 4912600881153771348, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 61689731}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7be832bfe6de93842a2c21f53677d15a, type: 3}
 --- !u!1 &5020628691968643271 stripped
@@ -64782,12 +64883,6 @@ GameObject:
 --- !u!1 &5020628691968643280 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8780002980726273384, guid: 7be832bfe6de93842a2c21f53677d15a,
-    type: 3}
-  m_PrefabInstance: {fileID: 5020628691968643270}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5020628691968643281 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2619879086331273659, guid: 7be832bfe6de93842a2c21f53677d15a,
     type: 3}
   m_PrefabInstance: {fileID: 5020628691968643270}
   m_PrefabAsset: {fileID: 0}

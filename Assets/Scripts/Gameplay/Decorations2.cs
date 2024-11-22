@@ -103,7 +103,7 @@ public class Decorations2 : MonoBehaviour
 
     public void BuyDeco8()
     {
-        if (money >= 10)
+        if (money >= 15)
         {
             money -= 10;
             moneyText.text = "$ " + money;
@@ -118,9 +118,9 @@ public class Decorations2 : MonoBehaviour
 
     public void BuyDeco9()
     {
-        if (money >= 10)
+        if (money >= 20)
         {
-            money -= 10;
+            money -= 20;
             moneyText.text = "$ " + money;
             music.Play();
 
@@ -134,7 +134,7 @@ public class Decorations2 : MonoBehaviour
 
     public void BuyDeco10()
     {
-        if (money >= 10)
+        if (money >= 20)
         {
             money -= 10;
             moneyText.text = "$ " + money;

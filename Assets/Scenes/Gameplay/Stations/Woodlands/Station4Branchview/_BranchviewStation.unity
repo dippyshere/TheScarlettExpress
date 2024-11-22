@@ -91578,6 +91578,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 489677540221783699, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 489677540221783699, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -91595,6 +91600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Decorations4, TrainGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 744302325849961245, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Rug $10
       objectReference: {fileID: 0}
     - target: {fileID: 873694020125484976, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
@@ -91693,6 +91703,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1187425670684821184, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Painting $15
+      objectReference: {fileID: 0}
     - target: {fileID: 1306998163620049714, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -91702,6 +91717,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320208264012443153, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1320208264012443153, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
@@ -91738,7 +91758,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e8b296cb0c7e6104e907f1dbd197e172,
+      objectReference: {fileID: 21300000, guid: 3f6d485574c89dc4785b927532c315b4,
         type: 3}
     - target: {fileID: 1956901741928985596, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
@@ -91850,6 +91870,11 @@ PrefabInstance:
       propertyPath: deco6Lock2
       value: 
       objectReference: {fileID: 1849411199}
+    - target: {fileID: 2624307512900906992, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Rug $15
+      objectReference: {fileID: 0}
     - target: {fileID: 2631638817791521737, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -91859,7 +91884,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8e7c9945059414a499ea03155fb0835a,
+      objectReference: {fileID: 21300000, guid: b59216b7b818b4742ad8b3e390f12399,
         type: 3}
     - target: {fileID: 3025970038675756197, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
@@ -92116,6 +92141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6201671140194008429, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201671140194008429, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -92133,6 +92163,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654596059317432588, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6654596059317432588, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
@@ -92188,6 +92223,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203542777788051088, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Painting $10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311423311780085672, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Painting $20
       objectReference: {fileID: 0}
     - target: {fileID: 7368585836696092685, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
@@ -92323,6 +92368,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897163561083563979, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897163561083563979, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -92345,6 +92395,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 9117822362429472382, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117822362429472382, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -92352,6 +92407,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155274407462250043, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_text
+      value: Rug $15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2542611391109338319, guid: 7be832bfe6de93842a2c21f53677d15a, type: 3}
