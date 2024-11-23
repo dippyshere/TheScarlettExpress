@@ -71,6 +71,17 @@ namespace DialogueEditor
         public Sprite ChihuahuaImage;
         public Sprite EveImage;
         public Sprite SterlingImage;
+        public Sprite BrownImage;
+        public Sprite GreenImage;
+        public Sprite PinkImage;
+        public Sprite RedImage;
+        public Sprite YellowImage;
+        
+        public VoiceBank ChihuahuaVoiceBank;
+        public VoiceBank EbonyVoiceBank;
+        public VoiceBank EveVoiceBank;
+        public VoiceBank JosephVoiceBank;
+        public VoiceBank MatildaVoiceBank;
 
         // Selection options
         List<UIConversationButton> m_uiOptions;
@@ -323,6 +334,21 @@ namespace DialogueEditor
                             case SpeechNode.eCharacter.Sterling:
                                 NpcIcon.sprite = SterlingImage;
                                 break;
+                            case SpeechNode.eCharacter.Brown:
+                                NpcIcon.sprite = BrownImage;
+                                break;
+                            case SpeechNode.eCharacter.Green:
+                                NpcIcon.sprite = GreenImage;
+                                break;
+                            case SpeechNode.eCharacter.Pink:
+                                NpcIcon.sprite = PinkImage;
+                                break;
+                            case SpeechNode.eCharacter.Red:
+                                NpcIcon.sprite = RedImage;
+                                break;
+                            case SpeechNode.eCharacter.Yellow:
+                                NpcIcon.sprite = YellowImage;
+                                break;
                         }
                     }
                     else
@@ -388,6 +414,33 @@ namespace DialogueEditor
 
                 DialogueText.maxVisibleCharacters = m_scrollIndex;
                 m_scrollIndex++;
+
+                if (m_currentSpeech.VoiceBank != SpeechNode.eVoiceBank.None)
+                {
+                    int lastVisibleChar = DialogueText.maxVisibleCharacters;
+                    if (lastVisibleChar > 0)
+                    {
+                        char lastChar = DialogueText.text[lastVisibleChar - 1];
+                        VoiceBank bank = m_currentSpeech.VoiceBank switch
+                        {
+                            SpeechNode.eVoiceBank.Chihuahua => ChihuahuaVoiceBank,
+                            SpeechNode.eVoiceBank.Ebony     => EbonyVoiceBank,
+                            SpeechNode.eVoiceBank.Eve       => EveVoiceBank,
+                            SpeechNode.eVoiceBank.Joseph    => JosephVoiceBank,
+                            SpeechNode.eVoiceBank.Matilda   => MatildaVoiceBank,
+                            _                               => null
+                        };
+                        if (bank != null)
+                        {
+                            AudioClip clip = bank.GetClip(char.ToLower(lastChar));
+                            if (clip != null)
+                            {
+                                AudioPlayer.pitch = bank.pitch;
+                                AudioPlayer.PlayOneShot(clip, bank.volume);
+                            }
+                        }
+                    }
+                }
 
                 // Finished?
                 if (m_scrollIndex >= m_targetScrollTextCount)

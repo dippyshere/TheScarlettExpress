@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb27db011a47ec4fa2f2ddd50848272, type: 3}
+  m_Name: Matilda
+  m_EditorClassIdentifier: 
+  a: {fileID: 8300000, guid: 32d7f8817fd48d446a51fc4034439f55, type: 3}
+  b: {fileID: 8300000, guid: 0fb7ebf331d74864b90cb71a34d53d42, type: 3}
+  c: {fileID: 8300000, guid: 024122246edc367488039c1a1caea3ac, type: 3}
+  d: {fileID: 8300000, guid: 4f85f8e94d1239444ae8f97b422bff59, type: 3}
+  e: {fileID: 8300000, guid: 45343f56ead8ca644935f6612555330d, type: 3}
+  f: {fileID: 8300000, guid: 38ea718b1a0983e419f1f6797eac5e95, type: 3}
+  g: {fileID: 8300000, guid: 6f7973fb038fa0141a42b1ea1cc71de1, type: 3}
+  h: {fileID: 8300000, guid: 9565b53f60b719646994dcf78e888add, type: 3}
+  i: {fileID: 8300000, guid: 7d7f6e0c39656cc4d837ce8f9614f78f, type: 3}
+  j: {fileID: 8300000, guid: 1cd9d26fc38c6ba4faa55f96d7118b0d, type: 3}
+  k: {fileID: 8300000, guid: 024122246edc367488039c1a1caea3ac, type: 3}
+  l: {fileID: 8300000, guid: 8bdd9bcd107bd304c8565fea10e5c40b, type: 3}
+  m: {fileID: 8300000, guid: f092235da0b389e4696aacc4acc11e15, type: 3}
+  n: {fileID: 8300000, guid: 02ee6ea1c6f433d42940b8b7abfa3e37, type: 3}
+  o: {fileID: 8300000, guid: e1db08614514d3244b2f172eae60f7fd, type: 3}
+  p: {fileID: 8300000, guid: 3d9ac1112c81e7b4395fe384857e25a2, type: 3}
+  q: {fileID: 8300000, guid: 024122246edc367488039c1a1caea3ac, type: 3}
+  r: {fileID: 8300000, guid: fbff04935b9234f448a3de9458afb316, type: 3}
+  s: {fileID: 8300000, guid: 4bd6828ee7cdbcf49a4b0753bc3adb22, type: 3}
+  t: {fileID: 8300000, guid: d0577bf3729740b4fa7b20c721e435a0, type: 3}
+  u: {fileID: 8300000, guid: f1bde54bf57c1004b960e62f38496062, type: 3}
+  v: {fileID: 8300000, guid: 537864160a5894a4c8be26b46fd04111, type: 3}
+  w: {fileID: 8300000, guid: e81fcdb010b4e9241b7678c1ea61856a, type: 3}
+  x: {fileID: 8300000, guid: ca27f59631b4da6459e72e5203de6455, type: 3}
+  y: {fileID: 8300000, guid: 589fe3792ed3c994fbd5e0ad65bbb3fd, type: 3}
+  z: {fileID: 8300000, guid: e690a19eba401f64b8886c6272029151, type: 3}
+  volume: 1
+  pitch: 3.47
