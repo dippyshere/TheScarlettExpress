@@ -50,6 +50,6 @@ public class PauseMenuManager : MonoBehaviour
     {
         Time.timeScale = 1;
         CameraManager.Instance.SetInputModeUI();
-        SceneManager.LoadScene("_TitleScreen");
+        LoadingManager.Instance.LoadScene("_TitleScreen");
     }
 }

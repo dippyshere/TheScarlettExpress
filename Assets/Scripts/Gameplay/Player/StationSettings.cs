@@ -124,22 +124,22 @@ public class StationSettings : MonoBehaviour
         switch (destin)
         {
             case 0:
-                SceneManager.LoadScene("_StationTutorial");
+                LoadingManager.Instance.LoadScene("_StationTutorial");
                 break;
             case 1:
-                SceneManager.LoadScene("_RiversideStation");
+                LoadingManager.Instance.LoadScene("_RiversideStation");
                 break;
             case 2:
-                SceneManager.LoadScene("_FurrowoodStation");
+                LoadingManager.Instance.LoadScene("_FurrowoodStation");
                 break;
             case 3:
-                SceneManager.LoadScene("_ThampStation");
+                LoadingManager.Instance.LoadScene("_ThampStation");
                 break;
             case 4:
-                SceneManager.LoadScene("_BranchviewStation");
+                LoadingManager.Instance.LoadScene("_BranchviewStation");
                 break;
             case 5:
-                SceneManager.LoadScene("_FernValleyStation");
+                LoadingManager.Instance.LoadScene("_FernValleyStation");
                 break;
         }
 
@@ -157,6 +157,6 @@ public class StationSettings : MonoBehaviour
 
     public void LoadTarin()
     {
-        SceneManager.LoadScene("_TrainInterior");
+        LoadingManager.Instance.LoadScene("_TrainInterior");
     }
 }

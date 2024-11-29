@@ -28,7 +28,7 @@ public class SaveSlotController : MonoBehaviour
         ProfileSystem.CurrentSaveSlot = slotNumber;
         deleteButton.interactable = false;
         GetComponent<Button>().interactable = false;
-        SceneManager.LoadSceneAsync(ProfileSystem.Get<string>(ProfileSystem.Variable.LastScene));
+        LoadingManager.Instance.LoadScene(ProfileSystem.Get<string>(ProfileSystem.Variable.LastScene));
     }
     
     public void DeleteThisSlot()

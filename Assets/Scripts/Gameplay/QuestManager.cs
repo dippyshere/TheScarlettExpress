@@ -123,6 +123,6 @@ public class QuestManager : MonoBehaviour
 
     public void EnterFirstDay()
     {
-        SceneManager.LoadScene("_RestaurantTutorial");
+        LoadingManager.Instance.LoadScene("_RestaurantTutorial");
     }
 }
