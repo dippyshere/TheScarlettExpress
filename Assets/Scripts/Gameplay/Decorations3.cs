@@ -36,43 +36,43 @@ public class Decorations3 : MonoBehaviour
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
         moneyText.text = "$ " + money;
 
-        int deco13 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco13);
-        if (deco13 == 1)
+        int deco7 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco7);
+        if (deco7 == 1)
         {
             deco13Lock.SetActive(true);
             deco13Lock2.SetActive(true);
         }
 
-        int deco14 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco14);
-        if (deco14 == 1)
+        int deco8 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco8);
+        if (deco8 == 1)
         {
             deco14Lock.SetActive(true);
             deco14Lock2.SetActive(true);
         }
 
-        int deco15 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco15);
-        if (deco15 == 1)
+        int deco9 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco9);
+        if (deco9 == 1)
         {
             deco15Lock.SetActive(true);
             deco15Lock2.SetActive(true);
         }
 
-        int deco16 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco16);
-        if (deco16 == 1)
+        int deco22 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco22);
+        if (deco22 == 1)
         {
             deco16Lock.SetActive(true);
             deco16Lock2.SetActive(true);
         }
 
-        int deco17 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco17);
-        if (deco17 == 1)
+        int deco23 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco23);
+        if (deco23 == 1)
         {
             deco17Lock.SetActive(true);
             deco17Lock2.SetActive(true);
         }
 
-        int deco18 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco18);
-        if (deco18 == 1)
+        int deco24 = ProfileSystem.Get<int>(ProfileSystem.Variable.Deco24);
+        if (deco24 == 1)
         {
             deco18Lock.SetActive(true);
             deco18Lock2.SetActive(true);
@@ -92,7 +92,7 @@ public class Decorations3 : MonoBehaviour
             moneyText.text = "$ " + money;
             music.Play();
 
-            ProfileSystem.Set(ProfileSystem.Variable.Deco13, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.Deco7, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
             deco13Lock.SetActive(true);
             deco13Lock2.SetActive(true);
@@ -101,13 +101,13 @@ public class Decorations3 : MonoBehaviour
 
     public void BuyDeco14()
     {
-        if (money >= 10)
+        if (money >= 15)
         {
-            money -= 10;
+            money -= 15;
             moneyText.text = "$ " + money;
             music.Play();
 
-            ProfileSystem.Set(ProfileSystem.Variable.Deco14, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.Deco8, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
             deco14Lock.SetActive(true);
             deco14Lock2.SetActive(true);
@@ -116,13 +116,13 @@ public class Decorations3 : MonoBehaviour
 
     public void BuyDeco15()
     {
-        if (money >= 10)
+        if (money >= 20)
         {
-            money -= 10;
+            money -= 20;
             moneyText.text = "$ " + money;
             music.Play();
 
-            ProfileSystem.Set(ProfileSystem.Variable.Deco15, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.Deco9, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
             deco15Lock.SetActive(true);
             deco15Lock2.SetActive(true);
@@ -136,7 +136,7 @@ public class Decorations3 : MonoBehaviour
             moneyText.text = "$ " + money;
             music.Play();
 
-            ProfileSystem.Set(ProfileSystem.Variable.Deco16, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.Deco22, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
             deco16Lock.SetActive(true);
             deco16Lock2.SetActive(true);
@@ -151,7 +151,7 @@ public class Decorations3 : MonoBehaviour
             moneyText.text = "$ " + money;
             music.Play();
 
-            ProfileSystem.Set(ProfileSystem.Variable.Deco17, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.Deco23, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
             deco17Lock.SetActive(true);
             deco17Lock2.SetActive(true);
@@ -166,7 +166,7 @@ public class Decorations3 : MonoBehaviour
             moneyText.text = "$ " + money;
             music.Play();
 
-            ProfileSystem.Set(ProfileSystem.Variable.Deco18, 1);
+            ProfileSystem.Set(ProfileSystem.Variable.Deco24, 1);
             ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
             deco18Lock.SetActive(true);
             deco18Lock2.SetActive(true);

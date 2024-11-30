@@ -98,6 +98,138 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay/Onboarding/TutorialCommon.unity
     guid: 638a9d928604356449da6c20a41521b0
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station1Daaa/_Daaa.unity
+    guid: 67e85cfb7cc789442b51d485023e021e
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station2Dbbb/_Dbbb.unity
+    guid: 7a62a365dd6f61941aa373dd93069b12
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station3Dccc/_Dccc.unity
+    guid: caf7dd1b3ae36c44c9585281055f8ccd
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station4Dddd/_Dddd.unity
+    guid: e811f2233ef11d241ac1bb3c551d1d37
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station5Deee/_Deee.unity
+    guid: 4ed7a36e1bdc68049ab940a5bbf290e7
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station1Jaaa/_Jaaa.unity
+    guid: 8515dffdc9f21cd48b9443450d634c50
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station4Jddd/_Jaddd.unity
+    guid: 1b038af0ba2b1014fa41f8ab077910d9
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station2Jbbb/_Jbbb.unity
+    guid: a44a30f88f9e71943952671f2a11ab7f
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station3Jccc/_Jccc.unity
+    guid: cb195bf12d878f842975af4f26c0fb6f
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station5Jeee/_Jeee.unity
+    guid: a25008ddbe7238e44acc03c8c61dd33d
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station1Saaa/_Saaa.unity
+    guid: 4c73e40e81482c340bab8d99353189a1
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station2Sbbb/_Sbbb.unity
+    guid: 7da2f2bfbf3cd2740a3ccf70bfcec614
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station3Sccc/_Sccc.unity
+    guid: a7823f18649f70c498d336595f50b60e
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station4Sddd/_Sddd.unity
+    guid: f96ebd51cb9c9ac4381f827b70d1269e
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station5Seee/_Seee.unity
+    guid: bb4dc31e3de8a6f4c8310204db195a8f
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station1Waaa/_Waaa.unity
+    guid: c08552fb05db94d41827ce7ceb2d97a8
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station2Wbbb/_Wbbb.unity
+    guid: 5d5c6f787132bab44a24d66baa5c51a1
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station3Wccc/_Wccc.unity
+    guid: baf98619ed1d96541bc74586b9c3382c
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station4Wddd/_Wddd.unity
+    guid: 17f42dee21ce5544884e5b2d5a242295
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station5Weee/_Weee.unity
+    guid: 37a08b29212e61649b23da6caf42b1ba
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Environment/Desert/BackgroundEnvironmentDesert.unity
+    guid: 614d6cc5feadfda47966f93ee5951782
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Environment/Jungle/BackgroundEnvironmentJungle.unity
+    guid: 589a45623cbcec14aafc53f5e75044ee
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Environment/Snow/BackgroundEnvironmentSnow.unity
+    guid: 71e425e17c15eb34c9b3410df779e6c2
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Environment/Wetlands/BackgroundEnvironmentWetlands.unity
+    guid: 09d8c72176f3ad5458dab544874beae1
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station1Daaa/DaaaBackground.unity
+    guid: 2a65ba4202634a14ba06d9384f90b972
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station2Dbbb/DbbbBackground.unity
+    guid: eb4ada960982f2945a956db2d1a2bf1b
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station3Dccc/DcccBackground.unity
+    guid: e4841424967afd449ab726790c6c8008
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station4Dddd/DdddBackground.unity
+    guid: d9e1fd622d720154488b00c22a6bf1b5
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Desert/Station5Deee/DeeeBackground.unity
+    guid: cb2eb887a0efcad45bbc1e0c9d17de0b
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station1Jaaa/JaaaBackground.unity
+    guid: ab04804d0ee8d6a48b2b8ecc9d432959
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station2Jbbb/JbbbBackground.unity
+    guid: 86818e623fbd7694087c72f339549848
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station3Jccc/JcccBackground.unity
+    guid: e111d7a47a157b342b20b080c2a3f254
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station4Jddd/JdddBackground.unity
+    guid: 983a320c27f07c24594ba2a28eebd754
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Jungle/Station5Jeee/JeeeBackground.unity
+    guid: 3cddd564a2a2a7a4ba05f79d88552896
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station1Saaa/SaaaBackground.unity
+    guid: 3f1188fdfbb476e4da71d40d84db35a9
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station2Sbbb/SbbbBackground.unity
+    guid: e5539592d4ad47c41a98b53b3621bff9
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station3Sccc/ScccBackground.unity
+    guid: 885505f91e774e746a5b37e03cbd713f
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station4Sddd/SdddBackground.unity
+    guid: 0a9b65f2acfa21c4c9288bcef827c183
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Snow/Station5Seee/SeeeBackground.unity
+    guid: b5bbf26e6a392ff45ba2f68772465e15
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station1Waaa/WaaaBackground.unity
+    guid: f83ae95cc1319b04b84dc0fe2821ea2d
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station2Wbbb/WbbbBackground.unity
+    guid: 693697f263b4a1e409c49c9de8eacd16
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station3Wccc/WcccBackground.unity
+    guid: aefe24a9c964fef428837ce9713ef164
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station4Wddd/WdddBackground.unity
+    guid: 44363cead4dda4d4f85bb129812fd439
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Stations/Wetlands/Station5Weee/WeeeBackground.unity
+    guid: 4fef4ac11747d7f418e2b45b43cb2738
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f1836327ca37e874290d8a5937ab3995,
       type: 2}

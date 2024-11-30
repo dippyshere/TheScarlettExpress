@@ -1,5 +1,6 @@
 #region
 
+using DialogueEditor;
 using UnityEngine;
 
 #endregion
@@ -10,6 +11,13 @@ public class Eve : MonoBehaviour
     public GameObject panelDialogue;
     public GameObject panelOptions;
     public GameObject shopEve;
+
+    public NPCConversation chihuahuaDialogue;
+
+    private void Start()
+    {
+        ConversationManager.Instance.StartConversation(chihuahuaDialogue);
+    }
 
     public void ShowPainting()
     {

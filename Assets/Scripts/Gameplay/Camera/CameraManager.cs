@@ -21,10 +21,13 @@ public class CameraManager : MonoBehaviour
         Instance = this;
     }
     
-    public void SetInputModeUI(bool canClipboard = false)
+    public void SetInputModeUI(bool canClipboard = false, bool affectCursor = true)
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        if (affectCursor)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
         cinemachineInputAxisController.enabled = false;
         if (Character.Instance != null)
             Character.Instance.m_MovementMode = MovementMode.Decorating;
@@ -32,10 +35,13 @@ public class CameraManager : MonoBehaviour
             ClipboardManager.Instance.canClipboard = canClipboard;
     }
     
-    public void SetInputModeGameplay()
+    public void SetInputModeGameplay(bool affectCursor = true)
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (affectCursor)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         cinemachineInputAxisController.enabled = true;
         if (Character.Instance != null)
             Character.Instance.m_MovementMode = MovementMode.Free;

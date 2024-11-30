@@ -32,6 +32,16 @@ namespace DialogueEditor
         SerializedProperty ChihuahuaImageProperty;
         SerializedProperty EveImageProperty;
         SerializedProperty SterlingImageProperty;
+        SerializedProperty BrownImageProperty;
+        SerializedProperty GreenImageProperty;
+        SerializedProperty PinkImageProperty;
+        SerializedProperty RedImageProperty;
+        SerializedProperty YellowImageProperty;
+        SerializedProperty ChihuahuaVoiceBankProperty;
+        SerializedProperty EbonyVoiceBankProperty;
+        SerializedProperty EveVoiceBankProperty;
+        SerializedProperty JosephVoiceBankProperty;
+        SerializedProperty MatildaVoiceBankProperty;
 
         void OnEnable()
         {
@@ -45,6 +55,16 @@ namespace DialogueEditor
             ChihuahuaImageProperty = serializedObject.FindProperty("ChihuahuaImage");
             EveImageProperty = serializedObject.FindProperty("EveImage");
             SterlingImageProperty = serializedObject.FindProperty("SterlingImage");
+            BrownImageProperty = serializedObject.FindProperty("BrownImage");
+            GreenImageProperty = serializedObject.FindProperty("GreenImage");
+            PinkImageProperty = serializedObject.FindProperty("PinkImage");
+            RedImageProperty = serializedObject.FindProperty("RedImage");
+            YellowImageProperty = serializedObject.FindProperty("YellowImage");
+            ChihuahuaVoiceBankProperty = serializedObject.FindProperty("ChihuahuaVoiceBank");
+            EbonyVoiceBankProperty = serializedObject.FindProperty("EbonyVoiceBank");
+            EveVoiceBankProperty = serializedObject.FindProperty("EveVoiceBank");
+            JosephVoiceBankProperty = serializedObject.FindProperty("JosephVoiceBank");
+            MatildaVoiceBankProperty = serializedObject.FindProperty("MatildaVoiceBank");
         }
 
         public override void OnInspectorGUI()
@@ -93,6 +113,21 @@ namespace DialogueEditor
             EditorGUILayout.PropertyField(ChihuahuaImageProperty);
             EditorGUILayout.PropertyField(EveImageProperty);
             EditorGUILayout.PropertyField(SterlingImageProperty);
+            EditorGUILayout.PropertyField(BrownImageProperty);
+            EditorGUILayout.PropertyField(GreenImageProperty);
+            EditorGUILayout.PropertyField(PinkImageProperty);
+            EditorGUILayout.PropertyField(RedImageProperty);
+            EditorGUILayout.PropertyField(YellowImageProperty);
+            
+            EditorGUILayout.Space();
+            
+            // voice bank defaults
+            GUILayout.Label("Voice Bank Defaults", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(ChihuahuaVoiceBankProperty);
+            EditorGUILayout.PropertyField(EbonyVoiceBankProperty);
+            EditorGUILayout.PropertyField(EveVoiceBankProperty);
+            EditorGUILayout.PropertyField(JosephVoiceBankProperty);
+            EditorGUILayout.PropertyField(MatildaVoiceBankProperty);
 
             // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
             serializedObject.ApplyModifiedProperties();

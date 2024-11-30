@@ -37,6 +37,11 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         {
             get { return Input.GetButtonDown("Jump"); }
         }
+        
+        public bool Sprint
+        {
+            get { return Input.GetKey(KeyCode.LeftShift); }
+        }
 
         public bool Interact
         {

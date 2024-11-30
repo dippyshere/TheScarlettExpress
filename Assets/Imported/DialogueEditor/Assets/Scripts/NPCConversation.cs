@@ -443,6 +443,7 @@ namespace DialogueEditor
             speech.TMPFont = editableNode.TMPFont;
             speech.Icon = editableNode.Icon;
             speech.CharacterImage = editableNode.CharacterIcon;
+            speech.VoiceBank = editableNode.VoiceBank;
             speech.Audio = editableNode.Audio;
             speech.Volume = editableNode.Volume;
 

@@ -44,6 +44,10 @@ public class PassengerManager : MonoBehaviour
 
     public void SpawnPassenger()
     {
+        if (!spawnPassengers)
+        {
+            return;
+        }
         foreach (Transform spawnPoint in spawnPoints)
         {
             if (spawnPoint.gameObject.activeSelf)
@@ -137,6 +141,11 @@ public class PassengerManager : MonoBehaviour
         {
             passengers.Remove(passenger);
         }
+
+        if (ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination) == 0)
+        {
+            owedMoney += 30;
+        }
         GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(owedMoney);
     }
 
@@ -157,6 +166,10 @@ public class PassengerManager : MonoBehaviour
             {
                 if (spawnPoints.IndexOf(spawnPoint) == Convert.ToInt32(key))
                 {
+                    if (!spawnPoint.gameObject.activeSelf)
+                    {
+                        continue;
+                    }
                     GameObject passengerPrefab = passengerPrefabs[Convert.ToInt32(_passengerData[key]["passengerType"])];
                     GameObject newPassenger = Instantiate(passengerPrefab, spawnPoint.position, spawnPoint.rotation);
                     passengers.Add(newPassenger.GetComponent<PassengerController>());

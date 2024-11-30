@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: eye
-    second: {fileID: 2100000, guid: 113fd24b97e560349a6c418080e9e22c, type: 2}
+    second: {fileID: 2100000, guid: cef0ace19ff1e9048b31efbea6f1afdf, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: fur
-    second: {fileID: 2100000, guid: cc8529ddd366e414aa71d25274d3f6b2, type: 2}
+    second: {fileID: 2100000, guid: 90dda0d423399d1448e1244847277032, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mouth
-    second: {fileID: 2100000, guid: 6e20fd8c3dbb0584ea7898278e71f9c0, type: 2}
+    second: {fileID: 2100000, guid: 3267d20869732cf4d96244e1b9463012, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: shirt
-    second: {fileID: 2100000, guid: 6b12080947b664347b2583e8a1fbcf84, type: 2}
+    second: {fileID: 2100000, guid: 9a683bf550a397249ba9d96fae1166c2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

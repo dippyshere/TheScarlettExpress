@@ -26,6 +26,8 @@ public class ClipboardManager : MonoBehaviour
 
     [SerializeField] GameObject mainMenuUI;
 
+    [SerializeField] GameObject tabButton;
+
     [SerializeField] AudioSource music;
     [SerializeField] GameObject passengerUI;
     [SerializeField] GameObject passengerUIPrefab;
@@ -66,6 +68,7 @@ public class ClipboardManager : MonoBehaviour
                     music.Play();
                     _isClipboardActive = true;
                     clipboardUI.SetActive(true);
+                    tabButton.SetActive(false);
                     //PopulatePassengersUI();
                     CameraManager.Instance.SetInputModeUI(true);
                     if (TrainGameAnalytics.instance != null)
@@ -79,6 +82,7 @@ public class ClipboardManager : MonoBehaviour
                     music.Play();
                     _isClipboardActive = false;
                     clipboardUI.SetActive(false);
+                    tabButton.SetActive(true);
                     CameraManager.Instance.SetInputModeGameplay();
                     if (TrainGameAnalytics.instance != null)
                     {

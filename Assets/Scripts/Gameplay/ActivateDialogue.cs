@@ -75,11 +75,11 @@ public class ActivateDialogue : MonoBehaviour
 
     public void EnterTutorial()
     {
-        SceneManager.LoadScene("_TrainTutorial");
+        LoadingManager.Instance.LoadScene("_TrainTutorial");
     }
 
     public void EnterFirstDay()
     {
-        SceneManager.LoadScene("_RestaurantTutorial");
+        LoadingManager.Instance.LoadScene("_RestaurantTutorial");
     }
 }

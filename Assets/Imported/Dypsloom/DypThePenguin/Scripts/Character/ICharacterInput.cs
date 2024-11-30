@@ -15,5 +15,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         float Vertical { get; }
         bool Jump { get; }
         bool Interact { get; }
+        bool Sprint { get; }
     }
 }

@@ -24,7 +24,12 @@ public class Pickup : MonoBehaviour
     [Header("feeding temporary awawawawa")]
     public GameObject pendingPassenger;
 
+    public bool pendingEve;
+
     public GameObject pickupPrompt;
+
+    bool eveQuestStarted;
+    bool hasRetrievedSoup;
 
     void Awake()
     {
@@ -35,6 +40,9 @@ public class Pickup : MonoBehaviour
     {
         canPickup = false;
         hasItem = false;
+
+        hasRetrievedSoup = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedBroccoliSoup);
+        eveQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestStarted);
     }
 
     void Update()
@@ -69,6 +77,11 @@ public class Pickup : MonoBehaviour
                 objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
             }
 
+            if (pendingEve)
+            {
+                Destroy(objectIWantToPickup);
+            }
+
             if (TrainGameAnalytics.instance != null)
             {
                 TrainGameAnalytics.instance.RecordGameEvent("drop",
@@ -76,11 +89,18 @@ public class Pickup : MonoBehaviour
             }
         }
 
+        hasRetrievedSoup = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedBroccoliSoup);
+        eveQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestStarted);
+
         // pickup
         if (canPickup)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                if (objectIWantToPickup.GetComponent<FoodManager>() && SpecialPassengerQuests.Instance != null)
+                {
+                    SpecialPassengerQuests.Instance.lastFoodPickedUp = objectIWantToPickup.GetComponent<FoodManager>().foodType;
+                }
                 objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = true;
                 objectIWantToPickup.transform.position = myHands.transform.position;
                 objectIWantToPickup.transform.parent = myHands.transform;
@@ -91,6 +111,12 @@ public class Pickup : MonoBehaviour
                 {
                     TrainGameAnalytics.instance.RecordGameEvent("pickup",
                         new Dictionary<string, object> { { "location", gameObject.transform.position } });
+                }
+
+                if (eveQuestStarted)
+                {
+                    hasRetrievedSoup = true;
+                    ProfileSystem.Set(ProfileSystem.Variable.RetrievedBroccoliSoup, true);
                 }
             }
         }
@@ -114,6 +140,11 @@ public class Pickup : MonoBehaviour
             {
                 pendingPassenger = other.gameObject;
             }
+        }
+                
+        if (other.gameObject.GetComponent<SpecialPassengerQuests>())
+        {
+            pendingEve = true;
         }
 
         if (other.gameObject.CompareTag("Eve"))
@@ -146,6 +177,11 @@ public class Pickup : MonoBehaviour
         if (other.gameObject.CompareTag("Passenger") && pendingPassenger == other.gameObject)
         {
             pendingPassenger = null;
+        }
+        
+        if (other.gameObject.GetComponent<SpecialPassengerQuests>())
+        {
+            pendingEve = false;
         }
 
         if (other.gameObject.CompareTag("Eve"))

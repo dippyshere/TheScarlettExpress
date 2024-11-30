@@ -31,6 +31,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
         [Tooltip("The character speed in units/second."), SerializeField]
         protected float m_Speed = 1f;
+        
+        [Tooltip("The character sprinting speed in units/second."), SerializeField]
+        protected float m_SprintSpeed = 2f;
 
         [Tooltip("The gravity."), SerializeField]
         protected float m_Gravity = 1f;
@@ -83,6 +86,11 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         public float Speed
         {
             get { return m_Speed; }
+        }
+        
+        public float SprintSpeed
+        {
+            get { return m_SprintSpeed; }
         }
 
         public float JumpForce
