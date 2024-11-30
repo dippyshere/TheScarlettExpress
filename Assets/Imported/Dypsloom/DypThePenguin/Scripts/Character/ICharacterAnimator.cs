@@ -1,16 +1,13 @@
-﻿/// ---------------------------------------------
-/// Dyp Penguin Character | Dypsloom
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
+﻿#region
+
+using Dypsloom.DypThePenguin.Scripts.Interactions;
+
+#endregion
 
 namespace Dypsloom.DypThePenguin.Scripts.Character
 {
-    using Dypsloom.DypThePenguin.Scripts.Damage;
-    using Dypsloom.DypThePenguin.Scripts.Interactions;
-
     /// <summary>
-    /// Interface for the character animator.
+    ///     Interface for the character animator.
     /// </summary>
     public interface ICharacterAnimator
     {
@@ -19,7 +16,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         void EquipWeapon(int item);
         void UnequipWeapon();
         void Die(bool dead);
-        void Damaged(Damage damage);
+        void Damaged(Damage.Damage damage);
         void Interact(IInteractable interactable);
     }
 }

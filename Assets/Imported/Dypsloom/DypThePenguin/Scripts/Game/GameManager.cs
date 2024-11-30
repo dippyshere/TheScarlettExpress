@@ -1,88 +1,41 @@
-﻿/// ---------------------------------------------
-/// Dyp The Penguin Character | Dypsloom
-/// Copyright (c) Dyplsoom. All Rights Reserved.
-/// https://www.dypsloom.com
-/// ---------------------------------------------
+﻿#region
+
+using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+#endregion
 
 namespace Dypsloom.DypThePenguin.Scripts.Game
 {
-    using System;
-    using UnityEngine;
-    using UnityEngine.SceneManagement;
-
     /// <summary>
-    /// The game manager.
+    ///     The game manager.
     /// </summary>
     public class GameManager : MonoBehaviour
     {
-    #region Singleton Setup
-    
-        private static GameManager s_Instance;
-
-        public static GameManager Instance
-        {
-            get
-            {
-                if (s_Instance != null) { return s_Instance; }
-
-                s_Instance = FindObjectOfType<GameManager>();
-                if (s_Instance == null) {
-                    s_Instance = new GameObject("Game Manager").AddComponent<GameManager>(); 
-                }
-
-                return s_Instance;
-            }
-        }
-
-        /// <summary>
-        /// Set up the static instance.
-        /// </summary>
-        protected void OnEnable()
-        {
-            if (s_Instance == null) {
-                s_Instance = this;
-                SceneManager.sceneUnloaded -= SceneUnloaded;
-            }
-        }
-
-        /// <summary>
-        /// Remove the static instance when unloaded.
-        /// </summary>
-        private void SceneUnloaded(Scene scene)
-        {
-            s_Instance = null;
-            SceneManager.sceneUnloaded -= SceneUnloaded;
-        }
-
-        /// <summary>
-        /// Check for scene unload. 
-        /// </summary>
-        private void OnDisable()
-        {
-            SceneManager.sceneUnloaded += SceneUnloaded;
-        }
-
-    #endregion
-
         [SerializeField] protected GameObject m_PauseMenu;
 
         protected int m_EnemyKillCount;
         protected bool m_IsPaused;
-        public event Action<int> EnemyDiedE;
-        
-        public int EnemyKillCount => m_EnemyKillCount;
+
+        public int EnemyKillCount
+        {
+            get { return m_EnemyKillCount; }
+        }
 
         /// <summary>
-        /// Initialize component.
+        ///     Initialize component.
         /// </summary>
-        private void Awake()
+        void Awake()
         {
             m_IsPaused = false;
             m_PauseMenu?.SetActive(false);
         }
 
+        public event Action<int> EnemyDiedE;
+
         /// <summary>
-        /// An enemy died.
+        ///     An enemy died.
         /// </summary>
         public void EnemyDied()
         {
@@ -91,15 +44,22 @@ namespace Dypsloom.DypThePenguin.Scripts.Game
         }
 
         /// <summary>
-        /// toggle Pause.
+        ///     toggle Pause.
         /// </summary>
         public void TogglePause()
         {
-            if (m_IsPaused) { Resume(); } else { Pause(); }
+            if (m_IsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
-        
+
         /// <summary>
-        /// Pause game.
+        ///     Pause game.
         /// </summary>
         public void Pause()
         {
@@ -107,9 +67,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Game
             m_PauseMenu.SetActive(true);
             m_IsPaused = true;
         }
-        
+
         /// <summary>
-        /// Resume game.
+        ///     Resume game.
         /// </summary>
         public void Resume()
         {
@@ -117,14 +77,67 @@ namespace Dypsloom.DypThePenguin.Scripts.Game
             m_PauseMenu.SetActive(false);
             m_IsPaused = false;
         }
-        
+
         /// <summary>
-        /// Quit game.
+        ///     Quit game.
         /// </summary>
         public void Quit()
         {
             Application.Quit();
         }
+
+        #region Singleton Setup
+
+        static GameManager s_Instance;
+
+        public static GameManager Instance
+        {
+            get
+            {
+                if (s_Instance != null)
+                {
+                    return s_Instance;
+                }
+
+                s_Instance = FindObjectOfType<GameManager>();
+                if (s_Instance == null)
+                {
+                    s_Instance = new GameObject("Game Manager").AddComponent<GameManager>();
+                }
+
+                return s_Instance;
+            }
+        }
+
+        /// <summary>
+        ///     Set up the static instance.
+        /// </summary>
+        protected void OnEnable()
+        {
+            if (s_Instance == null)
+            {
+                s_Instance = this;
+                SceneManager.sceneUnloaded -= SceneUnloaded;
+            }
+        }
+
+        /// <summary>
+        ///     Remove the static instance when unloaded.
+        /// </summary>
+        void SceneUnloaded(Scene scene)
+        {
+            s_Instance = null;
+            SceneManager.sceneUnloaded -= SceneUnloaded;
+        }
+
+        /// <summary>
+        ///     Check for scene unload.
+        /// </summary>
+        void OnDisable()
+        {
+            SceneManager.sceneUnloaded += SceneUnloaded;
+        }
+
+        #endregion
     }
 }
-
