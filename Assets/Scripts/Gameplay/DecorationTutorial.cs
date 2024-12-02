@@ -14,6 +14,7 @@ public class DecorationTutorial : MonoBehaviour
     public GameObject clipboardUI;
     public GameObject upgradesTab;
     public GameObject mainTab;
+    public GameObject upgradeBlocks;
 
     //decoration dialogue
     public NPCConversation beginDecoratingTutorial;
@@ -29,7 +30,7 @@ public class DecorationTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ProfileSystem.ClearProfile();
+        ProfileSystem.ClearProfile();
         if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialStarted) 
             && !ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {
@@ -37,6 +38,11 @@ public class DecorationTutorial : MonoBehaviour
         }
 
         _money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            upgradeBlocks.SetActive(false);
+        }
     }
 
     private void Update()
@@ -46,6 +52,11 @@ public class DecorationTutorial : MonoBehaviour
         if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {
             otherTableBlocks.SetActive(true);
+        }
+
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            upgradeBlocks.SetActive(false);
         }
     }
 
@@ -73,7 +84,12 @@ public class DecorationTutorial : MonoBehaviour
 
     public void ChihuahuaGiveMoney()
     {
-        _money += 25;
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            _money += 25;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, _money);
+        }
+        //_money += 25;
     }
 
     public void UpgradedChair()
