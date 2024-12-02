@@ -30,7 +30,7 @@ public class DecorationTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ProfileSystem.ClearProfile();
+        //ProfileSystem.ClearProfile();
         if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialStarted) 
             && !ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {

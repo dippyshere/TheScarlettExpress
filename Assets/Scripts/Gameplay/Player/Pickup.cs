@@ -25,11 +25,15 @@ public class Pickup : MonoBehaviour
     public GameObject pendingPassenger;
 
     public bool pendingEve;
+    public bool pendingBanks;
 
     public GameObject pickupPrompt;
 
     bool eveQuestStarted;
     bool hasRetrievedSoup;
+
+    bool banksQuestStarted;
+    bool hasRetrievedSalad;
 
     void Awake()
     {
@@ -43,6 +47,9 @@ public class Pickup : MonoBehaviour
 
         hasRetrievedSoup = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedBroccoliSoup);
         eveQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestStarted);
+
+        hasRetrievedSalad = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedYellowSpringSalad);
+        banksQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestStarted);
     }
 
     void Update()
@@ -82,6 +89,11 @@ public class Pickup : MonoBehaviour
                 Destroy(objectIWantToPickup);
             }
 
+            if (pendingBanks)
+            {
+                Destroy(objectIWantToPickup);
+            }
+
             if (TrainGameAnalytics.instance != null)
             {
                 TrainGameAnalytics.instance.RecordGameEvent("drop",
@@ -92,14 +104,21 @@ public class Pickup : MonoBehaviour
         hasRetrievedSoup = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedBroccoliSoup);
         eveQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestStarted);
 
+        hasRetrievedSalad = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedYellowSpringSalad);
+        banksQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestStarted);
+
         // pickup
         if (canPickup)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (objectIWantToPickup.GetComponent<FoodManager>() && SpecialPassengerQuests.Instance != null)
+                if (objectIWantToPickup.GetComponent<FoodManager>() && EveSpecialQuests.Instance != null)
                 {
-                    SpecialPassengerQuests.Instance.lastFoodPickedUp = objectIWantToPickup.GetComponent<FoodManager>().foodType;
+                    EveSpecialQuests.Instance.lastFoodPickedUp = objectIWantToPickup.GetComponent<FoodManager>().foodType;
+                }
+                if (objectIWantToPickup.GetComponent<FoodManager>() && BanksSpecialQuests.Instance != null)
+                {
+                    BanksSpecialQuests.Instance.lastFoodPickedUp = objectIWantToPickup.GetComponent<FoodManager>().foodType;
                 }
                 objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = true;
                 objectIWantToPickup.transform.position = myHands.transform.position;
@@ -117,6 +136,12 @@ public class Pickup : MonoBehaviour
                 {
                     hasRetrievedSoup = true;
                     ProfileSystem.Set(ProfileSystem.Variable.RetrievedBroccoliSoup, true);
+                }
+
+                if (banksQuestStarted)
+                {
+                    hasRetrievedSalad = true;
+                    ProfileSystem.Set(ProfileSystem.Variable.RetrievedYellowSpringSalad, true);
                 }
             }
         }
@@ -142,9 +167,14 @@ public class Pickup : MonoBehaviour
             }
         }
                 
-        if (other.gameObject.GetComponent<SpecialPassengerQuests>())
+        if (other.gameObject.GetComponent<EveSpecialQuests>())
         {
             pendingEve = true;
+        }
+
+        if (other.gameObject.GetComponent<BanksSpecialQuests>())
+        {
+            pendingBanks = true;
         }
 
         if (other.gameObject.CompareTag("Eve"))
@@ -154,6 +184,11 @@ public class Pickup : MonoBehaviour
             {
                 MapTest.Instance.isEve = true;
             }
+        }
+
+        if (other.gameObject.CompareTag("Banks"))
+        {
+            pickupPrompt.SetActive(true);
         }
 
         if (other.gameObject.CompareTag("Map"))
@@ -179,9 +214,14 @@ public class Pickup : MonoBehaviour
             pendingPassenger = null;
         }
         
-        if (other.gameObject.GetComponent<SpecialPassengerQuests>())
+        if (other.gameObject.GetComponent<EveSpecialQuests>())
         {
             pendingEve = false;
+        }
+
+        if (other.gameObject.GetComponent<BanksSpecialQuests>())
+        {
+            pendingBanks = false;
         }
 
         if (other.gameObject.CompareTag("Eve"))
@@ -191,6 +231,11 @@ public class Pickup : MonoBehaviour
             {
                 MapTest.Instance.isEve = false;
             }
+        }
+
+        if (other.gameObject.CompareTag("Banks"))
+        {
+            pickupPrompt.SetActive(false);
         }
 
         if (other.gameObject.CompareTag("Map"))

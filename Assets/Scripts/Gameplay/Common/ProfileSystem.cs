@@ -32,6 +32,9 @@ public static class ProfileSystem
         { Variable.DecoratingTutorialStarted, false },
         { Variable.DecoratingTutorialDone, false },
         { Variable.UpgradeTutorialDone, false },
+        { Variable.HasBeenToFurrowood, false },
+        { Variable.AcquiredTheBanks, false },
+        { Variable.BanksHomed, false },
 
         //Decorations
         { Variable.Deco1, 0 },
@@ -89,7 +92,12 @@ public static class ProfileSystem
         //Eve Quest
         { Variable.EveQuestStarted, false },
         { Variable.RetrievedBroccoliSoup, false },
-        { Variable.EveQuestFinished, false }
+        { Variable.EveQuestFinished, false },
+
+        //Banks Quest
+        { Variable.BanksQuestStarted,  false },
+        { Variable.RetrievedYellowSpringSalad, false },
+        { Variable.BanksQuestFinished,  false }
     };
 
     static ProfileSystem()
@@ -370,6 +378,14 @@ public static class ProfileSystem
         //Eve Quest
         EveQuestStarted,
         RetrievedBroccoliSoup,
-        EveQuestFinished
+        EveQuestFinished,
+
+        //Banks Quest
+        HasBeenToFurrowood,
+        AcquiredTheBanks,
+        BanksHomed,
+        RetrievedYellowSpringSalad,
+        BanksQuestStarted,
+        BanksQuestFinished
     }
 }
