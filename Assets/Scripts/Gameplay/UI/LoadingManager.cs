@@ -42,7 +42,8 @@ public class LoadingManager : MonoBehaviour
             CameraManager.Instance.SetInputModeUI(false, false);
         }
         yield return null;
-        yield return new WaitForSeconds(1.035f);
+        yield return new WaitForSecondsRealtime(1.035f);
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
     

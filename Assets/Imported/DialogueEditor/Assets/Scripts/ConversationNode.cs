@@ -68,7 +68,8 @@ namespace DialogueEditor
             Green,
             Pink,
             Red,
-            Yellow
+            Yellow,
+            Joseph
         }
         
         public enum eVoiceBank

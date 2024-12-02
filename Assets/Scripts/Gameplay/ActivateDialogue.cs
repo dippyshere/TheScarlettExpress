@@ -53,6 +53,7 @@ public class ActivateDialogue : MonoBehaviour
         {
             ConversationManager.Instance.StartConversation(conversation);
         }
+        isConversing = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -71,6 +72,7 @@ public class ActivateDialogue : MonoBehaviour
     {
         Character.Instance.promptUI.SetActive(true);
         ConversationManager.OnConversationEnded -= ReEnablePromptOnEnd;
+        isConversing = true;
     }
 
     public void EnterTutorial()

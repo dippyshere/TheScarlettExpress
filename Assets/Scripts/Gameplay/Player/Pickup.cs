@@ -55,7 +55,7 @@ public class Pickup : MonoBehaviour
     void Update()
     {
         // drop
-        if (Input.GetKeyDown(KeyCode.E) && hasItem)
+        if (Input.GetKeyDown(KeyCode.E) && hasItem && objectIWantToPickup != null)
         {
             objectIWantToPickup.transform.parent = null;
             hasItem = false;
@@ -87,11 +87,19 @@ public class Pickup : MonoBehaviour
             if (pendingEve)
             {
                 Destroy(objectIWantToPickup);
+                objectIWantToPickup = null;
+                canPickup = false;
+                hasItem = false;
+                pickupPrompt.SetActive(false);
             }
 
             if (pendingBanks)
             {
                 Destroy(objectIWantToPickup);
+                objectIWantToPickup = null;
+                canPickup = false;
+                hasItem = false;
+                pickupPrompt.SetActive(false);
             }
 
             if (TrainGameAnalytics.instance != null)
@@ -108,7 +116,7 @@ public class Pickup : MonoBehaviour
         banksQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestStarted);
 
         // pickup
-        if (canPickup)
+        if (canPickup && objectIWantToPickup != null)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
