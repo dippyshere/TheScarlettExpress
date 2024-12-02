@@ -33,7 +33,7 @@ public class BanksSpecialQuests : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ProfileSystem.ClearProfile();
+        //ProfileSystem.ClearProfile();
 
         hasRetrievedSalad = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedYellowSpringSalad);
         banksQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestStarted);
