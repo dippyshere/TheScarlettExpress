@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: c95d0b3155439d84bae8e8001ea87a12
-  m_OcclusionCullingData: {fileID: 36300000, guid: f9a593bd9ad4807468ab2c29a89ebb90,
+  m_OcclusionCullingData: {fileID: 36300000, guid: 7a86985190e302741ad843020983eea9,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -224,7 +224,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 3000
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.1e-44, z: 3.2216e-41, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 1e-44, z: 6.857e-42, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

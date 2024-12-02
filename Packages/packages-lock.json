@@ -22,7 +22,7 @@
         "com.unity.ugui": "1.0.0",
         "com.unity.modules.particlesystem": "1.0.0"
       },
-      "hash": "2b3cec69aceddbddf1c5307d28300c3328161ab4"
+      "hash": "598c85e0f455d38d7592758cffeeef7771609b16"
     },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
@@ -43,7 +43,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f97613b2a651f6b8fbcbe895f76ab04c9a790b62"
+      "hash": "2179b31cd80637ee914b4f405a1a0c1cd744ba76"
     },
     "com.starasgames.tmpro-dynamic-data-cleaner": {
       "version": "https://github.com/STARasGAMES/tmpro-dynamic-data-cleaner.git#upm",
@@ -474,7 +474,7 @@
       }
     },
     "com.unity.vectorgraphics": {
-      "version": "2.0.0-preview.24",
+      "version": "2.0.0-preview.25",
       "depth": 0,
       "source": "registry",
       "dependencies": {
