@@ -26,7 +26,7 @@ public class ClipboardManager : MonoBehaviour
 
     [SerializeField] GameObject mainMenuUI;
 
-    [SerializeField] GameObject tabButton;
+    [SerializeField] public GameObject tabButton;
 
     [SerializeField] AudioSource music;
     [SerializeField] GameObject passengerUI;
