@@ -29,6 +29,8 @@ public class Pickup : MonoBehaviour
 
     public GameObject pickupPrompt;
 
+    public Animator animator;
+
     bool eveQuestStarted;
     bool hasRetrievedSoup;
 
@@ -59,6 +61,7 @@ public class Pickup : MonoBehaviour
         {
             objectIWantToPickup.transform.parent = null;
             hasItem = false;
+            animator.SetBool("ItemHeld", false);
             if (objectIWantToPickup.GetComponent<FoodManager>())
             {
                 objectIWantToPickup.GetComponent<FoodManager>().stoveController.PlacedFood();
@@ -90,6 +93,7 @@ public class Pickup : MonoBehaviour
                 objectIWantToPickup = null;
                 canPickup = false;
                 hasItem = false;
+                animator.SetBool("ItemHeld", false);
                 pickupPrompt.SetActive(false);
             }
 
@@ -99,6 +103,7 @@ public class Pickup : MonoBehaviour
                 objectIWantToPickup = null;
                 canPickup = false;
                 hasItem = false;
+                animator.SetBool("ItemHeld", false);
                 pickupPrompt.SetActive(false);
             }
 
@@ -132,6 +137,7 @@ public class Pickup : MonoBehaviour
                 objectIWantToPickup.transform.position = myHands.transform.position;
                 objectIWantToPickup.transform.parent = myHands.transform;
                 hasItem = true;
+                animator.SetBool("ItemHeld", true);
                 //pickupAudio.Play();
                 pickupPrompt.SetActive(false);
                 if (TrainGameAnalytics.instance != null)

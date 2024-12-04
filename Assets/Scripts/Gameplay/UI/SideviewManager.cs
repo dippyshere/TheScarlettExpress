@@ -19,7 +19,14 @@ public class SideviewManager : MonoBehaviour
     public GameObject carriage3Camera;
     public Transform carriage3Go;
     public GameObject carriage3UI;
-    public GameObject carriageSelectionUI;
+    public GameObject carriage4Camera;
+    public Transform carriage4Go;
+    public GameObject carriage4UI;
+    public GameObject carriage5Camera;
+    public Transform carriage5Go;
+    public GameObject carriage5UI;
+    [FormerlySerializedAs("carriageSelectionUI")] public GameObject carriageSelectionUI1;
+    public GameObject carriageSelectionUI2;
 
     public GameObject decorateCamera;
 
@@ -123,7 +130,7 @@ public class SideviewManager : MonoBehaviour
         {
             CameraManager.Instance.SetInputModeGameplay();
             sideviewCamera.SetActive(false);
-            carriageSelectionUI.SetActive(false);
+            carriageSelectionUI1.SetActive(false);
             foreach (GameObject wall in sideviewWalls)
             {
                 wall.SetActive(true);
@@ -150,7 +157,7 @@ public class SideviewManager : MonoBehaviour
 
     public void KitchenCarriage()
     {
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         sideviewCamera.SetActive(false);
         kitchenCarriageCamera.SetActive(true);
         kitchenCarriageUI.SetActive(true);
@@ -158,7 +165,7 @@ public class SideviewManager : MonoBehaviour
 
     public void Carriage1()
     {
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         sideviewCamera.SetActive(false);
         carriage1Camera.SetActive(true);
         carriage1UI.SetActive(true);
@@ -166,7 +173,7 @@ public class SideviewManager : MonoBehaviour
 
     public void Carriage2()
     {
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         sideviewCamera.SetActive(false);
         carriage2Camera.SetActive(true);
         carriage2UI.SetActive(true);
@@ -174,10 +181,26 @@ public class SideviewManager : MonoBehaviour
 
     public void Carriage3()
     {
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         sideviewCamera.SetActive(false);
         carriage3Camera.SetActive(true);
         carriage3UI.SetActive(true);
+    }
+    
+    public void Carriage4()
+    {
+        carriageSelectionUI1.SetActive(false);
+        sideviewCamera.SetActive(false);
+        carriage4Camera.SetActive(true);
+        carriage4UI.SetActive(true);
+    }
+    
+    public void Carriage5()
+    {
+        carriageSelectionUI1.SetActive(false);
+        sideviewCamera.SetActive(false);
+        carriage5Camera.SetActive(true);
+        carriage5UI.SetActive(true);
     }
 
     public void BackToSideview()
@@ -186,7 +209,7 @@ public class SideviewManager : MonoBehaviour
 
         //carriageSelectionUI.SetActive(true);
         sideviewCamera.SetActive(true);
-        carriageSelectionUI.SetActive(true);
+        carriageSelectionUI1.SetActive(true);
 
         kitchenCarriageCamera.SetActive(false);
         carriage1Camera.SetActive(false);
@@ -229,7 +252,7 @@ public class SideviewManager : MonoBehaviour
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -252,7 +275,7 @@ public class SideviewManager : MonoBehaviour
 
     void ActivateCarriageSelection()
     {
-        carriageSelectionUI.SetActive(true);
+        carriageSelectionUI1.SetActive(true);
     }
 
     void OpenSideviewMenu()
@@ -310,7 +333,7 @@ public class SideviewManager : MonoBehaviour
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -340,7 +363,7 @@ public class SideviewManager : MonoBehaviour
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -370,7 +393,7 @@ public class SideviewManager : MonoBehaviour
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -400,7 +423,67 @@ public class SideviewManager : MonoBehaviour
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
+        foreach (GameObject wall in sideviewWalls)
+        {
+            wall.SetActive(true);
+        }
+
+        if (decorationUpgradeCanvas != null)
+        {
+            decorationUpgradeCanvas.SetActive(false);
+            decorateCamera.SetActive(false);
+        }
+
+        CameraManager.Instance.SetInputModeGameplay();
+    }
+    
+    public void Go4()
+    {
+        StartCoroutine(Character.Instance.LateTeleport(carriage4Go));
+
+        sideviewCamera.SetActive(false);
+        kitchenCarriageCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        kitchenCarriageUI.SetActive(false);
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI1.SetActive(false);
+        foreach (GameObject wall in sideviewWalls)
+        {
+            wall.SetActive(true);
+        }
+
+        if (decorationUpgradeCanvas != null)
+        {
+            decorationUpgradeCanvas.SetActive(false);
+            decorateCamera.SetActive(false);
+        }
+
+        CameraManager.Instance.SetInputModeGameplay();
+    }
+    
+    public void Go5()
+    {
+        StartCoroutine(Character.Instance.LateTeleport(carriage5Go));
+
+        sideviewCamera.SetActive(false);
+        kitchenCarriageCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+
+        kitchenCarriageUI.SetActive(false);
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+
+        carriageSelectionUI1.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -447,7 +530,7 @@ public class SideviewManager : MonoBehaviour
         clipboardUpgradesUI.SetActive(true);
         clipboardMainMenuUI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -485,7 +568,7 @@ public class SideviewManager : MonoBehaviour
         clipboardUpgradesUI.SetActive(true);
         clipboardMainMenuUI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);

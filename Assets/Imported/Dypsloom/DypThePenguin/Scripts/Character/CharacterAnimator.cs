@@ -113,9 +113,8 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         public void HorizontalMove()
         {
             lastPosition.y = m_Character.transform.position.y;
-            float speed = Vector3.Distance(m_Character.transform.position, lastPosition) / Time.deltaTime;
+            float speed = Vector3.Distance(m_Character.transform.position, lastPosition) / Time.unscaledDeltaTime;
             lastPosition = m_Character.transform.position;
-            // clamp speed to 1 min
             speed *= 0.2f;
             m_Animator.SetFloat(m_HorizontalSpeedAnimHash, speed, 0f, Time.deltaTime);
         }
