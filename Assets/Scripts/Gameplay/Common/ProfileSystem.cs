@@ -35,6 +35,9 @@ public static class ProfileSystem
         { Variable.HasBeenToFurrowood, false },
         { Variable.AcquiredTheBanks, false },
         { Variable.BanksHomed, false },
+        { Variable.HasBeenToFernValley, false },
+        { Variable.AcquiredPaints, false },
+        { Variable.EveQuest2Started, false },
 
         //Decorations
         { Variable.Deco1, 0 },
@@ -379,6 +382,10 @@ public static class ProfileSystem
         EveQuestStarted,
         RetrievedBroccoliSoup,
         EveQuestFinished,
+
+        HasBeenToFernValley,
+        AcquiredPaints,
+        EveQuest2Started,
 
         //Banks Quest
         HasBeenToFurrowood,

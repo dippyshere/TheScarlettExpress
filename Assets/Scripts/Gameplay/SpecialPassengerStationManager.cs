@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class SpecialPassengerStationManager : MonoBehaviour
 {
     public GameObject specialPassenger;
+    public SphereCollider shopEve;
+
+    public GameObject panelDialogue;
+    public GameObject panelOptions;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +20,18 @@ public class SpecialPassengerStationManager : MonoBehaviour
         {
             Debug.Log("The current scene is '_FurrowoodStation'.");
             ProfileSystem.Set(ProfileSystem.Variable.HasBeenToFurrowood, true);
+
+            if (ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestFinished) && ProfileSystem.Get<bool>(ProfileSystem.Variable.HasBeenToFernValley)
+                && !ProfileSystem.Get<bool>(ProfileSystem.Variable.AcquiredPaints) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuest2Started))
+            {
+                specialPassenger.SetActive(true);
+                shopEve.enabled = false;
+            }
+            if (ProfileSystem.Get<bool>(ProfileSystem.Variable.AcquiredPaints))
+            {
+                specialPassenger.SetActive(false);
+                shopEve.enabled = true;
+            }
         }
 
         if (SceneManager.GetActiveScene().name == "_ThampStation")
@@ -39,11 +55,40 @@ public class SpecialPassengerStationManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "_FernValleyStation")
         {
             Debug.Log("The current scene is '_FernValleyStation'.");
+
+            if (ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestFinished))
+            {
+                ProfileSystem.Set(ProfileSystem.Variable.HasBeenToFernValley, true);
+                specialPassenger.SetActive(true);
+                shopEve.enabled = false;
+            }
+            if (ProfileSystem.Get<bool>(ProfileSystem.Variable.AcquiredPaints))
+            {
+                specialPassenger.SetActive(false);
+                shopEve.enabled = true;
+            }
         }
 
         if (SceneManager.GetActiveScene().name == "_BranchviewStation")
         {
             Debug.Log("The current scene is '_BranchviewStation'.");
         }
+    }
+
+    public void AcquirePaints()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.AcquiredPaints, true);
+    }
+
+    public void StartEveQuest2()
+    {
+        ProfileSystem.Set(ProfileSystem.Variable.EveQuest2Started, true);
+    }
+
+    public void ActivateShopEve()
+    {
+        shopEve.enabled = true;
+        panelDialogue.SetActive(false);
+        panelOptions.SetActive(false);
     }
 }
