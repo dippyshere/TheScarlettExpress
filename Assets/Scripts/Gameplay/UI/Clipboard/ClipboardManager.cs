@@ -22,7 +22,7 @@ public class ClipboardManager : MonoBehaviour
     public int daysLeft;
 
     public TextMeshProUGUI daysLeftText;
-    bool _isClipboardActive;
+    public bool _isClipboardActive;
 
     [SerializeField] GameObject mainMenuUI;
 
@@ -34,6 +34,8 @@ public class ClipboardManager : MonoBehaviour
 
     [SerializeField] GameObject passUI;
     [FormerlySerializedAs("UpgradeUI"),SerializeField] GameObject upgradeUI;
+
+    public SideviewManager sideviewManager;
 
     void Awake()
     {
@@ -89,6 +91,8 @@ public class ClipboardManager : MonoBehaviour
                         TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu",
                             new Dictionary<string, object> { { "menuClosed", "clipboard" } });
                     }
+
+                    sideviewManager.CloseClipboard();
                 }
             }
         }
@@ -130,12 +134,22 @@ public class ClipboardManager : MonoBehaviour
     public void UpgradeMenu()
     {
         music.Play();
-        upgradeUI.SetActive(true);
-        mainMenuUI.SetActive(false);
+        //upgradeUI.SetActive(true);
+        //mainMenuUI.SetActive(false);
         if (TrainGameAnalytics.instance != null)
         {
             TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu",
                 new Dictionary<string, object> { { "menuOpened", "upgradeMenu" } });
+        }
+
+        if (sideviewManager.isSideviewUpgrade)
+        {
+            sideviewManager.OpenCarriage1Upgrades();
+        }
+        else
+        {
+            upgradeUI.SetActive(true);
+            mainMenuUI.SetActive(false);
         }
     }
 
