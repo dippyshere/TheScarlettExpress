@@ -66,10 +66,18 @@ public class SideviewManager : MonoBehaviour
     public ClipboardManager clipboardManager;
     public GameObject restaurant2Camera;
     public GameObject restaurant2UpgradeUI;
+    public GameObject clipboardPassengerRosterUI;
     public bool isSideviewUpgrade;
     bool sideviewEnabled = false;
 
     public MoneyUI moneyUI;
+
+    public GameObject goToEveRoomButton;
+    public GameObject goToBanksRoomButton;
+    public GameObject banksRoomCamera;
+    public GameObject banksRoomUI;
+    public GameObject banksRoomSterlingButton;
+    public GameObject banksRoomSideviewButton;
 
     void Start()
     {
@@ -298,6 +306,14 @@ public class SideviewManager : MonoBehaviour
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);
         }
+
+        goToBanksRoomButton.SetActive(false);
+        goToEveRoomButton.SetActive(false);
+
+        banksRoomCamera.SetActive(false);
+        banksRoomUI.SetActive(false);
+        banksRoomSterlingButton.SetActive(false);
+        banksRoomSideviewButton.SetActive(false);
     }
     
     public void BackToSideview2()
@@ -342,6 +358,14 @@ public class SideviewManager : MonoBehaviour
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);
         }
+
+        goToBanksRoomButton.SetActive(false);
+        goToEveRoomButton.SetActive(false);
+
+        banksRoomCamera.SetActive(false);
+        banksRoomUI.SetActive(false);
+        banksRoomSterlingButton.SetActive(false);
+        banksRoomSideviewButton.SetActive(false);
     }
 
     public void BackToSterling()
@@ -387,6 +411,14 @@ public class SideviewManager : MonoBehaviour
         }
         
         ClipboardManager.Instance.tabButton.SetActive(true);
+
+        goToBanksRoomButton.SetActive(false);
+        goToEveRoomButton.SetActive(false);
+
+        banksRoomCamera.SetActive(false);
+        banksRoomUI.SetActive(false);
+        banksRoomSterlingButton.SetActive(false);
+        banksRoomSideviewButton.SetActive(false);
     }
 
     void ActivateCarriageSelection()
@@ -449,6 +481,8 @@ public class SideviewManager : MonoBehaviour
             sideviewButton.SetActive(true);
             sterlingButton.SetActive(true);
         }
+
+        goToBanksRoomButton.SetActive(true);
     }
 
     public void Go0()
@@ -847,6 +881,8 @@ public class SideviewManager : MonoBehaviour
         clipboardMainMenuUI.SetActive(true);
 
         isSideviewUpgrade = false;
+
+        clipboardPassengerRosterUI.SetActive(false);
     }
 
     public void SwitchFrom1To2()

@@ -40,6 +40,7 @@ public static class ProfileSystem
         { Variable.EveQuest2Started, false },
         { Variable.HasRenovatedBedroom1, false },
         { Variable.HasRenovatedEntertainment, false },
+        { Variable.StartedUpgradeTutorial, false },
 
         //Decorations
         { Variable.Deco1, 0 },
@@ -78,6 +79,9 @@ public static class ProfileSystem
         { Variable.Bed1Painting1, -1 },
         { Variable.Bed1Painting2, -1 },
         { Variable.Bed1Rug1, -1 },
+        { Variable.Bed2Painting1, -1 },
+        { Variable.Bed2Painting2, -1 },
+        { Variable.Bed2Rug1, -1 },
         { Variable.Bed1Upgrade, 0 },
         { Variable.Restraunt1Table1, 0 },
         { Variable.Restraunt1Table2, 0 },
@@ -364,7 +368,10 @@ public static class ProfileSystem
         FreeDeco,
         Bed1Painting1,
         Bed1Painting2,
+        Bed2Painting1,
+        Bed2Painting2,
         Bed1Rug1,
+        Bed2Rug1,
         Bed1Upgrade,
         Restraunt1Table1,
         Restraunt1Table2,
@@ -399,6 +406,8 @@ public static class ProfileSystem
 
         //Renovation
         HasRenovatedBedroom1,
-        HasRenovatedEntertainment
+        HasRenovatedEntertainment,
+
+        StartedUpgradeTutorial
     }
 }

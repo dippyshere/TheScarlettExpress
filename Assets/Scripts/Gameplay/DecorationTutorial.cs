@@ -54,6 +54,11 @@ public class DecorationTutorial : MonoBehaviour
             otherTableBlocks.SetActive(true);
         }
 
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.StartedUpgradeTutorial) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            upgradeBlocks.SetActive(true);
+        }
+
         if (ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {
             upgradeBlocks.SetActive(false);
@@ -79,6 +84,7 @@ public class DecorationTutorial : MonoBehaviour
         {
             ConversationManager.Instance.StartConversation(upgradesTabDialogue);
             table1Highlight.SetActive(true);
+            ProfileSystem.Set(ProfileSystem.Variable.StartedUpgradeTutorial, true);
         }
     }
 

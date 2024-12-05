@@ -12,12 +12,21 @@ public class DecorationSystem : MonoBehaviour
     public GameObject painting2Camera;
     public GameObject painting2UI;
 
-
     public GameObject rugCamera;
     public GameObject rugUI;
 
     public GameObject sideviewButton;
     public GameObject sterlingButton;
+    public GameObject otherSideviewButton;
+    public GameObject otherSterlingButton;
+
+    public GameObject otherRoomCamera;
+    public GameObject otherRoomUI;
+    public GameObject otherRoomButton;
+
+    public GameObject thisRoomCamera;
+    public GameObject thisRoomUI;
+    public GameObject thisRoomButton;
 
     public void Painting1()
     {
@@ -26,6 +35,8 @@ public class DecorationSystem : MonoBehaviour
         sideviewButton.SetActive(false);
         sterlingButton.SetActive(false);
 
+        otherRoomButton.SetActive(false);
+        thisRoomButton.SetActive(false);
     }
 
     public void ExitPainting1()
@@ -35,6 +46,7 @@ public class DecorationSystem : MonoBehaviour
         sideviewButton.SetActive(true);
         sterlingButton.SetActive(true);
 
+        otherRoomButton.SetActive(true);
     }
 
     public void Painting2()
@@ -44,6 +56,8 @@ public class DecorationSystem : MonoBehaviour
         sideviewButton.SetActive(false);
         sterlingButton.SetActive(false);
 
+        otherRoomButton.SetActive(false);
+        thisRoomButton.SetActive(false);
     }
 
     public void ExitPainting2()
@@ -53,6 +67,7 @@ public class DecorationSystem : MonoBehaviour
         sideviewButton.SetActive(true);
         sterlingButton.SetActive(true);
 
+        otherRoomButton.SetActive(true);
     }
 
     public void Rug()
@@ -62,6 +77,8 @@ public class DecorationSystem : MonoBehaviour
         sideviewButton.SetActive(false);
         sterlingButton.SetActive(false);
 
+        otherRoomButton.SetActive(false);
+        thisRoomButton.SetActive(false);
     }
 
     public void ExitRug()
@@ -71,5 +88,22 @@ public class DecorationSystem : MonoBehaviour
         sideviewButton.SetActive(true);
         sterlingButton.SetActive(true);
 
+        otherRoomButton.SetActive(true);
+    }
+
+    public void GoToOtherRoom()
+    {
+        otherRoomButton.SetActive(false);
+        otherRoomUI.SetActive(true);
+        otherRoomCamera.SetActive(true);
+
+        thisRoomButton.SetActive(true);
+        thisRoomUI.SetActive(false);
+        thisRoomCamera.SetActive(false);
+
+        sideviewButton.SetActive(false);
+        sterlingButton.SetActive(false);
+        otherSideviewButton.SetActive(true);
+        otherSterlingButton.SetActive(true);
     }
 }
