@@ -26,6 +26,11 @@ public class EveSpecialQuests : MonoBehaviour
     public NPCConversation giveSoupConversation;
     public NPCConversation wrongOrderConversation;
 
+    public GameObject randyPainting;
+    public AudioSource paintingSound;
+    public LoadingManager loadingManager;
+    public GameObject paintingParticles;
+
     void Awake()
     {
         Instance = this;
@@ -34,9 +39,16 @@ public class EveSpecialQuests : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //ProfileSystem.ClearProfile();
+
         hasRetrievedSoup = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedBroccoliSoup);
         eveQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestStarted);
         eveQuestFinished = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestFinished);
+
+        if (eveQuestFinished)
+        {
+            randyPainting.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -152,6 +164,26 @@ public class EveSpecialQuests : MonoBehaviour
         {
             Debug.Log("helloo!!");
         }
+    }
+
+    public void DrawRandy()
+    {
+        //randyPainting.SetActive(true);
+        paintingSound.Play();
+        Invoke(nameof(HideLoad), 1f);
+    }
+
+    public void HideLoad()
+    {
+        //paintingParticles.SetActive(true);
+        randyPainting.SetActive(true);
+        loadingManager.HideLoadingScreen();
+        Invoke(nameof(Sparkles), 1f);
+    }
+
+    public void Sparkles()
+    {
+        paintingParticles.SetActive(true);
     }
 
     public void FinishEveQuest()

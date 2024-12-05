@@ -37,6 +37,8 @@ public class Pickup : MonoBehaviour
     bool banksQuestStarted;
     bool hasRetrievedSalad;
 
+    public RestaurantTutorial restaurantTutorial;
+
     void Awake()
     {
         Instance = this;
@@ -156,6 +158,11 @@ public class Pickup : MonoBehaviour
                 {
                     hasRetrievedSalad = true;
                     ProfileSystem.Set(ProfileSystem.Variable.RetrievedYellowSpringSalad, true);
+                }
+
+                if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone))
+                {
+                    restaurantTutorial.InvokeActivateDialogue();
                 }
             }
         }

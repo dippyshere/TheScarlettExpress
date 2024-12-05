@@ -189,7 +189,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _version: 2
-  _crossSceneReferences: []
+  _crossSceneReferences:
+  - _sourceObject: {fileID: 2058446825}
+    _sourceField: restaurantTutorial
+    DEPRECATED_fromObject:
+      scene:
+        editorAssetGUID: 
+        name: 
+        _path: 
+      fullPath: 
+      componentName: 
+      componentIndex: 0
+      editorLocalId: 0
+      editorPrefabRelativePath: 
+      version: 0
+    _toObject:
+      scene:
+        editorAssetGUID: db3ccfee1fbf43249b3ef72b7fde8510
+        name: _RestaurantTutorial
+        _path: Assets/Scenes/Gameplay/Onboarding/Stage 3/_RestaurantTutorial.unity
+      fullPath: /RestaurantTutorial
+      componentName: RestaurantTutorial, TrainGame, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      componentIndex: 0
+      editorLocalId: 1900879339
+      editorPrefabRelativePath: 
+      version: 1
+    _data:
+      data: []
   _realSceneRootsForPostBuild: []
   _mergedScenes: []
 --- !u!1 &541819690
@@ -822,6 +849,11 @@ PrefabInstance:
       propertyPath: cameraToFace
       value: 
       objectReference: {fileID: 1641390823}
+    - target: {fileID: 6775451894038188349, guid: 0430b99f935d1404997864381a6b8160,
+        type: 3}
+      propertyPath: restaurantTutorial
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1834,6 +1866,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857666393}
   m_CullTransparentMesh: 1
+--- !u!114 &2058446825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6775451894038188349, guid: 0430b99f935d1404997864381a6b8160,
+    type: 3}
+  m_PrefabInstance: {fileID: 760298714}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6edff0094c0dc46b423a4dd57d66d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2124854841
 GameObject:
   m_ObjectHideFlags: 0
