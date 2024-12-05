@@ -92,7 +92,8 @@ public class ClipboardManager : MonoBehaviour
                             new Dictionary<string, object> { { "menuClosed", "clipboard" } });
                     }
 
-                    sideviewManager.CloseClipboard();
+                    if (sideviewManager != null)
+                        sideviewManager.CloseClipboard();
                 }
             }
         }
