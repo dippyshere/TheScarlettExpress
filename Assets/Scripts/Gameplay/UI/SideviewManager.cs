@@ -5,6 +5,7 @@ using Dypsloom.DypThePenguin.Scripts.Character;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 #endregion
 
@@ -32,8 +33,6 @@ public class SideviewManager : MonoBehaviour
 
     public GameObject decorationUpgradeCanvas;
 
-    public GameObject decrepitObjects;
-
     public GameObject kitchenCarriageCamera;
     public Transform kitchenCarriageGo;
 
@@ -43,7 +42,15 @@ public class SideviewManager : MonoBehaviour
 
     public AudioSource musicR;
 
+    public GameObject decrepitObjects;
     public GameObject renovationParticles;
+    public GameObject decrepitBedroomObjects;
+    public GameObject renovationBedroomParticles;
+    public GameObject decrepitEntertainmentObjects;
+    public GameObject renovationEntertainmentParticles;
+    public Button renovateButton;
+    public Button renovateBedroomButton;
+    public Button renovateEntertainmentButton;
 
     public GameObject sideviewButton;
     public GameObject sideviewCamera;
@@ -62,6 +69,8 @@ public class SideviewManager : MonoBehaviour
     public bool isSideviewUpgrade;
     bool sideviewEnabled = false;
 
+    public MoneyUI moneyUI;
+
     void Start()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
@@ -71,6 +80,16 @@ public class SideviewManager : MonoBehaviour
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
 
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.HasRenovatedBedroom1))
+        {
+            renovateBedroomButton.interactable = false;
+            decrepitBedroomObjects.SetActive(false);
+}
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.HasRenovatedEntertainment))
+        {
+            renovateEntertainmentButton.interactable = false;
+            decrepitEntertainmentObjects.SetActive(false);
+        }
         //if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
         //{
         //    Debug.Log("heyy???");
@@ -666,7 +685,67 @@ public class SideviewManager : MonoBehaviour
             renovationParticles.SetActive(true);
 
             Invoke(nameof(BackToSterling), 1f);
+
+            renovateButton.interactable = false;
         }
+
+        if (money <= 99)
+        {
+            moneyUI.moneyText.color = Color.red;
+            Invoke(nameof(RevertMoneyColour), 1f);
+        }
+    }
+    public void RenovateBedroomCarriage()
+    {
+        if (money >= 100)
+        {
+            musicR.Play();
+            money -= 100;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
+
+            decrepitBedroomObjects.SetActive(false);
+            renovationBedroomParticles.SetActive(true);
+
+            //Invoke(nameof(BackToSterling), 1f);
+
+            renovateBedroomButton.interactable = false;
+            ProfileSystem.Set<bool>(ProfileSystem.Variable.HasRenovatedBedroom1, true);
+        }
+
+        if (money <= 99)
+        {
+            moneyUI.moneyText.color = Color.red;
+            Invoke(nameof(RevertMoneyColour), 1f);
+        }
+    }
+
+    public void RenovateEntertainmentCarriage()
+    {
+        if (money >= 100)
+        {
+            musicR.Play();
+            money -= 100;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
+
+            decrepitEntertainmentObjects.SetActive(false);
+            renovationEntertainmentParticles.SetActive(true);
+
+            //Invoke(nameof(BackToSterling), 1f);
+
+            renovateEntertainmentButton.interactable = false;
+            ProfileSystem.Set<bool>(ProfileSystem.Variable.HasRenovatedEntertainment, true);
+        }
+
+        if (money <= 99)
+        {
+            moneyUI.moneyText.color = Color.red;
+            Invoke(nameof(RevertMoneyColour), 1f);
+        }
+    }
+
+    public void RevertMoneyColour()
+    {
+        moneyUI.moneyText.color = Color.white;
     }
 
     public void OpenCarriage1Upgrades()

@@ -2899,10 +2899,10 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":362.899963,"yPos":66.20001},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":\/","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":640.399963,"yPos":186.200012},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":":\/\/\/","parentUIDs":[2],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":101.399963,"yPos":49.2000122},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":351.5,"yPos":90},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":\/","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":629,"yPos":210},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":":\/\/\/","parentUIDs":[2],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":90,"yPos":73},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
     there! Fox fellow! Take my bags, will you? My wife asked for a nice train but
     I like that yours is red so that''s what we''re doing instead.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":8,"IconGUID":null,"Name":"Joseph
-    Banks","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":4,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":368.399963,"yPos":174.200012},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"The
+    Banks","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":4,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":357,"yPos":198},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"The
     owner? Even better! Then you''ll certainly know where the bags should go! Come
     along, dear, let''s go.\r","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":8,"IconGUID":null,"Name":"Joseph
     Banks","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":4,"Volume":0}]}'
@@ -10886,9 +10886,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specialPassenger: {fileID: 1532718854}
-  shopEve: {fileID: 1609112886}
+  shopEve: {fileID: 1061210612}
   panelDialogue: {fileID: 205481746}
   panelOptions: {fileID: 1831309730}
+  specialPassengerMusic: {fileID: 1583719578}
+  stationMusic: {fileID: 1583719575}
 --- !u!4 &818520485
 Transform:
   m_ObjectHideFlags: 0
@@ -50313,6 +50315,12 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!135 &1061210612 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 8712826873677956905, guid: 7be832bfe6de93842a2c21f53677d15a,
+    type: 3}
+  m_PrefabInstance: {fileID: 119411589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1063332243
 GameObject:
   m_ObjectHideFlags: 0
@@ -55380,6 +55388,7 @@ GameObject:
   - component: {fileID: 1583719576}
   - component: {fileID: 1583719575}
   - component: {fileID: 1583719577}
+  - component: {fileID: 1583719578}
   m_Layer: 0
   m_Name: AudioSource
   m_TagString: Untagged
@@ -55397,8 +55406,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1877ffb2278b6a345b8fcf8a9e4d6353, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 56ceade367360744bbe66b89130bd3d6, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
@@ -55513,6 +55522,102 @@ AudioSource:
   m_Volume: 0.85
   m_Pitch: 1
   Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1583719578
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583719574}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6b0c5309c9e87924c877da57a63c5d72, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -55712,12 +55817,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0.1
   m_ShadowAngle: 0
---- !u!1 &1609112886 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8083703299656835431, guid: 7be832bfe6de93842a2c21f53677d15a,
-    type: 3}
-  m_PrefabInstance: {fileID: 119411589}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1621827167
 GameObject:
   m_ObjectHideFlags: 0

@@ -3201,6 +3201,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273131204}
   m_CullTransparentMesh: 1
+--- !u!1 &279424092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 279424093}
+  - component: {fileID: 279424094}
+  m_Layer: 0
+  m_Name: Chihuahua2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &279424093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279424092}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 800707404}
+  m_Father: {fileID: 624727345}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &279424094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279424092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContinueFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+  CurrentIDCounter: 25
+  DefaultFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+  DefaultName: Chihuahua
+  DefaultSprite: {fileID: 21300000, guid: 6eac29eb7a28e584581d5dcad4c1ca79, type: 3}
+  EndConversationFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733,
+    type: 2}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":19}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":343.5005,\"yPos\":111},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":592,\"yPos\":223},\"ID\":23,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[19],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":89,\"yPos\":101},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"We
+    have a whole new batch of passengers now! Whenever you\u2019re ready sir, may
+    I suggest choosing our next destination on that strangely shiny map?\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":0,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":23}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":346,\"yPos\":209},\"ID\":19,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Oh
+    and don\u2019t forget sir! all the best trains consider their passengers needs
+    first! perhaps consult your passenger roster to see where our guests want to
+    go?\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":0,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":1,\"Volume\":0}]}"
+  NodeSerializedDataList:
+  - {fileID: 800707409}
+  - {fileID: 800707408}
+  - {fileID: 800707407}
+  - {fileID: 800707406}
+  saveVersion: 110
 --- !u!1 &282431613
 GameObject:
   m_ObjectHideFlags: 0
@@ -46181,6 +46248,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8650820052036948173, guid: c8ae35c37805db4498ad187eec8ec269,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 279424093}
+    - targetCorrespondingSourceObject: {fileID: 8650820052036948173, guid: c8ae35c37805db4498ad187eec8ec269,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1708476561}
     - targetCorrespondingSourceObject: {fileID: 8650820052036948173, guid: c8ae35c37805db4498ad187eec8ec269,
         type: 3}
@@ -49058,6 +49129,117 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 778041276}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &800707403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800707404}
+  - component: {fileID: 800707409}
+  - component: {fileID: 800707408}
+  - component: {fileID: 800707407}
+  - component: {fileID: 800707406}
+  m_Layer: 0
+  m_Name: ConversationEventInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &800707404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800707403}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.2823288, z: -0, w: 0.9593177}
+  m_LocalPosition: {x: -43.19897, y: -1, z: 29.182535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 279424093}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &800707406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800707403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  Icon: {fileID: 0}
+  NodeID: 23
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+--- !u!114 &800707407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800707403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  Icon: {fileID: 21300000, guid: 6eac29eb7a28e584581d5dcad4c1ca79, type: 3}
+  NodeID: 19
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+--- !u!114 &800707408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800707403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  Icon: {fileID: 0}
+  NodeID: 1
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+--- !u!114 &800707409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800707403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  Icon: {fileID: 21300000, guid: 6eac29eb7a28e584581d5dcad4c1ca79, type: 3}
+  NodeID: 0
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
 --- !u!1001 &835734031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50719,17 +50901,13 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
-  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":19}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":586.0005,\"yPos\":32},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":21}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":843.5001,\"yPos\":141},\"ID\":20,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":)\",\"parentUIDs\":[19],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1099.50049,\"yPos\":257},\"ID\":22,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[21],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":331.5,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Welcome
-    back to Riverside, Mr Emmington!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":0,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":588.5,\"yPos\":130},\"ID\":19,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"We
-    have a whole new batch of passengers now! May I suggest referring to them in
-    your clipboard before choosing your next destination? \",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":0,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":22}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":845.5001,\"yPos\":236},\"ID\":21,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":21}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":594.5005,\"yPos\":32},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":855.0005,\"yPos\":119},\"ID\":22,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[21],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":340,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Welcome
+    back to Riverside, Mr Emmington!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":0,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":1,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":22}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":591.0001,\"yPos\":108},\"ID\":21,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
     saw that lady cat you served earlier down the other end of the platform, didn\u2019t
-    she want to speak with you?\",\"parentUIDs\":[20],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":0,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":1,\"Volume\":0}]}"
+    she want to speak with you?\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":0,\"IconGUID\":null,\"Name\":\"Chihuahua\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":1,\"Volume\":0}]}"
   NodeSerializedDataList:
   - {fileID: 992503785}
   - {fileID: 992503784}
-  - {fileID: 992503783}
-  - {fileID: 992503782}
   - {fileID: 992503781}
   - {fileID: 992503780}
   saveVersion: 110
@@ -50928,6 +51106,9 @@ MonoBehaviour:
   panelOptions: {fileID: 906457167}
   shopEve: {fileID: 1390612054}
   chihuahuaDialogue: {fileID: 952469791}
+  chihuahuaDialogue2: {fileID: 279424094}
+  stationMusic: {fileID: 1720161779}
+  eveMusic: {fileID: 1720161782}
 --- !u!4 &983094750
 Transform:
   m_ObjectHideFlags: 0
@@ -50954,8 +51135,6 @@ GameObject:
   - component: {fileID: 992503779}
   - component: {fileID: 992503785}
   - component: {fileID: 992503784}
-  - component: {fileID: 992503783}
-  - component: {fileID: 992503782}
   - component: {fileID: 992503781}
   - component: {fileID: 992503780}
   m_Layer: 0
@@ -51017,44 +51196,6 @@ MonoBehaviour:
       m_Calls: []
   Icon: {fileID: 21300000, guid: 6eac29eb7a28e584581d5dcad4c1ca79, type: 3}
   NodeID: 21
-  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
---- !u!114 &992503782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992503778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Audio: {fileID: 0}
-  Event:
-    m_PersistentCalls:
-      m_Calls: []
-  Icon: {fileID: 0}
-  NodeID: 20
-  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
---- !u!114 &992503783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992503778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Audio: {fileID: 0}
-  Event:
-    m_PersistentCalls:
-      m_Calls: []
-  Icon: {fileID: 21300000, guid: 6eac29eb7a28e584581d5dcad4c1ca79, type: 3}
-  NodeID: 19
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
 --- !u!114 &992503784
 MonoBehaviour:
@@ -53284,6 +53425,8 @@ GameObject:
   - component: {fileID: 1149249296}
   - component: {fileID: 1149249311}
   - component: {fileID: 1149249312}
+  - component: {fileID: 1149249314}
+  - component: {fileID: 1149249313}
   m_Layer: 0
   m_Name: ConversationEventInfo
   m_TagString: Untagged
@@ -53623,7 +53766,19 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983094749}
+        m_TargetAssemblyTypeName: Eve, TrainGame
+        m_MethodName: StartEveMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Icon: {fileID: 21300000, guid: e1b2138bbe0489b4f92a57f918551d4f, type: 3}
   NodeID: 0
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
@@ -53676,6 +53831,44 @@ MonoBehaviour:
       m_Calls: []
   Icon: {fileID: 0}
   NodeID: 18
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+--- !u!114 &1149249313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149249294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  Icon: {fileID: 0}
+  NodeID: 21
+  TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
+--- !u!114 &1149249314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149249294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  Icon: {fileID: 21300000, guid: e1b2138bbe0489b4f92a57f918551d4f, type: 3}
+  NodeID: 20
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
 --- !u!1 &1160363234
 GameObject:
@@ -61374,8 +61567,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":588.0001,"yPos":31.99997},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":".
-    . .","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":331.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Didn''t
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":596.5001,"yPos":31.99997},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":".
+    . .","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":340,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Didn''t
     you want to talk to that cat with the fun purple ears? I think I saw her down
     the other end of the platform!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":0,"IconGUID":null,"Name":"Chihuahua","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":1,"Volume":0}]}'
   NodeSerializedDataList:
@@ -61574,6 +61767,7 @@ GameObject:
   - component: {fileID: 1720161780}
   - component: {fileID: 1720161779}
   - component: {fileID: 1720161781}
+  - component: {fileID: 1720161782}
   m_Layer: 0
   m_Name: AudioSource
   m_TagString: Untagged
@@ -61591,7 +61785,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7e81db6ef6428054b9d794085a9007ff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 56ceade367360744bbe66b89130bd3d6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -61707,6 +61901,102 @@ AudioSource:
   m_Volume: 0.85
   m_Pitch: 1
   Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1720161782
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720161778}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 02b5ca83f376a384d9926ac54217e86b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -63760,7 +64050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ContinueFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
-  CurrentIDCounter: 20
+  CurrentIDCounter: 22
   DefaultFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
   DefaultName: 
   DefaultSprite: {fileID: 0}
@@ -63768,32 +64058,23 @@ MonoBehaviour:
     type: 2}
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MapTest, TrainGame
-        m_MethodName: AbleToLeaveStation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-973.498535,\"yPos\":-452.000122},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-739.498535,\"yPos\":-334.000183},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"<3\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-503.4995,\"yPos\":-218.000092},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[4],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-259.498535,\"yPos\":-122.000183},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[8],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":12}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-30.498291,\"yPos\":-16.0001831},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":)\",\"parentUIDs\":[10],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":14}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":195.500854,\"yPos\":85.00049},\"ID\":13,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[12],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":16}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":416.5005,\"yPos\":176.0003},\"ID\":15,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[14],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":17}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":674.501465,\"yPos\":263.000183},\"ID\":18,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[16],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":-1228,\"yPos\":-462},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Thanks
-    for swinging by, Cap\u2019n! Awesome train ride! Here, I want you to have this.\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-974.4988,\"yPos\":-345.000153},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+      m_Calls: []
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":594.501465,\"yPos\":31.9998779},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[0],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":828.501465,\"yPos\":149.999817},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"<3\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1064.50049,\"yPos\":265.9999},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[4],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1308.50146,\"yPos\":361.999817},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[8],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":12}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1537.50171,\"yPos\":467.999817},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":)\",\"parentUIDs\":[10],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":14}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1763.50085,\"yPos\":569.0005},\"ID\":13,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[12],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":16}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1984.50049,\"yPos\":660.0003},\"ID\":15,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"?\",\"parentUIDs\":[14],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":2242.50146,\"yPos\":747.0002},\"ID\":18,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[16],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":17}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":2485,\"yPos\":831},\"ID\":21,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\".
+    . .\",\"parentUIDs\":[20],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":340,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Thanks
+    for swinging by, Cap\u2019n! Awesome train ride! Here, I want you to have this.\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":593.5012,\"yPos\":138.999878},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
     really loved my time onboard, and it\u2019s such a radical train so I painted
-    it! Free of charge of course!\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-739.498535,\"yPos\":-232.000092},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Actually,
-    there\u2019s something I wanna talk to ya about, Cap\u2019n.\",\"parentUIDs\":[3],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-499.4995,\"yPos\":-137.000183},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I\u2019ve
+    it! Free of charge of course!\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":828.501465,\"yPos\":251.999908},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Actually,
+    there\u2019s something I wanna talk to ya about, Cap\u2019n.\",\"parentUIDs\":[3],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1068.50049,\"yPos\":346.999817},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I\u2019ve
     been wanderin\u2019 around for a loooong time now, and you and your train are
-    going wanderin\u2019 too, right? So let\u2019s team up!\",\"parentUIDs\":[7],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-264.4983,\"yPos\":-33.0001221},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+    going wanderin\u2019 too, right? So let\u2019s team up!\",\"parentUIDs\":[7],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1303.50171,\"yPos\":450.999878},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
     stay on the train, make my art, sell it at stations and give you a bit of the
-    cut every day as like, rent! Whaddya say? Partners?\",\"parentUIDs\":[9],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-37.49817,\"yPos\":71.0003052},\"ID\":12,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Fantasimismo!
+    cut every day as like, rent! Whaddya say? Partners?\",\"parentUIDs\":[9],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1530.50183,\"yPos\":554.0003},\"ID\":12,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Fantasimismo!
     This is gonna RULE! Don\u2019t worry bout me getting left behind, I\u2019m a
-    fast packer. See you on board!\",\"parentUIDs\":[11],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":15}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":194.500854,\"yPos\":153.000488},\"ID\":14,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Oh!
-    One last thing!\",\"parentUIDs\":[13],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":18}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":419.5005,\"yPos\":246.000183},\"ID\":16,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"The
-    name\u2019s Eve, AKA, artist extraordinaire.\",\"parentUIDs\":[15],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"Eve\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":673.4009,\"yPos\":344.6001},\"ID\":17,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":null,\"parentUIDs\":[18],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0}]}"
+    fast packer. See you on board!\",\"parentUIDs\":[11],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":15}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1762.50085,\"yPos\":637.0005},\"ID\":14,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Oh!
+    One last thing!\",\"parentUIDs\":[13],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":18}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":1987.50049,\"yPos\":730.0002},\"ID\":16,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"The
+    name\u2019s Eve, AKA, artist extraordinaire.\",\"parentUIDs\":[15],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"Eve\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":2482.401,\"yPos\":917.6001},\"ID\":17,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":null,\"parentUIDs\":[21],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":21}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":2239,\"yPos\":820},\"ID\":20,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Anyways
+    thanks for dropping by my stall! I'm still thinking of a name so <i>bear<\\/i>
+    with. See anything you like?\\r\",\"parentUIDs\":[18],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"CharacterIcon\":1,\"IconGUID\":null,\"Name\":\"Eve\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"VoiceBank\":3,\"Volume\":0}]}"
   NodeSerializedDataList:
   - {fileID: 1149249310}
   - {fileID: 1149249309}
@@ -63812,6 +64093,8 @@ MonoBehaviour:
   - {fileID: 1149249296}
   - {fileID: 1149249311}
   - {fileID: 1149249312}
+  - {fileID: 1149249314}
+  - {fileID: 1149249313}
   saveVersion: 110
 --- !u!1 &1958663014
 GameObject:
@@ -66636,6 +66919,61 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 983094749}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 983094748}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopEveMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Eve, TrainGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Eve, TrainGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 503209562215135647, guid: 7be832bfe6de93842a2c21f53677d15a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 873694020125484976, guid: 7be832bfe6de93842a2c21f53677d15a,
         type: 3}

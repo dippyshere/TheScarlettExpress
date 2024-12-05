@@ -556,6 +556,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58840960}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &92134135 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 8712826873677956905, guid: 7be832bfe6de93842a2c21f53677d15a,
+    type: 3}
+  m_PrefabInstance: {fileID: 744568658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &92234331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,32 +1197,8 @@ MonoBehaviour:
     type: 2}
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 438646354}
-        m_TargetAssemblyTypeName: SpecialPassengerStationManager, TrainGame
-        m_MethodName: AcquirePaints
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 438646354}
-        m_TargetAssemblyTypeName: SpecialPassengerStationManager, TrainGame
-        m_MethodName: ActivateShopEve
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":421.5,"yPos":232},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":D","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":161,"yPos":218},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Thank
+      m_Calls: []
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":497.5,"yPos":237},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":D","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":237,"yPos":223},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Thank
     you for bringing me back here. I got all the paints I needed and more! You''re
     the best cap''n!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":1,"IconGUID":null,"Name":"Eve","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":3,"Volume":0}]}'
   NodeSerializedDataList:
@@ -5505,9 +5487,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specialPassenger: {fileID: 416487882}
-  shopEve: {fileID: 1379876290}
+  shopEve: {fileID: 92134135}
   panelDialogue: {fileID: 1149259183}
   panelOptions: {fileID: 1149259184}
+  specialPassengerMusic: {fileID: 1750010719}
+  stationMusic: {fileID: 1750010716}
 --- !u!4 &438646355
 Transform:
   m_ObjectHideFlags: 0
@@ -53331,12 +53315,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1379876290 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8083703299656835431, guid: 7be832bfe6de93842a2c21f53677d15a,
-    type: 3}
-  m_PrefabInstance: {fileID: 744568658}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1389243224
 GameObject:
   m_ObjectHideFlags: 0
@@ -56714,6 +56692,7 @@ GameObject:
   - component: {fileID: 1750010717}
   - component: {fileID: 1750010716}
   - component: {fileID: 1750010718}
+  - component: {fileID: 1750010719}
   m_Layer: 0
   m_Name: AudioSource
   m_TagString: Untagged
@@ -56731,7 +56710,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7e81db6ef6428054b9d794085a9007ff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 56ceade367360744bbe66b89130bd3d6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -56847,6 +56826,102 @@ AudioSource:
   m_Volume: 0.85
   m_Pitch: 1
   Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1750010719
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750010715}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 02b5ca83f376a384d9926ac54217e86b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

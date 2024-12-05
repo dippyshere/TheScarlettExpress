@@ -38,6 +38,8 @@ public static class ProfileSystem
         { Variable.HasBeenToFernValley, false },
         { Variable.AcquiredPaints, false },
         { Variable.EveQuest2Started, false },
+        { Variable.HasRenovatedBedroom1, false },
+        { Variable.HasRenovatedEntertainment, false },
 
         //Decorations
         { Variable.Deco1, 0 },
@@ -393,6 +395,10 @@ public static class ProfileSystem
         BanksHomed,
         RetrievedYellowSpringSalad,
         BanksQuestStarted,
-        BanksQuestFinished
+        BanksQuestFinished,
+
+        //Renovation
+        HasRenovatedBedroom1,
+        HasRenovatedEntertainment
     }
 }
