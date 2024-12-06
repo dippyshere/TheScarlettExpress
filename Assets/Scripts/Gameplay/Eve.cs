@@ -19,6 +19,8 @@ public class Eve : MonoBehaviour
     public AudioSource stationMusic;
     public AudioSource eveMusic;
 
+    public GameObject shopMenuUI;
+
     private void Start()
     {
         ConversationManager.Instance.StartConversation(chihuahuaDialogue);
@@ -37,9 +39,15 @@ public class Eve : MonoBehaviour
     public void ActivateShopEve()
     {
         shopEve.SetActive(true);
-        panelDialogue.SetActive(false);
-        panelOptions.SetActive(false);
+        //panelDialogue.SetActive(false);
+        //panelOptions.SetActive(false);
         MapTest.Instance.AbleToLeaveStation();
+    }
+
+    public void OpenShop()
+    {
+        shopMenuUI.SetActive(true);
+        Invoke(nameof(VisibleClicker), 0.25f);
     }
 
     public IEnumerator FadeOut(AudioSource audioSource, float duration)
@@ -77,15 +85,24 @@ public class Eve : MonoBehaviour
 
     public void StopEveMusic()
     {
+        //panelOptions.SetActive(false);
+
         StartCoroutine(FadeOut(eveMusic, 1f));
         StartCoroutine(FadeIn(stationMusic, 2f));
 
         //ConversationManager.Instance.StartConversation(chihuahuaDialogue2);
         Invoke(nameof(ChihuahuaReminder), 4f);
+
+        //CameraManager.Instance.SetInputModeUI(false);
     }
 
     public void ChihuahuaReminder()
     {
         ConversationManager.Instance.StartConversation(chihuahuaDialogue2);
+    }
+
+    public void VisibleClicker()
+    {
+        CameraManager.Instance.SetInputModeUI(true);
     }
 }

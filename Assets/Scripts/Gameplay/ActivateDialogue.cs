@@ -48,10 +48,12 @@ public class ActivateDialogue : MonoBehaviour
         if (conversation == null)
         {
             ConversationManager.Instance.StartConversation(conversations[Random.Range(0, conversations.Length)]);
+            Character.Instance.promptUI.SetActive(false);
         }
         else
         {
             ConversationManager.Instance.StartConversation(conversation);
+            Character.Instance.promptUI.SetActive(false);
         }
         isConversing = false;
         Cursor.visible = true;

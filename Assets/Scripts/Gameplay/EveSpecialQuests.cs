@@ -31,6 +31,8 @@ public class EveSpecialQuests : MonoBehaviour
     public LoadingManager loadingManager;
     public GameObject paintingParticles;
 
+    public GameObject eveExclamation;
+
     void Awake()
     {
         Instance = this;
@@ -39,7 +41,7 @@ public class EveSpecialQuests : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ProfileSystem.ClearProfile();
+        ProfileSystem.ClearProfile();
 
         hasRetrievedSoup = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedBroccoliSoup);
         eveQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestStarted);
@@ -48,6 +50,12 @@ public class EveSpecialQuests : MonoBehaviour
         if (eveQuestFinished)
         {
             randyPainting.SetActive(true);
+            eveExclamation.SetActive(false);
+        }
+
+        if (!eveQuestFinished)
+        {
+            eveExclamation.SetActive(true);
         }
     }
 
@@ -84,6 +92,7 @@ public class EveSpecialQuests : MonoBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 Character.Instance.promptUI.SetActive(false);
+                eveExclamation.SetActive(false);
             }
             else
             {
