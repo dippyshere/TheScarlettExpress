@@ -190,6 +190,10 @@ public class SideviewManager : MonoBehaviour
             carriage1UI.SetActive(false);
             carriage2UI.SetActive(false);
             carriage3UI.SetActive(false);
+
+            bedroom1Camera.SetActive(false);
+            restaurant1Camera.SetActive(false);
+            restaurant2Camera.SetActive(false);
         }
 
         if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
