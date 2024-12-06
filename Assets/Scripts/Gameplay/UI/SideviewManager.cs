@@ -786,6 +786,8 @@ public class SideviewManager : MonoBehaviour
 
     public void OpenCarriage1Upgrades()
     {
+        sideviewEnabled = false;
+
         sideviewCamera.SetActive(false);
         sideviewCamera2.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
@@ -833,6 +835,8 @@ public class SideviewManager : MonoBehaviour
 
     public void OpenCarriage2Upgrades()
     {
+        sideviewEnabled = false;
+
         sideviewCamera.SetActive(false);
         sideviewCamera2.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
@@ -880,6 +884,8 @@ public class SideviewManager : MonoBehaviour
 
     public void OpenCarriage3Upgrades()
     {
+        sideviewEnabled = false;
+
         sideviewCamera.SetActive(false);
         sideviewCamera2.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
