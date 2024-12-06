@@ -41,7 +41,7 @@ public class EveSpecialQuests : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ProfileSystem.ClearProfile();
+        //ProfileSystem.ClearProfile();
 
         hasRetrievedSoup = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedBroccoliSoup);
         eveQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestStarted);

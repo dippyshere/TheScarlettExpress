@@ -36,6 +36,10 @@ public class RestaurantTutorial : MonoBehaviour
     public GameObject redPassenger;
     public GameObject pinkPassenger;
 
+    public GameObject endDayConfirmationUI;
+
+    public ClipboardManager clipboardManager;
+
     void Start()
     {
         _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
@@ -60,15 +64,15 @@ public class RestaurantTutorial : MonoBehaviour
 
         _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
 
-        switch (_hasCompletedRTutorial)
-        {
-            case false:
-                tutorialChihuahua.SetActive(true);
-                break;
-            case true:
-                tutorialChihuahua.SetActive(false);
-                break;
-        }
+        //switch (_hasCompletedRTutorial)
+        //{
+        //    case false:
+        //        tutorialChihuahua.SetActive(true);
+        //        break;
+        //    case true:
+        //        tutorialChihuahua.SetActive(false);
+        //        break;
+        //}
 
         if (canStoveTutorial)
         {
@@ -86,6 +90,11 @@ public class RestaurantTutorial : MonoBehaviour
         //{
         //    BeginEveConversation();
         //}
+
+        if (endDayConfirmationUI.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        {
+            endDayConfirmationUI.SetActive(false);
+        }
     }
 
     void OnTriggerEnter(Collider collision)
@@ -112,6 +121,7 @@ public class RestaurantTutorial : MonoBehaviour
     public void RestaurantTutorialCompleted()
     {
         _hasCompletedRTutorial = true;
+        ProfileSystem.Set(ProfileSystem.Variable.RestaurantTutorialDone, true);
     }
 
     public void StartTutorial()
@@ -167,4 +177,22 @@ public class RestaurantTutorial : MonoBehaviour
     //{
     //    ConversationManager.Instance.StartConversation(eveConversation);
     //}
+
+    public void EndDayConfirmation()
+    {
+        if (!_hasCompletedRTutorial)
+        {
+            endDayConfirmationUI.SetActive(true);
+        }
+        if (_hasCompletedRTutorial)
+        {
+            clipboardManager.NextDay();
+            endDayConfirmationUI.SetActive(false);
+        }
+    }
+
+    public void GoBack()
+    {
+        endDayConfirmationUI.SetActive(false);
+    }
 }
