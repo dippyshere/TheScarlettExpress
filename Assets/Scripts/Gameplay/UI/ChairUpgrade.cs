@@ -29,6 +29,12 @@ public class ChairUpgrade : MonoBehaviour
     [SerializeField] GameObject upgradeStar2;
     [SerializeField] GameObject upgradeStar3;
 
+    //public PassengerManager passengerManager;
+
+    //[SerializeField] bool canPay;
+    //[SerializeField] bool canPay2;
+    //[SerializeField] bool canPay3;
+
     void Start()
     {
         baseUpgrade.SetActive(true);
@@ -77,6 +83,22 @@ public class ChairUpgrade : MonoBehaviour
     void Update()
     {
         upgradeCostText.text = "$ " + upgradeCost;
+        moneys = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+
+        //if (upgrade1.activeSelf && this.gameObject.tag == "Bunk")
+        //{
+        //    canPay = true;
+        //}
+
+        //if (upgrade2.activeSelf && this.gameObject.tag == "Bunk")
+        //{
+        //    canPay2 = true;
+        //}
+
+        //if (upgrade3.activeSelf && this.gameObject.tag == "Bunk")
+        //{
+        //    canPay3 = true;
+        //}
     }
 
     public void UpgradeChair()
@@ -138,4 +160,31 @@ public class ChairUpgrade : MonoBehaviour
             }
         }
     }
+
+    //public void UpgradedBedroomReward()
+    //{
+    //    if (ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance) == 0)
+    //    {
+    //        if (canPay)
+    //        {
+    //            Debug.Log("upgrade 1 pay");
+    //            moneys += 5;
+    //            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys);
+    //        }
+
+    //        if (canPay2)
+    //        {
+    //            Debug.Log("upgrade 2 pay");
+    //            moneys += 10;
+    //            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys);
+    //        }
+
+    //        if (canPay3)
+    //        {
+    //            Debug.Log("upgrade 3 pay");
+    //            moneys += 15;
+    //            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, moneys);
+    //        }
+    //    }
+    //}
 }

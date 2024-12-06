@@ -17,6 +17,7 @@ public class ClipboardManager : MonoBehaviour
     public bool canClipboard;
     [FormerlySerializedAs("Carriage1"),SerializeField] GameObject carriage1;
     [FormerlySerializedAs("Carriage2"),SerializeField] GameObject carriage2;
+    [FormerlySerializedAs("Carriage3"), SerializeField] GameObject carriage3;
     public GameObject clipboardUI;
 
     public int daysLeft;
@@ -158,6 +159,7 @@ public class ClipboardManager : MonoBehaviour
     {
         carriage1.SetActive(true);
         carriage2.SetActive(false);
+        carriage3.SetActive(false);
         if (TrainGameAnalytics.instance != null)
         {
             TrainGameAnalytics.instance.RecordGameEvent("carriage_menu",
@@ -169,10 +171,23 @@ public class ClipboardManager : MonoBehaviour
     {
         carriage1.SetActive(false);
         carriage2.SetActive(true);
+        carriage3.SetActive(false);
         if (TrainGameAnalytics.instance != null)
         {
             TrainGameAnalytics.instance.RecordGameEvent("carriage_menu",
                 new Dictionary<string, object> { { "menuOpened", "carriage2" } });
+        }
+    }
+
+    public void CarriageUI3()
+    {
+        carriage1.SetActive(false);
+        carriage2.SetActive(false);
+        carriage3.SetActive(true);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("carriage_menu",
+                new Dictionary<string, object> { { "menuOpened", "carriage3" } });
         }
     }
 

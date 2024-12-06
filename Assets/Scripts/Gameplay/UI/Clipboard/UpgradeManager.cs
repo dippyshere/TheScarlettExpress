@@ -21,6 +21,13 @@ public class UpgradeManager : MonoBehaviour
     [FormerlySerializedAs("Car2Chair5")] public GameObject car2Chair5;
     [FormerlySerializedAs("Car2Chair6")] public GameObject car2Chair6;
 
+    [FormerlySerializedAs("Car3Chair1")] public GameObject car3Bunk1;
+    [FormerlySerializedAs("Car3Chair2")] public GameObject car3Bunk2;
+    [FormerlySerializedAs("Car3Chair3")] public GameObject car3Bunk3;
+    [FormerlySerializedAs("Car3Chair4")] public GameObject car3Bunk4;
+    [FormerlySerializedAs("Car3Chair5")] public GameObject car3Bunk5;
+    [FormerlySerializedAs("Car3Chair6")] public GameObject car3Bunk6;
+
     public void Up1()
     {
         car1Chair1.SetActive(true);
@@ -35,6 +42,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up2()
@@ -51,6 +65,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up3()
@@ -67,6 +88,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up4()
@@ -83,6 +111,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up5()
@@ -99,6 +134,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up6()
@@ -115,6 +157,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up7()
@@ -131,6 +180,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up8()
@@ -147,6 +203,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up9()
@@ -163,6 +226,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up10()
@@ -179,6 +249,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(true);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up11()
@@ -195,6 +272,13 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(true);
         car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
     }
 
     public void Up12()
@@ -211,5 +295,152 @@ public class UpgradeManager : MonoBehaviour
         car2Chair4.SetActive(false);
         car2Chair5.SetActive(false);
         car2Chair6.SetActive(true);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
+    }
+
+    //Bunks
+
+    public void Up13()
+    {
+        car1Chair1.SetActive(false);
+        car1Chair2.SetActive(false);
+        car1Chair3.SetActive(false);
+        car1Chair4.SetActive(false);
+        car1Chair5.SetActive(false);
+        car1Chair6.SetActive(false);
+        car2Chair1.SetActive(false);
+        car2Chair2.SetActive(false);
+        car2Chair3.SetActive(false);
+        car2Chair4.SetActive(false);
+        car2Chair5.SetActive(false);
+        car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(true);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
+    }
+
+    public void Up14()
+    {
+        car1Chair1.SetActive(false);
+        car1Chair2.SetActive(false);
+        car1Chair3.SetActive(false);
+        car1Chair4.SetActive(false);
+        car1Chair5.SetActive(false);
+        car1Chair6.SetActive(false);
+        car2Chair1.SetActive(false);
+        car2Chair2.SetActive(false);
+        car2Chair3.SetActive(false);
+        car2Chair4.SetActive(false);
+        car2Chair5.SetActive(false);
+        car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(true);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
+    }
+
+    public void Up15()
+    {
+        car1Chair1.SetActive(false);
+        car1Chair2.SetActive(false);
+        car1Chair3.SetActive(false);
+        car1Chair4.SetActive(false);
+        car1Chair5.SetActive(false);
+        car1Chair6.SetActive(false);
+        car2Chair1.SetActive(false);
+        car2Chair2.SetActive(false);
+        car2Chair3.SetActive(false);
+        car2Chair4.SetActive(false);
+        car2Chair5.SetActive(false);
+        car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(true);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
+    }
+
+    public void Up16()
+    {
+        car1Chair1.SetActive(false);
+        car1Chair2.SetActive(false);
+        car1Chair3.SetActive(false);
+        car1Chair4.SetActive(false);
+        car1Chair5.SetActive(false);
+        car1Chair6.SetActive(false);
+        car2Chair1.SetActive(false);
+        car2Chair2.SetActive(false);
+        car2Chair3.SetActive(false);
+        car2Chair4.SetActive(false);
+        car2Chair5.SetActive(false);
+        car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(true);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(false);
+    }
+
+    public void Up17()
+    {
+        car1Chair1.SetActive(false);
+        car1Chair2.SetActive(false);
+        car1Chair3.SetActive(false);
+        car1Chair4.SetActive(false);
+        car1Chair5.SetActive(false);
+        car1Chair6.SetActive(false);
+        car2Chair1.SetActive(false);
+        car2Chair2.SetActive(false);
+        car2Chair3.SetActive(false);
+        car2Chair4.SetActive(false);
+        car2Chair5.SetActive(false);
+        car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(true);
+        car3Bunk6.SetActive(false);
+    }
+
+    public void Up18()
+    {
+        car1Chair1.SetActive(false);
+        car1Chair2.SetActive(false);
+        car1Chair3.SetActive(false);
+        car1Chair4.SetActive(false);
+        car1Chair5.SetActive(false);
+        car1Chair6.SetActive(false);
+        car2Chair1.SetActive(false);
+        car2Chair2.SetActive(false);
+        car2Chair3.SetActive(false);
+        car2Chair4.SetActive(false);
+        car2Chair5.SetActive(false);
+        car2Chair6.SetActive(false);
+
+        car3Bunk1.SetActive(false);
+        car3Bunk2.SetActive(false);
+        car3Bunk3.SetActive(false);
+        car3Bunk4.SetActive(false);
+        car3Bunk5.SetActive(false);
+        car3Bunk6.SetActive(true);
     }
 }

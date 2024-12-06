@@ -106,7 +106,15 @@ public static class ProfileSystem
         //Banks Quest
         { Variable.BanksQuestStarted,  false },
         { Variable.RetrievedYellowSpringSalad, false },
-        { Variable.BanksQuestFinished,  false }
+        { Variable.BanksQuestFinished,  false },
+
+        //Bunk Upgrades
+        { Variable.Bedroom1Bunk1, 0  },
+        { Variable.Bedroom1Bunk2, 0  },
+        { Variable.Bedroom1Bunk3, 0  },
+        { Variable.Bedroom1Bunk4, 0  },
+        { Variable.Bedroom1Bunk5, 0  },
+        { Variable.Bedroom1Bunk6, 0  }
     };
 
     static ProfileSystem()
@@ -408,6 +416,14 @@ public static class ProfileSystem
         HasRenovatedBedroom1,
         HasRenovatedEntertainment,
 
-        StartedUpgradeTutorial
+        StartedUpgradeTutorial,
+
+        //Bunk Upgrades
+        Bedroom1Bunk1,
+        Bedroom1Bunk2,
+        Bedroom1Bunk3,
+        Bedroom1Bunk4,
+        Bedroom1Bunk5,
+        Bedroom1Bunk6
     }
 }
