@@ -89,6 +89,7 @@ public class BanksSpecialQuests : MonoBehaviour
                     ConversationManager.Instance.StartConversation(saladConversation);
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
+                    Character.Instance.promptUI.SetActive(false);
                 }
                 else
                 {
@@ -97,6 +98,7 @@ public class BanksSpecialQuests : MonoBehaviour
                         ConversationManager.Instance.StartConversation(conversations[Random.Range(0, conversations.Length)]);
                         Cursor.visible = true;
                         Cursor.lockState = CursorLockMode.None;
+                        Character.Instance.promptUI.SetActive(false);
                     }
                 }
             }
@@ -108,12 +110,14 @@ public class BanksSpecialQuests : MonoBehaviour
                     ConversationManager.Instance.StartConversation(giveSaladConversation);
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
+                    Character.Instance.promptUI.SetActive(false);
                 }
                 else
                 {
                     ConversationManager.Instance.StartConversation(wrongOrderConversation);
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
+                    Character.Instance.promptUI.SetActive(false);
                 }
             }
 
@@ -134,6 +138,7 @@ public class BanksSpecialQuests : MonoBehaviour
         ConversationManager.Instance.StartConversation(conversations[Random.Range(0, conversations.Length)]);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        Character.Instance.promptUI.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)

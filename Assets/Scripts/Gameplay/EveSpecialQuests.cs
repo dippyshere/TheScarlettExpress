@@ -83,6 +83,7 @@ public class EveSpecialQuests : MonoBehaviour
                 ConversationManager.Instance.StartConversation(soupConversation);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+                Character.Instance.promptUI.SetActive(false);
             }
             else
             {
@@ -91,6 +92,7 @@ public class EveSpecialQuests : MonoBehaviour
                     ConversationManager.Instance.StartConversation(conversations[Random.Range(0, conversations.Length)]);
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
+                    Character.Instance.promptUI.SetActive(false);
                 }
             }
         }
@@ -102,12 +104,14 @@ public class EveSpecialQuests : MonoBehaviour
                 ConversationManager.Instance.StartConversation(giveSoupConversation);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+                Character.Instance.promptUI.SetActive(false);
             }
             else
             {
                 ConversationManager.Instance.StartConversation(wrongOrderConversation);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+                Character.Instance.promptUI.SetActive(false);
             }
         }
 
@@ -119,6 +123,7 @@ public class EveSpecialQuests : MonoBehaviour
         {
             ConversationManager.OnConversationEnded += ReEnablePromptOnEnd;
         }
+
         Character.Instance.promptUI.SetActive(false);
     }
 
@@ -127,6 +132,7 @@ public class EveSpecialQuests : MonoBehaviour
         ConversationManager.Instance.StartConversation(conversations[Random.Range(0, conversations.Length)]);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        Character.Instance.promptUI.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)

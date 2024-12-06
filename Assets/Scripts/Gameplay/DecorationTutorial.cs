@@ -100,15 +100,20 @@ public class DecorationTutorial : MonoBehaviour
 
     public void UpgradedChair()
     {
-        table1Highlight.SetActive(false);
-        clipboardUI.SetActive(false);
-        otherTableBlocks.SetActive(false);
-        mainTab.SetActive(true);
-        upgradesTab.SetActive(false);
+        //table1Highlight.SetActive(false);
+        //clipboardUI.SetActive(false);
+        //otherTableBlocks.SetActive(false);
+        //mainTab.SetActive(true);
+        //upgradesTab.SetActive(false);
 
         if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {
             ConversationManager.Instance.StartConversation(upgradedChairDialogue);
+            table1Highlight.SetActive(false);
+            clipboardUI.SetActive(false);
+            otherTableBlocks.SetActive(false);
+            mainTab.SetActive(true);
+            upgradesTab.SetActive(false);
         }
     }
 

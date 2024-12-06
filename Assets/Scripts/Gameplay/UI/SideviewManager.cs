@@ -994,6 +994,11 @@ public class SideviewManager : MonoBehaviour
             restaurant1Camera.SetActive(true);
             restaurant2Camera.SetActive(false);
             bedroom1Camera.SetActive(false);
+
+            foreach (GameObject wall in sideviewWalls)
+            {
+                wall.SetActive(false);
+            }
         }
     }
     public void SwitchFrom3To2()
@@ -1003,6 +1008,11 @@ public class SideviewManager : MonoBehaviour
             restaurant1Camera.SetActive(false);
             restaurant2Camera.SetActive(true);
             bedroom1Camera.SetActive(false);
+
+            foreach (GameObject wall in sideviewWalls)
+            {
+                wall.SetActive(false);
+            }
         }
     }
     public void ShowSideview1()
