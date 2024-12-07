@@ -38,6 +38,9 @@ namespace DialogueEditor
         SerializedProperty RedImageProperty;
         SerializedProperty YellowImageProperty;
         SerializedProperty JosephImageProperty;
+        SerializedProperty MatildaImageProperty;
+        SerializedProperty MadamFruFruImageProperty;
+        SerializedProperty EbonyImageProperty;
         SerializedProperty ChihuahuaVoiceBankProperty;
         SerializedProperty EbonyVoiceBankProperty;
         SerializedProperty EveVoiceBankProperty;
@@ -62,6 +65,9 @@ namespace DialogueEditor
             RedImageProperty = serializedObject.FindProperty("RedImage");
             YellowImageProperty = serializedObject.FindProperty("YellowImage");
             JosephImageProperty = serializedObject.FindProperty("JosephImage");
+            MatildaImageProperty = serializedObject.FindProperty("MatildaImage");
+            MadamFruFruImageProperty = serializedObject.FindProperty("MadamFruFruImage");
+            EbonyImageProperty = serializedObject.FindProperty("EbonyImage");
             ChihuahuaVoiceBankProperty = serializedObject.FindProperty("ChihuahuaVoiceBank");
             EbonyVoiceBankProperty = serializedObject.FindProperty("EbonyVoiceBank");
             EveVoiceBankProperty = serializedObject.FindProperty("EveVoiceBank");
@@ -121,6 +127,9 @@ namespace DialogueEditor
             EditorGUILayout.PropertyField(RedImageProperty);
             EditorGUILayout.PropertyField(YellowImageProperty);
             EditorGUILayout.PropertyField(JosephImageProperty);
+            EditorGUILayout.PropertyField(MatildaImageProperty);
+            EditorGUILayout.PropertyField(MadamFruFruImageProperty);
+            EditorGUILayout.PropertyField(EbonyImageProperty);
             
             EditorGUILayout.Space();
             
