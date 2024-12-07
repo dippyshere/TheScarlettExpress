@@ -6,6 +6,7 @@ public class SpecialPassengerManager : MonoBehaviour
 {
     public GameObject theRestaurantBanks;
     public GameObject roomBanks;
+    public GameObject madameFruFru;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,9 @@ public class SpecialPassengerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.HasRenovatedEntertainment))
+        {
+            madameFruFru.SetActive(true);
+        }
     }
 }
