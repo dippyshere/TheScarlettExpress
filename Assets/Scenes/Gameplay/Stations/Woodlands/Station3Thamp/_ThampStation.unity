@@ -2837,9 +2837,9 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":585,"yPos":40},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":(","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":331.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Well
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":402.5,"yPos":163},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":(","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":149,"yPos":145},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Well
     someone''s eager! But my little \"casino\" isn''t in the game yet, honeybee :(
-    I''ll catch you later!\r","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":0,"IconGUID":null,"Name":"Ebony","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":2,"Volume":0}]}'
+    I''ll catch you later!\r","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":11,"IconGUID":null,"Name":"Ebony","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":2,"Volume":0}]}'
   NodeSerializedDataList:
   - {fileID: 394334852}
   - {fileID: 394334851}
@@ -2899,10 +2899,10 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":351.5,"yPos":90},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":\/","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":629,"yPos":210},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":":\/\/\/","parentUIDs":[2],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":90,"yPos":73},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":601.5,"yPos":39},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":\/","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":879,"yPos":159},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":":\/\/\/","parentUIDs":[2],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":340,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
     there! Fox fellow! Take my bags, will you? My wife asked for a nice train but
     I like that yours is red so that''s what we''re doing instead.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":8,"IconGUID":null,"Name":"Joseph
-    Banks","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":4,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":357,"yPos":198},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"The
+    Banks","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":4,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":607,"yPos":147},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"The
     owner? Even better! Then you''ll certainly know where the bags should go! Come
     along, dear, let''s go.\r","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":8,"IconGUID":null,"Name":"Joseph
     Banks","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":4,"Volume":0}]}'
@@ -47783,6 +47783,120 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0.1
   m_ShadowAngle: 0
+--- !u!1001 &836543932
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1532718855}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5000004
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5000004
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.89
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.29
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.56204706
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.8271053
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -111.605
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4815955061178913274, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 652bb1c5dafbf8e48ad8d77e9b5a65b1, type: 2}
+    - target: {fileID: -3855335175272487014, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 652bb1c5dafbf8e48ad8d77e9b5a65b1, type: 2}
+    - target: {fileID: -264430861247414160, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5e8b389410abe5347b7b92ba8907f3a4, type: 2}
+    - target: {fileID: 682984317910134154, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5e8b389410abe5347b7b92ba8907f3a4, type: 2}
+    - target: {fileID: 919132149155446097, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_Name
+      value: bear_norig (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499673948147543594, guid: 31478b922c61966469628f376c83cfe7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 652bb1c5dafbf8e48ad8d77e9b5a65b1, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 31478b922c61966469628f376c83cfe7, type: 3}
+--- !u!4 &836543933 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 31478b922c61966469628f376c83cfe7,
+    type: 3}
+  m_PrefabInstance: {fileID: 836543932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &843552983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54965,7 +55079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1532718855
 Transform:
   m_ObjectHideFlags: 0
@@ -54981,6 +55095,7 @@ Transform:
   m_Children:
   - {fileID: 843552984}
   - {fileID: 134117125}
+  - {fileID: 836543933}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1534848831
