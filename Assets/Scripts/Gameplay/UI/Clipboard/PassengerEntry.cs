@@ -45,6 +45,9 @@ public class PassengerEntry : MonoBehaviour
         this.comfortRating.text = "comfort: " + comfortRating + "/3";
         switch (destinationId)
         {
+            case 0:
+                destination.text = "Special Passenger";
+                break;
             case 1:
                 destination.text = "Destination: Riverside";
                 break;

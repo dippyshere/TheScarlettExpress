@@ -43,6 +43,8 @@ public class PassengerController : MonoBehaviour
     [SerializeField, Tooltip("The species of the passenger")]
     public string species = "species";
 
+    public bool isSpecialPassenger;
+
     [FormerlySerializedAs("UIPrompt"),SerializeField] GameObject uiPrompt;
 
     void Start()
@@ -59,6 +61,10 @@ public class PassengerController : MonoBehaviour
         comfortLevel = Random.Range(0, 3);
         //entertainmentLevel = Random.Range(0, 4);
         destinationId = Random.Range(1, 6);
+        if (gameObject.scene.name == "_RestaurantTutorial")
+        {
+            destinationId = 1;
+        }
         string[] speciesList = { "Rabbit", "Beaver", "Deer", "Wolf", "Bear" };
         species = speciesList[Random.Range(0, speciesList.Length)];
         string[] names =
@@ -148,7 +154,7 @@ public class PassengerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasBeenFed)
+        if (other.CompareTag("Player") && !hasBeenFed && !isSpecialPassenger)
         {
             if (other.GetComponent<Pickup>().hasItem)
             {
@@ -162,7 +168,7 @@ public class PassengerController : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isSpecialPassenger)
         {
             if (uiPrompt != null)
             {

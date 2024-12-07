@@ -44,6 +44,10 @@ public class PassengerManager : MonoBehaviour
 
     public void SpawnPassenger()
     {
+        if (!spawnPassengers)
+        {
+            return;
+        }
         foreach (Transform spawnPoint in spawnPoints)
         {
             if (spawnPoint.gameObject.activeSelf)
@@ -76,10 +80,9 @@ public class PassengerManager : MonoBehaviour
         SavePassengerData();
     }
 
-    public void RemovePassenger(PassengerController passenger)
+    public int RemovePassenger(PassengerController passenger)
     {
         int owed = passenger.CalculateTripValue();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(owed);
         Transform closestSeat = spawnPoints[0];
         float closestDistance = Vector3.Distance(passenger.transform.position, spawnPoints[0].position);
         foreach (Transform spawnPoint in spawnPoints)
@@ -95,6 +98,7 @@ public class PassengerManager : MonoBehaviour
         closestSeat.gameObject.SetActive(true);
         _passengerData.Remove(Convert.ToString(spawnPoints.IndexOf(closestSeat)));
         Destroy(passenger.gameObject);
+        return owed;
     }
 
     public void DayAdvanceCleanup()
@@ -105,16 +109,30 @@ public class PassengerManager : MonoBehaviour
         }
 
         SavePassengerData();
+
+        SpecialPassengerRent();
+    }
+    
+    void SpecialPassengerRent()
+    {
+        foreach (PassengerController passenger in passengers)
+        {
+            if (passenger.isSpecialPassenger)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(5);
+            }
+        }
     }
 
     public void ArriveAtStation(int stationId)
     {
+        int owedMoney = 0;
         List<PassengerController> passengersToRemove = new();
         foreach (PassengerController passenger in passengers)
         {
-            if (passenger.destinationId == stationId)
+            if (passenger.destinationId == stationId && !passenger.isSpecialPassenger)
             {
-                RemovePassenger(passenger);
+                owedMoney += RemovePassenger(passenger);
                 passengersToRemove.Add(passenger);
             }
         }
@@ -123,6 +141,12 @@ public class PassengerManager : MonoBehaviour
         {
             passengers.Remove(passenger);
         }
+
+        if (ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination) == 0)
+        {
+            owedMoney += 30;
+        }
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Economy>().AddMoney(owedMoney);
     }
 
     public void SavePassengerData()
@@ -142,6 +166,10 @@ public class PassengerManager : MonoBehaviour
             {
                 if (spawnPoints.IndexOf(spawnPoint) == Convert.ToInt32(key))
                 {
+                    if (!spawnPoint.gameObject.activeSelf)
+                    {
+                        continue;
+                    }
                     GameObject passengerPrefab = passengerPrefabs[Convert.ToInt32(_passengerData[key]["passengerType"])];
                     GameObject newPassenger = Instantiate(passengerPrefab, spawnPoint.position, spawnPoint.rotation);
                     passengers.Add(newPassenger.GetComponent<PassengerController>());

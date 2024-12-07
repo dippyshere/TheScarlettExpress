@@ -38,6 +38,14 @@ public class RestaurantEve : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Pickup"))
+        {
+            talkToEve = false;
+        }
+    }
+
     void BeginEveConversation()
     {
         ConversationManager.Instance.StartConversation(eveConversation);

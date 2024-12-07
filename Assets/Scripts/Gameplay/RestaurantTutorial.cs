@@ -13,10 +13,11 @@ public class RestaurantTutorial : MonoBehaviour
     public GameObject cookingStoveSelection;
     public GameObject drinkStoveSelection;
     public GameObject exclamation;
+    public GameObject exclamation2;
     bool _hasCompletedRTutorial;
     public GameObject jellyStoveSelection;
 
-    public NPCConversation nowWeWait;
+    //public NPCConversation nowWeWait;
     //[SerializeField] private bool talkToEve = false;
     //[SerializeField] private bool waitingTime;
 
@@ -28,7 +29,17 @@ public class RestaurantTutorial : MonoBehaviour
     [SerializeField] bool stoveTime;
     public NPCConversation stoveTutorial;
     public GameObject tutorialChihuahua;
-    
+    public GameObject stoveBlocks;
+
+    public GameObject brownPassenger;
+    public GameObject greenPassenger;
+    public GameObject redPassenger;
+    public GameObject pinkPassenger;
+
+    public GameObject endDayConfirmationUI;
+
+    public ClipboardManager clipboardManager;
+
     void Start()
     {
         _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
@@ -53,15 +64,15 @@ public class RestaurantTutorial : MonoBehaviour
 
         _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
 
-        switch (_hasCompletedRTutorial)
-        {
-            case false:
-                tutorialChihuahua.SetActive(true);
-                break;
-            case true:
-                tutorialChihuahua.SetActive(false);
-                break;
-        }
+        //switch (_hasCompletedRTutorial)
+        //{
+        //    case false:
+        //        tutorialChihuahua.SetActive(true);
+        //        break;
+        //    case true:
+        //        tutorialChihuahua.SetActive(false);
+        //        break;
+        //}
 
         if (canStoveTutorial)
         {
@@ -79,6 +90,11 @@ public class RestaurantTutorial : MonoBehaviour
         //{
         //    BeginEveConversation();
         //}
+
+        if (endDayConfirmationUI.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        {
+            endDayConfirmationUI.SetActive(false);
+        }
     }
 
     void OnTriggerEnter(Collider collision)
@@ -105,6 +121,7 @@ public class RestaurantTutorial : MonoBehaviour
     public void RestaurantTutorialCompleted()
     {
         _hasCompletedRTutorial = true;
+        ProfileSystem.Set(ProfileSystem.Variable.RestaurantTutorialDone, true);
     }
 
     public void StartTutorial()
@@ -124,11 +141,58 @@ public class RestaurantTutorial : MonoBehaviour
     public void WaitConversation()
     {
         exclamation.SetActive(false);
-        ConversationManager.Instance.StartConversation(nowWeWait);
+        //ConversationManager.Instance.StartConversation(nowWeWait);
+        exclamation2.SetActive(true);
+    }
+
+    public void TalkingToEve()
+    {
+        exclamation2.SetActive(false);
+        stoveBlocks.SetActive(false);
+        brownPassenger.tag = "Passenger";
+        greenPassenger.tag = "Passenger";
+        redPassenger.tag = "Passenger";
+        pinkPassenger.tag = "Passenger";
+
+        brownPassenger.GetComponent<ActivateDialogue>().enabled = false;
+        greenPassenger.GetComponent<ActivateDialogue>().enabled = false;
+        redPassenger.GetComponent<ActivateDialogue>().enabled = false;
+        pinkPassenger.GetComponent<ActivateDialogue>().enabled = false;
+        tutorialChihuahua.GetComponent<ActivateDialogue>().enabled = false;
+    }
+
+    public void InvokeActivateDialogue()
+    {
+        if (!_hasCompletedRTutorial)
+        {
+            brownPassenger.GetComponent<ActivateDialogue>().enabled = true;
+            greenPassenger.GetComponent<ActivateDialogue>().enabled = true;
+            redPassenger.GetComponent<ActivateDialogue>().enabled = true;
+            pinkPassenger.GetComponent<ActivateDialogue>().enabled = true;
+            tutorialChihuahua.GetComponent<ActivateDialogue>().enabled = true;
+        }
     }
 
     //private void BeginEveConversation()
     //{
     //    ConversationManager.Instance.StartConversation(eveConversation);
     //}
+
+    public void EndDayConfirmation()
+    {
+        if (!_hasCompletedRTutorial)
+        {
+            endDayConfirmationUI.SetActive(true);
+        }
+        if (_hasCompletedRTutorial)
+        {
+            clipboardManager.NextDay();
+            endDayConfirmationUI.SetActive(false);
+        }
+    }
+
+    public void GoBack()
+    {
+        endDayConfirmationUI.SetActive(false);
+    }
 }

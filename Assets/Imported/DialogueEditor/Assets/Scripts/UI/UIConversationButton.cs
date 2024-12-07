@@ -29,6 +29,8 @@ namespace DialogueEditor
 
         // UI Elements
         [SerializeField] TextMeshProUGUI TextMesh;
+        
+        [SerializeField] Button button;
 
         // Node data
         eHoverState m_hoverState;
@@ -94,6 +96,12 @@ namespace DialogueEditor
                 {
                     m_hoverState = m_hoverState == eHoverState.animatingOn ? eHoverState.idleOn : eHoverState.idleOff;
                 }
+            }
+            
+            // if the button is interactable, and the player hits spacebar, advance the dialogue
+            if (ConversationManager.Instance.AllowMouseInteraction && Input.GetKeyDown(KeyCode.Space) && button.interactable)
+            {
+                DoClickBehaviour();
             }
         }
 

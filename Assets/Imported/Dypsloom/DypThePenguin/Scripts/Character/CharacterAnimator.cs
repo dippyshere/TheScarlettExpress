@@ -19,18 +19,19 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         public const int SnowBallAnimID = 2;
         public const int ThrowSnowballAnimID = 1;
 
-        static readonly int m_HorizontalSpeedAnimHash = Animator.StringToHash("Horizontal Speed");
-        static readonly int m_VerticalSpeedAnimHash = Animator.StringToHash("Vertical Speed");
-        static readonly int m_GroundedAnimHash = Animator.StringToHash("Grounded");
-        static readonly int m_DamagedAnimHash = Animator.StringToHash("Damaged");
-        static readonly int m_ItemActionIndexAnimHash = Animator.StringToHash("ItemActionIndex");
-        static readonly int m_ItemActionAnimHash = Animator.StringToHash("ItemAction");
-        static readonly int m_ItemAnimHash = Animator.StringToHash("Item");
-        static readonly int m_DieAnimHash = Animator.StringToHash("Die");
-        static readonly int m_InteractAnimHash = Animator.StringToHash("Interact");
-        static readonly int m_EquippedItemAnimHash = Animator.StringToHash("EquippedItem");
+        static readonly int m_HorizontalSpeedAnimHash = Animator.StringToHash("WalkSpeed");
+//        static readonly int m_VerticalSpeedAnimHash = Animator.StringToHash("Vertical Speed");
+//        static readonly int m_GroundedAnimHash = Animator.StringToHash("Grounded");
+//        static readonly int m_DamagedAnimHash = Animator.StringToHash("Damaged");
+//        static readonly int m_ItemActionIndexAnimHash = Animator.StringToHash("ItemActionIndex");
+//        static readonly int m_ItemActionAnimHash = Animator.StringToHash("ItemAction");
+//        static readonly int m_ItemAnimHash = Animator.StringToHash("Item");
+//        static readonly int m_DieAnimHash = Animator.StringToHash("Die");
+//        static readonly int m_InteractAnimHash = Animator.StringToHash("Interact");
+//        static readonly int m_EquippedItemAnimHash = Animator.StringToHash("EquippedItem");
         protected readonly Character m_Character;
         protected Animator m_Animator;
+        Vector3 lastPosition;
 
         /// <summary>
         ///     The constructor.
@@ -40,6 +41,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         {
             m_Character = character;
             m_Animator = character.Animator;
+            lastPosition = m_Character.transform.position;
         }
 
         /// <summary>
@@ -47,9 +49,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         /// </summary>
         public virtual void Tick()
         {
-            HorizontalMove(m_Character.CharacterMover.CharacterInputMovement.sqrMagnitude);
-            VerticalMove(m_Character.CharacterMover.Movement.y);
-            Grounded(m_Character.IsGrounded);
+            HorizontalMove();
+            //VerticalMove(m_Character.CharacterMover.Movement.y);
+            //Grounded(m_Character.IsGrounded);
         }
 
         /// <summary>
@@ -57,9 +59,9 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         /// </summary>
         public void ItemAction(int item, int itemAction)
         {
-            m_Animator.SetInteger(m_ItemAnimHash, item);
-            m_Animator.SetInteger(m_ItemActionIndexAnimHash, itemAction);
-            m_Animator.SetTrigger(m_ItemActionAnimHash);
+            //m_Animator.SetInteger(m_ItemAnimHash, item);
+            //m_Animator.SetInteger(m_ItemActionIndexAnimHash, itemAction);
+            //m_Animator.SetTrigger(m_ItemActionAnimHash);
         }
 
         /// <summary>
@@ -67,7 +69,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         /// </summary>
         public void EquipWeapon(int item)
         {
-            m_Animator.SetInteger(m_EquippedItemAnimHash, item);
+            //m_Animator.SetInteger(m_EquippedItemAnimHash, item);
         }
 
         /// <summary>
@@ -75,7 +77,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         /// </summary>
         public void UnequipWeapon()
         {
-            m_Animator.SetInteger(m_EquippedItemAnimHash, -1);
+            //m_Animator.SetInteger(m_EquippedItemAnimHash, -1);
         }
 
         /// <summary>
@@ -84,7 +86,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         /// <param name="dead">Is the character dead?</param>
         public void Die(bool dead)
         {
-            m_Animator.SetBool(m_DieAnimHash, dead);
+            //m_Animator.SetBool(m_DieAnimHash, dead);
         }
 
         /// <summary>
@@ -93,7 +95,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         /// <param name="damage">The damage information.</param>
         public void Damaged(Damage.Damage damage)
         {
-            m_Animator.SetTrigger(m_DamagedAnimHash);
+            //m_Animator.SetTrigger(m_DamagedAnimHash);
         }
 
         /// <summary>
@@ -102,15 +104,18 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         /// <param name="interactable">The interactable information.</param>
         public void Interact(IInteractable interactable)
         {
-            m_Animator.SetTrigger(m_InteractAnimHash);
+            //m_Animator.SetTrigger(m_InteractAnimHash);
         }
 
         /// <summary>
         ///     Move animation.
         /// </summary>
-        /// <param name="speed">The move speed.</param>
-        public void HorizontalMove(float speed)
+        public void HorizontalMove()
         {
+            lastPosition.y = m_Character.transform.position.y;
+            float speed = Vector3.Distance(m_Character.transform.position, lastPosition) / Time.unscaledDeltaTime;
+            lastPosition = m_Character.transform.position;
+            speed *= 0.2f;
             m_Animator.SetFloat(m_HorizontalSpeedAnimHash, speed, 0f, Time.deltaTime);
         }
 
@@ -120,7 +125,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         /// <param name="speed">The move speed.</param>
         public void VerticalMove(float speed)
         {
-            m_Animator.SetFloat(m_VerticalSpeedAnimHash, speed, 0f, Time.deltaTime);
+            //m_Animator.SetFloat(m_VerticalSpeedAnimHash, speed, 0f, Time.deltaTime);
         }
 
         /// <summary>
@@ -129,7 +134,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         /// <param name="Grounded">The grounded.</param>
         public void Grounded(bool grounded)
         {
-            m_Animator.SetBool(m_GroundedAnimHash, grounded);
+            //m_Animator.SetBool(m_GroundedAnimHash, grounded);
         }
     }
 }

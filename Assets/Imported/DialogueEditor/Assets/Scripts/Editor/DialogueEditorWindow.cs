@@ -767,6 +767,10 @@ namespace DialogueEditor
                                 GUILayout.Label("Character Image", EditorStyles.boldLabel);
                                 node.CharacterIcon = (SpeechNode.eCharacter)EditorGUILayout.EnumPopup(node.CharacterIcon);
                                 EditorGUILayout.Space();
+                                
+                                GUILayout.Label("Voice Bank", EditorStyles.boldLabel);
+                                node.VoiceBank = (SpeechNode.eVoiceBank)EditorGUILayout.EnumPopup(node.VoiceBank);
+                                EditorGUILayout.Space();
 
                                 GUILayout.Label("Audio Options", EditorStyles.boldLabel);
                                 GUILayout.Label("Audio");

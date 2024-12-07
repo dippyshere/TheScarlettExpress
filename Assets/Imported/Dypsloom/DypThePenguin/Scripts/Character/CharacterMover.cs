@@ -27,7 +27,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
         protected Vector3 m_Movement;
         bool m_WasGrounded;
-        Vector3 previousSpeed;
+        public Vector3 previousSpeed;
 
         /// <summary>
         ///     Constructor.
@@ -63,6 +63,11 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
             get { return m_IsJumping; }
         }
 
+        public Vector3 LastSpeed
+        {
+            get { return previousSpeed; }
+        }
+
         /// <summary>
         ///     Update tick every frame.
         /// </summary>
@@ -76,7 +81,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                     m_IsJumping = false;
                 }
 
-                if (m_Character.CharacterInput.Jump)
+                if (m_Character.CharacterInput.Jump && !m_Character.m_MovementMode.Equals(MovementMode.Decorating))
                 {
                     m_Character.IsGrounded = false;
                     m_IsJumping = true;
@@ -140,8 +145,10 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                     break;
             }
 
+            float speed = m_Character.Speed * (m_Character.CharacterInput.Sprint ? m_Character.SprintSpeed : 1);
+            
             m_CharacterInputMovement = Vector3.SmoothDamp(m_CharacterInputMovement,
-                m_Character.Speed * movementRelativeCamera, ref previousSpeed, 0.1f);
+                movementRelativeCamera * speed, ref previousSpeed, 0.1f);
 
             Vector3 externalMovement = Vector3.zero;
             for (int i = m_ExternalMovers.Count - 1; i >= 0; i--)

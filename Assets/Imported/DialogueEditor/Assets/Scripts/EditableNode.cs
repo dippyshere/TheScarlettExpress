@@ -197,6 +197,8 @@ namespace DialogueEditor
         public Sprite Icon;
 
         [DataMember] public SpeechNode.eCharacter CharacterIcon;
+        
+        [DataMember] public SpeechNode.eVoiceBank VoiceBank;
 
         /// <summary> Deprecated as of V1.03 </summary>
         [DataMember] public string IconGUID;

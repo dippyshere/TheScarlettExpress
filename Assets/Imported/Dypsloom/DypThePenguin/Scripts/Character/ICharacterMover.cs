@@ -13,6 +13,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
     {
         Vector3 CharacterInputMovement { get; }
         bool IsJumping { get; }
+        Vector3 LastSpeed { get; }
     }
 
     /// <summary>

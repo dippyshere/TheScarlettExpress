@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb27db011a47ec4fa2f2ddd50848272, type: 3}
+  m_Name: Joseph
+  m_EditorClassIdentifier: 
+  a: {fileID: 8300000, guid: a60948e76d5605f48ae0441c0d3770cf, type: 3}
+  b: {fileID: 8300000, guid: fe9312333a084854fa81e1b98881fa95, type: 3}
+  c: {fileID: 8300000, guid: 32fe459b537645e48bacc5c9e656f223, type: 3}
+  d: {fileID: 8300000, guid: 20dcd1fa39ebf564f801fc44f11025cf, type: 3}
+  e: {fileID: 8300000, guid: b843c61d6bdbeab4a9da1da52ba82046, type: 3}
+  f: {fileID: 8300000, guid: 2270e33e94bef424cb3b530383f2e631, type: 3}
+  g: {fileID: 8300000, guid: 30a645479febf704bbf7891b1d306998, type: 3}
+  h: {fileID: 8300000, guid: 67fce3c29ad629b47882faa3c479d9e7, type: 3}
+  i: {fileID: 8300000, guid: 433809f934e4b074b87f226b47c05221, type: 3}
+  j: {fileID: 8300000, guid: 8ec22548bdf84134aaa0715cf3df8fd1, type: 3}
+  k: {fileID: 8300000, guid: 32fe459b537645e48bacc5c9e656f223, type: 3}
+  l: {fileID: 8300000, guid: 3f27da1952ecae541926c6af6bafcdf4, type: 3}
+  m: {fileID: 8300000, guid: 608938c229d703744be5a928312e1558, type: 3}
+  n: {fileID: 8300000, guid: 4e029a129fadf0e45a8f7ba8d39670b7, type: 3}
+  o: {fileID: 8300000, guid: 353ea47bf0e9043498455539a96f3361, type: 3}
+  p: {fileID: 8300000, guid: 0275d62605092bb4b898c06a1ce6236b, type: 3}
+  q: {fileID: 8300000, guid: 32fe459b537645e48bacc5c9e656f223, type: 3}
+  r: {fileID: 8300000, guid: 2aec4d9a9dee16e44b2310e61565bc8f, type: 3}
+  s: {fileID: 8300000, guid: f83144b1258d89848b98e0f507293bcc, type: 3}
+  t: {fileID: 8300000, guid: 95bb2f2f04978564c8e0991f986e4ae0, type: 3}
+  u: {fileID: 8300000, guid: 17f04fe56fa556b488a8bc16b045e5d8, type: 3}
+  v: {fileID: 8300000, guid: 19772c56036848c429e3465deb888d1f, type: 3}
+  w: {fileID: 8300000, guid: e90146607b4af3f4b9f87142f6d535cc, type: 3}
+  x: {fileID: 8300000, guid: ca1c53f9833277a43b21024176c752aa, type: 3}
+  y: {fileID: 8300000, guid: 75cefb5eab431c241943231af5f2daa3, type: 3}
+  z: {fileID: 8300000, guid: cfead7719197a41479fe7633a416b974, type: 3}
+  volume: 1
+  pitch: 3.64

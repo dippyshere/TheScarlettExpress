@@ -22,14 +22,14 @@
         "com.unity.ugui": "1.0.0",
         "com.unity.modules.particlesystem": "1.0.0"
       },
-      "hash": "025efcbc5d3175aa1aaf5cb42a667cd7727457ae"
+      "hash": "598c85e0f455d38d7592758cffeeef7771609b16"
     },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f7b3c2fbe1628518a12340576e779fd80837480e"
+      "hash": "f9fd769be7c634610f2a61aa914a1a55f34740e1"
     },
     "com.kuraiandras.linkergenerator": {
       "version": "2.0.0",
@@ -37,6 +37,13 @@
       "source": "registry",
       "dependencies": {},
       "url": "https://package.openupm.com"
+    },
+    "com.naelstrof.jigglephysics": {
+      "version": "https://github.com/naelstrof/UnityJigglePhysics.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2179b31cd80637ee914b4f405a1a0c1cd744ba76"
     },
     "com.starasgames.tmpro-dynamic-data-cleaner": {
       "version": "https://github.com/STARasGAMES/tmpro-dynamic-data-cleaner.git#upm",
@@ -46,11 +53,11 @@
       "hash": "3a3607621431b0173bea325a53fb34e8d574f995"
     },
     "com.unity.2d.animation": {
-      "version": "9.1.2",
+      "version": "9.1.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.2d.common": "8.0.3",
+        "com.unity.2d.common": "8.0.4",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.collections": "1.1.0",
         "com.unity.modules.animation": "1.0.0",
@@ -71,7 +78,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.common": {
-      "version": "8.0.3",
+      "version": "8.0.4",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -108,11 +115,11 @@
       "dependencies": {}
     },
     "com.unity.2d.spriteshape": {
-      "version": "9.0.4",
+      "version": "9.0.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.2d.common": "8.0.3",
+        "com.unity.2d.common": "8.0.4",
         "com.unity.mathematics": "1.1.0",
         "com.unity.modules.physics2d": "1.0.0"
       },
@@ -128,7 +135,7 @@
       }
     },
     "com.unity.2d.tilemap.extras": {
-      "version": "3.1.2",
+      "version": "3.1.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -232,7 +239,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.31",
+      "version": "3.0.34",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -273,10 +280,14 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.memoryprofiler": {
-      "version": "1.1.1",
+      "version": "1.1.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
+        "com.unity.burst": "1.8.0",
+        "com.unity.collections": "1.2.3",
+        "com.unity.mathematics": "1.2.1",
+        "com.unity.profiling.core": "1.0.0",
         "com.unity.editorcoroutines": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -444,7 +455,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.toolchain.win-x86_64-linux-x86_64": {
-      "version": "2.0.9",
+      "version": "2.0.10",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -463,7 +474,7 @@
       }
     },
     "com.unity.vectorgraphics": {
-      "version": "2.0.0-preview.24",
+      "version": "2.0.0-preview.25",
       "depth": 0,
       "source": "registry",
       "dependencies": {

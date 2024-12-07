@@ -12,13 +12,21 @@ public class DecorationSystem : MonoBehaviour
     public GameObject painting2Camera;
     public GameObject painting2UI;
 
-    public GameObject paintingBlocks;
-    public GameObject rugBlocks;
     public GameObject rugCamera;
     public GameObject rugUI;
 
     public GameObject sideviewButton;
     public GameObject sterlingButton;
+    public GameObject otherSideviewButton;
+    public GameObject otherSterlingButton;
+
+    public GameObject otherRoomCamera;
+    public GameObject otherRoomUI;
+    public GameObject otherRoomButton;
+
+    public GameObject thisRoomCamera;
+    public GameObject thisRoomUI;
+    public GameObject thisRoomButton;
 
     public void Painting1()
     {
@@ -26,7 +34,9 @@ public class DecorationSystem : MonoBehaviour
         painting1Camera.SetActive(true);
         sideviewButton.SetActive(false);
         sterlingButton.SetActive(false);
-        paintingBlocks.SetActive(true);
+
+        otherRoomButton.SetActive(false);
+        thisRoomButton.SetActive(false);
     }
 
     public void ExitPainting1()
@@ -35,7 +45,8 @@ public class DecorationSystem : MonoBehaviour
         painting1Camera.SetActive(false);
         sideviewButton.SetActive(true);
         sterlingButton.SetActive(true);
-        paintingBlocks.SetActive(false);
+
+        otherRoomButton.SetActive(true);
     }
 
     public void Painting2()
@@ -44,7 +55,9 @@ public class DecorationSystem : MonoBehaviour
         painting2Camera.SetActive(true);
         sideviewButton.SetActive(false);
         sterlingButton.SetActive(false);
-        paintingBlocks.SetActive(true);
+
+        otherRoomButton.SetActive(false);
+        thisRoomButton.SetActive(false);
     }
 
     public void ExitPainting2()
@@ -53,7 +66,8 @@ public class DecorationSystem : MonoBehaviour
         painting2Camera.SetActive(false);
         sideviewButton.SetActive(true);
         sterlingButton.SetActive(true);
-        paintingBlocks.SetActive(false);
+
+        otherRoomButton.SetActive(true);
     }
 
     public void Rug()
@@ -62,7 +76,9 @@ public class DecorationSystem : MonoBehaviour
         rugCamera.SetActive(true);
         sideviewButton.SetActive(false);
         sterlingButton.SetActive(false);
-        rugBlocks.SetActive(true);
+
+        otherRoomButton.SetActive(false);
+        thisRoomButton.SetActive(false);
     }
 
     public void ExitRug()
@@ -71,6 +87,23 @@ public class DecorationSystem : MonoBehaviour
         rugCamera.SetActive(false);
         sideviewButton.SetActive(true);
         sterlingButton.SetActive(true);
-        rugBlocks.SetActive(false);
+
+        otherRoomButton.SetActive(true);
+    }
+
+    public void GoToOtherRoom()
+    {
+        otherRoomButton.SetActive(false);
+        otherRoomUI.SetActive(true);
+        otherRoomCamera.SetActive(true);
+
+        thisRoomButton.SetActive(true);
+        thisRoomUI.SetActive(false);
+        thisRoomCamera.SetActive(false);
+
+        sideviewButton.SetActive(false);
+        sterlingButton.SetActive(false);
+        otherSideviewButton.SetActive(true);
+        otherSterlingButton.SetActive(true);
     }
 }

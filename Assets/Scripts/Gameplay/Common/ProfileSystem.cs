@@ -1,6 +1,7 @@
 #region
 
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 #endregion
@@ -19,6 +20,8 @@ public static class ProfileSystem
         { Variable.PlayerName, "Name" },
         { Variable.PlayerPronoun1, "They" },
         { Variable.PlayerPronoun2, "Them" },
+        { Variable.LastPlayed, "" },
+        { Variable.LastScene, "_Onboarding" },
         { Variable.CurrentStation, "None" },
         { Variable.StationDestination, 0 },
         { Variable.StationDistance, 1 },
@@ -26,7 +29,18 @@ public static class ProfileSystem
         { Variable.GameVolume, 1.0f },
         { Variable.EveTutorialDone, false },
         { Variable.RestaurantTutorialDone, false },
+        { Variable.DecoratingTutorialStarted, false },
         { Variable.DecoratingTutorialDone, false },
+        { Variable.UpgradeTutorialDone, false },
+        { Variable.HasBeenToFurrowood, false },
+        { Variable.AcquiredTheBanks, false },
+        { Variable.BanksHomed, false },
+        { Variable.HasBeenToFernValley, false },
+        { Variable.AcquiredPaints, false },
+        { Variable.EveQuest2Started, false },
+        { Variable.HasRenovatedBedroom1, false },
+        { Variable.HasRenovatedEntertainment, false },
+        { Variable.StartedUpgradeTutorial, false },
 
         //Decorations
         { Variable.Deco1, 0 },
@@ -44,6 +58,7 @@ public static class ProfileSystem
         { Variable.Deco13, 0 },
         { Variable.Deco14, 0 },
         { Variable.Deco15, 0 },
+
         { Variable.Deco16, 0 },
         { Variable.Deco17, 0 },
         { Variable.Deco18, 0 },
@@ -64,6 +79,9 @@ public static class ProfileSystem
         { Variable.Bed1Painting1, -1 },
         { Variable.Bed1Painting2, -1 },
         { Variable.Bed1Rug1, -1 },
+        { Variable.Bed2Painting1, -1 },
+        { Variable.Bed2Painting2, -1 },
+        { Variable.Bed2Rug1, -1 },
         { Variable.Bed1Upgrade, 0 },
         { Variable.Restraunt1Table1, 0 },
         { Variable.Restraunt1Table2, 0 },
@@ -78,7 +96,25 @@ public static class ProfileSystem
         { Variable.Restraunt2Table5, 0 },
         { Variable.Restraunt2Table6, 0 },
 
-        { Variable.PassengerStorage, "{}" }
+        { Variable.PassengerStorage, "{}" },
+
+        //Eve Quest
+        { Variable.EveQuestStarted, false },
+        { Variable.RetrievedBroccoliSoup, false },
+        { Variable.EveQuestFinished, false },
+
+        //Banks Quest
+        { Variable.BanksQuestStarted,  false },
+        { Variable.RetrievedYellowSpringSalad, false },
+        { Variable.BanksQuestFinished,  false },
+
+        //Bunk Upgrades
+        { Variable.Bedroom1Bunk1, 0  },
+        { Variable.Bedroom1Bunk2, 0  },
+        { Variable.Bedroom1Bunk3, 0  },
+        { Variable.Bedroom1Bunk4, 0  },
+        { Variable.Bedroom1Bunk5, 0  },
+        { Variable.Bedroom1Bunk6, 0  }
     };
 
     static ProfileSystem()
@@ -103,8 +139,16 @@ public static class ProfileSystem
         }
     }
 
-    public static void Set<T>(Variable variable, T value)
+    public static void Set<T>(Variable variable, T value, bool updateLastScene = true)
     {
+        string lastPlayedKey = GetSaveSlotKey(Variable.LastPlayed.ToString());
+        // set last played time using datetime with the day, month, year format of the current system locale, then followed by a " - " and the time in the current system locale
+        PlayerPrefs.SetString(lastPlayedKey, System.DateTime.Now.ToString("d", System.Globalization.CultureInfo.CurrentCulture) + " - " + System.DateTime.Now.ToString("t", System.Globalization.CultureInfo.CurrentCulture));
+        if (updateLastScene)
+        {
+            string lastSceneKey = GetSaveSlotKey(Variable.LastScene.ToString());
+            PlayerPrefs.SetString(lastSceneKey, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        }
         string key = GetSaveSlotKey(variable.ToString());
         switch (value)
         {
@@ -126,9 +170,18 @@ public static class ProfileSystem
         }
     }
 
-    public static T Get<T>(Variable variable)
+    public static T Get<T>(Variable variable, int slot = -1)
     {
+        int currentSlot = _currentSaveSlot;
+        if (slot >= 0)
+        {
+            _currentSaveSlot = slot;
+        }
         string key = GetSaveSlotKey(variable.ToString());
+        if (slot >= 0)
+        {
+            _currentSaveSlot = currentSlot;
+        }
         if (typeof(T) == typeof(int))
         {
             return (T)(object)PlayerPrefs.GetInt(key, (int)DefaultValues[variable]);
@@ -243,11 +296,28 @@ public static class ProfileSystem
         return $"{GlobalPrefix}{key}";
     }
 
-    public static void ClearProfile()
+    public static void ClearProfile(int slot = -1)
     {
-        foreach (Variable variable in DefaultValues.Keys)
+        if (slot == -1)
         {
-            Set(variable, DefaultValues[variable]);
+            for (int i = 0; i < NumSaveSlots; i++)
+            {
+                foreach (Variable variable in DefaultValues.Keys)
+                {
+                    string key = GetSaveSlotKey(variable.ToString());
+                    PlayerPrefs.DeleteKey(key);
+                }
+            }
+        }
+        else
+        {
+            int currentSlot = _currentSaveSlot;
+            _currentSaveSlot = slot;
+            foreach (string key in DefaultValues.Keys.Select(variable => GetSaveSlotKey(variable.ToString())))
+            {
+                PlayerPrefs.DeleteKey(key);
+            }
+            _currentSaveSlot = currentSlot;
         }
     }
 
@@ -257,6 +327,8 @@ public static class ProfileSystem
         PlayerName,
         PlayerPronoun1,
         PlayerPronoun2,
+        LastPlayed,
+        LastScene,
         CurrentStation,
         StationDestination,
         StationDistance,
@@ -266,7 +338,9 @@ public static class ProfileSystem
         //tutorials
         EveTutorialDone,
         RestaurantTutorialDone,
+        DecoratingTutorialStarted,
         DecoratingTutorialDone,
+        UpgradeTutorialDone,
 
         //decorations
         Deco1,
@@ -302,7 +376,10 @@ public static class ProfileSystem
         FreeDeco,
         Bed1Painting1,
         Bed1Painting2,
+        Bed2Painting1,
+        Bed2Painting2,
         Bed1Rug1,
+        Bed2Rug1,
         Bed1Upgrade,
         Restraunt1Table1,
         Restraunt1Table2,
@@ -316,6 +393,37 @@ public static class ProfileSystem
         Restraunt2Table4,
         Restraunt2Table5,
         Restraunt2Table6,
-        PassengerStorage
+        PassengerStorage,
+
+        //Eve Quest
+        EveQuestStarted,
+        RetrievedBroccoliSoup,
+        EveQuestFinished,
+
+        HasBeenToFernValley,
+        AcquiredPaints,
+        EveQuest2Started,
+
+        //Banks Quest
+        HasBeenToFurrowood,
+        AcquiredTheBanks,
+        BanksHomed,
+        RetrievedYellowSpringSalad,
+        BanksQuestStarted,
+        BanksQuestFinished,
+
+        //Renovation
+        HasRenovatedBedroom1,
+        HasRenovatedEntertainment,
+
+        StartedUpgradeTutorial,
+
+        //Bunk Upgrades
+        Bedroom1Bunk1,
+        Bedroom1Bunk2,
+        Bedroom1Bunk3,
+        Bedroom1Bunk4,
+        Bedroom1Bunk5,
+        Bedroom1Bunk6
     }
 }

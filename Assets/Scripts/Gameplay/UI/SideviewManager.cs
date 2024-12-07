@@ -5,6 +5,7 @@ using Dypsloom.DypThePenguin.Scripts.Character;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 #endregion
 
@@ -19,13 +20,18 @@ public class SideviewManager : MonoBehaviour
     public GameObject carriage3Camera;
     public Transform carriage3Go;
     public GameObject carriage3UI;
-    public GameObject carriageSelectionUI;
+    public GameObject carriage4Camera;
+    public Transform carriage4Go;
+    public GameObject carriage4UI;
+    public GameObject carriage5Camera;
+    public Transform carriage5Go;
+    public GameObject carriage5UI;
+    [FormerlySerializedAs("carriageSelectionUI")] public GameObject carriageSelectionUI1;
+    public GameObject carriageSelectionUI2;
 
     public GameObject decorateCamera;
 
     public GameObject decorationUpgradeCanvas;
-
-    public GameObject decrepitObjects;
 
     public GameObject kitchenCarriageCamera;
     public Transform kitchenCarriageGo;
@@ -36,12 +42,44 @@ public class SideviewManager : MonoBehaviour
 
     public AudioSource musicR;
 
+    public GameObject decrepitObjects;
     public GameObject renovationParticles;
+    public GameObject decrepitBedroomObjects;
+    public GameObject renovationBedroomParticles;
+    public GameObject decrepitEntertainmentObjects;
+    public GameObject renovationEntertainmentParticles;
+    public Button renovateButton;
+    public Button renovateBedroomButton;
+    public Button renovateEntertainmentButton;
 
     public GameObject sideviewButton;
     public GameObject sideviewCamera;
+    public GameObject sideviewCamera2;
     public GameObject[] sideviewWalls;
     public GameObject sterlingButton;
+
+    public GameObject clipboardUI;
+    public GameObject clipboardMainMenuUI;
+    public GameObject clipboardUpgradesUI;
+    public GameObject restaurant1Camera;
+    public GameObject restaurant1UpgradeUI;
+    public ClipboardManager clipboardManager;
+    public GameObject restaurant2Camera;
+    public GameObject restaurant2UpgradeUI;
+    public GameObject bedroom1Camera;
+    public GameObject bedroom1UpgradeUI;
+    public GameObject clipboardPassengerRosterUI;
+    public bool isSideviewUpgrade;
+    bool sideviewEnabled = false;
+
+    public MoneyUI moneyUI;
+
+    public GameObject goToEveRoomButton;
+    public GameObject goToBanksRoomButton;
+    public GameObject banksRoomCamera;
+    public GameObject banksRoomUI;
+    public GameObject banksRoomSterlingButton;
+    public GameObject banksRoomSideviewButton;
 
     void Start()
     {
@@ -52,6 +90,16 @@ public class SideviewManager : MonoBehaviour
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
 
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.HasRenovatedBedroom1))
+        {
+            renovateBedroomButton.interactable = false;
+            decrepitBedroomObjects.SetActive(false);
+}
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.HasRenovatedEntertainment))
+        {
+            renovateEntertainmentButton.interactable = false;
+            decrepitEntertainmentObjects.SetActive(false);
+        }
         //if (!sideviewCamera.activeSelf && Input.GetKeyDown(KeyCode.Tab))
         //{
         //    Debug.Log("heyy???");
@@ -96,12 +144,16 @@ public class SideviewManager : MonoBehaviour
 
     public void SideViewButton()
     {
-        if (!sideviewCamera.activeSelf)
+        if (!sideviewEnabled)
         {
+            sideviewEnabled = true;
+            ClipboardManager.Instance._isClipboardActive = false;
             //Debug.Log("heyy???");
             //Cursor.lockState = CursorLockMode.None;
             //sideviewCamera.SetActive(true);
             //carriageSelectionUI.SetActive(true);
+            CancelInvoke(nameof(ActivateCarriageSelection));
+            CancelInvoke(nameof(ActivateCarriageSelection2));
             Invoke(nameof(ActivateCarriageSelection), 2f);
             //sideviewWall.SetActive(false);
 
@@ -109,11 +161,21 @@ public class SideviewManager : MonoBehaviour
             CameraManager.Instance.SetInputModeUI();
         }
 
-        if (sideviewCamera.activeSelf)
+        if (sideviewEnabled)
         {
             CameraManager.Instance.SetInputModeGameplay();
+            sideviewEnabled = false;
             sideviewCamera.SetActive(false);
-            carriageSelectionUI.SetActive(false);
+            if (sideviewCamera2 != null)
+            {
+                sideviewCamera2.SetActive(false);
+                carriageSelectionUI2.SetActive(false);
+                carriage4Camera.SetActive(false);
+                carriage5Camera.SetActive(false);
+                carriage4UI.SetActive(false);
+                carriage5UI.SetActive(false);
+            }
+            carriageSelectionUI1.SetActive(false);
             foreach (GameObject wall in sideviewWalls)
             {
                 wall.SetActive(true);
@@ -128,6 +190,10 @@ public class SideviewManager : MonoBehaviour
             carriage1UI.SetActive(false);
             carriage2UI.SetActive(false);
             carriage3UI.SetActive(false);
+
+            bedroom1Camera.SetActive(false);
+            restaurant1Camera.SetActive(false);
+            restaurant2Camera.SetActive(false);
         }
 
         if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
@@ -140,43 +206,85 @@ public class SideviewManager : MonoBehaviour
 
     public void KitchenCarriage()
     {
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
         sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
         kitchenCarriageCamera.SetActive(true);
         kitchenCarriageUI.SetActive(true);
     }
 
     public void Carriage1()
     {
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
         sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
         carriage1Camera.SetActive(true);
         carriage1UI.SetActive(true);
     }
 
     public void Carriage2()
     {
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
+        if (carriageSelectionUI2 != null)
+            carriageSelectionUI2.SetActive(false);
         sideviewCamera.SetActive(false);
+        if (sideviewCamera2 != null)
+            sideviewCamera2.SetActive(false);
         carriage2Camera.SetActive(true);
         carriage2UI.SetActive(true);
     }
 
     public void Carriage3()
     {
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
         sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
         carriage3Camera.SetActive(true);
         carriage3UI.SetActive(true);
+    }
+    
+    public void Carriage4()
+    {
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
+        sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
+        carriage4Camera.SetActive(true);
+        carriage4UI.SetActive(true);
+    }
+    
+    public void Carriage5()
+    {
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
+        sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
+        carriage5Camera.SetActive(true);
+        carriage5UI.SetActive(true);
     }
 
     public void BackToSideview()
     {
+        CancelInvoke(nameof(ActivateCarriageSelection));
+        CancelInvoke(nameof(ActivateCarriageSelection2));
         Invoke(nameof(ActivateCarriageSelection), 2f);
 
         //carriageSelectionUI.SetActive(true);
+        sideviewEnabled = false;
         sideviewCamera.SetActive(true);
-        carriageSelectionUI.SetActive(true);
+        if (sideviewCamera2 != null)
+        {
+            sideviewCamera2.SetActive(false);
+            carriage4Camera.SetActive(false);
+            carriage5Camera.SetActive(false);
+            carriage4UI.SetActive(false);
+            carriage5UI.SetActive(false);
+            carriageSelectionUI2.SetActive(false);
+        }
+        carriageSelectionUI1.SetActive(true);
 
         kitchenCarriageCamera.SetActive(false);
         carriage1Camera.SetActive(false);
@@ -204,11 +312,80 @@ public class SideviewManager : MonoBehaviour
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);
         }
+
+        goToBanksRoomButton.SetActive(false);
+        goToEveRoomButton.SetActive(false);
+
+        banksRoomCamera.SetActive(false);
+        banksRoomUI.SetActive(false);
+        banksRoomSterlingButton.SetActive(false);
+        banksRoomSideviewButton.SetActive(false);
+    }
+    
+    public void BackToSideview2()
+    {
+        CancelInvoke(nameof(ActivateCarriageSelection));
+        CancelInvoke(nameof(ActivateCarriageSelection2));
+        Invoke(nameof(ActivateCarriageSelection2), 2f);
+
+        //carriageSelectionUI.SetActive(true);
+        sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(true);
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(true);
+
+        kitchenCarriageCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
+
+        kitchenCarriageUI.SetActive(false);
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
+
+        if (sideviewButton != null && sterlingButton != null)
+        {
+            sideviewButton.SetActive(false);
+            sterlingButton.SetActive(false);
+        }
+
+        foreach (GameObject wall in sideviewWalls)
+        {
+            wall.SetActive(false);
+        }
+
+        if (decorationUpgradeCanvas != null)
+        {
+            decorationUpgradeCanvas.SetActive(false);
+            decorateCamera.SetActive(false);
+        }
+
+        goToBanksRoomButton.SetActive(false);
+        goToEveRoomButton.SetActive(false);
+
+        banksRoomCamera.SetActive(false);
+        banksRoomUI.SetActive(false);
+        banksRoomSterlingButton.SetActive(false);
+        banksRoomSideviewButton.SetActive(false);
     }
 
     public void BackToSterling()
     {
         sideviewCamera.SetActive(false);
+        if (sideviewCamera2 != null)
+        {
+            sideviewCamera2.SetActive(false);
+            carriage4Camera.SetActive(false);
+            carriage5Camera.SetActive(false);
+            carriage4UI.SetActive(false);
+            carriage5UI.SetActive(false);
+            carriageSelectionUI2.SetActive(false);
+        }
         kitchenCarriageCamera.SetActive(false);
         carriage1Camera.SetActive(false);
         carriage2Camera.SetActive(false);
@@ -219,7 +396,7 @@ public class SideviewManager : MonoBehaviour
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -238,21 +415,44 @@ public class SideviewManager : MonoBehaviour
             decorationUpgradeCanvas.SetActive(false);
             decorateCamera.SetActive(false);
         }
+        
+        ClipboardManager.Instance.tabButton.SetActive(true);
+
+        goToBanksRoomButton.SetActive(false);
+        goToEveRoomButton.SetActive(false);
+
+        banksRoomCamera.SetActive(false);
+        banksRoomUI.SetActive(false);
+        banksRoomSterlingButton.SetActive(false);
+        banksRoomSideviewButton.SetActive(false);
     }
 
     void ActivateCarriageSelection()
     {
-        carriageSelectionUI.SetActive(true);
+        carriageSelectionUI1.SetActive(true);
+        if (carriageSelectionUI2 != null)
+            carriageSelectionUI2.SetActive(false);
+    }
+    
+    void ActivateCarriageSelection2()
+    {
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(true);
     }
 
     void OpenSideviewMenu()
     {
         CameraManager.Instance.SetInputModeUI();
         sideviewCamera.SetActive(true);
+        if (sideviewCamera2 != null)
+        {
+            sideviewCamera2.SetActive(false);
+        }
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(false);
         }
+        sideviewEnabled = true;
     }
 
     public void Decorate()
@@ -272,35 +472,48 @@ public class SideviewManager : MonoBehaviour
         carriage1Camera.SetActive(false);
         carriage2Camera.SetActive(false);
         carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
 
         kitchenCarriageUI.SetActive(false);
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
 
         if (sideviewButton != null && sterlingButton != null)
         {
             sideviewButton.SetActive(true);
             sterlingButton.SetActive(true);
         }
+
+        goToBanksRoomButton.SetActive(true);
     }
 
     public void Go0()
     {
         StartCoroutine(Character.Instance.LateTeleport(kitchenCarriageGo));
 
+        sideviewEnabled = false;
         sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
         carriage1Camera.SetActive(false);
         carriage2Camera.SetActive(false);
         carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
 
         kitchenCarriageUI.SetActive(false);
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -319,18 +532,25 @@ public class SideviewManager : MonoBehaviour
     {
         StartCoroutine(Character.Instance.LateTeleport(carriage1Go));
 
+        sideviewEnabled = false;
         sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
         carriage1Camera.SetActive(false);
         carriage2Camera.SetActive(false);
         carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
 
         kitchenCarriageUI.SetActive(false);
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -349,18 +569,25 @@ public class SideviewManager : MonoBehaviour
     {
         StartCoroutine(Character.Instance.LateTeleport(carriage2Go));
 
+        sideviewEnabled = false;
         sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
         carriage1Camera.SetActive(false);
         carriage2Camera.SetActive(false);
         carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
 
         kitchenCarriageUI.SetActive(false);
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -379,18 +606,99 @@ public class SideviewManager : MonoBehaviour
     {
         StartCoroutine(Character.Instance.LateTeleport(carriage3Go));
 
+        sideviewEnabled = false;
         sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
         kitchenCarriageCamera.SetActive(false);
         carriage1Camera.SetActive(false);
         carriage2Camera.SetActive(false);
         carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
 
         kitchenCarriageUI.SetActive(false);
         carriage1UI.SetActive(false);
         carriage2UI.SetActive(false);
         carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
 
-        carriageSelectionUI.SetActive(false);
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
+        foreach (GameObject wall in sideviewWalls)
+        {
+            wall.SetActive(true);
+        }
+
+        if (decorationUpgradeCanvas != null)
+        {
+            decorationUpgradeCanvas.SetActive(false);
+            decorateCamera.SetActive(false);
+        }
+
+        CameraManager.Instance.SetInputModeGameplay();
+    }
+    
+    public void Go4()
+    {
+        StartCoroutine(Character.Instance.LateTeleport(carriage4Go));
+
+        sideviewEnabled = false;
+        sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
+        kitchenCarriageCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
+
+        kitchenCarriageUI.SetActive(false);
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
+
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
+        foreach (GameObject wall in sideviewWalls)
+        {
+            wall.SetActive(true);
+        }
+
+        if (decorationUpgradeCanvas != null)
+        {
+            decorationUpgradeCanvas.SetActive(false);
+            decorateCamera.SetActive(false);
+        }
+
+        CameraManager.Instance.SetInputModeGameplay();
+    }
+    
+    public void Go5()
+    {
+        StartCoroutine(Character.Instance.LateTeleport(carriage5Go));
+
+        sideviewEnabled = false;
+        sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
+        kitchenCarriageCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
+
+        kitchenCarriageUI.SetActive(false);
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
+
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
         foreach (GameObject wall in sideviewWalls)
         {
             wall.SetActive(true);
@@ -417,6 +725,319 @@ public class SideviewManager : MonoBehaviour
             renovationParticles.SetActive(true);
 
             Invoke(nameof(BackToSterling), 1f);
+
+            renovateButton.interactable = false;
         }
+
+        if (money <= 99)
+        {
+            moneyUI.moneyText.color = Color.red;
+            Invoke(nameof(RevertMoneyColour), 1f);
+        }
+    }
+    public void RenovateBedroomCarriage()
+    {
+        if (money >= 100)
+        {
+            musicR.Play();
+            money -= 100;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
+
+            decrepitBedroomObjects.SetActive(false);
+            renovationBedroomParticles.SetActive(true);
+
+            //Invoke(nameof(BackToSterling), 1f);
+
+            renovateBedroomButton.interactable = false;
+            ProfileSystem.Set<bool>(ProfileSystem.Variable.HasRenovatedBedroom1, true);
+        }
+
+        if (money <= 99)
+        {
+            moneyUI.moneyText.color = Color.red;
+            Invoke(nameof(RevertMoneyColour), 1f);
+        }
+    }
+
+    public void RenovateEntertainmentCarriage()
+    {
+        if (money >= 100)
+        {
+            musicR.Play();
+            money -= 100;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, money);
+
+            decrepitEntertainmentObjects.SetActive(false);
+            renovationEntertainmentParticles.SetActive(true);
+
+            //Invoke(nameof(BackToSterling), 1f);
+
+            renovateEntertainmentButton.interactable = false;
+            ProfileSystem.Set<bool>(ProfileSystem.Variable.HasRenovatedEntertainment, true);
+        }
+
+        if (money <= 99)
+        {
+            moneyUI.moneyText.color = Color.red;
+            Invoke(nameof(RevertMoneyColour), 1f);
+        }
+    }
+
+    public void RevertMoneyColour()
+    {
+        moneyUI.moneyText.color = Color.white;
+    }
+
+    public void OpenCarriage1Upgrades()
+    {
+        sideviewEnabled = false;
+
+        sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
+        kitchenCarriageCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
+
+        kitchenCarriageUI.SetActive(false);
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
+
+        clipboardUI.SetActive(true);
+        clipboardUpgradesUI.SetActive(true);
+        clipboardMainMenuUI.SetActive(false);
+
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
+        foreach (GameObject wall in sideviewWalls)
+        {
+            wall.SetActive(true);
+        }
+
+        if (restaurant1Camera != null && restaurant1UpgradeUI != null)
+        {
+            restaurant1Camera.SetActive(true);
+            restaurant1UpgradeUI.SetActive(true);
+        }
+
+        clipboardManager._isClipboardActive = true;
+        clipboardManager.canClipboard = true;
+
+        restaurant2Camera.SetActive(false);
+        restaurant2UpgradeUI.SetActive(false);
+
+        bedroom1Camera.SetActive(false);
+        bedroom1UpgradeUI.SetActive(false);
+
+        isSideviewUpgrade = true;
+    }
+
+    public void OpenCarriage2Upgrades()
+    {
+        sideviewEnabled = false;
+
+        sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
+        kitchenCarriageCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
+
+        kitchenCarriageUI.SetActive(false);
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
+
+        clipboardUI.SetActive(true);
+        clipboardUpgradesUI.SetActive(true);
+        clipboardMainMenuUI.SetActive(false);
+
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
+        foreach (GameObject wall in sideviewWalls)
+        {
+            wall.SetActive(true);
+        }
+
+        if (restaurant2Camera != null && restaurant2UpgradeUI != null)
+        {
+            restaurant2Camera.SetActive(true);
+            restaurant2UpgradeUI.SetActive(true);
+        }
+
+        clipboardManager._isClipboardActive = true;
+        clipboardManager.canClipboard = true;
+
+        restaurant1Camera.SetActive(false);
+        restaurant1UpgradeUI.SetActive(false);
+
+        bedroom1Camera.SetActive(false);
+        bedroom1UpgradeUI.SetActive(false);
+
+        isSideviewUpgrade = true;
+    }
+
+    public void OpenCarriage3Upgrades()
+    {
+        sideviewEnabled = false;
+
+        sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(false);
+        kitchenCarriageCamera.SetActive(false);
+        carriage1Camera.SetActive(false);
+        carriage2Camera.SetActive(false);
+        carriage3Camera.SetActive(false);
+        carriage4Camera.SetActive(false);
+        carriage5Camera.SetActive(false);
+
+        kitchenCarriageUI.SetActive(false);
+        carriage1UI.SetActive(false);
+        carriage2UI.SetActive(false);
+        carriage3UI.SetActive(false);
+        carriage4UI.SetActive(false);
+        carriage5UI.SetActive(false);
+
+        clipboardUI.SetActive(true);
+        clipboardUpgradesUI.SetActive(true);
+        clipboardMainMenuUI.SetActive(false);
+
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(false);
+        foreach (GameObject wall in sideviewWalls)
+        {
+            wall.SetActive(false);
+        }
+
+        if (bedroom1Camera != null && bedroom1UpgradeUI != null)
+        {
+            bedroom1Camera.SetActive(true);
+            bedroom1UpgradeUI.SetActive(true);
+        }
+
+        clipboardManager._isClipboardActive = true;
+        clipboardManager.canClipboard = true;
+
+        restaurant1Camera.SetActive(false);
+        restaurant1UpgradeUI.SetActive(false);
+
+        restaurant2Camera.SetActive(false);
+        restaurant2UpgradeUI.SetActive(false);
+
+        isSideviewUpgrade = true;
+    }
+
+    public void CloseClipboard()
+    {
+        restaurant1Camera.SetActive(false);
+        restaurant1UpgradeUI.SetActive(true);
+        restaurant2Camera.SetActive(false);
+        restaurant2UpgradeUI.SetActive(false);
+        bedroom1Camera.SetActive(false);
+        bedroom1UpgradeUI.SetActive(false);
+
+        clipboardUpgradesUI.SetActive(false);
+        clipboardMainMenuUI.SetActive(true);
+
+        isSideviewUpgrade = false;
+
+        clipboardPassengerRosterUI.SetActive(false);
+
+        foreach (GameObject wall in sideviewWalls)
+        {
+            wall.SetActive(true);
+        }
+    }
+
+    public void SwitchFrom1To2()
+    {
+        if (isSideviewUpgrade)
+        {
+            restaurant1Camera.SetActive(false);
+            restaurant2Camera.SetActive(true);
+            bedroom1Camera.SetActive(false);
+        }
+    }
+
+    public void SwitchFrom1To3()
+    {
+        if (isSideviewUpgrade)
+        {
+            restaurant1Camera.SetActive(false);
+            restaurant2Camera.SetActive(false);
+            bedroom1Camera.SetActive(true);
+        }
+    }
+
+    public void SwitchFrom2To1()
+    {
+        if (isSideviewUpgrade)
+        {
+            restaurant1Camera.SetActive(true);
+            restaurant2Camera.SetActive(false);
+            bedroom1Camera.SetActive(false);
+        }
+    }
+
+    public void SwitchFrom2To3()
+    {
+        if (isSideviewUpgrade)
+        {
+            restaurant1Camera.SetActive(false);
+            restaurant2Camera.SetActive(false);
+            bedroom1Camera.SetActive(true);
+        }
+    }
+
+    public void SwitchFrom3To1()
+    {
+        if (isSideviewUpgrade)
+        {
+            restaurant1Camera.SetActive(true);
+            restaurant2Camera.SetActive(false);
+            bedroom1Camera.SetActive(false);
+
+            foreach (GameObject wall in sideviewWalls)
+            {
+                wall.SetActive(false);
+            }
+        }
+    }
+    public void SwitchFrom3To2()
+    {
+        if (isSideviewUpgrade)
+        {
+            restaurant1Camera.SetActive(false);
+            restaurant2Camera.SetActive(true);
+            bedroom1Camera.SetActive(false);
+
+            foreach (GameObject wall in sideviewWalls)
+            {
+                wall.SetActive(false);
+            }
+        }
+    }
+    public void ShowSideview1()
+    {
+        carriageSelectionUI1.SetActive(true);
+        carriageSelectionUI2.SetActive(false);
+        sideviewCamera.SetActive(true);
+        sideviewCamera2.SetActive(false);
+    }
+    
+    public void ShowSideview2()
+    {
+        carriageSelectionUI1.SetActive(false);
+        carriageSelectionUI2.SetActive(true);
+        sideviewCamera.SetActive(false);
+        sideviewCamera2.SetActive(true);
     }
 }

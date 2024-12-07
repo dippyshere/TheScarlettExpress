@@ -13,6 +13,7 @@ TagManager:
   - Cash
   - FxTemporaire
   - Cash2
+  - Banks
   layers:
   - Default
   - TransparentFX

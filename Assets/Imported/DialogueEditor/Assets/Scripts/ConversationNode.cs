@@ -63,7 +63,23 @@ namespace DialogueEditor
         {
             Chihuahua,
             Eve,
-            Sterling
+            Sterling,
+            Brown,
+            Green,
+            Pink,
+            Red,
+            Yellow,
+            Joseph
+        }
+        
+        public enum eVoiceBank
+        {
+            None,
+            Chihuahua,
+            Ebony,
+            Eve,
+            Joseph,
+            Matilda
         }
         
         public AudioClip Audio;
@@ -87,6 +103,11 @@ namespace DialogueEditor
         /// Bug workaround because the character sprite doesnt save in builds apparently i guess
         /// </summary>
         public eCharacter CharacterImage;
+        
+        /// <summary>
+        /// sound bank to use for voices when playing dialogue
+        /// </summary>
+        public eVoiceBank VoiceBank;
 
         /// <summary> The name of the NPC who is speaking. </summary>
         public string Name;
