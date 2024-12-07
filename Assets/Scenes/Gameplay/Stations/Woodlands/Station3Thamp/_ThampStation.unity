@@ -2899,10 +2899,10 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":601.5,"yPos":39},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":\/","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":879,"yPos":159},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":":\/\/\/","parentUIDs":[2],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":340,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":308.5,"yPos":125},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":":\/","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":586,"yPos":245},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":":\/\/\/","parentUIDs":[2],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":47,"yPos":108},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
     there! Fox fellow! Take my bags, will you? My wife asked for a nice train but
     I like that yours is red so that''s what we''re doing instead.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":8,"IconGUID":null,"Name":"Joseph
-    Banks","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":4,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":607,"yPos":147},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"The
+    Banks","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":4,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":314,"yPos":233},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"The
     owner? Even better! Then you''ll certainly know where the bags should go! Come
     along, dear, let''s go.\r","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"CharacterIcon":8,"IconGUID":null,"Name":"Joseph
     Banks","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"VoiceBank":4,"Volume":0}]}'
@@ -54126,7 +54126,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
-  Icon: {fileID: 21300000, guid: 54071ace6000eca4682e71969b5602ca, type: 3}
+  Icon: {fileID: 21300000, guid: 5600cfbd5d0541740bb902f59217d265, type: 3}
   NodeID: 0
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
 --- !u!114 &1393769483
@@ -54176,7 +54176,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
-  Icon: {fileID: 21300000, guid: 54071ace6000eca4682e71969b5602ca, type: 3}
+  Icon: {fileID: 21300000, guid: 5600cfbd5d0541740bb902f59217d265, type: 3}
   NodeID: 2
   TMPFont: {fileID: 11400000, guid: 5321fd2b43769794fb1bcaa247c5d733, type: 2}
 --- !u!1 &1401707017
@@ -55079,7 +55079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1532718855
 Transform:
   m_ObjectHideFlags: 0

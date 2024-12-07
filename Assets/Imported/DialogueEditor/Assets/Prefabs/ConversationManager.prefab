@@ -351,9 +351,9 @@ MonoBehaviour:
   PinkImage: {fileID: 21300000, guid: cbc4d38b6b3157a4b8e587fcae2fa445, type: 3}
   RedImage: {fileID: 21300000, guid: 511b5b1339bff864687fcc35286273ab, type: 3}
   YellowImage: {fileID: 21300000, guid: a5d7d6b74d51e044a8f42d2354bed6ae, type: 3}
-  JosephImage: {fileID: 21300000, guid: fed85972fd2a5eb42b1e81cf4e0dbd8a, type: 3}
-  MatildaImage: {fileID: 21300000, guid: 2e203ff2d7dfd684fb4d52bc477664a6, type: 3}
-  MadamFruFruImage: {fileID: 21300000, guid: c5f6aaf05db4647459d9aa566e830e31, type: 3}
+  JosephImage: {fileID: 21300000, guid: 5600cfbd5d0541740bb902f59217d265, type: 3}
+  MatildaImage: {fileID: 21300000, guid: dc8bb5ecbd5ebf84187933c8726ae5b5, type: 3}
+  MadamFruFruImage: {fileID: 21300000, guid: 070ae0e34694f3e489f7d06a476486df, type: 3}
   EbonyImage: {fileID: 21300000, guid: 5e789a91c7637fa438d850ba754caec6, type: 3}
   ChihuahuaVoiceBank: {fileID: 11400000, guid: c8e781825cb1a1046b4a9cd93206fb53, type: 2}
   EbonyVoiceBank: {fileID: 11400000, guid: 178fa5ecebb901d49a8c7866856c3dbb, type: 2}
