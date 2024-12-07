@@ -183,7 +183,7 @@ public class EveSpecialQuests : MonoBehaviour
 
     public void DrawRandy()
     {
-        //randyPainting.SetActive(true);
+        LoadingManager.Instance.ShowLoadingScreen();
         paintingSound.Play();
         Invoke(nameof(HideLoad), 1f);
     }
@@ -192,7 +192,7 @@ public class EveSpecialQuests : MonoBehaviour
     {
         //paintingParticles.SetActive(true);
         randyPainting.SetActive(true);
-        loadingManager.HideLoadingScreen();
+        LoadingManager.Instance.HideLoadingScreen();
         Invoke(nameof(Sparkles), 1f);
     }
 
