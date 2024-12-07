@@ -16,6 +16,8 @@ public class ActivateDialogue : MonoBehaviour
     public bool isConversing;
     public bool deactivateOnBegin = true;
 
+    public AudioSource ebonySparkles;
+
     // Update is called once per frame
     void Update()
     {
@@ -54,6 +56,10 @@ public class ActivateDialogue : MonoBehaviour
         {
             ConversationManager.Instance.StartConversation(conversation);
             Character.Instance.promptUI.SetActive(false);
+            if (this.gameObject.tag == "Ebony")
+            {
+                ebonySparkles.Play();
+            }
         }
         isConversing = false;
         Cursor.visible = true;

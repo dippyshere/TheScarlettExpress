@@ -25,6 +25,8 @@ public class BanksSpecialQuests : MonoBehaviour
     public NPCConversation saladConversation;
     public NPCConversation wrongOrderConversation;
 
+    public GameObject exclamationUI;
+
     void Awake()
     {
         Instance = this;
@@ -38,6 +40,11 @@ public class BanksSpecialQuests : MonoBehaviour
         hasRetrievedSalad = ProfileSystem.Get<bool>(ProfileSystem.Variable.RetrievedYellowSpringSalad);
         banksQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestStarted);
         banksQuestFinished = ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestFinished);
+
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestFinished))
+        {
+            exclamationUI.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -50,11 +57,13 @@ public class BanksSpecialQuests : MonoBehaviour
         if (isConversing && Input.GetKeyDown(KeyCode.E) && !banksQuestFinished)
         {
             BeginConversation();
+            exclamationUI.SetActive(false);
         }
 
         if (isConversing && Input.GetKeyDown(KeyCode.E) && banksQuestFinished)
         {
             BeginSpeaking();
+            exclamationUI.SetActive(false);
         }
     }
 

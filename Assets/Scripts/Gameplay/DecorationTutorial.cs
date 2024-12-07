@@ -31,8 +31,7 @@ public class DecorationTutorial : MonoBehaviour
     void Start()
     {
         //ProfileSystem.ClearProfile();
-        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialStarted) 
-            && !ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {
             ConversationManager.Instance.StartConversation(chihuahuaWelcome);
         }
@@ -42,6 +41,12 @@ public class DecorationTutorial : MonoBehaviour
         if (ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {
             upgradeBlocks.SetActive(false);
+        }
+
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialStarted)
+            && ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            ConversationManager.Instance.StartConversation(beginDecoratingTutorial);
         }
     }
 

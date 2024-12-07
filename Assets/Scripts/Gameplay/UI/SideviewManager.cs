@@ -729,7 +729,7 @@ public class SideviewManager : MonoBehaviour
             renovateButton.interactable = false;
         }
 
-        if (money <= 99)
+        if (money <= 99 && decrepitObjects.activeSelf)
         {
             moneyUI.moneyText.color = Color.red;
             Invoke(nameof(RevertMoneyColour), 1f);
@@ -752,7 +752,7 @@ public class SideviewManager : MonoBehaviour
             ProfileSystem.Set<bool>(ProfileSystem.Variable.HasRenovatedBedroom1, true);
         }
 
-        if (money <= 99)
+        if (money <= 99 && decrepitBedroomObjects.activeSelf)
         {
             moneyUI.moneyText.color = Color.red;
             Invoke(nameof(RevertMoneyColour), 1f);
@@ -776,7 +776,7 @@ public class SideviewManager : MonoBehaviour
             ProfileSystem.Set<bool>(ProfileSystem.Variable.HasRenovatedEntertainment, true);
         }
 
-        if (money <= 99)
+        if (money <= 99 && decrepitEntertainmentObjects.activeSelf)
         {
             moneyUI.moneyText.color = Color.red;
             Invoke(nameof(RevertMoneyColour), 1f);

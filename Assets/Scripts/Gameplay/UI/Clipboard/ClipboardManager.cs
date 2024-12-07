@@ -225,5 +225,10 @@ public class ClipboardManager : MonoBehaviour
                     { "stationDestination", ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination) }
                 });
         }
+
+        if (ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance) == 0)
+        {
+            TrainSounds.Instance.PlayBrakeNoise();
+        }
     }
 }
