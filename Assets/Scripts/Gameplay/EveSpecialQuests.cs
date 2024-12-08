@@ -28,7 +28,6 @@ public class EveSpecialQuests : MonoBehaviour
 
     public GameObject randyPainting;
     public AudioSource paintingSound;
-    public LoadingManager loadingManager;
     public GameObject paintingParticles;
 
     public GameObject eveExclamation;
