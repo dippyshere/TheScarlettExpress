@@ -8,27 +8,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: SterlingHat
-    second: {fileID: 2100000, guid: 9a683bf550a397249ba9d96fae1166c2, type: 2}
+    second: {fileID: 2100000, guid: ddb88909891ff9d40a8a213b8df1769e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Sterling_body
-    second: {fileID: 2100000, guid: 90dda0d423399d1448e1244847277032, type: 2}
+    second: {fileID: 2100000, guid: 08300e602a02ab14b8b17dd5457e800c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Sterling_jacket
-    second: {fileID: 2100000, guid: 9a683bf550a397249ba9d96fae1166c2, type: 2}
+    second: {fileID: 2100000, guid: 505e46747f3597649a70436f09011000, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Sterlingbowtie
-    second: {fileID: 2100000, guid: bf834b1daf3cdaa489e19a4c53e6c5f6, type: 2}
+    second: {fileID: 2100000, guid: 77cc258828d8db34baed66eb6705e7ac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: sterling_eye
-    second: {fileID: 2100000, guid: cef0ace19ff1e9048b31efbea6f1afdf, type: 2}
+    second: {fileID: 2100000, guid: 4e2cc0da4dccbf94a8d46a24af6615d4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

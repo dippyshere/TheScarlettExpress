@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class RestaurantTutorial : MonoBehaviour
 {
+    public static RestaurantTutorial Instance;
     public NPCConversation beginRestaurantTutorial;
     [SerializeField] bool canStoveTutorial = true;
 
@@ -40,6 +41,11 @@ public class RestaurantTutorial : MonoBehaviour
 
     public ClipboardManager clipboardManager;
 
+    void Awake()
+    {
+        Instance = this;
+    }
+    
     void Start()
     {
         _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
