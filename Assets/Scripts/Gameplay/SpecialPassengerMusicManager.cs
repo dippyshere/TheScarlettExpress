@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpecialPassengerMusicManager : MonoBehaviour
 {
     public AudioSource specialPassengerMusic;
     public AudioSource trainMusic;
+    public AudioSource banksMusic;
+
     public IEnumerator FadeOut(AudioSource audioSource, float duration)
     {
         float startVolume = audioSource.volume;
@@ -40,6 +43,13 @@ public class SpecialPassengerMusicManager : MonoBehaviour
             StartCoroutine(FadeOut(trainMusic, 1f));
             //specialPassengerMusic.Play();
             StartCoroutine(FadeIn(specialPassengerMusic, 2f));
+
+            if (SceneManager.GetActiveScene().name == "_ThampStation" && ProfileSystem.Get<bool>(ProfileSystem.Variable.HasBeenToFurrowood) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.AcquiredTheBanks))
+            {
+                trainMusic.mute = true;
+                StartCoroutine(FadeOut(banksMusic, 1f));
+                StartCoroutine(FadeIn(specialPassengerMusic, 2f));
+            }
         }
     }
 
@@ -49,6 +59,13 @@ public class SpecialPassengerMusicManager : MonoBehaviour
         {
             StartCoroutine(FadeOut(specialPassengerMusic, 1f));
             StartCoroutine(FadeIn(trainMusic, 2f));
+
+            if (SceneManager.GetActiveScene().name == "_ThampStation" && ProfileSystem.Get<bool>(ProfileSystem.Variable.HasBeenToFurrowood) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.AcquiredTheBanks))
+            {
+                trainMusic.mute = true;
+                StartCoroutine(FadeOut(specialPassengerMusic, 1f));
+                StartCoroutine(FadeIn(trainMusic, 2f));
+            }
         }
     }
 }
