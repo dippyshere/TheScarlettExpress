@@ -29,20 +29,21 @@ public class LoadingManager : MonoBehaviour
         loadingScreenAnimator.SetBool("EndTransition", true);
     }
     
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName, float delay = 0)
     {
         ShowLoadingScreen();
-        StartCoroutine(LoadSceneAsync(sceneName));
+        StartCoroutine(LoadSceneAsync(sceneName, delay));
     }
     
-    IEnumerator LoadSceneAsync(string sceneName)
+    IEnumerator LoadSceneAsync(string sceneName, float delay = 0)
     {
         if (CameraManager.Instance != null)
         {
             CameraManager.Instance.SetInputModeUI(false, false);
         }
         yield return null;
-        yield return new WaitForSecondsRealtime(1.035f);
+        yield return new WaitForSecondsRealtime(1.1435f);
+        yield return new WaitForSecondsRealtime(delay);
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }

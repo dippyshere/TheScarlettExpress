@@ -427,9 +427,6 @@ MonoBehaviour:
   m_Name: Beautify
   m_EditorClassIdentifier: 
   active: 1
-  ditherIntensity:
-    m_OverrideState: 1
-    m_Value: 0
   disabled:
     m_OverrideState: 1
     m_Value: 0
@@ -1076,6 +1073,16 @@ MonoBehaviour:
   eyeAdaptationSpeedToDark:
     m_OverrideState: 1
     m_Value: 0.2
+  eyeAdaptationMeteringMode:
+    m_OverrideState: 1
+    m_Value: 0
+  eyeAdaptationMinCameraDistance:
+    m_OverrideState: 1
+    m_Value: 0
+  eyeAdaptationMask:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
   purkinje:
     m_OverrideState: 1
     m_Value: 0
@@ -1193,6 +1200,9 @@ MonoBehaviour:
   thermalVisionDistortionAmount:
     m_OverrideState: 1
     m_Value: 9
+  ditherIntensity:
+    m_OverrideState: 1
+    m_Value: 0
   frame:
     m_OverrideState: 1
     m_Value: 0
