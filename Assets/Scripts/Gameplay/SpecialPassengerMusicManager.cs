@@ -9,46 +9,69 @@ public class SpecialPassengerMusicManager : MonoBehaviour
     public AudioSource trainMusic;
     public AudioSource banksMusic;
 
-    public IEnumerator FadeOut(AudioSource audioSource, float duration)
+    private Coroutine specialPassengerMusicFade;
+    private Coroutine trainMusicFade;
+    private Coroutine banksMusicFade;
+
+    private IEnumerator FadeOut(AudioSource audioSource, float duration)
     {
         float startVolume = audioSource.volume;
 
         while (audioSource.volume > 0)
         {
             audioSource.volume -= startVolume * Time.deltaTime / duration;
+            if (audioSource.volume < 0) audioSource.volume = 0;
             yield return null;
         }
 
         audioSource.volume = 0;
     }
 
-    public IEnumerator FadeIn(AudioSource audioSource, float duration, float targetVolume = 0.1f)
+    private IEnumerator FadeIn(AudioSource audioSource, float duration, float targetVolume = 0.1f)
     {
-        audioSource.volume = 0; // Ensure volume starts at 0.
+        float startVolume = audioSource.volume; // Ensure volume starts at 0.
         //audioSource.Play();     // Start playing the audio.
 
         while (audioSource.volume < targetVolume)
         {
             audioSource.volume += targetVolume * Time.deltaTime / duration;
+            if (audioSource.volume > targetVolume) audioSource.volume = targetVolume;
             yield return null;
         }
 
         audioSource.volume = targetVolume; // Ensure it reaches the target volume.
     }
 
+    private void StartFadeIn(ref Coroutine fadeCoroutine, AudioSource audioSource, float duration, float targetVolume = 0.1f)
+    {
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
+        fadeCoroutine = StartCoroutine(FadeIn(audioSource, duration, targetVolume));
+    }
+
+    private void StartFadeOut(ref Coroutine fadeCoroutine, AudioSource audioSource, float duration)
+    {
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
+        fadeCoroutine = StartCoroutine(FadeOut(audioSource, duration));
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(FadeOut(trainMusic, 1f));
-            //specialPassengerMusic.Play();
-            StartCoroutine(FadeIn(specialPassengerMusic, 2f));
+            StartFadeIn(ref specialPassengerMusicFade, specialPassengerMusic, 2f);
+            StartFadeOut(ref trainMusicFade, trainMusic, 1f);
 
             if (SceneManager.GetActiveScene().name == "_ThampStation" && ProfileSystem.Get<bool>(ProfileSystem.Variable.HasBeenToFurrowood) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.AcquiredTheBanks))
             {
                 trainMusic.mute = true;
-                StartCoroutine(FadeOut(banksMusic, 1f));
-                StartCoroutine(FadeIn(specialPassengerMusic, 2f));
+                StartFadeIn(ref specialPassengerMusicFade, specialPassengerMusic, 2f);
+                StartFadeOut(ref banksMusicFade, banksMusic, 1f);
             }
         }
     }
@@ -57,14 +80,14 @@ public class SpecialPassengerMusicManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(FadeOut(specialPassengerMusic, 1f));
-            StartCoroutine(FadeIn(trainMusic, 2f));
+            StartFadeIn(ref trainMusicFade, trainMusic, 2f);
+            StartFadeOut(ref specialPassengerMusicFade, specialPassengerMusic, 1f);
 
             if (SceneManager.GetActiveScene().name == "_ThampStation" && ProfileSystem.Get<bool>(ProfileSystem.Variable.HasBeenToFurrowood) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.AcquiredTheBanks))
             {
                 trainMusic.mute = true;
-                StartCoroutine(FadeOut(specialPassengerMusic, 1f));
-                StartCoroutine(FadeIn(trainMusic, 2f));
+                StartFadeIn(ref banksMusicFade, banksMusic, 2f);
+                StartFadeOut(ref specialPassengerMusicFade, specialPassengerMusic, 1f);
             }
         }
     }
