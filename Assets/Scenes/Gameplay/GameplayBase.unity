@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: 43887e4d9de05214199e8228ac604c68
-  m_OcclusionCullingData: {fileID: 36300000, guid: 4f0245aebcfee1740b8a39c0b47e17f5,
+  m_OcclusionCullingData: {fileID: 36300000, guid: 981295a550306f1478103d4f570ee6f2,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _version: 2
+  _crossSceneReferences: []
   _realSceneRootsForPostBuild: []
   _mergedScenes: []
 --- !u!1 &541819690
@@ -1975,18 +1976,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857666393}
   m_CullTransparentMesh: 1
---- !u!114 &2058446825 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6775451894038188349, guid: 0430b99f935d1404997864381a6b8160,
-    type: 3}
-  m_PrefabInstance: {fileID: 760298714}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d6edff0094c0dc46b423a4dd57d66d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2124854841
 GameObject:
   m_ObjectHideFlags: 0

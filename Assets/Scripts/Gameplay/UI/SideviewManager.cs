@@ -191,9 +191,12 @@ public class SideviewManager : MonoBehaviour
             carriage2UI.SetActive(false);
             carriage3UI.SetActive(false);
 
-            bedroom1Camera.SetActive(false);
-            restaurant1Camera.SetActive(false);
-            restaurant2Camera.SetActive(false);
+            if (bedroom1Camera != null)
+                bedroom1Camera.SetActive(false);
+            if (restaurant1Camera != null)
+                restaurant1Camera.SetActive(false);
+            if (restaurant2Camera != null)
+                restaurant2Camera.SetActive(false);
         }
 
         if (decorationUpgradeCanvas != null && decorationUpgradeCanvas.activeSelf)
@@ -313,13 +316,18 @@ public class SideviewManager : MonoBehaviour
             decorateCamera.SetActive(false);
         }
 
-        goToBanksRoomButton.SetActive(false);
-        goToEveRoomButton.SetActive(false);
+        if (goToBanksRoomButton != null)
+            goToBanksRoomButton.SetActive(false);
+        if (goToEveRoomButton != null)
+            goToEveRoomButton.SetActive(false);
 
-        banksRoomCamera.SetActive(false);
-        banksRoomUI.SetActive(false);
-        banksRoomSterlingButton.SetActive(false);
-        banksRoomSideviewButton.SetActive(false);
+        if (banksRoomCamera != null)
+        {
+            banksRoomCamera.SetActive(false);
+            banksRoomUI.SetActive(false);
+            banksRoomSterlingButton.SetActive(false);
+            banksRoomSideviewButton.SetActive(false);
+        }
     }
     
     public void BackToSideview2()
@@ -418,13 +426,18 @@ public class SideviewManager : MonoBehaviour
         
         ClipboardManager.Instance.tabButton.SetActive(true);
 
-        goToBanksRoomButton.SetActive(false);
-        goToEveRoomButton.SetActive(false);
+        if (goToBanksRoomButton != null)
+            goToBanksRoomButton.SetActive(false);
+        if (goToEveRoomButton != null)
+            goToEveRoomButton.SetActive(false);
 
-        banksRoomCamera.SetActive(false);
-        banksRoomUI.SetActive(false);
-        banksRoomSterlingButton.SetActive(false);
-        banksRoomSideviewButton.SetActive(false);
+        if (banksRoomCamera != null)
+        {
+            banksRoomCamera.SetActive(false);
+            banksRoomUI.SetActive(false);
+            banksRoomSterlingButton.SetActive(false);
+            banksRoomSideviewButton.SetActive(false);
+        }
     }
 
     void ActivateCarriageSelection()

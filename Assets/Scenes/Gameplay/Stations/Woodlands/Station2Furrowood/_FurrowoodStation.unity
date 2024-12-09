@@ -55578,6 +55578,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ebonny
       objectReference: {fileID: 0}
+    - target: {fileID: 7944446116531342177, guid: c30cedf3d069dd34fa87d89e4d599c8a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944446116531342177, guid: c30cedf3d069dd34fa87d89e4d599c8a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55586,6 +55596,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1638153247}
+    - targetCorrespondingSourceObject: {fileID: 7182644598411805335, guid: c30cedf3d069dd34fa87d89e4d599c8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1638153253}
+    - targetCorrespondingSourceObject: {fileID: 5005476583897520901, guid: c30cedf3d069dd34fa87d89e4d599c8a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1638153252}
   m_SourcePrefab: {fileID: 100100000, guid: c30cedf3d069dd34fa87d89e4d599c8a, type: 3}
 --- !u!4 &1638153245 stripped
 Transform:
@@ -55607,6 +55625,78 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638153246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 02333170caedc2f49bd870338532b747, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1638153248 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8124570632410995422, guid: c30cedf3d069dd34fa87d89e4d599c8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1638153244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1638153249 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6808100441995786059, guid: c30cedf3d069dd34fa87d89e4d599c8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1638153244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1638153250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5005476583897520901, guid: c30cedf3d069dd34fa87d89e4d599c8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1638153244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1638153251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7182644598411805335, guid: c30cedf3d069dd34fa87d89e4d599c8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1638153244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1638153252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638153250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d76f24409a39604ca3986f91ce6d28a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jiggleUpdateMode: 0
+  <blend>k__BackingField: 1
+  jiggleRigs:
+  - rootTransform: {fileID: 1638153249}
+    jiggleSettings: {fileID: 11400000, guid: 6479f364e0adb8f4e9c8827c0008076b, type: 2}
+    ignoredTransforms: []
+    colliders: []
+    animated: 0
+  - rootTransform: {fileID: 1638153248}
+    jiggleSettings: {fileID: 11400000, guid: 6479f364e0adb8f4e9c8827c0008076b, type: 2}
+    ignoredTransforms: []
+    colliders: []
+    animated: 0
+  wind: {x: 0, y: 0, z: 0}
+  debugDraw: 0
+--- !u!95 &1638153253
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638153251}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 02333170caedc2f49bd870338532b747, type: 2}
@@ -59424,34 +59514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _version: 2
-  _crossSceneReferences:
-  - _sourceObject: {fileID: 2075806174}
-    _sourceField: cameraToFace
-    DEPRECATED_fromObject:
-      scene:
-        editorAssetGUID: 
-        name: 
-        _path: 
-      fullPath: 
-      componentName: 
-      componentIndex: 0
-      editorLocalId: 0
-      editorPrefabRelativePath: 
-      version: 0
-    _toObject:
-      scene:
-        editorAssetGUID: 43887e4d9de05214199e8228ac604c68
-        name: GameplayBase
-        _path: Assets/Scenes/Gameplay/GameplayBase.unity
-      fullPath: /Main Camera
-      componentName: UnityEngine.Camera, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      componentIndex: 0
-      editorLocalId: 1641390823
-      editorPrefabRelativePath: 
-      version: 1
-    _data:
-      data: []
+  _crossSceneReferences: []
   _realSceneRootsForPostBuild: []
   _mergedScenes: []
 --- !u!1 &1943525268
