@@ -143,8 +143,11 @@ public class Eve : MonoBehaviour
 
     public void ChihuahuaReminder()
     {
-        ConversationManager.Instance.StartConversation(chihuahuaDialogue2);
-        hasBeenReminded = true;
+        if (!shopMenuUI.activeSelf)
+        {
+            ConversationManager.Instance.StartConversation(chihuahuaDialogue2);
+            hasBeenReminded = true;
+        }
     }
 
     public void VisibleClicker()
