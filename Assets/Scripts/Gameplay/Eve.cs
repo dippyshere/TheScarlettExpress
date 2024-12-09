@@ -12,6 +12,8 @@ public class Eve : MonoBehaviour
     public GameObject panelDialogue;
     public GameObject panelOptions;
     public GameObject shopEve;
+    public GameObject tutorialEve;
+    public GameObject placeholderEve;
 
     public NPCConversation chihuahuaDialogue;
     public NPCConversation chihuahuaDialogue2;
@@ -36,8 +38,15 @@ public class Eve : MonoBehaviour
         eveDrawing.SetActive(false);
     }
 
+    public void PlaceholderEve()
+    {
+        tutorialEve.SetActive(false);
+        placeholderEve.SetActive(true);
+    }
+
     public void ActivateShopEve()
     {
+        placeholderEve.SetActive(false);
         shopEve.SetActive(true);
         //panelDialogue.SetActive(false);
         //panelOptions.SetActive(false);
@@ -80,7 +89,7 @@ public class Eve : MonoBehaviour
     public void StartEveMusic()
     {
         StartCoroutine(FadeOut(stationMusic, 1f));
-        eveMusic.Play();
+        StartCoroutine(FadeIn(eveMusic, 2f));
     }
 
     public void StopEveMusic()
