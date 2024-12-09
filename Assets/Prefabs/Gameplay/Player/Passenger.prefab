@@ -4774,6 +4774,9 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5166,6 +5169,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 262f45d69eedf8a48ae3527990c74a3b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 262f45d69eedf8a48ae3527990c74a3b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
@@ -10187,6 +10191,9 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15017,6 +15024,9 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15158,12 +15168,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4815955061178913274, guid: 31478b922c61966469628f376c83cfe7,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 113fd24b97e560349a6c418080e9e22c, type: 2}
     - target: {fileID: -3855335175272487014, guid: 31478b922c61966469628f376c83cfe7,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a033c6d6516d2bb49830e049ac347202, type: 2}
     - target: {fileID: -3372522033569347474, guid: 31478b922c61966469628f376c83cfe7,
@@ -15173,12 +15183,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -264430861247414160, guid: 31478b922c61966469628f376c83cfe7,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a033c6d6516d2bb49830e049ac347202, type: 2}
     - target: {fileID: 682984317910134154, guid: 31478b922c61966469628f376c83cfe7,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a033c6d6516d2bb49830e049ac347202, type: 2}
     - target: {fileID: 919132149155446097, guid: 31478b922c61966469628f376c83cfe7,
@@ -15203,7 +15213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7499673948147543594, guid: 31478b922c61966469628f376c83cfe7,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 113fd24b97e560349a6c418080e9e22c, type: 2}
     m_RemovedComponents: []

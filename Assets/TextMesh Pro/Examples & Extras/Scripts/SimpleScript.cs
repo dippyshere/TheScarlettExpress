@@ -1,19 +1,18 @@
-﻿#region
+﻿using UnityEngine;
+using System.Collections;
 
-using UnityEngine;
-
-#endregion
 
 namespace TMPro.Examples
 {
+
     public class SimpleScript : MonoBehaviour
     {
+
+        private TextMeshPro m_textMeshPro;
         //private TMP_FontAsset m_FontAsset;
 
-        const string label = "The <#0050FF>count is: </color>{0:2}";
-        float m_frame;
-
-        TextMeshPro m_textMeshPro;
+        private const string label = "The <#0050FF>count is: </color>{0:2}";
+        private float m_frame;
 
 
         void Start()
@@ -54,5 +53,6 @@ namespace TMPro.Examples
             m_textMeshPro.SetText(label, m_frame % 1000);
             m_frame += 1 * Time.deltaTime;
         }
+
     }
 }

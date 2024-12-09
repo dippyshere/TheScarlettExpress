@@ -1,30 +1,26 @@
-﻿#region
+﻿using UnityEngine;
 
-using UnityEngine;
 
-#endregion
+namespace Beautify.Universal {
 
-namespace Beautify.Universal
-{
-    public class SphereAnimator : MonoBehaviour
-    {
+    public class SphereAnimator : MonoBehaviour {
+
         Rigidbody rb;
+        const float SPEED = 4;
 
-        void Start()
-        {
+        void Start () {
             rb = GetComponent<Rigidbody>();
+            Application.targetFrameRate = 60;
         }
 
-        void FixedUpdate()
-        {
-            if (transform.position.z < 2.5f)
-            {
-                rb.AddForce(Vector3.forward * 200f * Time.fixedDeltaTime);
+        void FixedUpdate () {
+            if (transform.position.z < 0.5f) {
+                rb.linearVelocity = Vector3.forward * SPEED;
             }
-            else if (transform.position.z > 8f)
-            {
-                rb.AddForce(Vector3.back * 200f * Time.fixedDeltaTime);
+            else if (transform.position.z > 8f) {
+                rb.linearVelocity = Vector3.back * SPEED;
             }
         }
+
     }
 }
