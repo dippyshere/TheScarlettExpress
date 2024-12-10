@@ -19,6 +19,7 @@ public class StationSettings : MonoBehaviour
 
     public AudioSource music;
 
+    bool travellingToStation = false;
 
     // Start is called before the first frame update
     void Start()
@@ -59,8 +60,9 @@ public class StationSettings : MonoBehaviour
         }
 
         int dist = ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance);
-        if (dist <= 0)
+        if (dist <= 0 && !travellingToStation)
         {
+            travellingToStation = true;
             Debug.Log("Go To Station!");
             TravelToStation();
         }
@@ -124,22 +126,22 @@ public class StationSettings : MonoBehaviour
         switch (destin)
         {
             case 0:
-                LoadingManager.Instance.LoadScene("_StationTutorial");
+                LoadingManager.Instance.LoadScene("_StationTutorial", 0.85f);
                 break;
             case 1:
-                LoadingManager.Instance.LoadScene("_RiversideStation");
+                LoadingManager.Instance.LoadScene("_RiversideStation",0.85f);
                 break;
             case 2:
-                LoadingManager.Instance.LoadScene("_FurrowoodStation");
+                LoadingManager.Instance.LoadScene("_FurrowoodStation",0.85f);
                 break;
             case 3:
-                LoadingManager.Instance.LoadScene("_ThampStation");
+                LoadingManager.Instance.LoadScene("_ThampStation",0.85f);
                 break;
             case 4:
-                LoadingManager.Instance.LoadScene("_BranchviewStation");
+                LoadingManager.Instance.LoadScene("_BranchviewStation",0.85f);
                 break;
             case 5:
-                LoadingManager.Instance.LoadScene("_FernValleyStation");
+                LoadingManager.Instance.LoadScene("_FernValleyStation",0.85f);
                 break;
         }
 
@@ -157,6 +159,7 @@ public class StationSettings : MonoBehaviour
 
     public void LoadTarin()
     {
-        LoadingManager.Instance.LoadScene("_TrainInterior");
+        PassengerManager.Instance.SavePassengerData();
+        LoadingManager.Instance.LoadScene("_TrainInterior", 0.1f);
     }
 }

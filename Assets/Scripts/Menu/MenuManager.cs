@@ -19,6 +19,14 @@ public class MenuManager : MonoBehaviour
     {
         _titleCanvas = GetComponent<Canvas>();
     }
+
+    public void OnStartButtonClicked()
+    {
+        _titleCanvas.enabled = false;
+        ProfileSystem.CurrentSaveSlot = 4;
+        ProfileSystem.ClearProfile(4);
+        LoadingManager.Instance.LoadScene(ProfileSystem.Get<string>(ProfileSystem.Variable.LastScene));
+    }
     
     public void OnPlayButtonClicked()
     {

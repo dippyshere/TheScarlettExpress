@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class RestaurantTutorial : MonoBehaviour
 {
+    public static RestaurantTutorial Instance;
     public NPCConversation beginRestaurantTutorial;
     [SerializeField] bool canStoveTutorial = true;
 
@@ -36,6 +37,15 @@ public class RestaurantTutorial : MonoBehaviour
     public GameObject redPassenger;
     public GameObject pinkPassenger;
 
+    public GameObject endDayConfirmationUI;
+
+    public ClipboardManager clipboardManager;
+
+    void Awake()
+    {
+        Instance = this;
+    }
+    
     void Start()
     {
         _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
@@ -60,32 +70,37 @@ public class RestaurantTutorial : MonoBehaviour
 
         _hasCompletedRTutorial = ProfileSystem.Get<bool>(ProfileSystem.Variable.RestaurantTutorialDone);
 
-        switch (_hasCompletedRTutorial)
-        {
-            case false:
-                tutorialChihuahua.SetActive(true);
-                break;
-            case true:
-                tutorialChihuahua.SetActive(false);
-                break;
-        }
+        //switch (_hasCompletedRTutorial)
+        //{
+        //    case false:
+        //        tutorialChihuahua.SetActive(true);
+        //        break;
+        //    case true:
+        //        tutorialChihuahua.SetActive(false);
+        //        break;
+        //}
 
         if (canStoveTutorial)
         {
-            if (stoveTime && Input.GetKeyDown(KeyCode.E))
+            if (stoveTime && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
             {
                 BeginStoveTutorial();
             }
         }
-        //if (stoveTime && Input.GetKeyDown(KeyCode.E))
+        //if (stoveTime && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
         //{
         //    BeginStoveTutorial();
         //}
 
-        //if (talkToEve && Input.GetKeyDown(KeyCode.E))
+        //if (talkToEve && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
         //{
         //    BeginEveConversation();
         //}
+
+        if (endDayConfirmationUI.activeSelf && Input.GetKeyDown(KeyCode.Tab))
+        {
+            endDayConfirmationUI.SetActive(false);
+        }
     }
 
     void OnTriggerEnter(Collider collision)
@@ -112,6 +127,7 @@ public class RestaurantTutorial : MonoBehaviour
     public void RestaurantTutorialCompleted()
     {
         _hasCompletedRTutorial = true;
+        ProfileSystem.Set(ProfileSystem.Variable.RestaurantTutorialDone, true);
     }
 
     public void StartTutorial()
@@ -167,4 +183,22 @@ public class RestaurantTutorial : MonoBehaviour
     //{
     //    ConversationManager.Instance.StartConversation(eveConversation);
     //}
+
+    public void EndDayConfirmation()
+    {
+        if (!_hasCompletedRTutorial)
+        {
+            endDayConfirmationUI.SetActive(true);
+        }
+        if (_hasCompletedRTutorial)
+        {
+            clipboardManager.NextDay();
+            endDayConfirmationUI.SetActive(false);
+        }
+    }
+
+    public void GoBack()
+    {
+        endDayConfirmationUI.SetActive(false);
+    }
 }

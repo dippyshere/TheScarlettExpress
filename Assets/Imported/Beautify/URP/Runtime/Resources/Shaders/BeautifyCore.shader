@@ -175,6 +175,7 @@ Subshader {
       HLSLPROGRAM
       #pragma vertex VertOS
       #pragma fragment FragScreenLum
+      #pragma multi_compile_local_fragment __ BEAUTIFY_EA_USE_DEPTH BEAUTIFY_EA_USE_MASK
       #pragma multi_compile_local_fragment __ BEAUTIFY_TURBO
       #include "BeautifyPPSEA.hlsl"
       ENDHLSL
@@ -185,6 +186,7 @@ Subshader {
       HLSLPROGRAM
       #pragma vertex VertCross
       #pragma fragment FragReduceScreenLum
+      #pragma multi_compile_local_fragment __ BEAUTIFY_EA_USE_DEPTH BEAUTIFY_EA_USE_MASK
       #include "BeautifyPPSEA.hlsl"
       ENDHLSL
   }  

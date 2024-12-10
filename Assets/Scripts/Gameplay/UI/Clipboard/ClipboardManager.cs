@@ -17,16 +17,17 @@ public class ClipboardManager : MonoBehaviour
     public bool canClipboard;
     [FormerlySerializedAs("Carriage1"),SerializeField] GameObject carriage1;
     [FormerlySerializedAs("Carriage2"),SerializeField] GameObject carriage2;
+    [FormerlySerializedAs("Carriage3"), SerializeField] GameObject carriage3;
     public GameObject clipboardUI;
 
     public int daysLeft;
 
     public TextMeshProUGUI daysLeftText;
-    bool _isClipboardActive;
+    public bool _isClipboardActive;
 
     [SerializeField] GameObject mainMenuUI;
 
-    [SerializeField] GameObject tabButton;
+    [SerializeField] public GameObject tabButton;
 
     [SerializeField] AudioSource music;
     [SerializeField] GameObject passengerUI;
@@ -34,6 +35,8 @@ public class ClipboardManager : MonoBehaviour
 
     [SerializeField] GameObject passUI;
     [FormerlySerializedAs("UpgradeUI"),SerializeField] GameObject upgradeUI;
+
+    public SideviewManager sideviewManager;
 
     void Awake()
     {
@@ -89,6 +92,9 @@ public class ClipboardManager : MonoBehaviour
                         TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu",
                             new Dictionary<string, object> { { "menuClosed", "clipboard" } });
                     }
+
+                    if (sideviewManager != null)
+                        sideviewManager.CloseClipboard();
                 }
             }
         }
@@ -130,12 +136,22 @@ public class ClipboardManager : MonoBehaviour
     public void UpgradeMenu()
     {
         music.Play();
-        upgradeUI.SetActive(true);
-        mainMenuUI.SetActive(false);
+        //upgradeUI.SetActive(true);
+        //mainMenuUI.SetActive(false);
         if (TrainGameAnalytics.instance != null)
         {
             TrainGameAnalytics.instance.RecordGameEvent("clipboard_menu",
                 new Dictionary<string, object> { { "menuOpened", "upgradeMenu" } });
+        }
+
+        if (sideviewManager.isSideviewUpgrade)
+        {
+            sideviewManager.OpenCarriage1Upgrades();
+        }
+        else
+        {
+            upgradeUI.SetActive(true);
+            mainMenuUI.SetActive(false);
         }
     }
 
@@ -143,6 +159,7 @@ public class ClipboardManager : MonoBehaviour
     {
         carriage1.SetActive(true);
         carriage2.SetActive(false);
+        carriage3.SetActive(false);
         if (TrainGameAnalytics.instance != null)
         {
             TrainGameAnalytics.instance.RecordGameEvent("carriage_menu",
@@ -154,10 +171,23 @@ public class ClipboardManager : MonoBehaviour
     {
         carriage1.SetActive(false);
         carriage2.SetActive(true);
+        carriage3.SetActive(false);
         if (TrainGameAnalytics.instance != null)
         {
             TrainGameAnalytics.instance.RecordGameEvent("carriage_menu",
                 new Dictionary<string, object> { { "menuOpened", "carriage2" } });
+        }
+    }
+
+    public void CarriageUI3()
+    {
+        carriage1.SetActive(false);
+        carriage2.SetActive(false);
+        carriage3.SetActive(true);
+        if (TrainGameAnalytics.instance != null)
+        {
+            TrainGameAnalytics.instance.RecordGameEvent("carriage_menu",
+                new Dictionary<string, object> { { "menuOpened", "carriage3" } });
         }
     }
 
@@ -194,6 +224,11 @@ public class ClipboardManager : MonoBehaviour
                     { "currentStation", ProfileSystem.Get<string>(ProfileSystem.Variable.CurrentStation) },
                     { "stationDestination", ProfileSystem.Get<int>(ProfileSystem.Variable.StationDestination) }
                 });
+        }
+
+        if (ProfileSystem.Get<int>(ProfileSystem.Variable.StationDistance) == 0)
+        {
+            TrainSounds.Instance.PlayBrakeNoise();
         }
     }
 }

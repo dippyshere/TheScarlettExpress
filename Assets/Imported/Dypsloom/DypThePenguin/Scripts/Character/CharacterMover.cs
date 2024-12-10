@@ -27,7 +27,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
         protected Vector3 m_Movement;
         bool m_WasGrounded;
-        Vector3 previousSpeed;
+        public Vector3 previousSpeed;
 
         /// <summary>
         ///     Constructor.
@@ -61,6 +61,11 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         public bool IsJumping
         {
             get { return m_IsJumping; }
+        }
+
+        public Vector3 LastSpeed
+        {
+            get { return previousSpeed; }
         }
 
         /// <summary>

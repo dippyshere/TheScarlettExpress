@@ -1,0 +1,334 @@
+fileFormatVersion: 2
+guid: d3c9db4c8c8ae0d439c9b1251396495f
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bench_TableBottom
+    second: {fileID: 2100000, guid: f13d07383465dc549aa498789e4e1df2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carraige_Floor
+    second: {fileID: 2100000, guid: f26cca32a2a04ea4287fe1c2cf2a4f80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carriage_Doorway
+    second: {fileID: 2100000, guid: f086fcacaaf1e7c449f4a1158144ba7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carriage_RoofSupports
+    second: {fileID: 2100000, guid: d208ef372e9e2584f9967c79e0a2f768, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carriage_Walls
+    second: {fileID: 2100000, guid: 58bfceb2cb4ab0c418f8b91db2b82dd5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carriage_Walls.001
+    second: {fileID: 2100000, guid: 073787a18d917644c883ece472ad431e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_CircleTable_Feet
+    second: {fileID: 2100000, guid: edb750b91e3ba0e449d1b081c6babbdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_Circle_TableTop
+    second: {fileID: 2100000, guid: ff54f421613f50b438e8947809ce7fa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_Fridge_Feet
+    second: {fileID: 2100000, guid: 778506c9ec38bd941a229d73dd478056, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_Toaster_Outerswitch
+    second: {fileID: 2100000, guid: 55e426f29f9a0b549974945291391807, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof_Lights
+    second: {fileID: 2100000, guid: a01afaa00154b3040918e07a5f9f7709, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof_Lights.001
+    second: {fileID: 2100000, guid: ef128e715af67a3488b3ec8030186720, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_BenchMetal
+    second: {fileID: 2100000, guid: a88fda13ac1dfd5408a2454f024f40c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_BenchSeat
+    second: {fileID: 2100000, guid: 8d429036826beaf4b906b091e7304cde, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Bench_Feet
+    second: {fileID: 2100000, guid: 45fc33edafd54ef4282b36706171298d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Bench_Pegs
+    second: {fileID: 2100000, guid: 90cb1f1f72cd8fb45878b87e7236a9c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Bench_TableTop
+    second: {fileID: 2100000, guid: 90df97c44fa66554487f82bf8e12ecea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Bottom_Cabinet
+    second: {fileID: 2100000, guid: f17d9ec64e726dd418611cf8911440b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_CabinetDrawers1
+    second: {fileID: 2100000, guid: d060926f76b11e04aa0f97216e9cbe8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Cabinet_Base2
+    second: {fileID: 2100000, guid: e3b3920e51df85c49937424d897a9789, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_CounterDrawers1
+    second: {fileID: 2100000, guid: 6dc06f1fa52b9f740898816aa41c70be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Countertops1
+    second: {fileID: 2100000, guid: faa35d9280952ef4e96acb5052c9e68d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Fridge_Base
+    second: {fileID: 2100000, guid: 5c92dc41e2fe69c4e82b8d92e5b633ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Fridge_Bottom
+    second: {fileID: 2100000, guid: 49765c7eede95ce43aba12f615615149, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Fridge_Door
+    second: {fileID: 2100000, guid: 96c1eec1de4998e4ab46374679bc5d01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Fridge_DoorHinge
+    second: {fileID: 2100000, guid: 66cf08c81b31e4041ba17e54de215ef6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Fridge_DoorScrews
+    second: {fileID: 2100000, guid: 91b0ca382b990224babe7e6d1b3b2482, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Fridge_Shelves
+    second: {fileID: 2100000, guid: 65ce9eb88e9c3a542a61c9d23fa4ac9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Fridge_Top
+    second: {fileID: 2100000, guid: ec9c5a877cdd6804799387ccadf825d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_Toaster_base
+    second: {fileID: 2100000, guid: e7959adf1939cf24a8b656ab6c24e4ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_VIP_ChairArms
+    second: {fileID: 2100000, guid: a5e126bc7df18324f819b7b9825510b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_VIP_ChairBase
+    second: {fileID: 2100000, guid: aec61183bf425914fba25747cc61875e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Staff_VIP_Chair_Cushions
+    second: {fileID: 2100000, guid: 96bd0a4b91b7a7740938ffbc5464c41a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toaster_Buttons
+    second: {fileID: 2100000, guid: 2c772889161a8e446a655332a0095405, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toaster_Knob
+    second: {fileID: 2100000, guid: a421155490ffe564a90fa7a8ebbd21dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toaster_Knob_Base
+    second: {fileID: 2100000, guid: 7a4f5b357a10b6e42827484256d7e871, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toaster_Switch
+    second: {fileID: 2100000, guid: b3b4a70451eed194e925e2b128bfd05a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_Light5
+    second: {fileID: 2100000, guid: 7d60e171a2d28eb49b2774843b614aac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_LightBase
+    second: {fileID: 2100000, guid: b5c6b2beff187f34982b13d684297b79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_LightBase3
+    second: {fileID: 2100000, guid: 526751bcc788d8f4084939768028e449, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_LightBottom
+    second: {fileID: 2100000, guid: 87c9225e7f230234d996762598d6b61e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_Light_LBase
+    second: {fileID: 2100000, guid: 95db6f9e62462eb4080022e83012dc23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_Light_LSupport
+    second: {fileID: 2100000, guid: 2ea90bd0e3c850145bb6eba38e00ba50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_Light_Shade
+    second: {fileID: 2100000, guid: da17788ee284a0544ade8227d6e823d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: standardSurface1
+    second: {fileID: 2100000, guid: 2c76b988e7969bd4bbe961fe4b78eaff, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 1
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

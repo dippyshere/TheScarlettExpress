@@ -1,34 +1,27 @@
-﻿#region
+﻿using UnityEngine;
+using System.Collections;
 
-using UnityEngine;
-
-#endregion
 
 namespace TMPro.Examples
 {
+
     public class ObjectSpin : MonoBehaviour
     {
-#pragma warning disable 0414
-        public enum MotionType
-        {
-            Rotation,
-            SearchLight,
-            Translation
-        }
-
+        #pragma warning disable 0414
+        public enum MotionType { Rotation, SearchLight, Translation };
         public MotionType Motion;
 
-        public Vector3 TranslationDistance = new(5, 0, 0);
+        public Vector3 TranslationDistance = new Vector3(5, 0, 0);
         public float TranslationSpeed = 1.0f;
         public float SpinSpeed = 5;
         public int RotationRange = 15;
-        Transform m_transform;
+        private Transform m_transform;
 
-        float m_time;
-        Vector3 m_prevPOS;
-        Vector3 m_initial_Rotation;
-        Vector3 m_initial_Position;
-        Color32 m_lightColor;
+        private float m_time;
+        private Vector3 m_prevPOS;
+        private Vector3 m_initial_Rotation;
+        private Vector3 m_initial_Position;
+        private Color32 m_lightColor;
 
         void Awake()
         {
@@ -51,8 +44,7 @@ namespace TMPro.Examples
                     break;
                 case MotionType.SearchLight:
                     m_time += SpinSpeed * Time.deltaTime;
-                    m_transform.rotation = Quaternion.Euler(m_initial_Rotation.x,
-                        Mathf.Sin(m_time) * RotationRange + m_initial_Rotation.y, m_initial_Rotation.z);
+                    m_transform.rotation = Quaternion.Euler(m_initial_Rotation.x, Mathf.Sin(m_time) * RotationRange + m_initial_Rotation.y, m_initial_Rotation.z);
                     break;
                 case MotionType.Translation:
                     m_time += TranslationSpeed * Time.deltaTime;

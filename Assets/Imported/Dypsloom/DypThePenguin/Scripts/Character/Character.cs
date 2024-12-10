@@ -29,6 +29,8 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         [SerializeField, Tooltip("Reference to the prompt UI.")]
         public GameObject promptUI;
 
+        public CanvasGroup promptGroup;
+
         [Tooltip("The character speed in units/second."), SerializeField]
         protected float m_Speed = 1f;
         
@@ -66,7 +68,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         protected GameObject m_DeathEffects;
 
         public MovementMode m_MovementMode = MovementMode.Free;
-        protected Animator m_Animator;
+        public Animator m_Animator;
 
         protected UnityEngine.Camera m_Camera;
         protected ICharacterAnimator m_CharacterAnimator;
@@ -179,7 +181,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
             m_Rigidbody = GetComponent<Rigidbody>();
             m_CharacterController = GetComponent<CharacterController>();
-            m_Animator = GetComponent<Animator>();
             m_Inventory = GetComponent<Inventory>();
             m_CharacterDamageable = GetComponent<IDamageable>();
 
@@ -210,7 +211,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
 
             m_CharacterMover.Tick();
             m_CharacterRotator.Tick();
-            //m_CharacterAnimator.Tick();
+            m_CharacterAnimator.Tick();
         }
 
         /// <summary>

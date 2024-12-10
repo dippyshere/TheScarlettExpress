@@ -40,7 +40,7 @@ public class Elevator : MonoBehaviour
 
     void Update()
     {
-        if (Character.Instance.promptUI.activeSelf && Input.GetKeyDown(KeyCode.E) && _mIsPlayerNear && !_mIsTransitioning)
+        if (Character.Instance.promptUI.activeSelf && Input.GetKeyDown(KeyCode.E) && _mIsPlayerNear && !_mIsTransitioning && !DialogueCallback.Instance.inDialogue)
         {
             Character.Instance.promptUI.SetActive(false);
             _mIsPlayerNear = false;

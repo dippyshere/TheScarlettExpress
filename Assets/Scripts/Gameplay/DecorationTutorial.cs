@@ -14,6 +14,7 @@ public class DecorationTutorial : MonoBehaviour
     public GameObject clipboardUI;
     public GameObject upgradesTab;
     public GameObject mainTab;
+    public GameObject upgradeBlocks;
 
     //decoration dialogue
     public NPCConversation beginDecoratingTutorial;
@@ -30,13 +31,23 @@ public class DecorationTutorial : MonoBehaviour
     void Start()
     {
         //ProfileSystem.ClearProfile();
-        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialStarted) 
-            && !ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {
             ConversationManager.Instance.StartConversation(chihuahuaWelcome);
         }
 
         _money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
+
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            upgradeBlocks.SetActive(false);
+        }
+
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialDone) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.DecoratingTutorialStarted)
+            && ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            ConversationManager.Instance.StartConversation(beginDecoratingTutorial);
+        }
     }
 
     private void Update()
@@ -46,6 +57,16 @@ public class DecorationTutorial : MonoBehaviour
         if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {
             otherTableBlocks.SetActive(true);
+        }
+
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.StartedUpgradeTutorial) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            upgradeBlocks.SetActive(true);
+        }
+
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            upgradeBlocks.SetActive(false);
         }
     }
 
@@ -68,25 +89,36 @@ public class DecorationTutorial : MonoBehaviour
         {
             ConversationManager.Instance.StartConversation(upgradesTabDialogue);
             table1Highlight.SetActive(true);
+            ProfileSystem.Set(ProfileSystem.Variable.StartedUpgradeTutorial, true);
         }
     }
 
     public void ChihuahuaGiveMoney()
     {
-        _money += 25;
+        if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
+        {
+            _money += 25;
+            ProfileSystem.Set(ProfileSystem.Variable.PlayerMoney, _money);
+        }
+        //_money += 25;
     }
 
     public void UpgradedChair()
     {
-        table1Highlight.SetActive(false);
-        clipboardUI.SetActive(false);
-        otherTableBlocks.SetActive(false);
-        mainTab.SetActive(true);
-        upgradesTab.SetActive(false);
+        //table1Highlight.SetActive(false);
+        //clipboardUI.SetActive(false);
+        //otherTableBlocks.SetActive(false);
+        //mainTab.SetActive(true);
+        //upgradesTab.SetActive(false);
 
         if (!ProfileSystem.Get<bool>(ProfileSystem.Variable.UpgradeTutorialDone))
         {
             ConversationManager.Instance.StartConversation(upgradedChairDialogue);
+            table1Highlight.SetActive(false);
+            clipboardUI.SetActive(false);
+            otherTableBlocks.SetActive(false);
+            mainTab.SetActive(true);
+            upgradesTab.SetActive(false);
         }
     }
 

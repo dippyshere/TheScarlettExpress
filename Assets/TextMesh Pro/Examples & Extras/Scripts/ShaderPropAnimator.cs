@@ -1,20 +1,19 @@
-﻿#region
-
+﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
 
-#endregion
 
 namespace TMPro.Examples
 {
+    
     public class ShaderPropAnimator : MonoBehaviour
     {
+
+        private Renderer m_Renderer;
+        private Material m_Material;
+
         public AnimationCurve GlowCurve;
 
         public float m_frame;
-        Material m_Material;
-
-        Renderer m_Renderer;
 
         void Awake()
         {

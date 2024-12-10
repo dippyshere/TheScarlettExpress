@@ -1,0 +1,444 @@
+fileFormatVersion: 2
+guid: 197efd0c04712cf43b2ac83347bd366d
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carraige_Floor
+    second: {fileID: 2100000, guid: a809c9caa2bbbc54bac760d72d21980d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carriage_Doorway
+    second: {fileID: 2100000, guid: 3a7abadc764b9a745895db575fddbf03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carriage_RoofSupports
+    second: {fileID: 2100000, guid: 72995b96e0accde4db3076f77a3bbf4b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carriage_Walls
+    second: {fileID: 2100000, guid: 85a33504dee04124a9fd4a987d9bd0c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carriage_Walls.001
+    second: {fileID: 2100000, guid: b9ce8cb2b74143f4bb6bf3275a3b2a1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertaiment_Mic_Feet
+    second: {fileID: 2100000, guid: aa0e2a92e2e5be74fbb9d75f94c6145a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Bar
+    second: {fileID: 2100000, guid: b63a9d8508c7e3441a82e11a84112c6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarDoor
+    second: {fileID: 2100000, guid: c7b6ede41efbe974e9acd4ec2fb9f7f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarDoor_Hinge
+    second: {fileID: 2100000, guid: 9d00a1ebd03b66847bc60547ddd9e4de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarDoor_Side
+    second: {fileID: 2100000, guid: d1cdf5469a4b832458aebd0e148bbc47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarLight_Shade
+    second: {fileID: 2100000, guid: ec53cfae53ac92b4e820f55a2184aba0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarLight_String
+    second: {fileID: 2100000, guid: 99ecb53cd1740cc469167c0c4532989e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarLights
+    second: {fileID: 2100000, guid: 553ac58a4305e954bae6a0d8ebc75f04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarStool_Base
+    second: {fileID: 2100000, guid: 216d7ebdf426fe44ebc194084c7dbf1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarStool_Footrest
+    second: {fileID: 2100000, guid: 411ed5495e3574b4cbb54696480464e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarStool_Legs
+    second: {fileID: 2100000, guid: 8934bfc810023434e81b149f935d4def, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarTop
+    second: {fileID: 2100000, guid: 82fc1712b7eb04e4396a4968e6f22986, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarTopFrame
+    second: {fileID: 2100000, guid: 099c0241fa7e3ab439c48eb3c60ee2ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_BarTopInsides
+    second: {fileID: 2100000, guid: c85af2097b9cd5e4bb06088006168d5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Bar_Shelf
+    second: {fileID: 2100000, guid: 476ed4445e399b24d954c1061e55cf8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Barstool_Cushion
+    second: {fileID: 2100000, guid: e77bfd87324d8be4e88fba78e766ad8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_CircleTable_Bottom
+    second: {fileID: 2100000, guid: eb57bbda4a559be47ae863a30e8be0f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_CircleTable_Feet
+    second: {fileID: 2100000, guid: 6f637adf0b31e514295d63a456bc73e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Circle_TableTop
+    second: {fileID: 2100000, guid: d97356c8fac88ed47bb24252f88b7834, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_LongSofaArms
+    second: {fileID: 2100000, guid: c685d0bcb3f7eba428c4ff3479324bac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_LongSofaBase
+    second: {fileID: 2100000, guid: 8fcb25e3e36674f4e81b210a88504466, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_LongSofaCushion
+    second: {fileID: 2100000, guid: 28ab73e7b8c928d449101c76cae22e1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_LongTableBottom
+    second: {fileID: 2100000, guid: d1d7a047466047149a84fb25a97d1ef5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_LongTableFeet
+    second: {fileID: 2100000, guid: 81c6dedf71a05494fbe41b90270dda57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_LongTableTop
+    second: {fileID: 2100000, guid: 0cbea4413983f52409670a2a9ad7bc6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_MicBase
+    second: {fileID: 2100000, guid: b9302bf706fa04c4bb11898eee6d5364, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_MicStand_Base
+    second: {fileID: 2100000, guid: 5a9a75087f36cd8419b915a7a0cd0cda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Mic_Ball
+    second: {fileID: 2100000, guid: 95b4f3da567abde44ac0612221e245fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Mic_Stand
+    second: {fileID: 2100000, guid: 7f9205bd7f2005a4f8577789f0310374, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_PianoChair_Base
+    second: {fileID: 2100000, guid: 424705f8e0225dd4f927f8a4dfdcb9a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_PianoChair_Cushion1
+    second: {fileID: 2100000, guid: 814630bb1f673c644b91bc5eceffd742, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_PianoChair_Footrest
+    second: {fileID: 2100000, guid: c08a8c315880339498d427b54e1e56f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_PianoChair_Legs
+    second: {fileID: 2100000, guid: 447894d1cd77bfc4fb4d94098d53841d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Base
+    second: {fileID: 2100000, guid: 8f466515d7e989a4ba77fbf6e2185726, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Basetop
+    second: {fileID: 2100000, guid: e4043571508b16747a5fcb3dff7e2ea4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Blackkeys
+    second: {fileID: 2100000, guid: 4d417334c1347d64983c20d3fe3dee88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_BottomBase
+    second: {fileID: 2100000, guid: e981377d5a235954f8f89912cf28d885, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Bottombase
+    second: {fileID: 2100000, guid: 14c278e23be6e534e87ec0db16ccd030, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Keybase
+    second: {fileID: 2100000, guid: c587ca9c2640f724290610a83659424d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Legs2
+    second: {fileID: 2100000, guid: a123e99158ca99b4c95f3dc19afea26b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Lines
+    second: {fileID: 2100000, guid: e0f21cf8b02d67d45b2f363098ee7db5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Paperstand
+    second: {fileID: 2100000, guid: c5d6b8f619cd58841bd78d761b2eebd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Pedals
+    second: {fileID: 2100000, guid: 0204ccdda6a8aaf479cd833b11be6b68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_PetalBase
+    second: {fileID: 2100000, guid: a545359c9c6fecc4dbe5b3480099a19f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Stick
+    second: {fileID: 2100000, guid: 1a44bff98b759a74d818a08e40a24e87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Top
+    second: {fileID: 2100000, guid: e6b2fb2588fa36f48a7c9f820fde5b6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Piano_Whitekeys
+    second: {fileID: 2100000, guid: a21bc6fbcb85f4245accee1ce565eb42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Sofa_Arms
+    second: {fileID: 2100000, guid: 0168091d7179b88429a3ed21c0924f9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Sofa_Base
+    second: {fileID: 2100000, guid: 9e9c32f981b52b64086cb78db8acb7fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Sofa_Buttons
+    second: {fileID: 2100000, guid: b98ec5ae88fed1f43b79b366a9e7db49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Sofa_Cushions
+    second: {fileID: 2100000, guid: 0d3538623d2363f459ac8448c6a90ef3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Entertainment_Stage
+    second: {fileID: 2100000, guid: 52a3aab3831cc96458531bbf3f183182, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof_Lights
+    second: {fileID: 2100000, guid: 1cbac91a1de60204e8129e9e23bb2870, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof_Lights.001
+    second: {fileID: 2100000, guid: ad501adb811af7f4fa17d51d5530b3a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_Light5
+    second: {fileID: 2100000, guid: bd88ca7bd4eb318498fb1e24ab43eeca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_LightBase
+    second: {fileID: 2100000, guid: 25a8f580c6553094698dadeff2a7685e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_LightBase3
+    second: {fileID: 2100000, guid: dcc5e5031cb74024ba5bb4d532842fbb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_LightBottom
+    second: {fileID: 2100000, guid: 3d6e422c9f87c8d4ead4a2a72399884b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_Light_LBase
+    second: {fileID: 2100000, guid: dbc787b674efa7542861a547205c2130, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_Light_LSupport
+    second: {fileID: 2100000, guid: 4061705075f7d30408e4639157a42e1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_Light_Shade
+    second: {fileID: 2100000, guid: 26e5d1f5a282b0d499a109759baadccd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: standardSurface1
+    second: {fileID: 2100000, guid: 2c76b988e7969bd4bbe961fe4b78eaff, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 1
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

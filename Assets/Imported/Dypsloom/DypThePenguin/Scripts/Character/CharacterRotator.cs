@@ -13,6 +13,7 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
     {
         protected readonly Character m_Character;
         float previousRotation;
+        float previousTarget;
 
         /// <summary>
         ///     Constructor.
@@ -32,12 +33,6 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                 ? Vector2.zero
                 : new Vector2(m_Character.CharacterInput.Horizontal, m_Character.CharacterInput.Vertical);
 
-            if (Mathf.Abs(charVelocity.x) < 0.1f &&
-                Mathf.Abs(charVelocity.y) < 0.1f)
-            {
-                return;
-            }
-
             float targetRotation = 0;
 
             switch (m_Character.m_MovementMode)
@@ -49,6 +44,14 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
                 case MovementMode.Free:
                     targetRotation = Mathf.Atan2(charVelocity.x, charVelocity.y) * Mathf.Rad2Deg +
                                      m_Character.CharacterCamera.transform.eulerAngles.y;
+                    if (charVelocity.magnitude < 0.1f)
+                    {
+                        targetRotation = previousTarget;
+                    }
+                    else
+                    {
+                        previousTarget = targetRotation;
+                    }
                     break;
                 default:
                     targetRotation = m_Character.transform.eulerAngles.y;

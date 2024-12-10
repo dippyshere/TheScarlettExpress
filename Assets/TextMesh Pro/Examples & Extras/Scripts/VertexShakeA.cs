@@ -1,32 +1,25 @@
-﻿#region
-
+﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
 
-#endregion
 
 namespace TMPro.Examples
 {
+
     public class VertexShakeA : MonoBehaviour
     {
+
         public float AngleMultiplier = 1.0f;
         public float SpeedMultiplier = 1.0f;
         public float ScaleMultiplier = 1.0f;
         public float RotationMultiplier = 1.0f;
-        bool hasTextChanged;
 
-        TMP_Text m_TextComponent;
+        private TMP_Text m_TextComponent;
+        private bool hasTextChanged;
 
 
         void Awake()
         {
             m_TextComponent = GetComponent<TMP_Text>();
-        }
-
-
-        void Start()
-        {
-            StartCoroutine(AnimateVertexColors());
         }
 
         void OnEnable()
@@ -41,20 +34,25 @@ namespace TMPro.Examples
         }
 
 
+        void Start()
+        {
+            StartCoroutine(AnimateVertexColors());
+        }
+
+
         void ON_TEXT_CHANGED(Object obj)
         {
             if (obj = m_TextComponent)
-            {
                 hasTextChanged = true;
-            }
         }
 
         /// <summary>
-        ///     Method to animate vertex colors of a TMP Text object.
+        /// Method to animate vertex colors of a TMP Text object.
         /// </summary>
         /// <returns></returns>
         IEnumerator AnimateVertexColors()
         {
+
             // We force an update of the text object since it would only be updated at the end of the frame. Ie. before this code is executed on the first frame.
             // Alternatively, we could yield and wait until the end of the frame when the text object will be generated.
             m_TextComponent.ForceMeshUpdate();
@@ -72,9 +70,7 @@ namespace TMPro.Examples
                 if (hasTextChanged)
                 {
                     if (copyOfVertices.Length < textInfo.meshInfo.Length)
-                    {
                         copyOfVertices = new Vector3[textInfo.meshInfo.Length][];
-                    }
 
                     for (int i = 0; i < textInfo.meshInfo.Length; i++)
                     {
@@ -99,12 +95,12 @@ namespace TMPro.Examples
                 // Iterate through each line of the text.
                 for (int i = 0; i < lineCount; i++)
                 {
+
                     int first = textInfo.lineInfo[i].firstCharacterIndex;
                     int last = textInfo.lineInfo[i].lastCharacterIndex;
 
                     // Determine the center of each line
-                    Vector3 centerOfLine =
-                        (textInfo.characterInfo[first].bottomLeft + textInfo.characterInfo[last].topRight) / 2;
+                    Vector3 centerOfLine = (textInfo.characterInfo[first].bottomLeft + textInfo.characterInfo[last].topRight) / 2;
                     Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(-0.25f, 0.25f) * RotationMultiplier);
 
                     // Iterate through each character of the line.
@@ -112,9 +108,7 @@ namespace TMPro.Examples
                     {
                         // Skip characters that are not visible and thus have no geometry to manipulate.
                         if (!textInfo.characterInfo[j].isVisible)
-                        {
                             continue;
-                        }
 
                         // Get the index of the material used by the current character.
                         int materialIndex = textInfo.characterInfo[j].materialReferenceIndex;
@@ -133,21 +127,16 @@ namespace TMPro.Examples
                         copyOfVertices[materialIndex][vertexIndex + 3] = sourceVertices[vertexIndex + 3] - centerOfLine;
 
                         // Determine the random scale change for each character.
-                        float randomScale = Random.Range(0.995f - 0.001f * ScaleMultiplier,
-                            1.005f + 0.001f * ScaleMultiplier);
+                        float randomScale = Random.Range(0.995f - 0.001f * ScaleMultiplier, 1.005f + 0.001f * ScaleMultiplier);
 
                         // Setup the matrix rotation.
                         matrix = Matrix4x4.TRS(Vector3.one, rotation, Vector3.one * randomScale);
 
                         // Apply the matrix TRS to the individual characters relative to the center of the current line.
-                        copyOfVertices[materialIndex][vertexIndex + 0] =
-                            matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 0]);
-                        copyOfVertices[materialIndex][vertexIndex + 1] =
-                            matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 1]);
-                        copyOfVertices[materialIndex][vertexIndex + 2] =
-                            matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 2]);
-                        copyOfVertices[materialIndex][vertexIndex + 3] =
-                            matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 3]);
+                        copyOfVertices[materialIndex][vertexIndex + 0] = matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 0]);
+                        copyOfVertices[materialIndex][vertexIndex + 1] = matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 1]);
+                        copyOfVertices[materialIndex][vertexIndex + 2] = matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 2]);
+                        copyOfVertices[materialIndex][vertexIndex + 3] = matrix.MultiplyPoint3x4(copyOfVertices[materialIndex][vertexIndex + 3]);
 
                         // Revert the translation change.
                         copyOfVertices[materialIndex][vertexIndex + 0] += centerOfLine;
@@ -167,5 +156,6 @@ namespace TMPro.Examples
                 yield return new WaitForSeconds(0.1f);
             }
         }
+
     }
 }

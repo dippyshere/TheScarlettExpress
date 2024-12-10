@@ -76,6 +76,10 @@ namespace DialogueEditor
         public Sprite PinkImage;
         public Sprite RedImage;
         public Sprite YellowImage;
+        public Sprite JosephImage;
+        public Sprite MatildaImage;
+        public Sprite MadamFruFruImage;
+        public Sprite EbonyImage;
         
         public VoiceBank ChihuahuaVoiceBank;
         public VoiceBank EbonyVoiceBank;
@@ -349,6 +353,18 @@ namespace DialogueEditor
                             case SpeechNode.eCharacter.Yellow:
                                 NpcIcon.sprite = YellowImage;
                                 break;
+                            case SpeechNode.eCharacter.Joseph:
+                                NpcIcon.sprite = JosephImage;
+                                break;
+                            case SpeechNode.eCharacter.Matilda:
+                                NpcIcon.sprite = MatildaImage;
+                                break;
+                            case SpeechNode.eCharacter.MadamFruFru:
+                                NpcIcon.sprite = MadamFruFruImage;
+                                break;
+                            case SpeechNode.eCharacter.Ebony:
+                                NpcIcon.sprite = EbonyImage;
+                                break;
                         }
                     }
                     else
@@ -577,6 +593,33 @@ namespace DialogueEditor
                         break;
                     case SpeechNode.eCharacter.Sterling:
                         NpcIcon.sprite = SterlingImage;
+                        break;
+                    case SpeechNode.eCharacter.Brown:
+                        NpcIcon.sprite = BrownImage;
+                        break;
+                    case SpeechNode.eCharacter.Green:
+                        NpcIcon.sprite = GreenImage;
+                        break;
+                    case SpeechNode.eCharacter.Pink:
+                        NpcIcon.sprite = PinkImage;
+                        break;
+                    case SpeechNode.eCharacter.Red:
+                        NpcIcon.sprite = RedImage;
+                        break;
+                    case SpeechNode.eCharacter.Yellow:
+                        NpcIcon.sprite = YellowImage;
+                        break;
+                    case SpeechNode.eCharacter.Joseph:
+                        NpcIcon.sprite = JosephImage;
+                        break;
+                    case SpeechNode.eCharacter.Matilda:
+                        NpcIcon.sprite = MatildaImage;
+                        break;
+                    case SpeechNode.eCharacter.MadamFruFru:
+                        NpcIcon.sprite = MadamFruFruImage;
+                        break;
+                    case SpeechNode.eCharacter.Ebony:
+                        NpcIcon.sprite = EbonyImage;
                         break;
                 }
             }

@@ -22,7 +22,7 @@ public class RestaurantEve : MonoBehaviour
     {
         if (canTalkToEve)
         {
-            if (talkToEve && Input.GetKeyDown(KeyCode.E))
+            if (talkToEve && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
             {
                 BeginEveConversation();
                 talkToEve = false;
@@ -35,6 +35,14 @@ public class RestaurantEve : MonoBehaviour
         if (collision.gameObject.CompareTag("Pickup"))
         {
             talkToEve = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Pickup"))
+        {
+            talkToEve = false;
         }
     }
 

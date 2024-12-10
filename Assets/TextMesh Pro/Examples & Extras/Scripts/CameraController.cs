@@ -1,26 +1,16 @@
-#region
-
 using UnityEngine;
+using System.Collections;
 
-#endregion
 
 namespace TMPro.Examples
 {
+    
     public class CameraController : MonoBehaviour
     {
-        public enum CameraModes
-        {
-            Follow,
-            Isometric,
-            Free
-        }
+        public enum CameraModes { Follow, Isometric, Free }
 
-        // Controls for Touches on Mobile devices
-        //private float prev_ZoomDelta;
-
-
-        const string event_SmoothingValue = "Slider - Smoothing Value";
-        const string event_FollowDistance = "Slider - Camera Zoom";
+        private Transform cameraTransform;
+        private Transform dummyTarget;
 
         public Transform CameraTarget;
 
@@ -30,47 +20,45 @@ namespace TMPro.Examples
 
         public float ElevationAngle = 30.0f;
         public float MaxElevationAngle = 85.0f;
-        public float MinElevationAngle;
+        public float MinElevationAngle = 0f;
 
-        public float OrbitalAngle;
+        public float OrbitalAngle = 0f;
 
         public CameraModes CameraMode = CameraModes.Follow;
 
         public bool MovementSmoothing = true;
-        public bool RotationSmoothing;
+        public bool RotationSmoothing = false;
+        private bool previousSmoothing;
 
         public float MovementSmoothingValue = 25f;
         public float RotationSmoothingValue = 5.0f;
 
         public float MoveSensitivity = 2.0f;
 
-        Transform cameraTransform;
+        private Vector3 currentVelocity = Vector3.zero;
+        private Vector3 desiredPosition;
+        private float mouseX;
+        private float mouseY;
+        private Vector3 moveVector;
+        private float mouseWheel;
 
-        Vector3 currentVelocity = Vector3.zero;
-        Vector3 desiredPosition;
-        Transform dummyTarget;
-        float mouseWheel;
-        float mouseX;
-        float mouseY;
-        Vector3 moveVector;
-        bool previousSmoothing;
+        // Controls for Touches on Mobile devices
+        //private float prev_ZoomDelta;
+
+
+        private const string event_SmoothingValue = "Slider - Smoothing Value";
+        private const string event_FollowDistance = "Slider - Camera Zoom";
 
 
         void Awake()
         {
             if (QualitySettings.vSyncCount > 0)
-            {
                 Application.targetFrameRate = 60;
-            }
             else
-            {
                 Application.targetFrameRate = -1;
-            }
 
             if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.Android)
-            {
                 Input.simulateMouseWithTouches = false;
-            }
 
             cameraTransform = transform;
             previousSmoothing = MovementSmoothing;
@@ -97,24 +85,23 @@ namespace TMPro.Examples
             // Check if we still have a valid target
             if (CameraTarget != null)
             {
-                switch (CameraMode)
+                if (CameraMode == CameraModes.Isometric)
                 {
-                    case CameraModes.Isometric:
-                        desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) *
-                            new Vector3(0, 0, -FollowDistance);
-                        break;
-                    case CameraModes.Follow:
-                        desiredPosition = CameraTarget.position + CameraTarget.TransformDirection(
-                            Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance));
-                        break;
+                    desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
+                }
+                else if (CameraMode == CameraModes.Follow)
+                {
+                    desiredPosition = CameraTarget.position + CameraTarget.TransformDirection(Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * (new Vector3(0, 0, -FollowDistance)));
+                }
+                else
+                {
+                    // Free Camera implementation
                 }
 
-                // Free Camera implementation
-                if (MovementSmoothing)
+                if (MovementSmoothing == true)
                 {
                     // Using Smoothing
-                    cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, desiredPosition,
-                        ref currentVelocity, MovementSmoothingValue * Time.fixedDeltaTime);
+                    cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, desiredPosition, ref currentVelocity, MovementSmoothingValue * Time.fixedDeltaTime);
                     //cameraTransform.position = Vector3.Lerp(cameraTransform.position, desiredPosition, Time.deltaTime * 5.0f);
                 }
                 else
@@ -123,18 +110,17 @@ namespace TMPro.Examples
                     cameraTransform.position = desiredPosition;
                 }
 
-                if (RotationSmoothing)
-                {
-                    cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation,
-                        Quaternion.LookRotation(CameraTarget.position - cameraTransform.position),
-                        RotationSmoothingValue * Time.deltaTime);
-                }
+                if (RotationSmoothing == true)
+                    cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, Quaternion.LookRotation(CameraTarget.position - cameraTransform.position), RotationSmoothingValue * Time.deltaTime);
                 else
                 {
                     cameraTransform.LookAt(CameraTarget);
                 }
+
             }
+
         }
+
 
 
         void GetPlayerInput()
@@ -151,19 +137,13 @@ namespace TMPro.Examples
                 mouseWheel *= 10;
 
                 if (Input.GetKeyDown(KeyCode.I))
-                {
                     CameraMode = CameraModes.Isometric;
-                }
 
                 if (Input.GetKeyDown(KeyCode.F))
-                {
                     CameraMode = CameraModes.Follow;
-                }
 
                 if (Input.GetKeyDown(KeyCode.S))
-                {
                     MovementSmoothing = !MovementSmoothing;
-                }
 
 
                 // Check for right mouse button to change camera follow and elevation angle
@@ -183,14 +163,9 @@ namespace TMPro.Examples
                     {
                         OrbitalAngle += mouseX * MoveSensitivity;
                         if (OrbitalAngle > 360)
-                        {
                             OrbitalAngle -= 360;
-                        }
-
                         if (OrbitalAngle < 0)
-                        {
                             OrbitalAngle += 360;
-                        }
                     }
                 }
 
@@ -213,15 +188,11 @@ namespace TMPro.Examples
                     {
                         OrbitalAngle += deltaPosition.x * 0.1f;
                         if (OrbitalAngle > 360)
-                        {
                             OrbitalAngle -= 360;
-                        }
-
                         if (OrbitalAngle < 0)
-                        {
                             OrbitalAngle += 360;
-                        }
                     }
+
                 }
 
                 // Check for left mouse button to select a new CameraTarget or to reset Follow position
@@ -230,7 +201,7 @@ namespace TMPro.Examples
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit;
 
-                    if (Physics.Raycast(ray, out hit, 300, (1 << 10) | (1 << 11) | (1 << 12) | (1 << 14)))
+                    if (Physics.Raycast(ray, out hit, 300, 1 << 10 | 1 << 11 | 1 << 12 | 1 << 14))
                     {
                         if (hit.transform == CameraTarget)
                         {
@@ -243,6 +214,7 @@ namespace TMPro.Examples
                             OrbitalAngle = 0;
                             MovementSmoothing = previousSmoothing;
                         }
+
                     }
                 }
 
@@ -276,7 +248,9 @@ namespace TMPro.Examples
                     moveVector = cameraTransform.TransformDirection(mouseX, mouseY, 0);
 
                     dummyTarget.Translate(-moveVector, Space.World);
+
                 }
+
             }
 
             // Check Pinching to Zoom in - out on Mobile device
@@ -299,15 +273,20 @@ namespace TMPro.Examples
                     // Limit FollowDistance between min & max values.
                     FollowDistance = Mathf.Clamp(FollowDistance, MinFollowDistance, MaxFollowDistance);
                 }
+
+
             }
 
             // Check MouseWheel to Zoom in-out
             if (mouseWheel < -0.01f || mouseWheel > 0.01f)
             {
+
                 FollowDistance -= mouseWheel * 5.0f;
                 // Limit FollowDistance between min & max values.
                 FollowDistance = Mathf.Clamp(FollowDistance, MinFollowDistance, MaxFollowDistance);
             }
+
+
         }
     }
 }

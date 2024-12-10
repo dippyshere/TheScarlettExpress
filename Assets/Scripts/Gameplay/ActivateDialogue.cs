@@ -16,10 +16,12 @@ public class ActivateDialogue : MonoBehaviour
     public bool isConversing;
     public bool deactivateOnBegin = true;
 
+    public AudioSource ebonySparkles;
+
     // Update is called once per frame
     void Update()
     {
-        if (isConversing && Input.GetKeyDown(KeyCode.E))
+        if (isConversing && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
         {
             BeginConversation();
         }
@@ -27,7 +29,7 @@ public class ActivateDialogue : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && this.enabled)
         {
             isConversing = true;
             Character.Instance.promptUI.SetActive(true);
@@ -36,7 +38,7 @@ public class ActivateDialogue : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && this.enabled)
         {
             isConversing = false;
             Character.Instance.promptUI.SetActive(false);
@@ -48,11 +50,18 @@ public class ActivateDialogue : MonoBehaviour
         if (conversation == null)
         {
             ConversationManager.Instance.StartConversation(conversations[Random.Range(0, conversations.Length)]);
+            Character.Instance.promptUI.SetActive(false);
         }
         else
         {
             ConversationManager.Instance.StartConversation(conversation);
+            Character.Instance.promptUI.SetActive(false);
+            if (this.gameObject.tag == "Ebony")
+            {
+                ebonySparkles.Play();
+            }
         }
+        isConversing = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -71,6 +80,7 @@ public class ActivateDialogue : MonoBehaviour
     {
         Character.Instance.promptUI.SetActive(true);
         ConversationManager.OnConversationEnded -= ReEnablePromptOnEnd;
+        isConversing = true;
     }
 
     public void EnterTutorial()

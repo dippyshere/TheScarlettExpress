@@ -38,7 +38,7 @@ public class StoveController : MonoBehaviour
 
     void Update()
     {
-        if (Character.Instance.promptUI.activeSelf && Input.GetKeyDown(KeyCode.E) && _isPlayerNear && uiFoodPicker.activeSelf == false)
+        if (Character.Instance.promptUI.activeSelf && Input.GetKeyDown(KeyCode.E) && _isPlayerNear && uiFoodPicker.activeSelf == false && !DialogueCallback.Instance.inDialogue)
         {
             uiFoodPicker.SetActive(true);
             CameraManager.Instance.SetInputModeUI();

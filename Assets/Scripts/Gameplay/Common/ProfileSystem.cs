@@ -8,7 +8,7 @@ using UnityEngine;
 
 public static class ProfileSystem
 {
-    const int NumSaveSlots = 4;
+    const int NumSaveSlots = 5;
     const string CurrentSaveSlotKey = "CurrentSaveSlot";
     const string GlobalPrefix = "Global_";
 
@@ -32,6 +32,15 @@ public static class ProfileSystem
         { Variable.DecoratingTutorialStarted, false },
         { Variable.DecoratingTutorialDone, false },
         { Variable.UpgradeTutorialDone, false },
+        { Variable.HasBeenToFurrowood, false },
+        { Variable.AcquiredTheBanks, false },
+        { Variable.BanksHomed, false },
+        { Variable.HasBeenToFernValley, false },
+        { Variable.AcquiredPaints, false },
+        { Variable.EveQuest2Started, false },
+        { Variable.HasRenovatedBedroom1, false },
+        { Variable.HasRenovatedEntertainment, false },
+        { Variable.StartedUpgradeTutorial, false },
 
         //Decorations
         { Variable.Deco1, 0 },
@@ -70,6 +79,9 @@ public static class ProfileSystem
         { Variable.Bed1Painting1, -1 },
         { Variable.Bed1Painting2, -1 },
         { Variable.Bed1Rug1, -1 },
+        { Variable.Bed2Painting1, -1 },
+        { Variable.Bed2Painting2, -1 },
+        { Variable.Bed2Rug1, -1 },
         { Variable.Bed1Upgrade, 0 },
         { Variable.Restraunt1Table1, 0 },
         { Variable.Restraunt1Table2, 0 },
@@ -89,7 +101,20 @@ public static class ProfileSystem
         //Eve Quest
         { Variable.EveQuestStarted, false },
         { Variable.RetrievedBroccoliSoup, false },
-        { Variable.EveQuestFinished, false }
+        { Variable.EveQuestFinished, false },
+
+        //Banks Quest
+        { Variable.BanksQuestStarted,  false },
+        { Variable.RetrievedYellowSpringSalad, false },
+        { Variable.BanksQuestFinished,  false },
+
+        //Bunk Upgrades
+        { Variable.Bedroom1Bunk1, 0  },
+        { Variable.Bedroom1Bunk2, 0  },
+        { Variable.Bedroom1Bunk3, 0  },
+        { Variable.Bedroom1Bunk4, 0  },
+        { Variable.Bedroom1Bunk5, 0  },
+        { Variable.Bedroom1Bunk6, 0  }
     };
 
     static ProfileSystem()
@@ -351,7 +376,10 @@ public static class ProfileSystem
         FreeDeco,
         Bed1Painting1,
         Bed1Painting2,
+        Bed2Painting1,
+        Bed2Painting2,
         Bed1Rug1,
+        Bed2Rug1,
         Bed1Upgrade,
         Restraunt1Table1,
         Restraunt1Table2,
@@ -370,6 +398,32 @@ public static class ProfileSystem
         //Eve Quest
         EveQuestStarted,
         RetrievedBroccoliSoup,
-        EveQuestFinished
+        EveQuestFinished,
+
+        HasBeenToFernValley,
+        AcquiredPaints,
+        EveQuest2Started,
+
+        //Banks Quest
+        HasBeenToFurrowood,
+        AcquiredTheBanks,
+        BanksHomed,
+        RetrievedYellowSpringSalad,
+        BanksQuestStarted,
+        BanksQuestFinished,
+
+        //Renovation
+        HasRenovatedBedroom1,
+        HasRenovatedEntertainment,
+
+        StartedUpgradeTutorial,
+
+        //Bunk Upgrades
+        Bedroom1Bunk1,
+        Bedroom1Bunk2,
+        Bedroom1Bunk3,
+        Bedroom1Bunk4,
+        Bedroom1Bunk5,
+        Bedroom1Bunk6
     }
 }

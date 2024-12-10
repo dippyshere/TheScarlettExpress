@@ -2,10 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Dypsloom.DypThePenguin.Scripts.Character;
 using DialogueEditor;
 
 public class DialogueCallback : MonoBehaviour
 {
+    public static DialogueCallback Instance;
+    public bool inDialogue;
+    
+    void Awake()
+    {
+        Instance = this;
+    }
+    
     void OnEnable()
     {
         ConversationManager.OnConversationStarted += BeginDialogue;
@@ -29,6 +38,8 @@ public class DialogueCallback : MonoBehaviour
         {
             CameraManager.Instance.SetInputModeUI();
         }
+        
+        Character.Instance.promptGroup.alpha = 0;
     }
     
     void EndDialogue()
@@ -42,5 +53,7 @@ public class DialogueCallback : MonoBehaviour
         {
             CameraManager.Instance.SetInputModeGameplay();
         }
+        
+        Character.Instance.promptGroup.alpha = 1;
     }
 }

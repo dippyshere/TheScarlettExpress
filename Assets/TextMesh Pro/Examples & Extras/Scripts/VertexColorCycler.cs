@@ -1,15 +1,14 @@
-﻿#region
-
+﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
 
-#endregion
 
 namespace TMPro.Examples
 {
+
     public class VertexColorCycler : MonoBehaviour
     {
-        TMP_Text m_TextComponent;
+
+        private TMP_Text m_TextComponent;
 
         void Awake()
         {
@@ -24,7 +23,7 @@ namespace TMPro.Examples
 
 
         /// <summary>
-        ///     Method to animate vertex colors of a TMP Text object.
+        /// Method to animate vertex colors of a TMP Text object.
         /// </summary>
         /// <returns></returns>
         IEnumerator AnimateVertexColors()
@@ -61,8 +60,7 @@ namespace TMPro.Examples
                 // Only change the vertex color if the text element is visible.
                 if (textInfo.characterInfo[currentCharacter].isVisible)
                 {
-                    c0 = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255),
-                        255);
+                    c0 = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
 
                     newVertexColors[vertexIndex + 0] = c0;
                     newVertexColors[vertexIndex + 1] = c0;
@@ -81,5 +79,6 @@ namespace TMPro.Examples
                 yield return new WaitForSeconds(0.05f);
             }
         }
+
     }
 }

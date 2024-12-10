@@ -22,8 +22,10 @@
     <assembly fullname="Dypsloom.CharacterController" preserve="all" />
     <assembly fullname="Dypsloom.Shared.Utility" preserve="all" />
     <assembly fullname="KinoBloom.Runtime" preserve="all" />
+    <assembly fullname="Naelstrof.JigglePhysics" preserve="all" />
     <assembly fullname="TrainGame" preserve="all" />
     <assembly fullname="TrainGameAnalytics" preserve="all" />
+    <assembly fullname="TrainGameData" preserve="all" />
     <assembly fullname="TrainGameMenu" preserve="all" />
     <assembly fullname="UniTask" preserve="all" />
     <assembly fullname="UniTask.Addressables" preserve="all" />
@@ -53,10 +55,14 @@
     <assembly fullname="Unity.ProBuilder.Poly2Tri" preserve="all" />
     <assembly fullname="Unity.ProBuilder.Stl" preserve="all" />
     <assembly fullname="Unity.Profiling.Core" preserve="all" />
+    <assembly fullname="Unity.Rendering.LightTransport.Runtime" preserve="all" />
     <assembly fullname="Unity.RenderPipeline.Universal.ShaderLibrary" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.Core.Runtime" preserve="all" />
+    <assembly fullname="Unity.RenderPipelines.Core.Runtime.Shared" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.Core.ShaderLibrary" preserve="all" />
+    <assembly fullname="Unity.RenderPipelines.GPUDriven.Runtime" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary" preserve="all" />
+    <assembly fullname="Unity.RenderPipelines.Universal.2D.Runtime" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.Universal.Config.Runtime" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.Universal.Runtime" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.Universal.Shaders" preserve="all" />

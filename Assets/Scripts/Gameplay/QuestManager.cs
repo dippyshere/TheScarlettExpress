@@ -47,7 +47,7 @@ public class QuestManager : MonoBehaviour
             InitiateConversation();
         }
 
-        if (isConversing && Input.GetKeyDown(KeyCode.E))
+        if (isConversing && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
         {
             CheckMoney();
         }
@@ -60,7 +60,7 @@ public class QuestManager : MonoBehaviour
 
     public void InitiateConversation()
     {
-        Invoke(nameof(BeginRenovatedConversation), 4f);
+        Invoke(nameof(BeginRenovatedConversation), 2.85f);
         _hasRenovated = true;
     }
 
