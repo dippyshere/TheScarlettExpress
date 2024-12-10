@@ -25,7 +25,7 @@ public class SpecialPassengerStationManager : MonoBehaviour
             ProfileSystem.Set(ProfileSystem.Variable.HasBeenToFurrowood, true);
 
             if (ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestFinished) && ProfileSystem.Get<bool>(ProfileSystem.Variable.HasBeenToFernValley)
-                && !ProfileSystem.Get<bool>(ProfileSystem.Variable.AcquiredPaints) && !ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuest2Started))
+                && !ProfileSystem.Get<bool>(ProfileSystem.Variable.AcquiredPaints) && ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuest2Started))
             {
                 specialPassenger.SetActive(true);
                 shopEve.enabled = false;
