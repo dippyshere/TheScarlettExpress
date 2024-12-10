@@ -45,6 +45,11 @@ public class BanksSpecialQuests : MonoBehaviour
         {
             exclamationUI.SetActive(true);
         }
+
+        if (ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestFinished))
+        {
+            exclamationUI.SetActive(false);
+        }
     }
 
     // Update is called once per frame
