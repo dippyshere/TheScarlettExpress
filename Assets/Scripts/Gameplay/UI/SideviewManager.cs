@@ -81,6 +81,8 @@ public class SideviewManager : MonoBehaviour
     public GameObject banksRoomSterlingButton;
     public GameObject banksRoomSideviewButton;
 
+    public Animator[] backgroundMovementAnimators;
+
     void Start()
     {
         money = ProfileSystem.Get<float>(ProfileSystem.Variable.PlayerMoney);
@@ -740,6 +742,13 @@ public class SideviewManager : MonoBehaviour
             Invoke(nameof(BackToSterling), 1f);
 
             renovateButton.interactable = false;
+            
+            foreach (Animator anim in backgroundMovementAnimators)
+            {
+                anim.SetBool("startMoving", true);
+            }
+            
+            TrainSounds.Instance.PlayChugNoiseQuick();
         }
 
         if (money <= 99 && decrepitObjects.activeSelf)

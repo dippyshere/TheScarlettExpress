@@ -7,6 +7,7 @@ public class TrainSounds : MonoBehaviour
     public static TrainSounds Instance;
 
     public AudioSource brakeNoise;
+    public AudioSource chugNoise;
 
     void Awake()
     {
@@ -23,5 +24,22 @@ public class TrainSounds : MonoBehaviour
     {
         brakeNoise.time = 0.7f;
         brakeNoise.Play();
+    }
+
+    public void PlayChugNoiseQuick()
+    {
+        StartCoroutine(ChugNoise());
+    }
+
+    IEnumerator ChugNoise()
+    {
+        chugNoise.Play();
+        yield return new WaitForSecondsRealtime(8f);
+        while (chugNoise.volume > 0)
+        {
+            chugNoise.volume -= 0.01f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        chugNoise.Stop();
     }
 }
