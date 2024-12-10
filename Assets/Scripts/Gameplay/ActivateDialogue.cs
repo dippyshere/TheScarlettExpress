@@ -29,7 +29,7 @@ public class ActivateDialogue : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && this.enabled)
         {
             isConversing = true;
             Character.Instance.promptUI.SetActive(true);
@@ -38,7 +38,7 @@ public class ActivateDialogue : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && this.enabled)
         {
             isConversing = false;
             Character.Instance.promptUI.SetActive(false);
