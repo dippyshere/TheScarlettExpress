@@ -84,7 +84,8 @@ public class Pickup : MonoBehaviour
             }
             else
             {
-                objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
+                if (!DialogueCallback.Instance.inDialogue)
+                    objectIWantToPickup.GetComponent<Rigidbody>().isKinematic = false;
             }
 
             if (pendingEve)
@@ -123,7 +124,7 @@ public class Pickup : MonoBehaviour
         // pickup
         if (canPickup && objectIWantToPickup != null)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
             {
                 if (objectIWantToPickup.GetComponent<FoodManager>() && EveSpecialQuests.Instance != null)
                 {

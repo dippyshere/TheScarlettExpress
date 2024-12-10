@@ -82,17 +82,17 @@ public class RestaurantTutorial : MonoBehaviour
 
         if (canStoveTutorial)
         {
-            if (stoveTime && Input.GetKeyDown(KeyCode.E))
+            if (stoveTime && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
             {
                 BeginStoveTutorial();
             }
         }
-        //if (stoveTime && Input.GetKeyDown(KeyCode.E))
+        //if (stoveTime && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
         //{
         //    BeginStoveTutorial();
         //}
 
-        //if (talkToEve && Input.GetKeyDown(KeyCode.E))
+        //if (talkToEve && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
         //{
         //    BeginEveConversation();
         //}

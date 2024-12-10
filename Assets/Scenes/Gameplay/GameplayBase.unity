@@ -813,11 +813,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3175688695200588146, guid: 0430b99f935d1404997864381a6b8160,
-        type: 3}
-      propertyPath: cameraToFace
-      value: 
-      objectReference: {fileID: 1641390823}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

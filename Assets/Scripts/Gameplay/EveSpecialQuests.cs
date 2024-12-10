@@ -65,12 +65,12 @@ public class EveSpecialQuests : MonoBehaviour
         eveQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestStarted);
         eveQuestFinished = ProfileSystem.Get<bool>(ProfileSystem.Variable.EveQuestFinished);
 
-        if (isConversing && Input.GetKeyDown(KeyCode.E) && !eveQuestFinished)
+        if (isConversing && Input.GetKeyDown(KeyCode.E) && !eveQuestFinished && !DialogueCallback.Instance.inDialogue)
         {
             BeginConversation();
         }
 
-        if (isConversing && Input.GetKeyDown(KeyCode.E) && eveQuestFinished)
+        if (isConversing && Input.GetKeyDown(KeyCode.E) && eveQuestFinished && !DialogueCallback.Instance.inDialogue)
         {
             BeginSpeaking();
         }

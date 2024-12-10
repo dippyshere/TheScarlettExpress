@@ -59,13 +59,13 @@ public class BanksSpecialQuests : MonoBehaviour
         banksQuestStarted = ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestStarted);
         banksQuestFinished = ProfileSystem.Get<bool>(ProfileSystem.Variable.BanksQuestFinished);
 
-        if (isConversing && Input.GetKeyDown(KeyCode.E) && !banksQuestFinished)
+        if (isConversing && Input.GetKeyDown(KeyCode.E) && !banksQuestFinished && !DialogueCallback.Instance.inDialogue)
         {
             BeginConversation();
             exclamationUI.SetActive(false);
         }
 
-        if (isConversing && Input.GetKeyDown(KeyCode.E) && banksQuestFinished)
+        if (isConversing && Input.GetKeyDown(KeyCode.E) && banksQuestFinished && !DialogueCallback.Instance.inDialogue)
         {
             BeginSpeaking();
             exclamationUI.SetActive(false);

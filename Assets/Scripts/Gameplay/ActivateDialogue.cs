@@ -21,7 +21,7 @@ public class ActivateDialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isConversing && Input.GetKeyDown(KeyCode.E))
+        if (isConversing && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
         {
             BeginConversation();
         }

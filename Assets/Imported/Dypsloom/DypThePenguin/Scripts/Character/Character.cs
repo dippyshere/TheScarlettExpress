@@ -29,6 +29,8 @@ namespace Dypsloom.DypThePenguin.Scripts.Character
         [SerializeField, Tooltip("Reference to the prompt UI.")]
         public GameObject promptUI;
 
+        public CanvasGroup promptGroup;
+
         [Tooltip("The character speed in units/second."), SerializeField]
         protected float m_Speed = 1f;
         

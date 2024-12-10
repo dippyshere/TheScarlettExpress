@@ -39,7 +39,7 @@ public class DoorInteraction : MonoBehaviour
 
     void Update()
     {
-        if (Character.Instance.promptUI.activeSelf && Input.GetKeyDown(KeyCode.E) && _mIsPlayerNear)
+        if (Character.Instance.promptUI.activeSelf && Input.GetKeyDown(KeyCode.E) && _mIsPlayerNear && !DialogueCallback.Instance.inDialogue)
         {
             mCamera.SetActive(true);
             Character.Instance.promptUI.SetActive(false);

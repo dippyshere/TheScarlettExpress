@@ -22,7 +22,7 @@ public class RestaurantEve : MonoBehaviour
     {
         if (canTalkToEve)
         {
-            if (talkToEve && Input.GetKeyDown(KeyCode.E))
+            if (talkToEve && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
             {
                 BeginEveConversation();
                 talkToEve = false;

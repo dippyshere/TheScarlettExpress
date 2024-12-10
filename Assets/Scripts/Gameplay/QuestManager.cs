@@ -47,7 +47,7 @@ public class QuestManager : MonoBehaviour
             InitiateConversation();
         }
 
-        if (isConversing && Input.GetKeyDown(KeyCode.E))
+        if (isConversing && Input.GetKeyDown(KeyCode.E) && !DialogueCallback.Instance.inDialogue)
         {
             CheckMoney();
         }

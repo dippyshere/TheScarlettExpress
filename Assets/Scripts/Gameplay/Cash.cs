@@ -22,7 +22,7 @@ public class Cash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isEarning && Input.GetKeyDown(KeyCode.E) && _money <= 75f)
+        if (isEarning && Input.GetKeyDown(KeyCode.E) && _money <= 75f && !DialogueCallback.Instance.inDialogue)
         {
             music.Play();
             Invoke(nameof(DeleteCashGameObject), 0.01f);
@@ -38,7 +38,7 @@ public class Cash : MonoBehaviour
             //cashDialogue.SetActive(false);
         }
 
-        if (isEarning && Input.GetKeyDown(KeyCode.E) && _money >= 76f)
+        if (isEarning && Input.GetKeyDown(KeyCode.E) && _money >= 76f && !DialogueCallback.Instance.inDialogue)
         {
             music.Play();
             Invoke(nameof(DeleteCashGameObject), 0.01f);
