@@ -155,7 +155,7 @@ MonoBehaviour:
     m_Value: 0
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20230301
+  m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 0}
@@ -356,7 +356,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 25e535ee303eb8b4d90d586e997e7b3c, type: 3}
   m_Resource: {fileID: 8300000, guid: 25e535ee303eb8b4d90d586e997e7b3c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.633
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -453,7 +453,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 4095c206b137e914f8c7cc3a48ce4388, type: 3}
   m_Resource: {fileID: 8300000, guid: 4095c206b137e914f8c7cc3a48ce4388, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.633
   m_Pitch: 1
   Loop: 1
   Mute: 0

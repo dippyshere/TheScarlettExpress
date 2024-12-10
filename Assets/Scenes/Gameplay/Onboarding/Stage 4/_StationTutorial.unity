@@ -773,6 +773,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6588962238564647889, guid: c8ae35c37805db4498ad187eec8ec269,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6925298359243389265, guid: c8ae35c37805db4498ad187eec8ec269,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -90948,9 +90953,16 @@ MonoBehaviour:
   - {fileID: 8756091381033801575, guid: 71e3d9be9040b1c44acde3d52f1c9a6e, type: 3}
   - {fileID: 6224784734797702935, guid: 170f4fd5815f5c748bf970ba702e4820, type: 3}
   - {fileID: 4089226083128170101, guid: 5ba1dc9c06c735e4a870c70e605ca8a9, type: 3}
+  - {fileID: 8673069970722433370, guid: 7aabfba33a1c2f14e8248af3e85ea0b5, type: 3}
+  - {fileID: 8673069970722433370, guid: d6f243e4bfc18544580b4f2d39d9a698, type: 3}
+  - {fileID: 8756091381033801575, guid: 71e3d9be9040b1c44acde3d52f1c9a6e, type: 3}
+  - {fileID: 8756091381033801575, guid: b8002bdce14c4e043aa426ac5a1eab3e, type: 3}
+  - {fileID: 6224784734797702935, guid: 30b4dbc6d19fb4e479a380454bfd4870, type: 3}
+  - {fileID: 6224784734797702935, guid: 6fe3b1cad2805d64e9ee6361ed87806e, type: 3}
+  - {fileID: 4089226083128170101, guid: 45a3dd75ed2749644a1736d8813ca551, type: 3}
+  - {fileID: 4089226083128170101, guid: 67ce47fe07e0c464c8cd5d7e2f8cd604, type: 3}
   passengers: []
   spawnPassengers: 1
-  isStation: 1
   spawnPoints:
   - {fileID: 826530267}
   - {fileID: 1536315342}

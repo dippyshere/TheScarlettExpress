@@ -8,7 +8,7 @@ using UnityEngine;
 
 public static class ProfileSystem
 {
-    const int NumSaveSlots = 4;
+    const int NumSaveSlots = 5;
     const string CurrentSaveSlotKey = "CurrentSaveSlot";
     const string GlobalPrefix = "Global_";
 
