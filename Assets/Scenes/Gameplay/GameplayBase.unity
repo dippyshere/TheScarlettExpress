@@ -94,7 +94,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000010, guid: d5f5c2a8e102d4543aeb4ddb921c4d4f,
+  m_LightingDataAsset: {fileID: 112000008, guid: 31875838d357fe245806b93a113ab323,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: b85415656ae8ac049b18dabf6db9063b,
     type: 2}
@@ -1653,7 +1653,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608384528}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.106364116, y: 0.00000008100447, z: -0.000000007700421, w: 0.99432725}
+  m_LocalRotation: {x: 0.10636408, y: -0.0000000148419295, z: 0.0000000015876545,
+    w: 0.99432725}
   m_LocalPosition: {x: 0, y: 3.9046702, z: -4.5053363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -1914,7 +1915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641390819}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.106364116, y: 0.000000081108865, z: -0.000000008676291, w: 0.99432725}
+  m_LocalRotation: {x: 0.10636408, y: -0.000000016588128, z: 0.0000000017744469, w: 0.99432725}
   m_LocalPosition: {x: 0, y: 3.9046702, z: -4.5053363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
