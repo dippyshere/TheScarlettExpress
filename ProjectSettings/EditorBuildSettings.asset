@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Frontend/_TitleScreen.unity
     guid: 728c5546dff2cf948a87fdd299a6be1a
   - enabled: 1
+    path: Assets/Scenes/Frontend/TrainEnvironment.unity
+    guid: be44ef898a2a5485db313b17c6d05221
+  - enabled: 1
     path: Assets/Scenes/Gameplay/Stations/Woodlands/Station4Branchview/_BranchviewStation.unity
     guid: 23714008047b34340b108afb5e143c7f
   - enabled: 1

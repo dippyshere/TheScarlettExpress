@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
     Canvas _titleCanvas;
+    [SerializeField] GameObject postprocessing;
     
     void Awake()
     {
@@ -23,8 +24,8 @@ public class MenuManager : MonoBehaviour
     public void OnStartButtonClicked()
     {
         _titleCanvas.enabled = false;
-        ProfileSystem.CurrentSaveSlot = 4;
-        ProfileSystem.ClearProfile(4);
+        ProfileSystem.CurrentSaveSlot = 0;
+        //ProfileSystem.ClearProfile(4);
         LoadingManager.Instance.LoadScene(ProfileSystem.Get<string>(ProfileSystem.Variable.LastScene));
     }
     
@@ -32,6 +33,7 @@ public class MenuManager : MonoBehaviour
     {
         SaveSlotsManager.Instance.ShowSaveSlots();
         _titleCanvas.enabled = false;
+        postprocessing.SetActive(true);
     }
     
     public void OnQuitButtonClicked()
