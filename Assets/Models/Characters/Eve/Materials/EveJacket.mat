@@ -65,7 +65,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ClipThreshold: 0
+    - _ClipThreshold: 0.7
     - _DitherOffset: 0.5
     - _DitherRange: 2
     - _QueueControl: 0

@@ -230,5 +230,20 @@ public class ClipboardManager : MonoBehaviour
         {
             TrainSounds.Instance.PlayBrakeNoise();
         }
+        else
+        {
+            CameraManager.Instance.SetInputModeUI(affectCursor: false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            LoadingManager.Instance.ShowLoadingScreen();
+            Invoke(nameof(HideDayTransition), 1f);
+        }
+    }
+
+    public void HideDayTransition()
+    {
+        StartCoroutine(Character.Instance.LateTeleport(sideviewManager.kitchenCarriageGo));
+        CameraManager.Instance.SetInputModeGameplay();
+        LoadingManager.Instance.HideLoadingScreen();
     }
 }

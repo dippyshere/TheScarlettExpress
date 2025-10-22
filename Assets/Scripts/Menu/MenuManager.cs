@@ -44,5 +44,6 @@ public class MenuManager : MonoBehaviour
     public void ShowTitle()
     {
         _titleCanvas.enabled = true;
+        postprocessing.SetActive(false);
     }
 }
